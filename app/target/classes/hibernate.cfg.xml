@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/wms</property>
+        <property name="connection.password">123456</property>
+        <property name="connection.username">root</property>
+        <property name="connection.pool_size">5</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <mapping class="com.repertory.model.Users"/>
+        <mapping class="com.repertory.bean.ItemEntity"/>
+        <mapping class="com.repertory.bean.ItemApplicationEntity"/>
+        <mapping class="com.repertory.bean.ItemApplicationOperationEntity"/>
+        <mapping class="com.repertory.bean.ItemBorrowEntity"/>
+        <mapping class="com.repertory.bean.ItemBorrowOperationEntity"/>
+        <mapping class="com.repertory.bean.ItemCategoryEntity"/>
+        <mapping class="com.repertory.bean.ItemCompanyEntity"/>
+        <mapping class="com.repertory.bean.ItemInOperationEntity"/>
+        <mapping class="com.repertory.bean.ItemInStorageEntity"/>
+        <mapping class="com.repertory.bean.ItemOutOperationEntity"/>
+        <mapping class="com.repertory.bean.ItemOutStorageEntity"/>
+        <mapping class="com.repertory.bean.UmessageEntity"/>
+        <mapping class="com.repertory.bean.UsersEntity"/>
+    </session-factory>
+</hibernate-configuration>
