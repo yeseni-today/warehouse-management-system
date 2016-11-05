@@ -1,0 +1,10 @@
+table.myTable{
+    table-layout: fixed;
+    width: 800px;
+}
+table.myTable tr{
+    height: 30px;
+}
+table.myTable td,th{
+    text-align: center;
+}

@@ -1,0 +1,18 @@
+.myInput input{
+    width: 150px;
+    height: 30px;
+    padding: 0 10px;
+    border: 1px solid gray;
+    border-radius: 5px;
+    outline-radius: 5px;
+    outline: 0;
+}
+.myInput input[type="text"]:hover{
+    background: #e9e9e9;
+}
+.myInput input[type="button"]:hover{
+    background: #f6f6f6;
+}
+.myInput input[type="submit"]:hover{
+    background: #eeeeee;
+}

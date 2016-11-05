@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <title>登陆</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/myCSS/loginPage.css">
+    <link rel="stylesheet" type="text/css" href="/myCSS/myInput.css">
+    <style type="text/css">
+        .login input{
+            width: 200px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="background">
+    <img src="/picture/bg.jpeg" width="100%" height="100%"/>
+</div>
+
+<div class="title">
+    欢迎，这里是仓库管理系统
+</div>
+
+<div class="login myInput">
+    <form action="logincheck" method="post">
+        <input class="text" type="text" placeholder="请输入账号"><br>
+        <input class="text" type="password" placeholder="请输入密码">
+        <input class="button" value="登陆" type="submit">
+    </form>
+    <a href="#">使用统一登陆方式登陆</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Microsoft YaHei UI", serif;
+}
+
+div.background {
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    min-width: 800px;
+    height: 100%;
+    min-height: 600px;
+}
+
+div.title {
+    color: floralwhite;
+    font-size: 40px;
+    line-height: 100px;
+    padding: 0 40px;
+    min-width: 500px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.75);
+}
+
+div.login {
+    margin: 150px 150px;
+    width: 300px;
+    height: 200px;
+    line-height: 50px;
+    text-align: center;
+}
+
+.login > a {
+    margin: 10px;
+    color: blue;
+    text-decoration: none;
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.72);
+}

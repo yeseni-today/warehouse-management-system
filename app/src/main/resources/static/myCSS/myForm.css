@@ -1,0 +1,22 @@
+.myForm li {
+    width: 600px;
+    height: 60px;
+    list-style: none;
+    line-height: 60px;
+    text-align: center;
+}
+.myForm .name {
+    float: left;
+    height: 60px;
+    width: 200px;
+    line-height: 60px;
+    text-align: right;
+}
+.myForm .value {
+    float: right;
+    height: 60px;
+    width: 350px;
+    line-height: 60px;
+    text-align: left;
+    margin-left: 50px;
+}
