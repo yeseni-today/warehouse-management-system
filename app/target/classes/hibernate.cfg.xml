@@ -10,7 +10,6 @@
         <property name="connection.username">root</property>
         <property name="connection.pool_size">5</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping class="com.repertory.model.Users"/>
         <mapping class="com.repertory.bean.ItemEntity"/>
         <mapping class="com.repertory.bean.ItemApplicationEntity"/>
         <mapping class="com.repertory.bean.ItemApplicationOperationEntity"/>
