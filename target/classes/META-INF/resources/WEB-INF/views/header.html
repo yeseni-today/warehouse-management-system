@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>仓库管理系统</title>
+
+    <link rel="stylesheet" type="text/css" href="../../resources/myCSS/all.css" th:href="@{/resources/myCSS/all.css}"/>
+    <script src="../../resources/myJavascript/setFontSize.js"></script>
+
+</head>
+
+<body>
+
+<div class="top">
+    <div class="center">
+        <div class="title">
+            仓库管理系统
+        </div>
+        <div class="user">
+            <div class="name"><a>用户：XXX</a></div>
+            <div class="out"><a href="../login.html">退出</a></div>
+        </div>
+    </div>
+</div>
+
+<div th:fragment="header">
+
+    <nav>
+        <ul id="myUl">
+            <li><a href="../query/query.html" target="frame">查询</a></li>
+            <li><a href="../storage/history.html" target="frame">入库</a></li>
+            <li><a href="../apply/history.html" target="frame">申请</a></li>
+            <li><a href="../borrow/history.html" target="frame">借用</a></li>
+            <li>
+                <span class="dArrow"></span>
+                <a href="../log/log.html" target="frame">日志</a>
+                <dl>
+                    <dd><a href="#">111</a></dd>
+                    <dd><a href="#">222</a></dd>
+                    <dd><a href="#">333</a></dd>
+                    <dd><a href="#">444</a></dd>
+                </dl>
+            </li>
+            <li>
+                <span class="dArrow"></span>
+                <a href="../message/message.html" target="frame">消息</a>
+                <dl>
+                    <dd><a href="#">待审核消息</a></dd>
+                    <dd><a href="#">通知领取消息</a></dd>
+                    <dd><a href="#">分配消息</a></dd>
+                    <dd><a href="#">归还提醒消息</a></dd>
+                    <dd><a href="#">库存提醒消息</a></dd>
+                </dl>
+            </li>
+        </ul>
+    </nav>
+
+</div>
+
+
+<div class="content">
+    <div class="titleNav">
+        <div class="title1">查询></div>
+    </div>
+    <div class="myInput query">
+        <form action="">
+            <label>
+                物品条码：
+                <input type="text" name="item_code"/>
+            </label>
+            <label>
+                物品名称：
+                <input type="text" name="item_name"/>
+            </label>
+            <label>
+                物品类别：
+                <select name="item_type">
+                    <option value="">类别1</option>
+                    <option value="">类别2</option>
+                    <option value="">类别3</option>
+                </select>
+            </label>
+            <input type="submit" value="查询"/>
+        </form>
+    </div>
+
+    <div class="result">
+        <table class="myTable" border="1">
+            <tr>
+                <th>条码</th>
+                <th>名称</th>
+                <th>类别</th>
+                <th>数量</th>
+                <th>操作</th>
+            </tr>
+            <tr>
+                <td>XXX</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>XXX</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+
+<div class="bottom">
+</div>
+
+</body>
+</html>

@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="app:war">
-    <output-path>$PROJECT_DIR$/app/target</output-path>
-    <root id="archive" name="wms-1.0-SNAPSHOT.war">
-      <element id="artifact" artifact-name="app:war exploded" />
-    </root>
-  </artifact>
-</component>

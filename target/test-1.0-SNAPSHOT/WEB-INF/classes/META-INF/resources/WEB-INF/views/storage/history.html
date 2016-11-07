@@ -1,0 +1,53 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>入库历史</title>
+
+    <link rel="stylesheet" type="text/css" href="../myCSS/init.css">
+    <link rel="stylesheet" type="text/css" href="../myCSS/titleNav.css">
+    <link rel="stylesheet" type="text/css" href="../myCSS/myDivBt.css">
+    <link rel="stylesheet" type="text/css" href="../myCSS/myTable.css">
+    <script src="../myJavascript/setNavFontSize.js"></script>
+</head>
+<body>
+<div th:replace="head::head"></div>
+<div th:fragment="content" class="content">
+<div class="title">
+    <div class="title1">入库历史></div>
+</div>
+
+<div class="myDivBt">
+    <a href="storageList.html">新建入库</a>
+</div>
+
+<div class="result">
+    <table class="myTable" border="1">
+        <tr>
+            <th>入库单编号</th>
+            <th>入库时间</th>
+            <th>入库操作人员ID</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
+</div>
+
+</body>
+</html>
