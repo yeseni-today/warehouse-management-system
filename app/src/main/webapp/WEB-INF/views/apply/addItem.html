@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+
+    <link rel="stylesheet" type="text/css" href="../../static/myCSS/titleNav.css">
+    <link rel="stylesheet" type="text/css" href="../../static/myCSS/myInput.css">
+    <link rel="stylesheet" type="text/css" href="../../static/myCSS/myTable.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .query{
+            min-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+        .result{
+            width: 800px;
+            margin: 20px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="title">
+    <div class="title1">新建申请单></div>
+    <div class="title2">添加物品></div>
+</div>
+<div class="myInput query">
+    <form action="">
+        <label>
+            物品条码：
+            <input type="text" name="item_code">
+        </label>
+        <label>
+            物品名称：
+            <input type="text" name="item_name">
+        </label>
+        <label>
+            物品类别：
+            <select name="item_type" style="width: 100px">
+                <option value="">类别1</option>
+                <option value="">类别2</option>
+                <option value="">类别3</option>
+            </select>
+        </label>
+        <input type="submit" value="查询">
+    </form>
+</div>
+
+<div class="result">
+    <form action="applyList.html">
+    <table class="myTable" border="1">
+        <tr>
+            <th>条码</th>
+            <th>名称</th>
+            <th>类别</th>
+            <th>数量</th>
+            <th>选择</th>
+        </tr>
+        <tr>
+            <td>XXX</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td> <input type="checkbox" name="id" value=""></td>
+        </tr>
+        <tr>
+            <td>XXX</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><input type="checkbox" name="id" value=""></td>
+        </tr>
+    </table>
+        <div class="myInput" style="float: right">
+            <input type="submit" value="添加">
+        </div>
+    </form>
+
+</div>
+</body>
+</html>

@@ -1,9 +1,10 @@
 table.myTable{
     table-layout: fixed;
-    width: 800px;
+    width: 65em;
 }
 table.myTable tr{
-    height: 30px;
+    height: 4em;
+/*/TODO*/
 }
 table.myTable td,th{
     text-align: center;

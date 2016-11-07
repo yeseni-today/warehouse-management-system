@@ -1,44 +1,39 @@
-* {
-    font-family: "Microsoft YaHei UI", serif;
-    margin: 0;
-    padding: 0;
-}
-
 body {
     background: #e0e0e0;
 }
 
 .top {
-    height: 80px;
+    height: 6em;
     width: 100%;
-    min-width: 900px;
+    min-width: 70em;
     margin: auto;
     background-color: rgb(80, 80, 80);
-    border-bottom: 10px solid aqua;
+    border-bottom: 0.5em solid aqua;
 }
 
 .center {
-    width: 900px;
+    width: 70em;
     margin: auto;
 }
 
 .title {
+    font-size: 3em;
     float: left;
-    width: 250px;
-    margin-left: 10px;
-    line-height: 80px;
+    width: 6em;
+    margin-left: 0.5em;
+    line-height: 2em;
     color: floralwhite;
-    font-size: 40px;
+
 }
 
 .user {
+    font-size: 2em;
     float: right;
-    margin-top: 30px;
-    font-size: 25px;
+    margin-top: 1em;
 }
 
 .name, .out {
-    line-height: 50px;
+    line-height: 2em;
     float: left;
 }
 
@@ -47,20 +42,20 @@ body {
 }
 
 .user a {
-    padding: 0 25px;
+    padding: 0 1em;
     text-decoration: none;
     color: black;
 }
 
 nav {
     width: 100%;
-    min-width: 900px;
-    height: 50px;
+    min-width: 70em;
+    height: 4em;
     background: #9c9c9c;
 }
 
 nav ul {
-    width: 800px;
+    width: 30em;
     margin: auto;
     font-size: 0;
 }
@@ -68,8 +63,8 @@ nav ul {
 li {
     display: inline-block;
     position: relative;
-    height: 20px;
-    padding: 15px 0;
+    height: 2em;
+    padding: 1em 0;
 }
 
 li:hover {
@@ -77,9 +72,9 @@ li:hover {
 }
 
 li>a{
-    padding: 0 30px;
-    border-right: 1px solid black;
-    font-size: 20px;
+    font-size: 1.5em;
+    padding: 0 2em;
+    border-right: 0.07em solid black;
     color: #343434;
     text-decoration: none;
 }
@@ -100,18 +95,18 @@ li:hover .dArrow{
     transform: rotate(180deg);
 }
 li:hover dl{
-    max-height: 250px;
-    padding: 15px 5px;
+    max-height: 20em;
+    padding: 1em 0.5em;
 }
 dl{
     position: absolute;
-    top: 50px;
-    left: -40px;
-    right: -40px;
+    top: 4em;
+    left: -3em;
+    right: -3em;
     max-height: 0;
-    padding: 0 5px;
-    border-radius: 15px;
-    box-shadow: 2px 2px 3px black;
+    padding: 0 0.5em;
+    border-radius: 1em;
+    box-shadow: 0.2em 0.2em 0.3em black;
     background: rgba(0, 0, 0, 0.75);
     overflow: hidden;
     transition: all 0.5s ;
@@ -119,9 +114,9 @@ dl{
 dd{
     position: relative;
     width: 100%;
-    height: 40px;
-    border-radius: 8px;
-    line-height: 40px;
+    height: 3em;
+    border-radius: 0.5em;
+    line-height: 3em;
     text-align: center;
     transition: background 0.5s ease-in;
 }
@@ -129,15 +124,13 @@ dd:hover{
     background: #6f6f6f;
 }
 dd a{
-    font-size: 16px;
     text-decoration: none;
     color: #d8d8d8;
 }
 
-
 .content {
-    width: 900px;
-    height: 600px;
+    width: 70em;
+    height: 45em;
     margin: auto;
     background-color: rgba(231, 231, 231, 0.91);
 }
@@ -150,7 +143,7 @@ dd a{
 
 .bottom {
     width: 100%;
-    min-width: 900px;
-    height: 50px;
+    min-width: 70em;
+    height: 4em;
     background: rgb(80, 80, 80);
 }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>add</title>
+    <style>
+        body{
+            margin: 0;
+        }
+        .content{
+            width: 80%;
+            margin: auto;
+        }
+        .row{
+            width:500px;
+            height: 50px;
+        }
+        .name{
+            width: 200px;
+            height: 20px;
+            text-align: right;
+            float: left;
+            margin-top: 15px;
+        }
+        .value{
+            width: 300px;
+            height: 20px;
+            float: right;
+            margin-top: 15px;
+        }
+        .submitBt{
+            width: 150px;
+            margin:   10px  175px ;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <form action="applyList.html">
+        <div class="row">
+            <div class="name">
+                物品类别：
+            </div>
+            <div class="value">
+                <select name="item_type" style="width: 100px">
+                    <option value="">类别1</option>
+                    <option value="">类别2</option>
+                    <option value="">类别3</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">
+                物品名称：
+            </div>
+            <div class="value">
+                <input type="text" name="item_name">
+            </div>
+        </div>
+        <div class="row">
+            <div class="name">
+                物品数量：
+            </div>
+            <div class="value">
+                <input type="text" name="item_name">
+            </div>
+        </div>
+        <div class="row">
+            <input class="submitBt" type="submit" value="添加">
+        </div>
+    </form>
+</div>
+</body>
+</html>

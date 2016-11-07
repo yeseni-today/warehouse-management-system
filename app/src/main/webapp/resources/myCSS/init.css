@@ -1,0 +1,15 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "微软雅黑", serif;
+}
+
+.query{
+    min-width: 70em;
+    margin: auto;
+    text-align: center;
+}
+.result{
+    width: 65em;
+    margin: 2em auto;
+}

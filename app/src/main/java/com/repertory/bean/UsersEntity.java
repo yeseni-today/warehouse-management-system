@@ -5,6 +5,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 /**
  * Created by Finderlo on 2016/11/4.
@@ -12,7 +13,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "users", schema = "wms", catalog = "")
 public class UsersEntity {
+    @Size(max = 5,message = "用户标识符为5位")
     private String usersId;
+    @Size(max = 15,message = "密码应在10-15位之间")
     private String usersPassword;
     private String usersName;
     private String usersIdentity;

@@ -1,9 +1,7 @@
 package com.repertory.dao;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 import com.repertory.Factory;
-import com.repertory.bean.ItemOutStorageEntity;
-import com.sun.org.apache.regexp.internal.RE;
+import com.sun.istack.internal.Nullable;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -13,8 +11,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -50,7 +46,11 @@ public abstract class AbstractDao<T extends Object> {
         return tList.get(0);
     }
 
-    public List<T> query(String[] keys, String[] values, boolean isLikeQuery) {
+    public List<T> query(@Nullable String[] keys,@Nullable String[] values){
+        return query(keys, values,true);
+    }
+
+    public List<T> query(@Nullable String[] keys,@Nullable String[] values, boolean isLikeQuery) {
         Session session = sessionFactory.openSession();
         String hql = jointLikeQuery(keys, values, isLikeQuery);
         Query<T> tQuery = session.createQuery(hql);
@@ -94,21 +94,31 @@ public abstract class AbstractDao<T extends Object> {
         return mTClass;
     }
 
-    private String jointLikeQuery(String[] keys, String[] values, boolean isLikeQuery) {
+    private String jointLikeQuery(@Nullable String[] keys, @Nullable String[] values, boolean isLikeQuery) {
 //        String hql = " from UsersEntity e where e.usersName like 'xiao%' and e.usersPassword like 'psd%'";
-        String head = "from " + bindClassName() + " e where ";
+        String head = "from " + bindClassName();
+
+        if (keys==null || values==null){
+            return head;
+        }
+
         StringBuilder hqlbuilder = new StringBuilder();
         boolean isFirst = true;
         for (int i = 0; i < keys.length; i++) {
+            if (keys[i]==null || keys[i].trim().equals("") || values[i] == null || values[i].trim().equals("")){
+                continue;
+            }
             if (!isFirst) {
                 hqlbuilder.append(" and ");
             } else {
+                hqlbuilder.append(" e where ");
                 isFirst = false;
             }
             hqlbuilder.append("e.");
             hqlbuilder.append(keys[i]);
             if (isLikeQuery) {
                 hqlbuilder.append(" like ");
+                values[i] = "%"+values[i]+"%";
             } else {
                 hqlbuilder.append(" =");
             }
@@ -150,7 +160,7 @@ public abstract class AbstractDao<T extends Object> {
         if (id == null){
             findIds();
         }
-        return getId();
+        return id;
     }
 
     private void findIds() {

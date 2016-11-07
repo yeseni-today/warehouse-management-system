@@ -4,30 +4,18 @@
     <meta charset="UTF-8">
     <title>添加物品</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../static/myCSS/titleNav.css">
-    <link rel="stylesheet" type="text/css" href="../../../static/myCSS/myInput.css">
-    <link rel="stylesheet" type="text/css" href="../../../static/myCSS/myForm.css">
-
+    <link rel="stylesheet" type="text/css" href="../../myCSS/init.css">
+    <link rel="stylesheet" type="text/css" href="../../myCSS/titleNav.css">
+    <link rel="stylesheet" type="text/css" href="../../myCSS/myInput.css">
+    <link rel="stylesheet" type="text/css" href="../../myCSS/myForm.css">
     <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0;
-        }
         #codeLi{
             display: none;
         }
     </style>
+    <script src="../../myJavascript/setNavFontSize.js"></script>
+    <script src="../../myJavascript/setVisible.js"></script>
 
-    <script>
-        function setVisible(bool) {
-            var code = document.getElementById("codeLi");
-            if (bool) {
-                code.style.display = "block";
-            } else {
-                code.style.display = "none";
-            }
-        }
-    </script>
 </head>
 <body>
 
@@ -72,7 +60,7 @@
     </form>
 </div>
 
-<div style="margin-top: 400px">
+<div style="margin-top: 30em">
     <a href="getInfo.html">若仓库有此非A类</a>
 </div>
 </body>

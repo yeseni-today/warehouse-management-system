@@ -1,9 +1,12 @@
 package com.repertory.bean;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +25,10 @@ public class ItemEntity {
     private String itemState;
     private String itemExamine;
     private int itemRemind;
+
+    private ItemCategoryEntity itemCategoryEntity;
+    private ItemCompanyEntity itemCompanyEntity;
+
 
     @Id
     @Column(name = "item_code")
@@ -121,6 +128,39 @@ public class ItemEntity {
 
     public void setItemRemind(int itemRemind) {
         this.itemRemind = itemRemind;
+    }
+
+
+    @OneToOne(targetEntity = ItemCategoryEntity.class,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "item_categoryId")
+    public ItemCategoryEntity getItemCategoryEntity() {
+        return itemCategoryEntity;
+    }
+
+    public void setItemCategoryEntity(ItemCategoryEntity itemCategoryEntity) {
+        this.itemCategoryEntity = itemCategoryEntity;
+    }
+
+    public void setItemCategoryId(String itemCategoryId){
+        ItemCategoryEntity itemCategoryEntity = new ItemCategoryEntity();
+        itemCategoryEntity.setCategoryId(itemCategoryId);
+        this.itemCategoryEntity = itemCategoryEntity;
+    }
+
+    @OneToOne(targetEntity = ItemCompanyEntity.class,cascade = CascadeType.REFRESH)
+    @JoinColumn(name = "item_companyId")
+    public ItemCompanyEntity getItemCompanyEntity() {
+        return itemCompanyEntity;
+    }
+
+    public void setItemCompanyEntity(ItemCompanyEntity itemCompanyEntity) {
+        this.itemCompanyEntity = itemCompanyEntity;
+    }
+
+    public void setItemCompanyId(String itemCompanyId){
+        ItemCompanyEntity itemCategoryEntity = new ItemCompanyEntity();
+        itemCategoryEntity.setCompanyId(itemCompanyId);
+        this.itemCompanyEntity = itemCategoryEntity;
     }
 
     @Override
