@@ -1,21 +1,26 @@
-table.myTable{
+table.myTable {
     table-layout: fixed;
     width: 65em;
-    border: 1px solid #c9c9c9;
+    border-collapse: collapse;
 }
-table.myTable tr{
+
+table.myTable tr {
     height: 3em;
 }
 
-table.myTable tr:nth-child(2n){
-    background: grey;
+table.myTable tr:nth-child(2n) {
+    background: #d2d2d2;
 }
-table.myTable tr:nth-child(2n+1){
-    background: #a1a1a1;
+
+table.myTable tr:nth-child(2n+1) {
+    background: #c1c1c1;
 }
-table.myTable td,th{
+
+table.myTable td, th {
     text-align: center;
 }
-table.myTable th{
-    background: #a8a8a8;
+
+table.myTable th {
+    font-size: 1.1em;
+    background: #28a87f;
 }

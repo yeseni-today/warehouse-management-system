@@ -82,8 +82,15 @@ public abstract class AbstractDao<T extends Object> {
             return new ArrayList<T>();
         }
 
-        Session session = sessionFactory.openSession();
         String hql = jointLikeQuery(keys, values, isLikeQuery);
+
+        if (hql==null){
+            return new ArrayList<T>();
+        }
+
+        Session session = sessionFactory.openSession();
+
+
         Query<T> tQuery = session.createQuery(hql);
         List<T> result = tQuery.list();
         session.close();
@@ -137,8 +144,9 @@ public abstract class AbstractDao<T extends Object> {
         String head = "from " + bindClassName();
 
         int length = keys.length <= values.length ? keys.length : values.length;
+        int enableCount = 0;
 
-        StringBuilder hqlbuilder = new StringBuilder();
+        StringBuilder hqlbuilder = new StringBuilder(head);
         boolean isFirst = true;
         for (int i = 0; i < length; i++) {
             if (keys[i] == null || keys[i].trim().equals("") || values[i] == null || values[i].trim().equals("")) {
@@ -159,8 +167,13 @@ public abstract class AbstractDao<T extends Object> {
                 hqlbuilder.append(" =");
             }
             hqlbuilder.append("'").append(values[i]).append("'");
+            enableCount++;
         }
-        return head + hqlbuilder.toString();
+        if (enableCount == 0){
+            return null;
+        }
+        System.out.println(hqlbuilder.toString());
+        return hqlbuilder.toString();
     }
 
     private String jointHqlByIdsQuery(Map<String, String> idAndValues) {

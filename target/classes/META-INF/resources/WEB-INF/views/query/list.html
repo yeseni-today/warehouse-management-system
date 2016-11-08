@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">query list</title>
-
-
-
 </head>
 <body>
 <div th:replace="header::header">
@@ -17,7 +14,7 @@
     <div class="myInput query">
         <!--/*@thymesVar id="queryItem" type="com.repertory.controller.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
-        <form action="queryItem" th:action="@{/queryItem}" method="post">
+        <form action="queryItem" th:action="@{/queryItem}" method="get">
             <label>
                 物品条码：
                 <input type="text" name="itemCode" th:name="itemCode" value=""/>
@@ -26,20 +23,27 @@
                 物品名称：
                 <input type="text" name="itemName" th:name="itemName" value=""/>
             </label>
-            <!--<label>-->
-            <!--物品类别：-->
-            <!--<select name="itemCategoryId" th:value="" style="width: 100px">-->
-            <!--<option value="">类别1</option>-->
-            <!--<option value="">类别2</option>-->
-            <!--<option value="">类别3</option>-->
-            <!--</select>-->
-            <!--</label>-->
+            <label>
+                物品类别：
+                <select name="itemCategoryId" value="" style="width: 100px">
+                    <!--/*@thymesVar id="category" type="com.repertory.bean.ItemCategoryEntity"*/-->
+                    <option th:if="${categories == null || categories.empty}"
+                            th:text="没有找到分类，请刷新重试" value=" "></option>
+                    <option value=""
+                            th:each="category : ${categories}"
+                            th:value="${category.categoryId}"
+                            th:text="${category.categoryName}">类别1
+                    </option>
+                    <!--<option value="">类别2</option>-->
+                    <!--<option value="">类别3</option>-->
+                </select>
+            </label>
             <input type="submit" value="查询"/>
         </form>
     </div>
 
     <div class="result">
-        <table class="myTable" border="1">
+        <table class="myTable" >
             <tr>
                 <th>条码</th>
                 <th>名称</th>
@@ -48,7 +52,7 @@
                 <th>操作</th>
             </tr>
             <tr th:if="${items == null || items.empty}">
-            <td colspan="5">No messages</td>
+                <td colspan="5">No messages</td>
             </tr>
             <tr th:each="item : ${items} ">
                 <!--/*@thymesVar id="item" type="com.repertory.bean.ItemEntity"*/-->

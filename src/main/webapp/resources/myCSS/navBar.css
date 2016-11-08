@@ -13,7 +13,7 @@
 .navBar-title:hover a{
     color: #ffffff;
 }
-.navBar li:hover a{
+.navBar li:hover>a{
     color: #ffffff;
 }
 
@@ -124,16 +124,17 @@
 }
 
 .nav dd:hover {
-    background: #6f6f6f;
+    background: #717171;
 }
 
 .nav dd>a{
     font-size: 13px;
     line-height: 15px;
     padding: 10px;
-    color: #d8d8d8;
+    color: #b6b6b6;
     transition: all 0.3s ;
 }
 .nav dd:hover>a{
+    color: #ffffff;
     padding-left: 15px;
 }

@@ -24,6 +24,7 @@ import org.springframework.stereotype.Controller;
 @ComponentScan(basePackageClasses = {Application.class, QueryController.class,Factory.class})
 @Import({WWebMvcConfig.class,Factory.class, DataSourceConfig.class})
 @EnableAutoConfiguration
+
 public class Application {
 
 

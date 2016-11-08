@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -26,11 +27,11 @@ public class LoginController {
 //    UserRespository userRespository;
 
     @RequestMapping("/logincheck")
-    public String logincheck(@Valid UsersEntity usersEntity, Model model, HttpSession session) {
+    public String logincheck(@Valid UsersEntity usersEntity, Model model, HttpServletRequest request) {
         UsersDao usersDao = new UsersDao();
         if (usersDao.checkLogin(usersEntity)){
             UsersEntity users = usersDao.findById(usersEntity.getUsersId());
-            model.addAttribute("users",users);
+            request.getSession().setAttribute("user",users);
             return "redirect:query";
         }else {
             return "error";

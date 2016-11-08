@@ -74,6 +74,17 @@
         </dependency>
 
 
+        <!--&lt;!&ndash;spring session&ndash;&gt;-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.session</groupId>-->
+            <!--<artifactId>spring-session</artifactId>-->
+            <!--<version>1.2.2.RELEASE</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.boot</groupId>-->
+            <!--<artifactId>spring-boot-starter-redis</artifactId>-->
+        <!--</dependency>-->
+
         <!--SPRING JPA-->
         <dependency>
             <groupId>org.springframework.boot</groupId>

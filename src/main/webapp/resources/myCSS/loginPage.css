@@ -26,10 +26,19 @@ body {
     min-height: 36em;
 }
 
+.login-title{
+    position: absolute;
+    font-size: 3em;
+    top: 2em;
+}
+
 div.login {
-    margin: 12em 0 0 15em;
+    position: absolute;
+    top: 20em;
+    right: 20em;
+
     width: 23em;
     height: 16em;
     line-height: 4em;
-    text-align: right;
+    text-align: center;
 }
