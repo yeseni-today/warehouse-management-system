@@ -2,7 +2,6 @@ package com.repertory.controller;
 
 import com.repertory.bean.ItemEntity;
 import com.repertory.dao.ItemDao;
-import com.repertory.dao.ItemRespository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;

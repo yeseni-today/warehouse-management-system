@@ -8,15 +8,15 @@
     border-radius: 0.5em;
     outline: 0;
 }
-.myInput input[type="submit"]{
+.myInput input[type="submit"],input[type="button"]{
     font-size: 1em;
     width: 10em;
     height: 2.2em;
-    border: 0.1em solid gray;
-
+    border: 0.1em solid #a8a8a8;
     border-radius: 0.5em;
     outline: 0;
 }
+
 .myInput select{
     font-size: 1em;
     height: 2.2em;

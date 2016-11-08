@@ -33,4 +33,12 @@
     </definition>
     <definition name="title/*" template="query/{1} :: title"/>
     <definition name="content/*" template="query/{1} :: content"/>
+
+    <definition name="tiles/login/*" template="login/layout">
+        <put-attribute name="title" value="login/title/{1}"/>
+        <put-attribute name="content" value="login/content/{1}"/>
+    </definition>
+    <definition name="login/title/*" template="login/{1} :: title"/>
+    <definition name="login/content/*" template="login/{1} :: content"/>
+
 </tiles-definitions>

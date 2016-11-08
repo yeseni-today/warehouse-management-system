@@ -1,0 +1,22 @@
+.header {
+    position: fixed;
+    width: 100%;
+    height: 50px;
+}
+
+.body {
+
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 2em;
+    bottom: 0;
+    background: grey;
+}
+@media (max-height: 36em) {
+    .footer{
+        top: 34em;
+    }
+}

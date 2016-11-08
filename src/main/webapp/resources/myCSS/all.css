@@ -1,5 +1,6 @@
 @import "init.css";
-/*@import "mainFrame.css";*/
+@import "layout.css";
+@import "navBar.css";
 @import "content.css";
 @import "titleNav.css";
 @import "myDivBt.css";

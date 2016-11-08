@@ -1,7 +1,6 @@
 package com.repertory.controller;
 
 import com.repertory.bean.UsersEntity;
-import com.repertory.dao.UserRespository;
 import com.repertory.dao.UsersDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class LoginController {
 
     @RequestMapping("/")
     public String greeting() {
-        return "login";
+        return "tiles/login/login";
     }
 
 //    @Autowired

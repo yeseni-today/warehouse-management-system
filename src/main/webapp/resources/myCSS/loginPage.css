@@ -1,9 +1,23 @@
-body{
+@import "init.css";
+@import "layout.css";
+@import "navBar.css";
+@import "myInput.css";
+
+.myInput input[type="button"] {
+    color: white;
+}
+.myInput input[type="text"],input[type="password"]{
+    width: 20em;
+    background: #ffffff;
+}
+
+
+body {
     min-width: 65em;
     min-height: 36em;
 }
 
-div.background {
+.login-background {
     position: absolute;
     z-index: -1;
     width: 100%;
@@ -12,25 +26,10 @@ div.background {
     min-height: 36em;
 }
 
-div.titleNav {
-    color: floralwhite;
-    font-size: 3.5em;
-    line-height: 2em;
-    padding: 0 1em;
-    text-shadow: 0.1em 0.1em 0.1em rgba(0, 0, 0, 0.75);
-}
-
 div.login {
-    margin: 12em  0 0 15em;
+    margin: 12em 0 0 15em;
     width: 23em;
     height: 16em;
     line-height: 4em;
     text-align: right;
-}
-
-.login > a {
-    font-size: 1.2em;
-    color: blue;
-    text-decoration: none;
-    text-shadow: 0.1em 0.1em 0.1em rgb(0, 0, 0);
 }
