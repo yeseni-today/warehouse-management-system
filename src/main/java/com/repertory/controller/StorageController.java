@@ -16,6 +16,7 @@ public class StorageController {
     @RequestMapping("/storage")
     public String storage(Model model) {
         model.addAttribute("history",inOperationDao.findAll());
+
         return "tiles/storage/storage";
     }
 

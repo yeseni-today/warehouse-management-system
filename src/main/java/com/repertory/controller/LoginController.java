@@ -18,9 +18,18 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
+//    @RequestMapping("/")
+//    public String greeting() {
+//        return "tiles/login/login0";
+//    }
     @RequestMapping("/")
     public String greeting() {
-        return "tiles/login/login";
+        return "tiles/query/list";
+    }
+
+    @RequestMapping("/signin")
+    public String login() {
+        return "login/sign";
     }
 
 //    @Autowired

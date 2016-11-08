@@ -15,9 +15,6 @@ import java.util.Properties;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
 import javax.sql.DataSource;
 import javax.transaction.TransactionManager;
 
@@ -37,8 +34,33 @@ public class DataSourceConfig {
     @Value("${spring.datasource.driverClassName}")
     private String dirver;
 
+    @Bean
+    public DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setUrl(url);
+        dataSource.setUsername(username);
+        dataSource.setPassword(password);
+        dataSource.setDriverClassName(dirver);
+        return dataSource;
+    }
 
 //    @Bean
-//    public void init(HttpServletRequest servlet){
+//    public LocalSessionFactoryBean sessionFactory(){
+//        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+//        sessionFactoryBean.setDataSource(dataSource());
+//        sessionFactoryBean.setPackagesToScan(new String[]{"com.repertory.bean"});
+//        Properties properties = new Properties();
+//        properties.setProperty("dialect","org.hibernate.dialect.MySQL5Dialect");
+//        sessionFactoryBean.setHibernateProperties(properties);
+//        System.out.println("sessionFactory");
+//        return sessionFactoryBean;
+//    }
+//
+//    @Bean
+//    public HibernateTransactionManager transactionManager(SessionFactory sessionFactory){
+//        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+//
+//        transactionManager.setSessionFactory(sessionFactory);
+//        return transactionManager;
 //    }
 }
