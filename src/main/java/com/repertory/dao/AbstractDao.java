@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -15,30 +16,36 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.inject.Inject;
-
 /**
  * Created by Finderlo on 2016/11/4.
  */
+@Repository
 public abstract class AbstractDao<T extends Object> {
 
-//    @Inject
-    @Autowired
+    //    @Inject
+//    @Autowired
     protected SessionFactory sessionFactory = Factory.sessionFactory();
+//    @Autowired
+//    protected SessionFactory sessionFactory;
 
     private List<String> ids = new ArrayList<>();
     private String id;
 
-    public T queryById(String parm) {
-        if (isMoreId()){
+    public T findById(String parm) {
+
+        if (isMoreId()) {
             throw new UnsupportedOperationException();
+        }
+
+        if (parm == null || parm.trim().equals("")) {
+            return null;
         }
         HashMap<String, String> idAndValue = new HashMap<>();
         idAndValue.put(getId(), parm);
-        return queryByIds(idAndValue);
+        return findByIds(idAndValue);
     }
 
-    public T queryByIds(Map<String, String> idAndValues) {
+    public T findByIds(Map<String, String> idAndValues) {
         Session session = sessionFactory.openSession();
         String hql = jointHqlByIdsQuery(idAndValues);
         Query query = session.createQuery(hql);
@@ -50,16 +57,35 @@ public abstract class AbstractDao<T extends Object> {
         return tList.get(0);
     }
 
-    public List<T> query( String[] keys,  String[] values){
-        return query(keys, values,true);
+    public List<T> findAll(){
+        Session session = sessionFactory.openSession();
+        Query<T> query =session.createQuery("from "+bindClassName(),bindClass());
+        List<T> tList = query.list();
+        session.close();
+        return tList;
     }
 
-    public List<T> query( String[] keys, String[] values, boolean isLikeQuery) {
+    /**
+     * 分页获取所有博客
+     * @param pageable
+     * @return
+     */
+//    Page<T> findBlogs(Pageable pageable);
+
+    public List<T> query(String[] keys, String[] values) {
+        return query(keys, values, true);
+    }
+
+    public List<T> query(String[] keys, String[] values, boolean isLikeQuery) {
+
+        if (keys ==null || values==null || keys.length == 0 || values.length == 0){
+            return new ArrayList<T>();
+        }
+
         Session session = sessionFactory.openSession();
         String hql = jointLikeQuery(keys, values, isLikeQuery);
         Query<T> tQuery = session.createQuery(hql);
         List<T> result = tQuery.list();
-        System.out.println(tQuery.getQueryString());
         session.close();
         return result;
     }
@@ -72,7 +98,15 @@ public abstract class AbstractDao<T extends Object> {
         session.close();
     }
 
-    public void delete(T t){
+    public void saveOrUpdate(T t){
+        Session session = sessionFactory.openSession();
+        session.beginTransaction();
+        session.saveOrUpdate(t);
+        session.getTransaction().commit();
+        session.close();
+    }
+
+    public void delete(T t) {
         Session session = sessionFactory.openSession();
         session.beginTransaction();
         session.delete(t);
@@ -91,25 +125,23 @@ public abstract class AbstractDao<T extends Object> {
         session.close();
     }
 
-    public Class bindClass(){
+    public Class bindClass() {
         Type sType = getClass().getGenericSuperclass();
         Type[] generics = ((ParameterizedType) sType).getActualTypeArguments();
         Class<T> mTClass = (Class<T>) (generics[0]);
         return mTClass;
     }
 
-    private String jointLikeQuery( String[] keys, String[] values, boolean isLikeQuery) {
+    private String jointLikeQuery(String[] keys, String[] values, boolean isLikeQuery) {
 //        String hql = " from UsersEntity e where e.usersName like 'xiao%' and e.usersPassword like 'psd%'";
         String head = "from " + bindClassName();
 
-        if (keys==null || values==null){
-            return head;
-        }
+        int length = keys.length <= values.length ? keys.length : values.length;
 
         StringBuilder hqlbuilder = new StringBuilder();
         boolean isFirst = true;
-        for (int i = 0; i < keys.length; i++) {
-            if (keys[i]==null || keys[i].trim().equals("") || values[i] == null || values[i].trim().equals("")){
+        for (int i = 0; i < length; i++) {
+            if (keys[i] == null || keys[i].trim().equals("") || values[i] == null || values[i].trim().equals("")) {
                 continue;
             }
             if (!isFirst) {
@@ -122,7 +154,7 @@ public abstract class AbstractDao<T extends Object> {
             hqlbuilder.append(keys[i]);
             if (isLikeQuery) {
                 hqlbuilder.append(" like ");
-                values[i] = "%"+values[i]+"%";
+                values[i] = "%" + values[i] + "%";
             } else {
                 hqlbuilder.append(" =");
             }
@@ -160,8 +192,8 @@ public abstract class AbstractDao<T extends Object> {
         return ids;
     }
 
-    private String getId(){
-        if (id == null){
+    private String getId() {
+        if (id == null) {
             findIds();
         }
         return id;
@@ -185,10 +217,10 @@ public abstract class AbstractDao<T extends Object> {
         }
     }
 
-    private boolean isMoreId(){
-        if (getIds().size()>1){
+    private boolean isMoreId() {
+        if (getIds().size() > 1) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }

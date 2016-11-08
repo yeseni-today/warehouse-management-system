@@ -13,19 +13,18 @@
 </div>
 <div tiles:fragment="content" class="content">
     <div class="title">
-        <div class="title1">查询></div>
     </div>
     <div class="myInput query">
         <!--/*@thymesVar id="queryItem" type="com.repertory.controller.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
-        <form action="queryItem.do" th:action="@{queryItem.do}" method="get">
+        <form action="queryItem" th:action="@{/queryItem}" method="post">
             <label>
                 物品条码：
-                <input type="text" name="itemCode"/>
+                <input type="text" name="itemCode" th:name="itemCode" value=""/>
             </label>
             <label>
                 物品名称：
-                <input type="text" name="itemName"/>
+                <input type="text" name="itemName" th:name="itemName" value=""/>
             </label>
             <!--<label>-->
             <!--物品类别：-->

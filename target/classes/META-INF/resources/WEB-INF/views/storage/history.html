@@ -28,22 +28,16 @@
             <th>入库单编号</th>
             <th>入库时间</th>
             <th>入库操作人员ID</th>
-            <th></th>
-            <th></th>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <tr th:if="${history == null || history.empty}">
+            <td colspan="3">没有入库历史</td>
         </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+        <!--/*@thymesVar id="history" type="java.util.List"*/-->
+        <tr th:each="itemInOperation : ${history} ">
+            <!--/*@thymesVar id="itemInOperation" type="com.repertory.bean.ItemInOperationEntity"*/-->
+            <td th:text="${itemInOperation.storageId}"></td>
+            <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd')}"></td>
+            <td th:text="${itemInOperation.operationId}"></td>
         </tr>
     </table>
 </div>

@@ -1,9 +1,10 @@
 package com.repertory.controller;
 
 import com.repertory.bean.UsersEntity;
-import com.repertory.dao.ItemDao;
+import com.repertory.dao.UserRespository;
 import com.repertory.dao.UsersDao;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,23 +19,33 @@ import javax.validation.Valid;
 public class LoginController {
 
     @RequestMapping("/")
-    String greeting() {
-    return "login";
+    public String greeting() {
+        return "login";
     }
 
+//    @Autowired
+//    UserRespository userRespository;
+
     @RequestMapping("/logincheck")
-    String logincheck(@Valid UsersEntity usersEntity , Model model, HttpSession session){
+    public String logincheck(@Valid UsersEntity usersEntity, Model model, HttpSession session) {
         UsersDao usersDao = new UsersDao();
         if (usersDao.checkLogin(usersEntity)){
-            UsersEntity users = usersDao.queryById(usersEntity.getUsersId());
+            UsersEntity users = usersDao.findById(usersEntity.getUsersId());
             model.addAttribute("users",users);
-//            ItemDao itemDao = new ItemDao();
-//            model.addAttribute("items", itemDao.query(null, null));
-            return "tiles/query/query";
+            return "redirect:query";
         }else {
             return "error";
         }
-
+//        UsersEntity users = userRespository.findById(usersEntity.getUsersId());
+//        if (users.getUsersPassword().trim().equals(usersEntity.getUsersPassword().trim())) {
+//            model.addAttribute("users", users);
+//            return "redirect:query";
+//        } else {
+//            return "error";
+//        }
     }
 
+
 }
+
+

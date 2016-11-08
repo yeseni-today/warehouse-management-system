@@ -1,5 +1,6 @@
-<!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 
 <head>
     <link href="../../resources/css/bootstrap.min.css" rel="stylesheet" media="screen" th:href="@{/resources/css/bootstrap.min.css}"/>
@@ -24,17 +25,18 @@
         <div>
             <ul class="nav navbar-nav">
                 <!--<li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">Home</a></li>-->
-                <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/}">查询</a></li>
-                <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/query}">入库</a></li>
-                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/storage}">申请</a></li>
-                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/storage}">借用</a></li>
-                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/storage}">日志</a></li>
-                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/storage}">消息</a></li>
+                <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/query}">查询</a></li>
+                <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/storage}">入库</a></li>
+                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/apply}">申请</a></li>
+                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/borrow}">借用</a></li>
+                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/log}">日志</a></li>
+                <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#" th:href="@{/message}">消息</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <!--<li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/signin" th:href="@{/signin}">Sign in</a></li>-->
                 <!--<li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>-->
-                <li ><a href="/logout" th:href="@{/logout}">小明</a></li>
+                <li ><!--/*@thymesVar id="users" type="com.repertory.bean.UsersEntity"*/-->
+                <a href="/logout" th:if="${users != null}" th:text="${users.usersName}">小明</a></li>
                 <li ><a href="/logout" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>

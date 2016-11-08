@@ -6,6 +6,7 @@ import com.repertory.controller.LoginController;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
@@ -33,6 +34,7 @@ import org.thymeleaf.templateresolver.UrlTemplateResolver;
 * */
 @Configuration
 @EnableWebMvc
+@Import({Factory.class,DataSourceConfig.class})
 @ComponentScan(basePackageClasses = Application.class, includeFilters = @ComponentScan.Filter(Controller.class), useDefaultFilters = false)
 public class WWebMvcConfig extends WebMvcConfigurerAdapter {
 

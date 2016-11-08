@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * Created by Finderlo on 2016/11/4.
+ * 物品入库表
  */
 @Entity
 @Table(name = "item_in_operation", schema = "wms", catalog = "")

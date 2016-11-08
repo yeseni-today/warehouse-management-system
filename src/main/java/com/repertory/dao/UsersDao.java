@@ -19,8 +19,8 @@ public class UsersDao extends AbstractDao<UsersEntity> {
     }
 
     public boolean checkLogin(UsersEntity usersEntity){
-        UsersEntity usersEntity1 =  queryById(usersEntity.getUsersId());
-        if (usersEntity1 != null && usersEntity1.getUsersPassword().equals(usersEntity.getUsersPassword())){
+        UsersEntity usersEntity1 =  findById(usersEntity.getUsersId());
+        if (usersEntity1 != null && usersEntity1.getUsersPassword().trim().equals(usersEntity.getUsersPassword().trim())){
             return true;
         }
         return false;
