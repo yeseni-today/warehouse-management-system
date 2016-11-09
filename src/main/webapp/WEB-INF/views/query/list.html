@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 <head>
     <meta charset="UTF-8"/>
-    <title tiles:fragment="title">query list</title>
+    <title tiles:fragment="title">查询物品</title>
 </head>
 <body>
 <div th:replace="header::header">
@@ -12,7 +12,7 @@
     <div class="title">
     </div>
     <div class="myInput query">
-        <!--/*@thymesVar id="queryItem" type="com.repertory.web.QueryController"*/-->
+        <!--/*@thymesVar id="queryItem" type="com.repository.web.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
         <form action="queryItem" th:action="@{/queryItem}" method="get">
             <label>
@@ -26,7 +26,7 @@
             <label>
                 物品类别：
                 <select name="itemCategoryId" value="" style="width: 100px">
-                    <!--/*@thymesVar id="category" type="com.repertory.bean.ItemCategoryEntity"*/-->
+                    <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
                     <option th:if="${categories == null || categories.empty}"
                             th:text="没有找到分类，请刷新重试" value=" "></option>
                     <option value=""
@@ -55,7 +55,7 @@
                 <td colspan="5">No messages</td>
             </tr>
             <tr th:each="item : ${items} ">
-                <!--/*@thymesVar id="item" type="com.repertory.bean.ItemEntity"*/-->
+                <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
                 <td th:text="${item.itemCode}"></td>
                 <td th:text="${item.itemName}"></td>
                 <td th:text="${item.itemCategoryEntity.getCategoryName()}"></td>

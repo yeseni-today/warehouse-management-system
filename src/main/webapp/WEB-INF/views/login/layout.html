@@ -5,10 +5,10 @@
     <meta charset="UTF-8"/>
     <title tiles:replace="title">Title</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../resources/myCSS/loginPage.css"
-          th:href="@{/resources/myCSS/loginPage.css}"/>
-    <script src="../../../resources/myJavascript/setFontSize.js"
-            th:src="@{/resources/myJavascript/setFontSize.js}">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/loginPage.css"
+          th:href="@{/resources/css/loginPage.css}"/>
+    <script src="../../../resources/js/main.js"
+            th:src="@{/resources/myJavascript/main.js}">
     </script>
 
 </head>
@@ -26,7 +26,7 @@
     </div>
 
     <div class="footer">
-        <div th:replace="footer :: footer">
+        <div th:replace="templates/footer :: footer">
         </div>
     </div>
 

@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 <head>
     <meta charset="UTF-8"/>
-    <title>入库历史</title>
+    <title th:fragment="title">入库历史</title>
 
 </head>
 <body>
@@ -29,7 +29,7 @@
             </tr>
             <!--/*@thymesVar id="history" type="java.util.List"*/-->
             <tr th:each="itemInOperation : ${history} ">
-                <!--/*@thymesVar id="itemInOperation" type="com.repertory.bean.ItemInOperationEntity"*/-->
+                <!--/*@thymesVar id="itemInOperation" type="com.repository.entity.ItemInOperationEntity"*/-->
                 <td th:text="${itemInOperation.storageId}"></td>
                 <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd')}"></td>
                 <td th:text="${itemInOperation.operationId}"></td>

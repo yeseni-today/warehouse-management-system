@@ -1,9 +1,9 @@
-import com.repertory.bean.ItemEntity;
-import com.repertory.bean.ItemInOperationEntity;
-import com.repertory.bean.ItemInStorageEntity;
-import com.repertory.dao.ItemDao;
-import com.repertory.dao.ItemInOperationDao;
-import com.repertory.dao.ItemInStorageDao;
+import com.repository.entity.ItemEntity;
+import com.repository.entity.ItemInOperationEntity;
+import com.repository.entity.ItemInStorageEntity;
+import com.repository.dao.ItemDao;
+import com.repository.dao.ItemInOperationDao;
+import com.repository.dao.ItemInStorageDao;
 
 import java.sql.Date;
 import java.util.Random;

@@ -11,18 +11,18 @@
         <property name="connection.username">root</property>
         <!--<property name="connection.pool_size">5</property>-->
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping class="com.repertory.bean.ItemEntity"/>
-        <mapping class="com.repertory.bean.ItemApplicationEntity"/>
-        <mapping class="com.repertory.bean.ItemApplicationOperationEntity"/>
-        <mapping class="com.repertory.bean.ItemBorrowEntity"/>
-        <mapping class="com.repertory.bean.ItemBorrowOperationEntity"/>
-        <mapping class="com.repertory.bean.ItemCategoryEntity"/>
-        <mapping class="com.repertory.bean.ItemCompanyEntity"/>
-        <mapping class="com.repertory.bean.ItemInOperationEntity"/>
-        <mapping class="com.repertory.bean.ItemInStorageEntity"/>
-        <mapping class="com.repertory.bean.ItemOutOperationEntity"/>
-        <mapping class="com.repertory.bean.ItemOutStorageEntity"/>
-        <mapping class="com.repertory.bean.UmessageEntity"/>
-        <mapping class="com.repertory.bean.UsersEntity"/>
+        <mapping class="com.repository.entity.ItemEntity"/>
+        <mapping class="com.repository.entity.ItemApplicationEntity"/>
+        <mapping class="com.repository.entity.ItemApplicationOperationEntity"/>
+        <mapping class="com.repository.entity.ItemBorrowEntity"/>
+        <mapping class="com.repository.entity.ItemBorrowOperationEntity"/>
+        <mapping class="com.repository.entity.ItemCategoryEntity"/>
+        <mapping class="com.repository.entity.ItemCompanyEntity"/>
+        <mapping class="com.repository.entity.ItemInOperationEntity"/>
+        <mapping class="com.repository.entity.ItemInStorageEntity"/>
+        <mapping class="com.repository.entity.ItemOutOperationEntity"/>
+        <mapping class="com.repository.entity.ItemOutStorageEntity"/>
+        <mapping class="com.repository.entity.UmessageEntity"/>
+        <mapping class="com.repository.entity.UsersEntity"/>
     </session-factory>
 </hibernate-configuration>

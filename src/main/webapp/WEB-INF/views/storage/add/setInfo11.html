@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>setInfo</title>
-    <link type="text/css" rel="stylesheet" href="../../../../resources/myCSS/all.css"/>
-    <script src="../../../../resources/myJavascript/setFontSize.js"></script>
+    <link type="text/css" rel="stylesheet" href="../../../../resources/css/all.css"/>
+    <script src="../../../../resources/js/main.js"></script>
 </head>
 
 <body>
@@ -21,7 +21,7 @@
         <form action="../new_storage_form.html" th:action="@{/storage/add_itemInStorage}"
               th:method="post">
 
-            <!--/*@thymesVar id="item_info" type="com.repertory.web.storage.ItemInfo"*/-->
+            <!--/*@thymesVar id="item_info" type="com.repository.web.storage.ItemInfo"*/-->
             <ul th:if="${item_info.isInStorage()==true}">
                 <li th:each="entry:${item_info.entries}">
                     <label>
