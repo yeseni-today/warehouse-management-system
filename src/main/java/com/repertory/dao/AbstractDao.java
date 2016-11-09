@@ -6,6 +6,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Method;
@@ -16,15 +17,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 /**
  * Created by Finderlo on 2016/11/4.
  */
+
 @Repository
 public abstract class AbstractDao<T extends Object> {
 
     //    @Inject
-//    @Autowired
-    protected SessionFactory sessionFactory = Factory.sessionFactory();
+    @Autowired
+    protected SessionFactory sessionFactory;
 //    @Autowired
 //    protected SessionFactory sessionFactory;
 
@@ -32,6 +36,7 @@ public abstract class AbstractDao<T extends Object> {
     private String id;
 
     public T findById(String parm) {
+
 
         if (isMoreId()) {
             throw new UnsupportedOperationException();
