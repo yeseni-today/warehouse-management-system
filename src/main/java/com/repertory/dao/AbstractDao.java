@@ -17,20 +17,18 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.sql.DataSource;
 
 /**
  * Created by Finderlo on 2016/11/4.
  */
 
-@Repository
 public abstract class AbstractDao<T extends Object> {
 
     //    @Inject
-    @Autowired
-    protected SessionFactory sessionFactory;
 //    @Autowired
-//    protected SessionFactory sessionFactory;
+    protected SessionFactory sessionFactory = Factory.sessionFactory();
 
     private List<String> ids = new ArrayList<>();
     private String id;

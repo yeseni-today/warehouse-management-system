@@ -1,6 +1,5 @@
-package com.repertory.web.sotrage;
+package com.repertory.web.storage;
 
-import com.repertory.bean.ItemEntity;
 import com.repertory.dao.ItemDao;
 import com.repertory.dao.ItemInOperationDao;
 
@@ -8,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  * Created by Finderlo on 2016/11/6.

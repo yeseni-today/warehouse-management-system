@@ -40,17 +40,17 @@ public class DataSourceConfig {
         return dataSource;
     }
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory() {
-        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
-        sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan(new String[]{"com.repertory.bean"});
-        Properties properties = new Properties();
-        properties.setProperty("dialect", dialog);
-        sessionFactoryBean.setHibernateProperties(properties);
-        System.out.println("sessionFactory");
-        return sessionFactoryBean;
-    }
+//    @Bean
+//    public LocalSessionFactoryBean sessionFactory() {
+//        LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
+//        sessionFactoryBean.setDataSource(dataSource());
+//        sessionFactoryBean.setPackagesToScan(new String[]{"com.repertory.bean"});
+//        Properties properties = new Properties();
+//        properties.setProperty("dialect", dialog);
+//        sessionFactoryBean.setHibernateProperties(properties);
+//        System.out.println("sessionFactory");
+//        return sessionFactoryBean;
+//    }
 
 //    @Bean
 //    @Primary

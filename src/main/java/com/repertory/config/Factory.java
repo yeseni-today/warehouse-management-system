@@ -19,19 +19,19 @@ import org.springframework.stereotype.Component;
 @ComponentScan
 //@Component(service = AbstractDao.class)
 public class Factory {
-//
-//    @Bean(name = "sessionFactory")
-//    public static SessionFactory sessionFactory() {
-//        SessionFactory sessionFactory = setUp();
-//        if (sessionFactory == null) {
-//            for (int i = 0; i < 3; i++) {
-//                if ((sessionFactory = setUp()) != null) {
-//                    return sessionFactory;
-//                }
-//            }
-//        }
-//        return sessionFactory;
-//    }
+
+    @Bean(name = "sessionFactory")
+    public static SessionFactory sessionFactory() {
+        SessionFactory sessionFactory = setUp();
+        if (sessionFactory == null) {
+            for (int i = 0; i < 3; i++) {
+                if ((sessionFactory = setUp()) != null) {
+                    return sessionFactory;
+                }
+            }
+        }
+        return sessionFactory;
+    }
 
     protected static SessionFactory setUp() {
         // A SessionFactory is set up once for an application!

@@ -1,4 +1,4 @@
-package com.repertory.web.sotrage;
+package com.repertory.web.storage;
 
 import com.repertory.bean.ItemEntity;
 import com.repertory.dao.ItemDao;

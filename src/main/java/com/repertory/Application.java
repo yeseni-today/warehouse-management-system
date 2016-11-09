@@ -15,9 +15,9 @@ import org.springframework.context.annotation.Import;
  * Created by Finderlo on 2016/11/7.
  */
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {Application.class, QueryController.class,Factory.class})
-@Import({WWebMvcConfig.class,Factory.class, DataSourceConfig.class})
-@EnableAutoConfiguration
+@ComponentScan(basePackageClasses = {Application.class, QueryController.class, Factory.class})
+@Import({WWebMvcConfig.class, Factory.class, DataSourceConfig.class})
+@EnableAutoConfiguration(exclude = {DataSourceConfig.class, WWebMvcConfig.class, SecurityManager.class})
 
 public class Application {
 
