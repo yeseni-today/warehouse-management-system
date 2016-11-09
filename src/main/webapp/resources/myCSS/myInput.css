@@ -1,4 +1,4 @@
-.myInput input[type="text"],input[type="password"]{
+.myInput input[type="text"], input[type="password"] {
     font-size: 1em;
     width: 10em;
     height: 2.2em;
@@ -8,7 +8,8 @@
     border-radius: 0.5em;
     outline: 0;
 }
-.myInput input[type="submit"],input[type="button"]{
+
+.myInput input[type="submit"], input[type="button"] {
     font-size: 1em;
     width: 10em;
     height: 2.2em;
@@ -17,7 +18,7 @@
     outline: 0;
 }
 
-.myInput select{
+.myInput select {
     font-size: 1em;
     height: 2.2em;
     width: 10em;
@@ -26,17 +27,28 @@
     border-radius: 0.5em;
     outline: 0;
 }
-.myInput select:hover{
+
+.myInput select:hover {
     background: #e9e9e9;
 }
 
-
-.myInput input[type="text"]:hover{
+.myInput input[type="text"]:hover {
     background: #e9e9e9;
 }
-.myInput input[type="button"]:hover{
+
+.myInput input[type="button"]:hover {
     background: #f6f6f6;
 }
-.myInput input[type="submit"]:hover{
+
+.myInput input[type="submit"]:hover {
     background: #eeeeee;
 }
+
+.myInput .disabled input {
+    background: #bbbbbb;
+}
+
+.myInput .disabled input:hover {
+    background: #bbbbbb;
+}
+

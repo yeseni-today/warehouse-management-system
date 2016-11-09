@@ -1,6 +1,6 @@
 .myForm li {
     height: 4em;
-    width: 50em;
+    width: 40em;
     list-style: none;
     line-height: 4em;
     text-align: center;
@@ -15,7 +15,7 @@
 .myForm .value {
     float: right;
     height: 4em;
-    width: 30em;
+    width: 20em;
     line-height: 4em;
     text-align: left;
     margin-left: 4em;

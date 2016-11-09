@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * Created by Finderlo on 2016/11/6.
  */
@@ -29,7 +31,12 @@ public class StorageController {
     }
 
     @RequestMapping("new_storage_form")
-    public String newStorageForm() {
+    public String newStorageForm(HttpSession session) {
+        StorageForm storageForm = (StorageForm) session.getAttribute(AddStorageContoller.STORAGE_FORM);
+        if (storageForm == null) {
+            storageForm = new StorageForm();
+        }
+        session.setAttribute(AddStorageContoller.STORAGE_FORM, storageForm);
         return PREFIX + "new_storage_form";
     }
 

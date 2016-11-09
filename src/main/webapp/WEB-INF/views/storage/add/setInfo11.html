@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.w3.org/2005/Atom">
+<head>
+    <meta charset="UTF-8"/>
+    <title>setInfo</title>
+    <link type="text/css" rel="stylesheet" href="../../../../resources/myCSS/all.css"/>
+    <script src="../../../../resources/myJavascript/setFontSize.js"></script>
+</head>
+
+<body>
+
+<div tiles:fragment="content" class="content">
+    <div class="titleNav">
+        <div class="title1">新建入库单></div>
+        <div class="title2">添加物品></div>
+        <div class="title3">详细信息></div>
+    </div>
+
+    <div class="myForm myInput">
+        <form action="../new_storage_form.html" th:action="@{/storage/add_itemInStorage}"
+              th:method="post">
+
+            <!--/*@thymesVar id="item_info" type="com.repertory.web.storage.ItemInfo"*/-->
+            <ul th:if="${item_info.isInStorage()==true}">
+                <li th:each="entry:${item_info.entries}">
+                    <label>
+                        <div class="name" th:text="${entry.key_cn}">
+                            物品名称：
+                        </div>
+                        <div class="value" th:if="${entry.key_en != 'itemcategoryID'}">
+                            <input type="text" name="item_name" th:name="${entry.key_en}"/>
+                        </div>
+                        <div class="value" th:if="${entry.key_en == 'itemcategoryID'}">
+                            <select name="item_type">
+                                <option value=" "
+                                        th:if="${session.categories == null || session.categories.empty}"
+                                        th:text="没有找到分类,请刷新重试">
+                                    没有找到分类
+                                </option>
+                                <option value="类别1"
+                                        th:each="category : ${session.categories}"
+                                        th:value="${category.categoryId}"
+                                        th:text="${category.categoryName}">
+                                    类别1
+                                </option>
+                            </select>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <input class="submitBt" type="submit" value="提交信息"/>
+                    </div>
+                </li>
+            </ul>
+
+            <ul th:if="${item_info.isInStorage()!=true}">
+                <li th:each="entry:${item_info.entries}">
+                    <label>
+                        <div class="name" th:text="${entry.key_cn}">
+                            物品名称：
+                        </div>
+                        <div class="value disabled" th:if="${entry.key_en!='itemCount'}">
+                            <input type="text" th:name="${entry.value}" disabled="disabled"
+                                   th:value="${entry.value}"/>
+                        </div>
+                        <div class="value" th:if="${entry.key_en=='itemCount'}">
+                            <input type="text" th:name="${entry.key_en}" th:value="${entry.value}"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <div>
+                        <input class="submitBt" type="submit" value="提交信息"/>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

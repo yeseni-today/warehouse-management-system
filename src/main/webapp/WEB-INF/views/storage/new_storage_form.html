@@ -18,7 +18,7 @@
     </div>
 
     <div class="myDivBt" >
-        <a href="add/add.html" th:href="@{/storage/add/add_item}">添加物品</a>
+        <a href="add/add.html" th:href="@{/storage/add/add_item}" th:method="get">添加物品</a>
     </div>
 
     <div class="result">
@@ -30,19 +30,16 @@
                 <th>发票代码</th>
                 <th>详情</th>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr th:if="${session.storageForm.itemForms.empty }">
+            <tr th:cols="5">入库单中没有物品，请添加</tr>
             </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+            <tr th:if="${session.storageForm !=null }"
+                th:each="itemForm : ${session.storageForm.itemForms}">
+                <td th:text="${itemForm.itemCode}"></td>
+                <td th:text="${itemForm.count}"></td>
+                <td th:text="${itemForm.price}"></td>
+                <td th:text="${itemForm.itemSpec}"></td>
+                <td>详情</td>
             </tr>
         </table>
         <div>

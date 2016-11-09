@@ -17,7 +17,7 @@ import javax.persistence.Table;
 public class ItemEntity {
     private String itemCode;
     private String itemName;
-    private int itemCount;
+
     private String itemSpec;
     private Double itemPrice;
     private String itemIntroduce;
@@ -29,7 +29,7 @@ public class ItemEntity {
     private ItemCategoryEntity itemCategoryEntity;
     private ItemCompanyEntity itemCompanyEntity;
 
-
+    private int itemCount;
     @Id
     @Column(name = "item_code")
     public String getItemCode() {

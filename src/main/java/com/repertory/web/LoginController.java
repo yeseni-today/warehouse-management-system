@@ -33,6 +33,7 @@ public class LoginController {
         UsersDao usersDao = new UsersDao();
         if (usersDao.checkLogin(usersEntity)){
             UsersEntity users = usersDao.findById(usersEntity.getUsersId());
+
             request.getSession().setAttribute("user",users);
             return "redirect:query";
         }else {
