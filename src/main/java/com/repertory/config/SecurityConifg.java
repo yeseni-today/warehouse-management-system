@@ -15,7 +15,7 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableWebSecurity
-public class Security extends WebSecurityConfigurerAdapter {
+public class SecurityConifg extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
@@ -23,7 +23,7 @@ public class Security extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-//                .loginPage("/signin")
+                .loginPage("/signin")
                 .successForwardUrl("/query");
         http
                 .authorizeRequests()
@@ -32,7 +32,7 @@ public class Security extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").authenticated()
                 .and()
                 .httpBasic()
-        .and().csrf().disable();
+                .and().csrf().disable();
     }
 
     @Override

@@ -18,10 +18,7 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-//    @RequestMapping("/")
-//    public String greeting() {
-//        return "tiles/login/login0";
-//    }
+
     @RequestMapping("/")
     public String greeting() {
         return "tiles/query/list";
@@ -29,11 +26,9 @@ public class LoginController {
 
     @RequestMapping("/signin")
     public String login() {
-        return "login/sign";
+        return "tiles/login/signin";
     }
 
-//    @Autowired
-//    UserRespository userRespository;
 
     @RequestMapping("/logincheck")
     public String logincheck(@Valid UsersEntity usersEntity, Model model, HttpServletRequest request) {
@@ -45,13 +40,6 @@ public class LoginController {
         }else {
             return "error";
         }
-//        UsersEntity users = userRespository.findById(usersEntity.getUsersId());
-//        if (users.getUsersPassword().trim().equals(usersEntity.getUsersPassword().trim())) {
-//            model.addAttribute("users", users);
-//            return "redirect:query";
-//        } else {
-//            return "error";
-//        }
     }
 
 

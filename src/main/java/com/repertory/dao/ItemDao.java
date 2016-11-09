@@ -4,6 +4,7 @@ import com.repertory.bean.ItemEntity;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 /**
  * Created by Finderlo on 2016/11/5.
  */
+@Component
 public class ItemDao extends AbstractDao<ItemEntity> {
 
     public List<ItemEntity> queryByCategoryId(String categoryId) {

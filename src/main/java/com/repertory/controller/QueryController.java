@@ -23,9 +23,12 @@ import java.util.List;
 @Controller
 public class QueryController {
 
-    ItemDao itemDao = new ItemDao();
-
-    ItemCategoryDao categoryDao = new ItemCategoryDao();
+    //    ItemDao itemDao = new ItemDao();
+    @Autowired
+    ItemDao itemDao;
+    @Autowired
+    ItemCategoryDao categoryDao;
+//    ItemCategoryDao categoryDao = new ItemCategoryDao();
 
 
     @RequestMapping("/queryItem")
@@ -43,7 +46,7 @@ public class QueryController {
     @RequestMapping("/query")
     public String queryTo(Model model) {
         model.addAttribute("items", itemDao.findAll());
-        model.addAttribute("categories",categories());
+        model.addAttribute("categories", categories());
         return "tiles/query/list";
     }
 

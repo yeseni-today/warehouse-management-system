@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:tiles="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 
 <head>
     <meta charset="UTF-8"/>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="login myInput">
-        <form name='f' action='/login' method="post">
+        <form name='f' action='/signin' th:action="@{/signin}" method="post">
             <input class="text" type='text' name='username' value="" placeholder="请输入账号"/><br/>
             <input class="text" type='password' name='password' placeholder="请输入密码"/><br/>
             <button class="button" type="button" value="统一登陆"
