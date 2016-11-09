@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/add_item.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/layout.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/repertory/config/AppConfig.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/views/storage/add/add.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/views/storage/storageList.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/target/classes/com/repertory/config/Security.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/storageList.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/new_storage_form.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/repertory/controller/LoginController.class" afterPath="$PROJECT_DIR$/target/classes/com/repertory/controller/LoginController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/com/repertory/controller/StorageController.class" afterPath="$PROJECT_DIR$/target/classes/com/repertory/controller/StorageController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repertory/controller/StorageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repertory/controller/StorageController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/getInfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/getInfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setInfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setInfo.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/history.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/history.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/tiles.xml" afterPath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/tiles.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/views/storage/history.html" afterPath="$PROJECT_DIR$/target/classes/META-INF/resources/WEB-INF/views/storage/history.html" />
-    </list>
+    <list default="true" id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="" />
     <ignored path="untitled1.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
@@ -1316,12 +1297,12 @@
       <workItem from="1478583473615" duration="9910000" />
       <workItem from="1478594096115" duration="2669000" />
       <workItem from="1478606544740" duration="14636000" />
-      <workItem from="1478657059953" duration="5296000" />
+      <workItem from="1478657059953" duration="5917000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91196000" />
+    <option name="totallyTimeSpent" value="91817000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
