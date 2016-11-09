@@ -1,9 +1,8 @@
-package com.repertory.controller;
+package com.repertory.web.sotrage;
 
 import com.repertory.bean.ItemEntity;
 import com.repertory.dao.ItemDao;
 import com.repertory.dao.ItemInOperationDao;
-import com.repertory.dao.ItemInStorageDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,29 +35,6 @@ public class StorageController {
         return PREFIX + "new_storage_form";
     }
 
-    @RequestMapping("add/add_item")
-    public String addItem() {
-        return PREFIX + "add/add_item";
-    }
-
-    @RequestMapping("add/set_item_info")
-    public String setItemInfo(@RequestParam(name = "isAType") boolean isAtype,
-                              @RequestParam(name = "itemCode", required = false) String itemCode,
-                              Model model) {
-        if (isAtype) {
-            return PREFIX + "add/setInfo";
-        }
-
-        ItemEntity itemEntity = itemDao.findById(itemCode);
-
-        if (itemEntity!=null){
-            model.addAttribute("item",itemEntity);
-            return PREFIX + "add/getInfo";
-        }else {
-            return PREFIX + "add/setInfo";
-        }
-
-    }
 
 
 }
