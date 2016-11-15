@@ -24,7 +24,6 @@ public abstract class AbstractDao<T extends Object> {
 
     public T findById(String parm) {
 
-
         if (isMoreId()) {
             throw new UnsupportedOperationException();
         }

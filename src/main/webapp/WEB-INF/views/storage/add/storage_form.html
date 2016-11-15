@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"   xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">新建入库单</title>
@@ -17,7 +17,7 @@
         入库单编号：XXX
     </div>
 
-    <div class="myDivBt" >
+    <div class="myDivBt">
         <a href="add/add.html" th:href="@{/storage/add/add_item}" th:method="get">添加物品</a>
     </div>
 
@@ -30,21 +30,21 @@
                 <th>发票代码</th>
                 <th>详情</th>
             </tr>
-            <tr th:if="${session.storageForm.itemForms.empty }">
+            <tr th:if="${session.storageForm.itemForms.isEmpty() }">
             <tr th:cols="5">入库单中没有物品，请添加</tr>
             </tr>
             <tr th:if="${session.storageForm !=null }"
                 th:each="itemForm : ${session.storageForm.itemForms}">
                 <td th:text="${itemForm.itemCode}"></td>
-                <td th:text="${itemForm.count}"></td>
-                <td th:text="${itemForm.price}"></td>
+                <td th:text="${itemForm.itemCount}"></td>
+                <td th:text="${itemForm.itemPrice}"></td>
                 <td th:text="${itemForm.itemSpec}"></td>
                 <td>详情</td>
             </tr>
         </table>
         <div>
-            <div class="myDivBt"><a href="history.html">提交</a></div>
-            <div class="myDivBt"><a href="history.html">取消</a></div>
+            <div class="myDivBt"><a href="../history.html">提交</a></div>
+            <div class="myDivBt"><a href="../history.html">取消</a></div>
         </div>
     </div>
 

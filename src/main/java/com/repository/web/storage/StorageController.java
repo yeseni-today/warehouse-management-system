@@ -2,6 +2,8 @@ package com.repository.web.storage;
 
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
+import com.repository.web.storage.instroage.StorageFormContoller;
+import com.repository.web.storage.instroage.StorageFormBean;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,11 +34,11 @@ public class StorageController {
 
     @RequestMapping("new_storage_form")
     public String newStorageForm(HttpSession session) {
-        StorageForm storageForm = (StorageForm) session.getAttribute(AddStorageContoller.STORAGE_FORM);
+        StorageFormBean storageForm = (StorageFormBean) session.getAttribute(StorageFormContoller.STORAGE_FORM);
         if (storageForm == null) {
-            storageForm = new StorageForm();
+            storageForm = new StorageFormBean();
         }
-        session.setAttribute(AddStorageContoller.STORAGE_FORM, storageForm);
+        session.setAttribute(StorageFormContoller.STORAGE_FORM, storageForm);
         return PREFIX + "new_storage_form";
     }
 

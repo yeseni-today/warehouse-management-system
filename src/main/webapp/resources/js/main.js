@@ -11,3 +11,11 @@ function setVisible(bool) {
         code.style.display = "none";
     }
 }
+
+function alert(info) {
+    alert(info);
+}
+
+function ajax() {
+
+}

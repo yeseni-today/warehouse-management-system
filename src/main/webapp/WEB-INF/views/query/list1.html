@@ -4,6 +4,16 @@
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">查询物品</title>
+
+    <script>
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                code, name, categotyId
+                var code = $("#itemCode").val();
+                var name = $("#itemName").val();
+            })
+        })
+    </script>
 </head>
 <body>
 <div th:replace="header::header">
@@ -18,11 +28,11 @@
         <form action="queryItem" th:action="@{/queryItem}" method="get">
             <label>
                 物品条码：
-                <input type="text" name="itemCode" th:name="itemCode" value=""/>
+                <input type="text" name="itemCode" id="itemCode" th:name="itemCode" value=""/>
             </label>
             <label>
                 物品名称：
-                <input type="text" name="itemName" th:name="itemName" value=""/>
+                <input type="text" name="itemName" id="itemName" th:name="itemName" value=""/>
             </label>
             <label>
                 物品类别：
@@ -37,12 +47,12 @@
                     </option>
                 </select>
             </label>
-            <input type="submit" value="查询" />
+            <input type="button" id="submit" value="查询"/>
         </form>
     </div>
 
     <div class="result">
-        <table class="myTable" >
+        <table class="myTable">
             <tr>
                 <th>条码</th>
                 <th>名称</th>

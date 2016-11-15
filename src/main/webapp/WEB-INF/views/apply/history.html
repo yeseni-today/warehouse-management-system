@@ -1,18 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 <head>
-    <meta charset="UTF-8">
-    <title>申请历史</title>
+    <meta charset="UTF-8"/>
+    <title tiles:fragment="title">申请历史</title>
 
-    <link rel="stylesheet" type="text/css" href="../../static/myCSS/titleNav.css">
-    <link rel="stylesheet" type="text/css" href="../../static/myCSS/myDivBt.css">
-    <link rel="stylesheet" type="text/css" href="../../static/myCSS/myTable.css">
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/titleNav.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/myDivBt.css"/>
+    <link rel="stylesheet" type="text/css" href="../../../resources/css/myTable.css"/>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        .result{
+
+        .result {
             width: 800px;
             margin: 20px auto;
         }
@@ -24,34 +26,33 @@
 
 </div>
 
-<div class="myDivBt">
-    <a href="applyList.html">新建申请</a>
-</div>
 
-<div class="result">
-    <table class="myTable" border="1">
-        <tr>
-            <th>申请单编号</th>
-            <th>申请日期</th>
-            <th>审核人员编号</th>
-            <th>审核状态</th>
-            <th>审核日期</th>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-        <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
+<div tiles:fragment="content" class="content">
+    <div class="myDivBt">
+        <a href="add/applyList.html">新建申请</a>
+    </div>
+    <div class="result">
+        <table class="myTable" border="1">
+            <tr>
+                <th>申请单编号</th>
+                <th>申请日期</th>
+                <th>审核人员编号</th>
+                <th>审核状态</th>
+                <th>审核日期</th>
+            </tr>
+            <tr th:if="${applications == null || applications.isEmpty()}">
+                <td colspan="5">没有申请单信息</td>
+            </tr>
+            <tr th:each="application : ${applications}">
+                <!--/*@thymesVar id="applicaiton" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
+                <td th:text="${applicaiton.getApplicationId()}"></td>
+                <td th:text="${applicaiton.getApplicationTime()}">表中没有此列</td>
+                <td th:text="${applicaiton.getUsersId()}"></td>
+                <td th:text="${applicaiton.getStates()}"></td>
+                <td th:text="${applicaiton.getStatesTime()}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
 </body>
 </html>

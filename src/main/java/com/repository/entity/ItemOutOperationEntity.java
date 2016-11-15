@@ -20,9 +20,7 @@ public class ItemOutOperationEntity {
     private String usersId;
     private String applyId;
     private String outAddress;
-    @Basic
-    @Column(name = "out_time")
-    @Temporal(TemporalType.DATE)
+
     private Date outTime;
     private String outStates;
     private String operationId;
@@ -67,7 +65,8 @@ public class ItemOutOperationEntity {
         this.outAddress = outAddress;
     }
 
-
+    @Basic
+    @Column(name = "out_time")
     public Date getOutTime() {
         return outTime;
     }
