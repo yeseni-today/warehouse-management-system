@@ -2,6 +2,7 @@ package com.repository.web.error;
 
 import com.google.common.base.Throwables;
 
+import org.springframework.boot.autoconfigure.web.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Controller
-class CustomErrorController {
+class CustomErrorController implements ErrorController {
 
     /**
      * Display an error page, as defined in web.xml <code>custom-error</code> element.
@@ -31,6 +32,7 @@ class CustomErrorController {
             requestUri = "Unknown";
         }
 
+
         String message = MessageFormat.format("{0} returned for {1} with message {2}",
                 statusCode, requestUri, exceptionMessage
         );
@@ -45,5 +47,20 @@ class CustomErrorController {
         }
         HttpStatus httpStatus = HttpStatus.valueOf(statusCode);
         return httpStatus.getReasonPhrase();
+    }
+
+
+    private static final String ERROR_PATH = "/404error";
+
+    @RequestMapping(value = ERROR_PATH)
+    public String handleError() {
+        return "tiles/error/404";
+    }
+
+    //处理404
+    @Override
+    public String getErrorPath() {
+        // TODO Auto-generated method stub
+        return ERROR_PATH;
     }
 }

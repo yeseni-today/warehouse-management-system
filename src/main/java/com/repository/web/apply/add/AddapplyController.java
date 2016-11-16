@@ -82,8 +82,7 @@ public class AddapplyController {
 //        return "redirect:/apply/add";
 //    }
 //itemCodes
-    @RequestMapping("additems")
-    @ResponseBody
+    @RequestMapping("/additems")
     public String additems(
             @RequestParam(name = "itemCodes", required = false) String[] itemCodes,
             HttpSession session) {
@@ -91,7 +90,6 @@ public class AddapplyController {
         for (String code : itemCodes) {
             applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
         }
-
         return "redirect:/apply/add";
     }
 
