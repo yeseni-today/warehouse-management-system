@@ -13,7 +13,7 @@
     </div>
     <div class="myInput query">
         <!---->
-        <!--/*@thymesVar id="queryItem" type="com.repository.web.QueryController"*/-->
+        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
         <form action="queryItem" th:action="@{/queryItem}" method="get">
             <label>
@@ -28,10 +28,10 @@
                 物品类别：
                 <select name="itemCategoryId">
                     <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
-                    <option th:if="${categories == null || categories.empty}"
+                    <option th:if="${session.categories == null || session.categories.empty}"
                             th:text="没有找到分类，请刷新重试" value=" "></option>
                     <option value=""
-                            th:each="category : ${categories}"
+                            th:each="category : ${session.categories}"
                             th:value="${category.categoryId}"
                             th:text="${category.categoryName}">类别1
                     </option>

@@ -1,7 +1,5 @@
-package com.repository.web.storage.instroage;
+package com.repository.other;
 
-import com.repository.entity.ItemCategoryEntity;
-import com.repository.entity.ItemCompanyEntity;
 import com.repository.entity.ItemEntity;
 
 import java.lang.reflect.Field;

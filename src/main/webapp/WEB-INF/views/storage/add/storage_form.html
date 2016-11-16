@@ -18,7 +18,7 @@
     </div>
 
     <div class="myDivBt">
-        <a href="add/add.html" th:href="@{/storage/add/add_item}" th:method="get">添加物品</a>
+        <a href="add/add.html" th:href="@{/storage/add/additem}" th:method="get">添加物品</a>
     </div>
 
     <div class="result">
@@ -38,12 +38,17 @@
                 <td th:text="${itemForm.itemCode}"></td>
                 <td th:text="${itemForm.itemCount}"></td>
                 <td th:text="${itemForm.itemPrice}"></td>
-                <td th:text="${itemForm.itemSpec}"></td>
+                <td th:text="${itemForm.billCode}"></td>
                 <td>详情</td>
             </tr>
         </table>
         <div>
-            <div class="myDivBt"><a href="../history.html">提交</a></div>
+            <div class="myDivBt">
+                <button type="button" onclick="function One() {
+              alert('系统正忙，请稍后重试');
+            }">提交
+                </button>
+            </div>
             <div class="myDivBt"><a href="../history.html">取消</a></div>
         </div>
     </div>

@@ -1,5 +1,7 @@
 package com.repository.entity;
 
+import com.repository.dao.ItemBorrowDao;
+
 import java.sql.Date;
 
 import javax.persistence.Basic;
@@ -7,6 +9,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -22,6 +27,13 @@ public class ItemBorrowEntity {
     private Date borrowTime;
     private Date returnTime;
     private String borrowText;
+
+//    @ManyToOne(targetEntity = ItemBorrowOperationEntity.class)
+////    @JoinColumn(name = "borrow_ID")
+//    @JoinTable(name = "item_borrow_operation",inverseJoinColumns = @JoinColumn(name = "borrow_ID"))
+//    private ItemBorrowOperationEntity itemBorrowOperationEntity;
+
+
 
     @Id
     @Column(name = "borrow_ID")

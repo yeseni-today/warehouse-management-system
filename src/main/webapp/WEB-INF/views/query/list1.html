@@ -6,16 +6,25 @@
     <title tiles:fragment="title">查询物品</title>
 
     <script>
-        $(document).ready(function () {
-            $("#submit").click(function () {
-                code, name, categotyId
-                var code = $("#itemCode").val();
-                var name = $("#itemName").val();
-            })
-        })
+        var viewmodel = avalon.define({
+            //id必须和页面上定义的ms-controller名字相同，否则无法控制页面
+            $id: "viewmodel",
+            datalist: {},
+            text: "请求数据",
+            request: function () {
+                $.ajax({
+                    type: "get",
+                    url: "/queryItemRes",    //向springboot请求数据的url
+                    data: {},
+                    success: function (data) {
+                        viewmodel.datalist = data;
+                    }
+                });
+            }
+        });
     </script>
 </head>
-<body>
+<body ms-controller="viewmodel">
 <div th:replace="header::header">
 </div>
 <div tiles:fragment="content" class="content">
@@ -23,7 +32,7 @@
     </div>
     <div class="myInput query">
         <!---->
-        <!--/*@thymesVar id="queryItem" type="com.repository.web.QueryController"*/-->
+        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
         <form action="queryItem" th:action="@{/queryItem}" method="get">
             <label>
@@ -47,7 +56,7 @@
                     </option>
                 </select>
             </label>
-            <input type="button" id="submit" value="查询"/>
+            <input type="button" id="submit" value="查询" ms-click="@request"/>
         </form>
     </div>
 
@@ -63,12 +72,24 @@
             <tr th:if="${items == null || items.empty}">
                 <td colspan="5">No messages</td>
             </tr>
-            <tr th:each="item : ${items} ">
+            <tr th:each="item : ${items} " ms-for="el in @datalist">
                 <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
-                <td th:text="${item.itemCode}"></td>
-                <td th:text="${item.itemName}"></td>
-                <td th:text="${item.itemCategoryEntity.getCategoryName()}"></td>
-                <td th:text="${item.itemCount}"></td>
+                <td th:text="${item.itemCode}">{{el.itemCode}}</td>
+                <td th:text="${item.itemName}">{{el.itemName}}</td>
+                <td th:text="${item.itemCategoryEntity.getCategoryName()}">
+                    {{el.itemCategoryEntity.categoryName}}
+                </td>
+                <td th:text="${item.itemCount}">{{el.itemCount}}</td>
+                <td></td>
+            </tr>
+            <tr ms-for="el in @datalist">
+                <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
+                <td>{{el.itemCode}}</td>
+                <td>{{el.itemName}}</td>
+                <td>
+                    {{el.itemCategoryEntity.categoryName}}
+                </td>
+                <td>{{el.itemCount}}</td>
                 <td></td>
             </tr>
         </table>

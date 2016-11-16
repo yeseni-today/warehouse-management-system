@@ -40,10 +40,10 @@
                 <th>备注</th>
             </tr>
             <!--/*@thymesVar id="apply_form" type="com.repository.web.apply.add.AddapplyController.ApplyForm"*/-->
-            <tr th:if="${apply_form == null || apply_form.items.isEmpty()}">
+            <tr th:if="${session.apply_form == null || session.apply_form.items.isEmpty()}">
                 <td colspan="4">申请单中没有物品，请添加</td>
             </tr>
-            <tr th:each="item : ${apply_form.getItems()}">
+            <tr th:each="item : ${session.apply_form.getItems()}">
                 <td th:text="${item.getItemCode()}"></td>
                 <td th:text="${item.getItemName()}"></td>
                 <td th:text="${item.getItemCount()}"></td>
@@ -51,7 +51,9 @@
             </tr>
         </table>
         <div>
-            <div class="myDivBt"><a href="../history.html" onclick="alert('系统正忙')">提交订单</a></div>
+            <div class="myDivBt">
+                <button onclick="alert('系统正忙')">提交订单</button>
+            </div>
             <div class="myDivBt"><a href="../history.html">取消订单</a></div>
         </div>
     </div>

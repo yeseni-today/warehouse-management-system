@@ -1,4 +1,4 @@
-package com.repository.web;
+package com.repository.web.query;
 
 import com.repository.entity.ItemCategoryEntity;
 import com.repository.entity.ItemEntity;
@@ -15,21 +15,20 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 
 @Controller
 public class QueryController {
 
-    //    ItemDao itemDao = new ItemDao();
     @Autowired
     ItemDao itemDao;
     @Autowired
     ItemCategoryDao categoryDao;
-//    ItemCategoryDao categoryDao = new ItemCategoryDao();
-
 
     @ModelAttribute
-    public void init(Model model) {
-        model.addAttribute("categories", categories());
+    public void init(Model model, HttpSession session) {
+        session.setAttribute("categories", categories());
     }
 
     @RequestMapping("/queryItem")
@@ -44,17 +43,6 @@ public class QueryController {
         return "tiles/query/list";
     }
 
-    @RequestMapping("/queryItemRes")
-    @ResponseBody
-    public List<ItemEntity> queryItemPres(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
-                                          @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
-                                          @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
-                                          Model model) {
-        List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
-                , new String[]{itemCode, itemName});
-        result.addAll(itemDao.queryByCategoryId(itemCategoryId));
-        return result;
-    }
 
 
     @RequestMapping("/query")
@@ -66,5 +54,21 @@ public class QueryController {
     public List<ItemCategoryEntity> categories() {
         return categoryDao.findAll();
     }
+
+
+    @RequestMapping("/queryItemRes")
+    @ResponseBody
+    public List<ItemEntity> queryItemPres(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
+                                          @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
+                                          @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
+                                          Model model) {
+//        List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
+//                , new String[]{itemCode, itemName});
+//        result.addAll(itemDao.queryByCategoryId(itemCategoryId));
+        List<ItemEntity> result = itemDao.findAll();
+        System.out.println("success");
+        return result;
+    }
+
 
 }

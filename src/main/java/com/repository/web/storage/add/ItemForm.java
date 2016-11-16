@@ -1,4 +1,4 @@
-package com.repository.web.storage.instroage;
+package com.repository.web.storage.add;
 
 /**
  * Created by Finderlo on 2016/11/9.
@@ -17,6 +17,8 @@ public class ItemForm {
     private String itemState;// 物品状态);
     private String itemExamine;//物品审核信息);
 
+    private String billCode;//物品发票代码
+    private boolean isInschool;//是否是校内编码
 
     public String getItemCode() {
         return itemCode;
@@ -104,5 +106,21 @@ public class ItemForm {
 
     public void setItemExamine(String itemExamine) {
         this.itemExamine = itemExamine;
+    }
+
+    public boolean isInschool() {
+        return isInschool;
+    }
+
+    public void setInschool(boolean inschool) {
+        isInschool = inschool;
+    }
+
+    public String getBillCode() {
+        return billCode;
+    }
+
+    public void setBillCode(String billCode) {
+        this.billCode = billCode;
     }
 }

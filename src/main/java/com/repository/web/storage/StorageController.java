@@ -2,8 +2,8 @@ package com.repository.web.storage;
 
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
-import com.repository.web.storage.instroage.StorageFormContoller;
-import com.repository.web.storage.instroage.StorageFormBean;
+import com.repository.web.storage.add.StorageFormContoller;
+import com.repository.web.storage.add.StorageForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +21,8 @@ public class StorageController {
 
     private static final String PREFIX = "tiles/storage/";
 
+    private static final String HTML_STORAGE_HISTORY = PREFIX + "history";
+
     ItemInOperationDao inOperationDao = new ItemInOperationDao();
 
     @Autowired
@@ -29,14 +31,14 @@ public class StorageController {
     @RequestMapping
     public String storage(Model model) {
         model.addAttribute("history", inOperationDao.findAll());
-        return PREFIX + "history";
+        return HTML_STORAGE_HISTORY;
     }
 
     @RequestMapping("new_storage_form")
     public String newStorageForm(HttpSession session) {
-        StorageFormBean storageForm = (StorageFormBean) session.getAttribute(StorageFormContoller.STORAGE_FORM);
+        StorageForm storageForm = (StorageForm) session.getAttribute(StorageFormContoller.STORAGE_FORM);
         if (storageForm == null) {
-            storageForm = new StorageFormBean();
+            storageForm = new StorageForm();
         }
         session.setAttribute(StorageFormContoller.STORAGE_FORM, storageForm);
         return PREFIX + "new_storage_form";

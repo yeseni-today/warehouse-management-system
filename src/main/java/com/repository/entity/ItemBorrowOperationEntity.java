@@ -1,12 +1,22 @@
 package com.repository.entity;
 
+import com.repository.dao.ItemBorrowOpreationDao;
+
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * Created by Finderlo on 2016/11/4.
@@ -21,6 +31,15 @@ public class ItemBorrowOperationEntity {
     private Date statesTime;
     private String returnOperationId;
     private String returnText;
+
+
+    private List<ItemBorrowEntity> itemBorrowEntities = new ArrayList<>();
+
+    public static void main(String[] args) {
+        ItemBorrowOpreationDao dao = new ItemBorrowOpreationDao();
+        dao.findAll().forEach(e -> System.out.println(e.getBorrowId() + ";" + e.itemBorrowEntities.size()));
+
+    }
 
     @Id
     @Column(name = "borrow_ID")
@@ -126,5 +145,10 @@ public class ItemBorrowOperationEntity {
         result = 31 * result + (returnOperationId != null ? returnOperationId.hashCode() : 0);
         result = 31 * result + (returnText != null ? returnText.hashCode() : 0);
         return result;
+    }
+
+    @Transient
+    public List<ItemBorrowEntity> getItemBorrowEntities() {
+        return itemBorrowEntities;
     }
 }

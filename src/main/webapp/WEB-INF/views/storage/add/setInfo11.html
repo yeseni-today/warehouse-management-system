@@ -18,10 +18,10 @@
     </div>
 
     <div class="myForm myInput">
-        <form action="new_storage_form.html" th:action="@{/storage/add/additem}"
+        <form action="new_storage_form.html" th:action="@{additem}"
               th:method="get">
 
-            <!--/*@thymesVar id="item_info" type="com.repository.web.storage.instroage.ItemInfo"*/-->
+            <!--/*@thymesVar id="item_info" type="com.repository.other.ItemInfo"*/-->
             <ul th:if="${item_info.isInStorage()!=true}">
                 <!--<div th:text="${item_info.entries.size()}"></div>-->
                 <li th:each="entry:${item_info.entries}">

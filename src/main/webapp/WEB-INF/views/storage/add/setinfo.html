@@ -3,27 +3,41 @@
       xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
 <head>
     <meta charset="UTF-8"/>
-    <title>getInfo</title>
+    <title>setInfo</title>
 
 
 </head>
 <body>
 
-<div tiles:fragment="content">
+<div tiles:fragment="content" class="content">
 
     <div class="title">
         <div class="title1">新建入库单></div>
         <div class="title2">添加物品></div>
         <div class="title3">详细信息></div>
     </div>
-    <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
+
     <div class="myForm myInput">
-        <form action="../storageList.html">
+        <!--/*@thymesVar id="itemForm" type="com.repository.web.storage.AddStorageForm.ItemForm"*/-->
+        <form th:action="@{additem}" method="post">
             <ul>
                 <li>
-                    物品信息
-
-                    <input type="hidden" name="item_code" th:value="${item.itemCode}" value="321321"/>
+                    <label>
+                        <div class="name">
+                            物品类别：
+                        </div>
+                        <input type="hidden" name="isInschool" value="1"/>
+                        <select name="itemCategoryId">
+                            <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                            <option th:if="${session.categories == null || session.categories.empty}"
+                                    th:text="没有找到分类,请刷新重试" value=" "></option>
+                            <option value=""
+                                    th:each="category : ${session.categories}"
+                                    th:value="${category.categoryId}"
+                                    th:text="${category.categoryName}">类别1
+                            </option>
+                        </select>
+                    </label>
                 </li>
                 <li>
                     <label>
@@ -31,58 +45,7 @@
                             物品名称：
                         </div>
                         <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemName}"
-                                   value="XXX" th:disabled="" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品类别：
-                        </div>
-                        <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemCategoryEntity.categoryName}" value="XXX" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品规格：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemSpec}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品单价：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemPrice}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            生成厂商：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            生产厂商联系方式：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.companyPhone}" name="item_name" disabled="disabled"/>
+                            <input type="text" name="itemName" value=""/>
                         </div>
                     </label>
                 </li>
@@ -92,7 +55,47 @@
                             添加数量：
                         </div>
                         <div class="value">
-                            <input type="text" name="item_name"/>
+                            <input type="number" name="count"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品规格：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="itemSpec"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品单价：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="price"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            生成厂商：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="company"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            生产厂商联系方式：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="companyPhone"/>
                         </div>
                     </label>
                 </li>
@@ -105,6 +108,8 @@
             </ul>
         </form>
     </div>
+
 </div>
+
 </body>
 </html>

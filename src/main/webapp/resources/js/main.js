@@ -15,7 +15,3 @@ function setVisible(bool) {
 function alert(info) {
     alert(info);
 }
-
-function ajax() {
-
-}

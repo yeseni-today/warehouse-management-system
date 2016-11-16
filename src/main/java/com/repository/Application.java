@@ -3,7 +3,7 @@ package com.repository;
 import com.repository.config.DataSourceConfig;
 import com.repository.config.Factory;
 import com.repository.config.WebConfig;
-import com.repository.web.QueryController;
+import com.repository.web.query.QueryController;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
