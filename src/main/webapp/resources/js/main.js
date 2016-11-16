@@ -4,7 +4,7 @@ window.onload = function () {
 };
 
 function setVisible(bool) {
-    var code = document.getElementById("codeLi");
+    var code = document.getElementById("bar_code");
     if (bool) {
         code.style.display = "block";
     } else {
@@ -12,6 +12,6 @@ function setVisible(bool) {
     }
 }
 
-function alert(info) {
+function alert_info(info) {
     alert(info);
 }

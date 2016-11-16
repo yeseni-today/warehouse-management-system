@@ -1,22 +1,26 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:tiles="http://www.w3.org/2005/Atom"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">添加物品</title>
 
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
 </head>
+
 <body>
+
 <div class="content" tiles:fragment="content">
 
     <div class="title">
         <div class="title1">新建入库单></div>
         <div class="title2">添加物品></div>
-
     </div>
 
     <div class="myForm">
-        <form action="setInfo.html" th:action="@{/storage/add/set_item_info}">
+        <form action="setinfo.html" th:action="@{/storage/add/set_item_info}">
             <ul>
                 <li>
                     <div class="name">类型：</div>
@@ -33,7 +37,7 @@
                         </label>
                     </div>
                 </li>
-                <li id="codeLi" style="display: none;">
+                <li id="bar_code">
                     <label>
                         <div class="name">条形码：</div>
                         <div class="value myInput">
@@ -52,10 +56,6 @@
         </form>
     </div>
 
-    <div style="margin-top: 30em">
-        <a href="getInfo.html">若仓库有此非A类</a>
-
-    </div>
 </div>
 </body>
 </html>

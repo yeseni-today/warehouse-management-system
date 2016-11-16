@@ -10,3 +10,7 @@
 
 /*@import "flat-ui.css";*/
 /*@import "vendor/bootstrap/css/bootstrap.min.css";*/
+
+#bar_code {
+    display: none;
+}

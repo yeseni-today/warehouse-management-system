@@ -1,12 +1,15 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:tiles="http://www.w3.org/2005/Atom"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">物品信息</title>
 
-
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
 </head>
+
 <body>
 
 <div tiles:fragment="content">
@@ -29,81 +32,84 @@
                         <div class="name">
                             物品名称：
                         </div>
-                        <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemName}"
-                                   value="XXX" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品类别：
-                        </div>
-                        <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemCategoryEntity.categoryName}" value="XXX" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品规格：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemSpec}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品单价：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemPrice}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            生产厂商：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            厂商联系方式：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.companyPhone}" name="item_name" disabled="disabled"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            添加数量：
-                        </div>
-                        <div class="value">
-                            <input type="text" name="itemCount"/>
-                        </div>
-                    </label>
-                </li>
-
-                <li>
-                    <div style="line-height: 5em">
-                        <input class="submitBt" type="submit" value="增加物品"/>
-                    </div>
-                </li>
-            </ul>
-        </form>
     </div>
+    <div class="value">
+        <input type="text" name="item_name" th:value="${item.itemName}"
+               value="XXX" readonly="readonly"/>
+    </div>
+    </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                物品类别：
+            </div>
+            <div class="value">
+                <input type="text" name="item_name" th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
+                       readonly="readonly"/>
+            </div>
+        </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                物品规格：
+            </div>
+            <div class="value">
+                <input type="text" th:value="${item.itemSpec}" name="item_name" readonly="readonly"/>
+            </div>
+        </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                物品单价：
+            </div>
+            <div class="value">
+                <input type="text" th:value="${item.itemPrice}" name="item_name" readonly="readonly"/>
+            </div>
+        </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                生产厂商：
+            </div>
+            <div class="value">
+                <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}" name="item_name"
+                       readonly="readonly"/>
+            </div>
+        </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                厂商联系方式：
+            </div>
+            <div class="value">
+                <input type="text" th:value="${item.itemCompanyEntity.companyPhone}" name="item_name"
+                       readonly="readonly"/>
+            </div>
+        </label>
+    </li>
+    <li>
+        <label>
+            <div class="name">
+                添加数量：
+            </div>
+            <div class="value">
+                <input type="text" name="itemCount"/>
+            </div>
+        </label>
+    </li>
+
+    <li>
+        <div style="line-height: 5em">
+            <input class="submitBt" type="submit" value="增加物品"/>
+    </div>
+    </li>
+    </ul>
+    </form>
 </div>
 </body>
 </html>

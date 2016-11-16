@@ -6,17 +6,16 @@
     <meta charset="UTF-8"/>
     <title tiles:replace="title">Title</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/all.css"
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
           th:href="@{/resources/css/all.css}"/>
     <script src="../../../resources/js/main.js"
             th:src="@{/resources/js/main.js}">
     </script>
-    <script th:src="@{/resources/js/setVisible.js}"></script>
-
 </head>
-<body>
-<div>
 
+<body>
+
+<div>
     <div class="header">
         <div th:replace="templates/navBar :: navBar">
         </div>
@@ -33,5 +32,7 @@
     </div>
 
 </div>
+
 </body>
+
 </html>

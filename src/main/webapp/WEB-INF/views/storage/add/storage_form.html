@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/1999/xhtml">
+<html xmlns:tiles="http://www.w3.org/2005/Atom"
+      xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">新建入库单</title>
 
-
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
 </head>
+
 <body>
-<div tiles:fragment="content" class="content">
+
+<div class="content" tiles:fragment="content">
 
     <div class="title">
         <div class="title1">新建入库单></div>
@@ -18,11 +23,11 @@
     </div>
 
     <div class="myDivBt">
-        <a href="add/add.html" th:href="@{/storage/add/additem}" th:method="get">添加物品</a>
+        <a href="additem.html" th:href="@{/storage/add/additem}" th:method="get">添加物品</a>
     </div>
 
     <div class="result">
-        <table class="myTable" border="1">
+        <table class="myTable">
             <tr>
                 <th>物品条形码</th>
                 <th>入库数量</th>
@@ -31,7 +36,7 @@
                 <th>详情</th>
             </tr>
             <tr th:if="${session.storageForm.itemForms.isEmpty() }">
-            <tr th:cols="5">入库单中没有物品，请添加</tr>
+                <td th:cols="5">入库单中没有物品，请添加</td>
             </tr>
             <tr th:if="${session.storageForm !=null }"
                 th:each="itemForm : ${session.storageForm.itemForms}">
@@ -44,10 +49,7 @@
         </table>
         <div>
             <div class="myDivBt">
-                <button type="button" onclick="function One() {
-              alert('系统正忙，请稍后重试');
-            }">提交
-                </button>
+                <a href="" onclick="alert_info('系统正忙，请稍后重试')">提交</a>
             </div>
             <div class="myDivBt"><a href="../history.html">取消</a></div>
         </div>

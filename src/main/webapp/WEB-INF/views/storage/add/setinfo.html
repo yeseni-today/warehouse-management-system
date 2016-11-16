@@ -1,11 +1,12 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:tiles="http://www.w3.org/2005/Atom"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>setInfo</title>
+    <title tiles:fragment="title">setInfo</title>
 
-
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
 </head>
 <body>
 
@@ -82,6 +83,16 @@
                 <li>
                     <label>
                         <div class="name">
+                            发票代码：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="price"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
                             生成厂商：
                         </div>
                         <div class="value">
@@ -101,7 +112,7 @@
                 </li>
 
                 <li>
-                    <div style="line-height: 5em">
+                    <div>
                         <input class="submitBt" type="submit" value="提交信息"/>
                     </div>
                 </li>
