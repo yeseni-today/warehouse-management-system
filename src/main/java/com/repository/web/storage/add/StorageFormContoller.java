@@ -72,7 +72,7 @@ public class StorageFormContoller {
         if (!isInschool) {
             ItemEntity itemEntity = itemDao.findById(itemCode);
             if (itemEntity == null) {
-                return "additem";
+                return PREFIX + "additem";
             } else {
                 model.addAttribute("item", itemEntity);
                 return PREFIX + "getinfo";

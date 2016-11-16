@@ -32,6 +32,10 @@
                         <div class="name">
                             物品名称：
                         </div>
+                    </label>
+                </li>
+            </ul>
+        </form>
     </div>
     <div class="value">
         <input type="text" name="item_name" th:value="${item.itemName}"
@@ -45,7 +49,8 @@
                 物品类别：
             </div>
             <div class="value">
-                <input type="text" name="item_name" th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
+                <input type="text" name="item_name"
+                       th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
                        readonly="readonly"/>
             </div>
         </label>
@@ -56,7 +61,8 @@
                 物品规格：
             </div>
             <div class="value">
-                <input type="text" th:value="${item.itemSpec}" name="item_name" readonly="readonly"/>
+                <input type="text" th:value="${item.itemSpec}" name="item_name"
+                       readonly="readonly"/>
             </div>
         </label>
     </li>
@@ -66,7 +72,8 @@
                 物品单价：
             </div>
             <div class="value">
-                <input type="text" th:value="${item.itemPrice}" name="item_name" readonly="readonly"/>
+                <input type="text" th:value="${item.itemPrice}" name="item_name"
+                       readonly="readonly"/>
             </div>
         </label>
     </li>
@@ -76,7 +83,8 @@
                 生产厂商：
             </div>
             <div class="value">
-                <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}" name="item_name"
+                <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}"
+                       name="item_name"
                        readonly="readonly"/>
             </div>
         </label>
@@ -87,7 +95,8 @@
                 厂商联系方式：
             </div>
             <div class="value">
-                <input type="text" th:value="${item.itemCompanyEntity.companyPhone}" name="item_name"
+                <input type="text" th:value="${item.itemCompanyEntity.companyPhone}"
+                       name="item_name"
                        readonly="readonly"/>
             </div>
         </label>
@@ -106,7 +115,7 @@
     <li>
         <div style="line-height: 5em">
             <input class="submitBt" type="submit" value="增加物品"/>
-    </div>
+        </div>
     </li>
     </ul>
     </form>
