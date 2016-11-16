@@ -12,7 +12,6 @@
 
 <body>
 <div class="container">
-    <div th:include="templates/footer :: footer">&copy; 2013 The Static Templates</div>
     <div th:replace="templates/alert :: alert (type='danger', message=${errorMessage})">Error:
         Error
     </div>

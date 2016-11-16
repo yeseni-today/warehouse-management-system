@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,8 +82,7 @@ public class AddapplyController {
 //        return "redirect:/apply/add";
 //    }
 //itemCodes
-    @RequestMapping("additems")
-    @ResponseBody
+    @RequestMapping("/additems")
     public String additems(
             @RequestParam(name = "itemCodes", required = false) String[] itemCodes,
             HttpSession session) {
@@ -90,8 +90,6 @@ public class AddapplyController {
         for (String code : itemCodes) {
             applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
         }
-//        return REDIRECT+URL_APPLY_ADD_APPLYFORM;
-//    HttpResponse response = new hhtResponseBody();
         return "redirect:/apply/add";
     }
 

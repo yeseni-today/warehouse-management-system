@@ -6,19 +6,28 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.core.Ordered;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 import org.thymeleaf.extras.tiles2.dialect.TilesDialect;
 import org.thymeleaf.extras.tiles2.spring4.web.configurer.ThymeleafTilesConfigurer;
 import org.thymeleaf.extras.tiles2.spring4.web.view.ThymeleafTilesView;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
+
+import java.util.Properties;
+
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml
@@ -43,6 +52,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     private static final String RESOURCES_LOCATION = RESOURCES_HANDLER + "**";
 
 
+    @Bean
+    public SimpleMappingExceptionResolver simpleMappingExceptionResolver() {
+        SimpleMappingExceptionResolver resolver = new SimpleMappingExceptionResolver();
+
+        Properties properties = new Properties();
+        properties.setProperty("java.lang.Throwable", "/generalError");
+
+        resolver.setExceptionMappings(properties);
+        return resolver;
+    }
+
+
+    //处理资源请求
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry.addResourceHandler(RESOURCES_LOCATION).addResourceLocations(RESOURCES_HANDLER);
@@ -64,6 +86,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 
 
     //    Thymeleaf框架配置
+
+    /**
+     * Handles all views except for the ones that are handled by Tiles. This view resolver
+     * will be executed as first one by Spring.
+     */
     @Bean
     public TemplateResolver templateResolver() {
         ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
@@ -72,7 +99,6 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         //     去除缓存
         resolver.setCacheable(false);
         resolver.setTemplateMode("HTML5");
-//        resolver.setCharacterEncoding("UTF-8");
         return resolver;
     }
 
@@ -83,6 +109,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         springTemplateEngine.addTemplateResolver(templateResolver());
         springTemplateEngine.addTemplateResolver(urlTemplateResolver());
         springTemplateEngine.addDialect(new TilesDialect());
+        springTemplateEngine.addDialect(new LayoutDialect());
         return springTemplateEngine;
     }
 
@@ -91,8 +118,11 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return new UrlTemplateResolver();
     }
 
+    /**
+     * Handles Tiles views.
+     * 用来解析tiles开头的解析器，布局定义
+     */
     @Bean
-//    public ThymeleafViewResolver tilesViewResolver() {
     public ThymeleafViewResolver thymeleafViewResolver() {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
         resolver.setViewClass(ThymeleafTilesView.class);
@@ -103,18 +133,19 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         return resolver;
     }
 
-//    /**
-//     * 模板引擎解释器
-//     *
-//     * @return
-//     */
-//    @Bean
-//    public ViewResolver viewResolver() {
-//        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
-//        viewResolver.setContentType(CONTENTTYPE);
-//        viewResolver.setTemplateEngine(templateEngine());
-//        viewResolver.setCharacterEncoding("UTF-8");
-//        viewResolver.setOrder(1);
-//        return viewResolver;
-//    }
+    /**
+     * 模板引擎解释器,用来解析所有的视图，出了tiles开头的view
+     *
+     * @return
+     */
+    @Bean
+    public ViewResolver viewResolver() {
+        ThymeleafViewResolver viewResolver = new ThymeleafViewResolver();
+        viewResolver.setContentType(CONTENTTYPE);
+        viewResolver.setTemplateEngine(templateEngine());
+        viewResolver.setCharacterEncoding("UTF-8");
+        viewResolver.setOrder(1);
+        viewResolver.setExcludedViewNames(new String[]{"tiles/*"});
+        return viewResolver;
+    }
 }

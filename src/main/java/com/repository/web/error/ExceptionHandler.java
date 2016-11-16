@@ -16,7 +16,7 @@ class ExceptionHandler {
     private static final Logger LOGGER = LoggerFactory.getLogger("ErrorLog");
 
     /**
-     * Handle exceptions thrown by handlers.
+     * Handle exceptions thrown by handlers. 非404
      */
     @org.springframework.web.bind.annotation.ExceptionHandler(value = Exception.class)
     public ModelAndView exception(Exception exception, WebRequest request) {
