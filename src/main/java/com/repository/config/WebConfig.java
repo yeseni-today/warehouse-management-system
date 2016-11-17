@@ -41,7 +41,6 @@ import nz.net.ultraq.thymeleaf.LayoutDialect;
 * */
 @Configuration
 @EnableWebMvc
-@Import({Factory.class,DataSourceConfig.class})
 @ComponentScan(basePackageClasses = Application.class, includeFilters = @ComponentScan.Filter(Controller.class), useDefaultFilters = false)
 public class WebConfig extends WebMvcConfigurerAdapter {
 

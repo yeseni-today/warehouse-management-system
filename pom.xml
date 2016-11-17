@@ -85,23 +85,23 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!--SPRING JPA-->
+        <!--&lt;!&ndash;SPRING JPA&ndash;&gt;-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
         </dependency>
-        <!--hibernate依赖-->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>5.2.4.Final</version>
-        </dependency>
-        <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-entitymanager</artifactId>
-            <version>5.2.4.Final</version>
-        </dependency>
+        <!--&lt;!&ndash;hibernate依赖&ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-core</artifactId>-->
+        <!--<version>5.2.4.Final</version>-->
+        <!--</dependency>-->
+        <!--&lt;!&ndash; for JPA, use hibernate-entitymanager instead of hibernate-core &ndash;&gt;-->
+        <!--<dependency>-->
+        <!--<groupId>org.hibernate</groupId>-->
+        <!--<artifactId>hibernate-entitymanager</artifactId>-->
+        <!--<version>5.2.4.Final</version>-->
+        <!--</dependency>-->
         <!-- optional -->
         <!--<dependency>-->
             <!--<groupId>org.hibernate</groupId>-->

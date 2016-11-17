@@ -4,6 +4,7 @@ import com.repository.dao.SdictionaryDao;
 import com.repository.entity.SdictionaryEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,26 +13,25 @@ import java.util.List;
 /**
  * Created by Finderlo on 11/16/2016.
  */
+@Component
 public class Util {
 
 
-    private static SdictionaryDao sdictionaryDao = new SdictionaryDao();
-
-    public static String getInstorgeId() {
-        return handleCode(sdictionaryDao.findById("storage_ID"));
+    public static String getInstorgeId(SdictionaryEntity entity) {
+        return handleCode(entity);
     }
 
-    public static String getOutStorageId() {
-        return handleCode(sdictionaryDao.findById("out_ID"));
-    }
-
-    public static String getBorrowId() {
-        return handleCode(sdictionaryDao.findById("borrow_ID"));
-    }
-
-    public static String getApplicationId() {
-        return handleCode(sdictionaryDao.findById("application_ID"));
-    }
+//    public static String getOutStorageId() {
+//        return handleCode(getSdictionaryDao().findById("out_ID"));
+//    }
+//
+//    public static String getBorrowId() {
+//        return handleCode(getSdictionaryDao().findById("borrow_ID"));
+//    }
+//
+//    public static String getApplicationId() {
+//        return handleCode(getSdictionaryDao().findById("application_ID"));
+//    }
 
     public static String handleCode(SdictionaryEntity sdictionaryEntity) {
         String code = null;
