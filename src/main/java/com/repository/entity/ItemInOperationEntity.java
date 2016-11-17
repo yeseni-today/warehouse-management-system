@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * 物品入库表
  */
 @Entity
-@Table(name = "item_in_operation", schema = "wms", catalog = "")
+@Table(name = "item_in_operation")
 public class ItemInOperationEntity {
     private String storageId;
     private Date storageTime;

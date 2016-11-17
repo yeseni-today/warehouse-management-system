@@ -22,7 +22,7 @@ import javax.persistence.Transient;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_borrow_operation", schema = "wms", catalog = "")
+@Table(name = "item_borrow_operation")
 public class ItemBorrowOperationEntity {
     private String borrowId;
     private String usersId;

@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_company", schema = "wms", catalog = "")
+@Table(name = "item_company")
 public class ItemCompanyEntity {
     private String companyId;
     private String companyName;

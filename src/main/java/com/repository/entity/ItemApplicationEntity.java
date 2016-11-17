@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 
 @Entity
-@Table(name = "item_application", schema = "wms", catalog = "")
+@Table(name = "item_application")
 @IdClass(ItemApplicationEntityPK.class)
 public class ItemApplicationEntity {
     private String applicationId;

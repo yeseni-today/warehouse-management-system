@@ -12,7 +12,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_application_operation", schema = "wms", catalog = "")
+@Table(name = "item_application_operation")
 public class ItemApplicationOperationEntity {
     private String applicationId;
     private String usersId;

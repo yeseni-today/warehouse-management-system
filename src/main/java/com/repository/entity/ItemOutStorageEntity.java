@@ -11,7 +11,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_out_storage", schema = "wms", catalog = "")
+@Table(name = "item_out_storage")
 @IdClass(ItemOutStorageEntityPK.class)
 public class ItemOutStorageEntity {
     private String outId;

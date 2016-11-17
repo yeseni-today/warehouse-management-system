@@ -58,10 +58,12 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
 //    }
 
 
+    //
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
     }
 
+    //全局设置
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         //将验证过程交给自定义验证工具
