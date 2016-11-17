@@ -1,20 +1,22 @@
 .navBar {
     height: 50px;
-    background: #1e1e1e;
+    /*background: #2C3E50;*/
+    background: #212121;
 }
 
 .navBar a {
-    color: #b6b6b6;
+    color: #d4d4d4;
     text-decoration: none;
     display: block;
     padding: 15px;
     line-height: 20px;
+    transition: color 0.2s ease-in;
 }
 .navBar-title:hover a{
-    color: #ffffff;
+    color: #19ac7f;
 }
 .navBar li:hover>a{
-    color: #ffffff;
+    color: #19ac7f;
 }
 
 @media (max-width: 767px) {
@@ -93,6 +95,7 @@
 }
 
 .nav li:hover .arrow {
+    border-top: 10px solid #19ac7f;
     transform: rotate(180deg);
 }
 
@@ -104,8 +107,9 @@
     max-height: 0;
     padding: 0 5px;
     border-radius: 6px;
-    box-shadow: 2px 2px 3px black;
-    background: rgba(0, 0, 0, 0.84);
+    box-shadow: 2px 2px 3px #34495e;
+    /*background: rgba(0, 0, 0, 0.84);*/
+    background: #34495e;
     overflow: hidden;
     transition: all 0.5s;
 }
@@ -131,10 +135,10 @@
     font-size: 13px;
     line-height: 15px;
     padding: 10px;
-    color: #b6b6b6;
+    color: #ececec;
     transition: all 0.3s ;
 }
 .nav dd:hover>a{
-    color: #ffffff;
+    color: #19ac7f;
     padding-left: 15px;
 }

@@ -1,6 +1,5 @@
 .content{
-    padding-top: 70px;
-    margin-bottom: 85px;
+    padding: 85px;
 }
 .content .query{
     min-width: 70em;
@@ -10,4 +9,8 @@
 .content .result{
     width: 65em;
     margin: 2em auto;
+}
+
+.content .info {
+    padding-left: 10em;
 }

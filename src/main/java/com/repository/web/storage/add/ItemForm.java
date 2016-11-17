@@ -8,10 +8,11 @@ public class ItemForm {
     private String itemCode;// 物品条形码);
     private String itemName;// 物品名称);
     private String itemCount;// 物品数量);
-    private String itemSpec;// 物品规格);
+    private String itemSpec;// 物品规格);ui
     private String itemPrice;// 物品单价（人民币 元）);
     private String itemIntroduce;// 物品介绍);
     private String itemCompanyID;//物品生产厂商ID);
+    private String itemCompanyPhone;//物品生产厂商联系方式);
     private String itemCategoryID;//物品分类ID);
     private String itemBorrowTimeLimit;// 物品允许借取最大时间);
     private String itemState;// 物品状态);
@@ -122,5 +123,13 @@ public class ItemForm {
 
     public void setBillCode(String billCode) {
         this.billCode = billCode;
+    }
+
+    public String getItemCompanyPhone() {
+        return itemCompanyPhone;
+    }
+
+    public void setItemCompanyPhone(String itemCompanyPhone) {
+        this.itemCompanyPhone = itemCompanyPhone;
     }
 }

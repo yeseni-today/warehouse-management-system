@@ -3,10 +3,12 @@
     <properties maven-id="mysql:mysql-connector-java:5.1.40" />
     <CLASSES>
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$USER_HOME$/OneDrive/library/mysql-connector-java-5.1.40-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../library/mysql-connector-java-5.1.40-sources.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40-sources.jar!/" />
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.40/mysql-connector-java-5.1.40-sources.jar!/" />
     </SOURCES>
   </library>

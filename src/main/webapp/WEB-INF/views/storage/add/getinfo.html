@@ -12,7 +12,7 @@
 
 <body>
 
-<div tiles:fragment="content">
+<div class="content" tiles:fragment="content">
 
     <div class="title">
         <div class="title1">新建入库单></div>
@@ -20,105 +20,113 @@
         <div class="title3">详细信息></div>
     </div>
     <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
-    <div class="myForm myInput">
+    <div class="info myForm myInput">
         <form action="/storage/add/additem" method="post">
             <ul>
-                <li>
-                    物品信息
-                    <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>
-                </li>
+                <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>
+
+
                 <li>
                     <label>
                         <div class="name">
                             物品名称：
                         </div>
+                        <div class="value">
+                            <input type="text" name="item_name" th:value="${item.itemName}"
+                                   value="XXX" readonly="readonly"/>
+                        </div>
                     </label>
                 </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品类别：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="item_name" th:value="${item.itemSpec}"
+                                   value="XXX" readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品类别：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="item_name"
+                                   th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
+                                   readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品规格：
+                        </div>
+                        <div class="value">
+                            <input type="text" th:value="${item.itemSpec}" name="item_name"
+                                   readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品单价：
+                        </div>
+                        <div class="value">
+                            <input type="text" th:value="${item.itemPrice}" name="item_name"
+                                   readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            生产厂商：
+                        </div>
+                        <div class="value">
+                            <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}"
+                                   name="item_name"
+                                   readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            厂商联系方式：
+                        </div>
+                        <div class="value">
+                            <input type="text" th:value="${item.itemCompanyEntity.companyPhone}"
+                                   name="item_name"
+                                   readonly="readonly"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            添加数量：
+                        </div>
+                        <div class="value">
+                            <input type="number" name="itemCount"/>
+                        </div>
+                    </label>
+                </li>
+
+                <li>
+                    <div style="line-height: 5em">
+                        <input class="submitBt" type="submit" value="增加物品"/>
+                    </div>
+                </li>
+
             </ul>
         </form>
     </div>
-    <div class="value">
-        <input type="text" name="item_name" th:value="${item.itemName}"
-               value="XXX" readonly="readonly"/>
-    </div>
-    </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                物品类别：
-            </div>
-            <div class="value">
-                <input type="text" name="item_name"
-                       th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
-                       readonly="readonly"/>
-            </div>
-        </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                物品规格：
-            </div>
-            <div class="value">
-                <input type="text" th:value="${item.itemSpec}" name="item_name"
-                       readonly="readonly"/>
-            </div>
-        </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                物品单价：
-            </div>
-            <div class="value">
-                <input type="text" th:value="${item.itemPrice}" name="item_name"
-                       readonly="readonly"/>
-            </div>
-        </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                生产厂商：
-            </div>
-            <div class="value">
-                <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}"
-                       name="item_name"
-                       readonly="readonly"/>
-            </div>
-        </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                厂商联系方式：
-            </div>
-            <div class="value">
-                <input type="text" th:value="${item.itemCompanyEntity.companyPhone}"
-                       name="item_name"
-                       readonly="readonly"/>
-            </div>
-        </label>
-    </li>
-    <li>
-        <label>
-            <div class="name">
-                添加数量：
-            </div>
-            <div class="value">
-                <input type="text" name="itemCount"/>
-            </div>
-        </label>
-    </li>
-
-    <li>
-        <div style="line-height: 5em">
-            <input class="submitBt" type="submit" value="增加物品"/>
-        </div>
-    </li>
-    </ul>
-    </form>
 </div>
+
 </body>
 </html>
