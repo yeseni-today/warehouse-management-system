@@ -7,7 +7,7 @@
     background: #f5f5f5;
     border-radius: 0.25em;
     outline: 0;
-    transition: border-color 0.5s ease-in;
+    transition: border 0.3s;
 }
 
 .myInput input[type="text"]:read-only:focus, input[type="password"]:read-only:focus, input[type="number"]:read-only:focus {
@@ -15,7 +15,8 @@
 }
 
 .myInput input[type="text"]:focus, input[type="password"]:focus, input[type="number"]:focus {
-    border-color: #00dc70;
+    /*border-color: #00dc70;*/
+    border: 0.15em solid #00dc70;
 }
 
 .myInput input[type="submit"], input[type="button"] {

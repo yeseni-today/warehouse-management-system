@@ -17,6 +17,8 @@ import javax.validation.Valid;
 public class LoginController {
 
 
+    String TILES_PREFIX = "tiles";
+
     @RequestMapping("/")
     public String greeting() {
         return "tiles/query/list";

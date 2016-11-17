@@ -27,7 +27,7 @@ public class QueryController {
     ItemCategoryDao categoryDao;
 
     @ModelAttribute
-    public void init(Model model, HttpSession session) {
+    public void init(HttpSession session) {
         session.setAttribute("categories", categories());
     }
 
