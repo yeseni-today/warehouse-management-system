@@ -1,17 +1,17 @@
 .myDivBt{
     float: right;
-    height: 3em;
-    margin: 1em 1em;
-    background: #d2d2d2;
+    height: 2.2em;
+    background: #1abc9c;
     text-align: center;
-    line-height: 3em;
-    border-radius: 0.5em;
+    line-height: 2.2em;
+    border-radius: 0.25em;
+    transition: background 0.3s;
 }
 .myDivBt:hover{
-    background: #dfdfdf;
+    background: #2fe2bf;
 }
 .myDivBt a{
     padding: 0 2em;
-    color: black;
+    color: white;
     text-decoration: none;
 }

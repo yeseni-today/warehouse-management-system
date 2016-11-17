@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">setInfo</title>
@@ -8,39 +9,22 @@
     <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
     <script src="../../../../resources/js/main.js"></script>
 </head>
+
 <body>
 
 <div tiles:fragment="content" class="content">
-
     <div class="titleNav">
         <div class="title_nav title_nav_previous">
             <a href="additem.html">添加物品</a></div>
         <div class="title_nav title_nav_Now"><a>详细信息</a></div>
     </div>
 
-    <div class="myForm myInput">
+    <div class="myInfoList myInput">
         <!--/*@thymesVar id="itemForm" type="com.repository.web.storage.AddStorageForm.ItemForm"*/-->
-        <form th:action="@{additem}" method="post">
+        <form action="additem.html" method="post"
+              th:action="@{additem}">
+            <input type="hidden" name="isInschool" value="1"/>
             <ul>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品类别：
-                        </div>
-                        <input type="hidden" name="isInschool" value="1"/>
-                        <select name="itemCategoryId">
-                            <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
-                            <option th:if="${session.categories == null || session.categories.empty}"
-                                    th:text="没有找到分类,请刷新重试" value=" "></option>
-                            <option value=""
-                                    th:each="category : ${session.categories}"
-                                    th:value="${category.categoryId}"
-                                    th:text="${category.categoryName}">类别1
-                            </option>
-                        </select>
-                    </label>
-                </li>
-
                 <li>
                     <label>
                         <div class="name">
@@ -54,10 +38,37 @@
                 <li>
                     <label>
                         <div class="name">
-                            添加数量：
+                            物品类别：
+                        </div>
+                        <select name="itemCategoryId">
+                            <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                            <option th:if="${session.categories == null || session.categories.empty}">
+                                没有找到分类,请刷新重试
+                            </option>
+                            <option th:each="category : ${session.categories}"
+                                    th:value="${category.categoryId}"
+                                    th:text="${category.categoryName}">
+                            </option>
+                        </select>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            入库数量：
                         </div>
                         <div class="value">
                             <input type="number" name="itemCount"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            入库单价：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="itemPrice"/>
                         </div>
                     </label>
                 </li>
@@ -74,10 +85,20 @@
                 <li>
                     <label>
                         <div class="name">
-                            物品单价：
+                            有效期限：
                         </div>
                         <div class="value">
-                            <input type="text" name="itemPrice"/>
+                            <input type="date" name="itemEffectiveDate"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品介绍：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="itemIntroduction"/>
                         </div>
                     </label>
                 </li>
@@ -104,10 +125,20 @@
                 <li>
                     <label>
                         <div class="name">
-                            生产厂商联系方式：
+                            物品批次：
                         </div>
                         <div class="value">
-                            <input type="text" name="itemCompanyPhone"/>
+                            <input type="text" name="itemBatch"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            入库库位：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="storageLocation"/>
                         </div>
                     </label>
                 </li>
@@ -120,7 +151,6 @@
             </ul>
         </form>
     </div>
-
 </div>
 
 </body>

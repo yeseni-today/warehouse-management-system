@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -12,17 +12,23 @@
 
 <body>
 
-<div tiles:fragment="content" class="content">
-    <div class="titleNav">
-        <div class="title_nav title_nav_Now"><a>入库历史</a></div>
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_Now">
+                <a>入库历史</a>
+            </div>
+        </div>
     </div>
 
-    <div class="myDivBt">
-        <a href="add/storage_form.html" th:href="@{/storage/add/}">新建入库</a>
+    <div class="content-function">
+        <div class="myDivBt">
+            <a href="add/storage_form.html" th:href="@{/storage/add/}">新建入库</a>
+        </div>
     </div>
 
-    <div class="result">
-        <table class="myTable">
+    <div class="content-result myTable">
+        <table>
             <tr>
                 <th>入库单编号</th>
                 <th>入库时间</th>

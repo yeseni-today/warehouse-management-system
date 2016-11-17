@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -13,15 +13,16 @@
 <body>
 
 <div class="content" tiles:fragment="content">
-
     <div class="titleNav">
         <div class="title_nav title_nav_previous">
             <a href="storage_form.html">新建入库单</a>
         </div>
-        <div class="title_nav title_nav_Now"><a>添加物品</a></div>
+        <div class="title_nav title_nav_Now">
+            <a>添加物品</a>
+        </div>
     </div>
 
-    <div class="myForm">
+    <div class="myInfoList">
         <form action="setinfo.html" th:action="@{/storage/add/set_item_info}">
             <ul>
                 <li>
@@ -57,7 +58,7 @@
             </ul>
         </form>
     </div>
-
 </div>
+
 </body>
 </html>

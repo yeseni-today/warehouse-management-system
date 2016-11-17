@@ -1,27 +1,27 @@
-table.myTable {
+.myTable table{
     table-layout: fixed;
     width: 65em;
     border-collapse: collapse;
 }
 
-table.myTable tr {
+.myTable tr {
     height: 2.7em;
 }
 
-table.myTable tr:nth-child(2n) {
+.myTable tr:nth-child(2n) {
     background: rgb(249, 249, 249);
     /*background-color: rgb(26, 188, 156);*/
 }
 
-table.myTable tr:nth-child(2n+1) {
+.myTable tr:nth-child(2n+1) {
     background: rgba(249, 249, 249, 0);
 }
 
-table.myTable td, th {
+.myTable td, th {
     text-align: center;
 }
 
-table.myTable th {
+.myTable th {
     color: #f4f4f4;
     font-size: 1.1em;
     font-weight: normal;

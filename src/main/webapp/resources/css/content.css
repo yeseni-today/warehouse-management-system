@@ -1,16 +1,25 @@
-.content{
+.content {
     padding: 85px;
 }
-.content .query{
+
+.content-nav {
+    height: 3em;
+}
+
+.content-function{
+    float: right;
+    height: 3em;
+}
+
+.content-query {
     min-width: 70em;
     margin: auto;
     text-align: center;
 }
-.content .result{
+
+.content-result {
+    float: right;
     width: 65em;
-    margin: 2em auto;
+    margin: auto;
 }
 
-.content .info {
-    padding-left: 10em;
-}

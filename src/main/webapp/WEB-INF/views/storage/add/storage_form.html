@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -13,21 +13,22 @@
 <body>
 
 <div class="content" tiles:fragment="content">
-
     <div class="titleNav">
-        <div class="title_nav title_nav_Now"><a>新建入库单</a></div>
+        <div class="title_nav title_nav_Now">
+            <a>新建入库单</a>
+        </div>
     </div>
 
-    <div>
-        入库单编号：<p th:text="${session.storageForm.inStorageId}"></p>
-    </div>
 
     <div class="myDivBt">
         <a href="additem.html" th:href="@{/storage/add/additem}" th:method="get">添加物品</a>
     </div>
 
-    <div class="result">
-        <table class="myTable">
+    <div class="result myTable">
+        <div>
+            入库单编号：<p th:text="${session.storageForm.inStorageId}"></p>
+        </div>
+        <table>
             <tr>
                 <th>物品条形码</th>
                 <th>入库数量</th>
@@ -35,11 +36,11 @@
                 <th>发票代码</th>
                 <th>详情</th>
             </tr>
-            <tr th:if="${session.storageForm.itemForms.isEmpty() }">
-                <td th:cols="5">入库单中没有物品，请添加</td>
+            <tr th:if="${session.storageForm.itemForms.isEmpty()}">
+                <td colspan="5">入库单中没有物品，请添加</td>
             </tr>
-            <tr th:if="${session.storageForm !=null }"
-                th:each="itemForm : ${session.storageForm.itemForms}">
+            <tr th:if="${session.storageForm != null}"
+                th:each="itemForm:${session.storageForm.itemForms}">
                 <td th:text="${itemForm.itemCode}"></td>
                 <td th:text="${itemForm.itemCount}"></td>
                 <td th:text="${itemForm.itemPrice}"></td>
@@ -49,9 +50,11 @@
         </table>
         <div>
             <div class="myDivBt">
-                <a href="" onclick="alert_info('系统正忙，请稍后重试')">提交</a>
+                <a href="../history.html" onclick="alert_info('系统正忙，请稍后重试')">提交</a>
             </div>
-            <div class="myDivBt"><a href="../history.html">取消</a></div>
+            <div class="myDivBt">
+                <a href="../history.html">取消</a>
+            </div>
         </div>
     </div>
 
