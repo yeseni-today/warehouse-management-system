@@ -28,17 +28,22 @@ public class SecAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
+        System.out.println(username + ":" + password);
         SecUserDetails user = (SecUserDetails) userService.loadUserByUsername(username);
         if (user == null) {
+            System.out.println("登陆失败，找不到用户");
             throw new BadCredentialsException("Username not found.");
         }
 
         //加密过程在这里体现
         if (!password.trim().equals(user.getPassword().trim())) {
+            System.out.println("input:" + password.trim());
+            System.out.println("right:" + user.getPassword().trim());
+            System.out.println("Wrong password.");
             throw new BadCredentialsException("Wrong password.");
         }
 
-        System.out.println("登陆测试");
+        System.out.println("登陆成功");
 
         Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
         return new UsernamePasswordAuthenticationToken(user, password, authorities);

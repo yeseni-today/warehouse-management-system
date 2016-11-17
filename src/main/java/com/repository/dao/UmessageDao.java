@@ -3,10 +3,12 @@ package com.repository.dao;
 import com.repository.entity.UmessageEntity;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Timestamp;
 
 @Component
+@Repository
 public class UmessageDao extends AbstractDao<UmessageEntity> {
 
 

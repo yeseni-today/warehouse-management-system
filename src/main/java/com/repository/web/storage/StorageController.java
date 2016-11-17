@@ -2,6 +2,7 @@ package com.repository.web.storage;
 
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
+import com.repository.dao.SdictionaryDao;
 import com.repository.web.storage.add.StorageFormContoller;
 import com.repository.web.storage.add.StorageForm;
 
@@ -23,10 +24,14 @@ public class StorageController {
 
     private static final String HTML_STORAGE_HISTORY = PREFIX + "history";
 
-    ItemInOperationDao inOperationDao = new ItemInOperationDao();
+    @Autowired
+    ItemInOperationDao inOperationDao;
 
     @Autowired
     ItemDao itemDao;
+
+    @Autowired
+    SdictionaryDao sdictionaryDao;
 
     @RequestMapping
     public String storage(Model model) {
@@ -38,7 +43,7 @@ public class StorageController {
     public String newStorageForm(HttpSession session) {
         StorageForm storageForm = (StorageForm) session.getAttribute(StorageFormContoller.STORAGE_FORM);
         if (storageForm == null) {
-            storageForm = new StorageForm();
+            storageForm = new StorageForm(sdictionaryDao.getStorageEntity());
         }
         session.setAttribute(StorageFormContoller.STORAGE_FORM, storageForm);
         return PREFIX + "new_storage_form";

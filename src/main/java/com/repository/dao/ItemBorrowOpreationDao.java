@@ -4,12 +4,13 @@ import com.repository.entity.ItemBorrowEntity;
 import com.repository.entity.ItemBorrowOperationEntity;
 
 import org.hibernate.Session;
-import org.hibernate.query.Query;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Component
+@Repository
 public class ItemBorrowOpreationDao extends AbstractDao<ItemBorrowOperationEntity> {
 
     public List<ItemBorrowOperationEntity> findAll() {
@@ -21,7 +22,6 @@ public class ItemBorrowOpreationDao extends AbstractDao<ItemBorrowOperationEntit
     private void setOneToMany(ItemBorrowOperationEntity entity) {
         Session session = sessionFactory.openSession();
         String hql = "select e from ItemBorrowEntity e where e.borrowId=" + entity.getBorrowId();
-        Query<ItemBorrowEntity> query = session.createQuery(hql);
-        query.list().forEach(entity1 -> entity.getItemBorrowEntities().add(entity1));
+        session.createQuery(hql).list().forEach(entity1 -> entity.getItemBorrowEntities().add((ItemBorrowEntity) entity1));
     }
 }

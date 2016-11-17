@@ -1,5 +1,6 @@
 package com.repository.web.storage.add;
 
+import com.repository.entity.SdictionaryEntity;
 import com.repository.util.Util;
 
 import java.util.ArrayList;
@@ -10,7 +11,12 @@ import java.util.List;
  */
 public class StorageForm {
 
-    private String inStorageId = Util.getInstorgeId();
+
+    public StorageForm(SdictionaryEntity entity) {
+        this.inStorageId = Util.getInstorgeId(entity);
+    }
+
+    private String inStorageId;
 
     private List<ItemForm> itemForms = new ArrayList<>();
 

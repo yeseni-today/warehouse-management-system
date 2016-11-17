@@ -3,8 +3,12 @@ package com.repository.dao;
 import com.repository.entity.UsersEntity;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
+import javax.transaction.Transactional;
 
 @Component
+@Repository
 public class UsersDao extends AbstractDao<UsersEntity> {
 
 

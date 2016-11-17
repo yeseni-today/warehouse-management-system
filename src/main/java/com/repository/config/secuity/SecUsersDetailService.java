@@ -27,14 +27,18 @@ public class SecUsersDetailService implements UserDetailsService {
         try {
             user = usersDao.findById(userName);
         } catch (Exception e) {
+            System.out.println("user select fail");
+            e.printStackTrace();
             throw new UsernameNotFoundException("user select fail");
         }
         if (user == null) {
+            System.out.println("no user found");
             throw new UsernameNotFoundException("no user found");
         } else {
             try {
                 return new SecUserDetails(user);
             } catch (Exception e) {
+                System.out.println("user role select fail");
                 throw new UsernameNotFoundException("user role select fail");
             }
         }

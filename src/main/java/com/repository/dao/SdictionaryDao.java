@@ -3,17 +3,15 @@ package com.repository.dao;
 import com.repository.entity.SdictionaryEntity;
 
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 /**
  * Created by Finderlo on 11/16/2016.
  */
 @Component
+@Repository
 public class SdictionaryDao extends AbstractDao<SdictionaryEntity> {
-
-    public static void main(String[] args) {
-//        new SdictionaryDao().findAll().forEach(entity -> {
-//            System.out.println(new StringBuilder().append(entity.getField()).append(":table:").append(entity.getTable()).toString());
-//        });
-        System.out.println(new SdictionaryDao().findById("storage_ID").getField());
+    public SdictionaryEntity getStorageEntity() {
+        return findById("storage_ID");
     }
 }

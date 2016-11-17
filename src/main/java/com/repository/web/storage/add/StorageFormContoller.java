@@ -1,5 +1,6 @@
 package com.repository.web.storage.add;
 
+import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.dao.ItemDao;
 
@@ -26,12 +27,14 @@ public class StorageFormContoller {
     public static final String HTML_STORAGE_ADD_STORAGE_FORM = PREFIX + "storage_form";
     @Autowired
     private ItemDao itemDao;
+    @Autowired
+    private SdictionaryDao sdictionaryDao;
 
     @ModelAttribute
     public void storageForm(Model model, HttpSession session) {
         StorageForm storageForm = (StorageForm) session.getAttribute(STORAGE_FORM);
         if (storageForm == null) {
-            session.setAttribute(STORAGE_FORM, new StorageForm());
+            session.setAttribute(STORAGE_FORM, new StorageForm(sdictionaryDao.getStorageEntity()));
         }
     }
 

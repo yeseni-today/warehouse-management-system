@@ -1,10 +1,10 @@
 package com.repository.dao;
 
-import com.repository.config.Factory;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -15,15 +15,23 @@ import java.util.List;
 import java.util.Map;
 
 
+//@Component
+@Repository
 public abstract class AbstractDao<T extends Object> {
 
-    protected SessionFactory sessionFactory = Factory.sessionFactory();
+//    protected SessionFactory sessionFactory = Factory.sessionFactory();
+
+    @Autowired
+    protected SessionFactory sessionFactory;
 
     private List<String> ids = new ArrayList<>();
     private String id;
 
     public T findById(String parm) {
 
+        if (sessionFactory == null) {
+            System.out.println("sess:null");
+        }
         if (isMoreId()) {
             throw new UnsupportedOperationException();
         }
@@ -39,26 +47,25 @@ public abstract class AbstractDao<T extends Object> {
     public T findByIds(Map<String, String> idAndValues) {
         Session session = sessionFactory.openSession();
         String hql = jointHqlByIdsQuery(idAndValues);
-        Query query = session.createQuery(hql);
-        List<T> tList = query.list();
+        List<T> tList = session.createQuery(hql).list();
         session.close();
         if (tList.isEmpty()) {
             return null;
         }
+        System.out.println(tList.get(0));
         return tList.get(0);
     }
 
     public List<T> findAll(){
         Session session = sessionFactory.openSession();
-        Query<T> query =session.createQuery("from "+bindClassName(),bindClass());
-        List<T> tList = query.list();
+        List<T> tList = session.createQuery("from " + bindClassName()).list();
         session.close();
         return tList;
     }
 
     /**
      * 分页获取所有博客
-     * @param pageable
+     * @param
      * @return
      */
 //    Page<T> findBlogs(Pageable pageable);
@@ -82,8 +89,7 @@ public abstract class AbstractDao<T extends Object> {
         Session session = sessionFactory.openSession();
 
 
-        Query<T> tQuery = session.createQuery(hql);
-        List<T> result = tQuery.list();
+        List<T> result = session.createQuery(hql).list();
         session.close();
         return result;
     }

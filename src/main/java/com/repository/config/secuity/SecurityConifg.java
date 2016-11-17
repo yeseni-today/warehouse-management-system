@@ -36,6 +36,7 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
                 .antMatchers("/signin").permitAll()
+                .antMatchers("/generalError").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
                 .httpBasic()
