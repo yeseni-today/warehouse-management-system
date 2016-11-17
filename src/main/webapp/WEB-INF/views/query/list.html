@@ -22,33 +22,36 @@
     </div>
 
 
-
     <div class="content-query myInput">
         <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
         <form action="#" th:action="@{/queryItem}" method="get">
-            <label>
-                物品条码：
-                <input type="text" name="itemCode"/>
-            </label>
-            <label>
-                物品名称：
-                <input type="text" name="itemName"/>
-            </label>
-            <label>
-                物品类别：
-                <select name="itemCategoryId">
-                    <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
-                    <option th:if="${session.categories == null || session.categories.empty}">
-                        没有找到分类，请刷新重试
-                    </option>
-                    <option th:each="category : ${session.categories}"
-                            th:value="${category.categoryId}"
-                            th:text="${category.categoryName}">
-                    </option>
-                </select>
-            </label>
-            <input type="submit" value="查询"/>
+            <div class="content-query-left">
+                <label>
+                    物品条码：
+                    <input type="text" name="itemCode"/>
+                </label>
+                <label>
+                    物品名称：
+                    <input type="text" name="itemName"/>
+                </label>
+                <label>
+                    物品类别：
+                    <select name="itemCategoryId">
+                        <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                        <option th:if="${session.categories == null || session.categories.empty}">
+                            没有找到分类，请刷新重试
+                        </option>
+                        <option th:each="category : ${session.categories}"
+                                th:value="${category.categoryId}"
+                                th:text="${category.categoryName}">
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div class="content-query-right">
+                <input type="submit" value="查询"/>
+            </div>
         </form>
     </div>
 

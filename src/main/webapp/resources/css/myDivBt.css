@@ -1,9 +1,9 @@
 .myDivBt{
     float: right;
-    height: 2.2em;
+    height: 2.5em;
     background: #1abc9c;
     text-align: center;
-    line-height: 2.2em;
+    line-height: 2.5em;
     border-radius: 0.25em;
     transition: background 0.3s;
 }

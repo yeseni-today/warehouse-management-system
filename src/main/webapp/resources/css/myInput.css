@@ -24,7 +24,7 @@
     font-size: 1em;
     color: white;
     width: 8em;
-    height: 2.2em;
+    height: 2.5em;
     border-radius: 0.25em;
     border: 0;
     outline: 0;
@@ -38,9 +38,9 @@
 
 .myInput select {
     font-size: 1em;
-    height: 2.2em;
+    height: 2.5em;
     width: 10em;
-    border: 0.1em solid gray;
+    border: 0.15em solid gray;
     background: #f5f5f5;
     border-radius: 0.25em;
     outline: 0;

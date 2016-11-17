@@ -5,6 +5,7 @@
     line-height: 4em;
     text-align: center;
 }
+
 .myInfoList .name {
     float: left;
     height: 4em;
@@ -12,6 +13,7 @@
     line-height: 4em;
     text-align: right;
 }
+
 .myInfoList .value {
     float: right;
     height: 4em;
