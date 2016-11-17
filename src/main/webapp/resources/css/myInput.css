@@ -20,6 +20,7 @@
 }
 
 .myInput input[type="submit"], input[type="button"] {
+    /**/
     font-size: 1em;
     color: white;
     width: 8em;
