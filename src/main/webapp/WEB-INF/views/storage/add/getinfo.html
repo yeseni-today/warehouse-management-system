@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8"/>
@@ -13,27 +13,28 @@
 <body>
 
 <div class="content" tiles:fragment="content">
-
     <div class="titleNav">
         <div class="title_nav title_nav_previous">
-            <a href="additem.html">添加物品</a></div>
-        <div class="title_nav title_nav_Now"><a>详细信息</a></div>
+            <a href="additem.html">添加物品</a>
+        </div>
+        <div class="title_nav title_nav_Now">
+            <a>详细信息</a>
+        </div>
     </div>
     <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
-    <div class="info myForm myInput">
-        <form action="/storage/add/additem" method="post">
+    <div class="myInfoList myInput">
+        <form action="additem.html" method="post"
+              th:action="@{additem}">
+            <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>
             <ul>
-                <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>
-
-
                 <li>
                     <label>
                         <div class="name">
                             物品名称：
                         </div>
                         <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemName}"
-                                   value="XXX" readonly="readonly"/>
+                            <input type="text" readonly="readonly"
+                                   th:value="${item.itemName}"/>
                         </div>
                     </label>
                 </li>
@@ -43,31 +44,19 @@
                             物品类别：
                         </div>
                         <div class="value">
-                            <input type="text" name="item_name" th:value="${item.itemSpec}"
-                                   value="XXX" readonly="readonly"/>
+                            <input type="text" readonly="readonly"
+                                   th:value="${item.itemCategoryEntity.categoryName}"/>
                         </div>
                     </label>
                 </li>
                 <li>
                     <label>
                         <div class="name">
-                            物品类别：
+                            库存数量：
                         </div>
                         <div class="value">
-                            <input type="text" name="item_name"
-                                   th:value="${item.itemCategoryEntity.categoryName}" value="XXX"
-                                   readonly="readonly"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            物品规格：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemSpec}" name="item_name"
-                                   readonly="readonly"/>
+                            <input type="number" readonly="readonly"
+                                   th:value="${item.itemCount}"/>
                         </div>
                     </label>
                 </li>
@@ -77,8 +66,19 @@
                             物品单价：
                         </div>
                         <div class="value">
-                            <input type="text" th:value="${item.itemPrice}" name="item_name"
-                                   readonly="readonly"/>
+                            <input type="text" readonly="readonly"
+                                   th:value="${item.itemPrice}"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            物品规格：
+                        </div>
+                        <div class="value">
+                            <input type="text" readonly="readonly"
+                                   th:value="${item.itemSpec}"/>
                         </div>
                     </label>
                 </li>
@@ -88,41 +88,57 @@
                             生产厂商：
                         </div>
                         <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.getCompanyName()}"
-                                   name="item_name"
-                                   readonly="readonly"/>
+                            <input type="text" readonly="readonly"
+                                   th:value="${item.itemCompanyEntity.getCompanyName()}"/>
                         </div>
                     </label>
                 </li>
                 <li>
                     <label>
                         <div class="name">
-                            厂商联系方式：
-                        </div>
-                        <div class="value">
-                            <input type="text" th:value="${item.itemCompanyEntity.companyPhone}"
-                                   name="item_name"
-                                   readonly="readonly"/>
-                        </div>
-                    </label>
-                </li>
-                <li>
-                    <label>
-                        <div class="name">
-                            添加数量：
+                            入库数量：
                         </div>
                         <div class="value">
                             <input type="number" name="itemCount"/>
                         </div>
                     </label>
                 </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            此次入库单价：
+                        </div>
+                        <div class="value">
+                            <input type="number" name="itemPrice"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            发票代码：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="billCode"/>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <label>
+                        <div class="name">
+                            入库库位：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="storageLocation"/>
+                        </div>
+                    </label>
+                </li>
 
                 <li>
-                    <div style="line-height: 5em">
+                    <div>
                         <input class="submitBt" type="submit" value="增加物品"/>
                     </div>
                 </li>
-
             </ul>
         </form>
     </div>

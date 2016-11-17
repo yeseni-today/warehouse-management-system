@@ -1,21 +1,21 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:replace="title">Title</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/all.css"
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
           th:href="@{/resources/css/all.css}"/>
     <script src="../../../resources/js/main.js"
             th:src="@{/resources/js/main.js}">
     </script>
-
-
 </head>
-<body>
-<div>
 
+<body>
+
+<div>
     <div class="header">
         <div th:replace="templates/navBar :: navBar">
         </div>
@@ -30,7 +30,7 @@
         <div th:replace="templates/footer :: footer">
         </div>
     </div>
-
 </div>
+
 </body>
 </html>
