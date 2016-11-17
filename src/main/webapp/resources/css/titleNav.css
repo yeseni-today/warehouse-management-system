@@ -3,20 +3,60 @@
     min-width: 70em;
     height: 3em;
     margin-bottom: 1em;
-    background: #c8c8c8;
 }
-.titleNav .title1{
+
+.titleNav a {
+    float: left;
+    font-size: 1.5em;
+    padding: 0 1em;
+    color: white;
+    line-height: 2em;
+    text-decoration: none;
+}
+
+.titleNav .title_nav {
+    float: left;
+    height: 3em;
+    background: #34495e;
+}
+
+.titleNav .title_nav:hover {
+    background: #4e6d8d;
+}
+
+.titleNav .title_nav_previous {
+    border-radius: 0.5em 0 0 0.5em;
+    border-right: 0.1em solid black;
+}
+
+.titleNav .title_nav_Now {
+    border-radius: 0 0.5em 0.5em 0;
+}
+
+.titleNav .title_nav_previous:before {
+    float: left;
+    content: '';
+    margin: 1em;
+    width: 1em;
+    height: 1em;
+    background: url("../picture/previous.png");
+    background-size: 100%;
+}
+
+.titleNav .title1 {
     font-size: 2em;
     float: left;
     margin-top: 0.2em;
     margin-left: 0.5em;
 }
-.titleNav .title2{
+
+.titleNav .title2 {
     font-size: 1.8em;
     float: left;
     margin-top: 0.3em;
 }
-.titleNav .title3{
+
+.titleNav .title3 {
     font-size: 1.6em;
     float: left;
     margin-top: 0.5em;
