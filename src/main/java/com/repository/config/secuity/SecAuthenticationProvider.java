@@ -34,7 +34,7 @@ public class SecAuthenticationProvider implements AuthenticationProvider {
         }
 
         //加密过程在这里体现
-        if (!password.equals(user.getPassword())) {
+        if (!password.trim().equals(user.getPassword().trim())) {
             throw new BadCredentialsException("Wrong password.");
         }
 
