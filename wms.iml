@@ -43,6 +43,9 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.40" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:5.0.9.Final" level="project" />
+    <orderEntry type="library" name="Maven: xml-apis:xml-apis:1.4.01" level="project" />
+    <orderEntry type="library" name="Maven: org.hibernate:hibernate-entitymanager:5.0.9.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:1.4.0.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.4" level="project" />
