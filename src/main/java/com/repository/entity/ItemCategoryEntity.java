@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_category", schema = "wms", catalog = "")
+@Table(name = "item_category")
 public class ItemCategoryEntity {
     private String categoryId;
     private String categoryName;

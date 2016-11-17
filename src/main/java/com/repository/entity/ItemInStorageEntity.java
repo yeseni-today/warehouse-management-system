@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_in_storage", schema = "wms")
+@Table(name = "item_in_storage")
 @IdClass(ItemInStorageEntityPK.class)
 public class ItemInStorageEntity {
     private String storageId;

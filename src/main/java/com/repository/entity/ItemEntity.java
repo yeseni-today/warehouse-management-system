@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item", schema = "wms", catalog = "")
+@Table(name = "item")
 public class ItemEntity {
     private String itemCode;
     private String itemName;

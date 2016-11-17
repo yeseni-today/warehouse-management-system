@@ -10,7 +10,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 11/16/2016.
  */
 @Entity
-@Table(name = "sdictionary", schema = "wms", catalog = "")
+@Table(name = "sdictionary")
 public class SdictionaryEntity {
     private String field;
     private String table;

@@ -18,7 +18,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_borrow", schema = "wms", catalog = "")
+@Table(name = "item_borrow")
 @IdClass(ItemBorrowEntityPK.class)
 public class ItemBorrowEntity {
     private String borrowId;

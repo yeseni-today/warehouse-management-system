@@ -11,7 +11,7 @@ import javax.validation.constraints.Size;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "users", schema = "wms", catalog = "")
+@Table(name = "users")
 public class UsersEntity {
     @Size(max = 5,message = "用户标识符为5位")
     private String usersId;

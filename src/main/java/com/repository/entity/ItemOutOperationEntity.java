@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "item_out_operation", schema = "wms", catalog = "")
+@Table(name = "item_out_operation")
 public class ItemOutOperationEntity {
     private String outId;
     private String usersId;
