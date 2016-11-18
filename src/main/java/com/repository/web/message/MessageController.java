@@ -1,14 +1,19 @@
 package com.repository.web.message;
 
+import com.repository.base.BaseController;
+
+import org.springframework.context.annotation.Import;
+
+import static com.repository.Constants.*;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/message")
-public class MessageController {
 
-    private static final String PREFIX = "tiles/message/";
+public class MessageController extends BaseController {
 
-    @RequestMapping("/")
+
+    @RequestMapping(URL_MESSAGE)
     public String message() {
-        return PREFIX + "list";
+        return HTML_MESSAGE_LIST;
     }
 }

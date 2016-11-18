@@ -13,13 +13,15 @@ import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import static com.repository.Constants.*;
 @Controller
 class CustomErrorController implements ErrorController {
+
 
     /**
      * Display an error page, as defined in web.xml <code>custom-error</code> element.
      */
-    @RequestMapping("/generalError")
+    @RequestMapping(URL_ERROR_GENERAL)
     public String generalError(HttpServletRequest request, HttpServletResponse response, Model model) {
         // retrieve some useful information from the request
         Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
@@ -38,8 +40,9 @@ class CustomErrorController implements ErrorController {
         );
 
         model.addAttribute("errorMessage", message);
-        return "error/general";
+        return HTML_ERROR_GENERAL;
     }
+
 
     private String getExceptionMessage(Throwable throwable, Integer statusCode) {
         if (throwable != null) {
@@ -50,9 +53,7 @@ class CustomErrorController implements ErrorController {
     }
 
 
-    private static final String ERROR_PATH = "/404error";
-
-    @RequestMapping(value = ERROR_PATH)
+    @RequestMapping(value = HTML_ERROR_404)
     public String handleError() {
         return "tiles/error/404";
     }
@@ -61,6 +62,6 @@ class CustomErrorController implements ErrorController {
     @Override
     public String getErrorPath() {
         // TODO Auto-generated method stub
-        return ERROR_PATH;
+        return HTML_ERROR_404;
     }
 }

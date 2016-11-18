@@ -2,12 +2,12 @@ package com.repository.web.log;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@RequestMapping("/log")
-public class LogController {
-    private static final String PREFIX = "tiles/log/";
+import static com.repository.Constants.*;
 
-    @RequestMapping("/")
+public class LogController {
+
+    @RequestMapping(URL_LOG)
     public String log() {
-        return PREFIX + "history";
+        return HTML_LOG_HISTORY;
     }
 }

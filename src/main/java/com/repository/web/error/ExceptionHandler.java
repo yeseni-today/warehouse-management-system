@@ -1,6 +1,7 @@
 package com.repository.web.error;
 
 import com.google.common.base.Throwables;
+import com.repository.base.BaseController;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,22 +9,22 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import static com.repository.Constants.*;
 /**
  * General error handler for the application.
  */
 @ControllerAdvice
-class ExceptionHandler {
-    private static final Logger LOGGER = LoggerFactory.getLogger("ErrorLog");
+class ExceptionHandler extends BaseController {
 
     /**
      * Handle exceptions thrown by handlers. 非404
      */
     @org.springframework.web.bind.annotation.ExceptionHandler(value = Exception.class)
     public ModelAndView exception(Exception exception, WebRequest request) {
-        ModelAndView modelAndView = new ModelAndView("error/general");
+        ModelAndView modelAndView = new ModelAndView(HTML_ERROR_GENERAL);
         Throwable rootCause = Throwables.getRootCause(exception);
         modelAndView.addObject("errorMessage", rootCause);
-        LOGGER.error(rootCause.toString(), exception);
+        logger.error(rootCause.toString(), exception);
         return modelAndView;
     }
 }

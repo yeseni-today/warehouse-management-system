@@ -1,5 +1,7 @@
 package com.repository.web.sign;
 
+import com.repository.Constants;
+import com.repository.base.BaseController;
 import com.repository.entity.UsersEntity;
 import com.repository.dao.UsersDao;
 
@@ -10,38 +12,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import static com.repository.Constants.*;
 /**
  * Created by Finderlo on 2016/11/5.
  */
 @Controller
-public class LoginController {
+public class LoginController extends BaseController {
 
-
-    String TILES_PREFIX = "tiles";
-
-    @RequestMapping("/")
+    @RequestMapping(URL_INDEX)
     public String greeting() {
-        return "tiles/query/list";
+        return HTML_QUERY_LIST;
     }
 
-    @RequestMapping("/signin")
+    @RequestMapping(URL_SIGNIN)
     public String login() {
-        return "tiles/login/signin";
+        return HTML_LOGIN_SIGNIN;
     }
 
-
-    @RequestMapping("/logincheck")
-    public String logincheck(@Valid UsersEntity usersEntity, Model model, HttpServletRequest request) {
-        UsersDao usersDao = new UsersDao();
-        if (usersDao.checkLogin(usersEntity)){
-            UsersEntity users = usersDao.findById(usersEntity.getUsersId());
-
-            request.getSession().setAttribute("user",users);
-            return "redirect:query";
-        }else {
-            return "error";
-        }
-    }
 
 
 }
