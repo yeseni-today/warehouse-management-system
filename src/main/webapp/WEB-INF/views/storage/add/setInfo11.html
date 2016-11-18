@@ -1,25 +1,28 @@
 <!DOCTYPE html>
-<html xmlns:tiles="http://www.w3.org/2005/Atom"
-      xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">setInfo</title>
 
-    <link type="text/css" rel="stylesheet" href="../../../../resources/css/all.css"/>
+    <link href="../../../../resources/css/all.css" type="text/css" rel="stylesheet"/>
     <script src="../../../../resources/js/main.js"></script>
 </head>
 
 <body>
 
-<div tiles:fragment="content" class="content">
-    <div class="titleNav">
-        <div class="title_nav title_nav_previous">
-            <a href="additem.html">添加物品</a></div>
-        <div class="title_nav title_nav_Now"><a>详细信息</a></div>
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_previous">
+                <a href="additem.html">添加物品</a></div>
+            <div class="title_nav title_nav_Now"><a>详细信息</a></div>
+        </div>
     </div>
 
-    <div class="myInfoList myInput">
-        <form action="new_storage_form.html" th:action="@{additem}"
+    <div class="content-info myInfoList myInput">
+        <form action="storage_form.html" th:action="@{additem}"
               th:method="get">
 
             <!--/*@thymesVar id="item_info" type="com.repository.other.ItemInfo"*/-->

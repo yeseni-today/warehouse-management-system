@@ -1,38 +1,34 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">申请历史</title>
 
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/titleNav.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/myDivBt.css"/>
-    <link rel="stylesheet" type="text/css" href="../../../resources/css/myTable.css"/>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        .result {
-            width: 800px;
-            margin: 20px auto;
-        }
-    </style>
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../resources/js/main.js"></script>
 </head>
+
 <body>
-<div class="title">
-    <div class="title1">申请历史></div>
 
-</div>
-
-
-<div tiles:fragment="content" class="content">
-    <div class="myDivBt">
-        <a href="/apply/add/">新建申请</a>
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_Now">
+                <a>申请历史</a>
+            </div>
+        </div>
     </div>
-    <div class="result">
-        <table class="myTable" border="1">
+
+    <div class="content-function">
+        <div class="myDivBt">
+            <a href="add/apply_form.html" th:href="@{/apply/add}">新建申请</a>
+        </div>
+    </div>
+
+    <div class="content-result myTable">
+        <table>
             <tr>
                 <th>申请单编号</th>
                 <th>申请日期</th>
@@ -54,5 +50,6 @@
         </table>
     </div>
 </div>
+
 </body>
 </html>
