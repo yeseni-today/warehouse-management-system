@@ -25,7 +25,8 @@ import org.springframework.test.context.ActiveProfiles;
 @ComponentScan(basePackageClasses = {Application.class, Util.class, QueryController.class, AbstractDao.class})
 @EnableAutoConfiguration(exclude = {WebConfig.class, SecurityManager.class})
 //@ActiveProfiles("lx")
-@ActiveProfiles("default")
+//@ActiveProfiles("default")
+
 public class Application {
 
 

@@ -7,6 +7,7 @@ import com.repository.dao.ItemCategoryDao;
 import com.repository.dao.ItemDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -45,7 +46,9 @@ public class QueryController extends BaseController {
     public String queryItem(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
                             @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
                             @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
-                            Model model) {
+                            Model model,
+                            HttpRequest request) {
+
         List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));

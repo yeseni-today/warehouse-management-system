@@ -2,6 +2,7 @@ package com.repository.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
@@ -17,7 +18,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value = "classpath:/finderlo_jdbc.properties")
-@Profile("default")
+@Profile({"finderlo", "default"})
 public class MysqlDataSourceConfig {
 
     @Value("${db.driver}")
@@ -42,7 +43,6 @@ public class MysqlDataSourceConfig {
     private String ENTITYMANAGER_PACKAGES_TO_SCAN;
 
     @Bean
-
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(DB_DRIVER);
@@ -51,7 +51,6 @@ public class MysqlDataSourceConfig {
         dataSource.setPassword(DB_PASSWORD);
         return dataSource;
     }
-
     @Bean
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();

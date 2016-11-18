@@ -25,7 +25,6 @@ import java.util.List;
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
-@Profile("default")
 public class Test1 extends
         BaseObject {
 
