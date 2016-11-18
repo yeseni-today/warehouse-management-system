@@ -106,9 +106,8 @@
     max-height: 0;
     padding: 0 5px;
     border-radius: 6px;
-    box-shadow: 2px 2px 3px #34495e;
-    /*background: rgba(0, 0, 0, 0.84);*/
-    background: #34495e;
+    box-shadow: 2px 2px 3px #000000;
+    background: #212121;
     overflow: hidden;
     transition: all 0.5s;
 }
@@ -127,7 +126,7 @@
 }
 
 .nav dd:hover {
-    background: #717171;
+    /*background: #717171;*/
 }
 
 .nav dd>a{

@@ -25,7 +25,6 @@ import static com.repository.Constants.*;
 @Controller
 public class AddapplyController extends BaseController {
 
-
     @Autowired
     ItemDao itemDao;
 
@@ -40,7 +39,7 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(URL_APPLY_ADD)
     public String apply() {
-        return HTML_APPLY_ADD_APPLYLIST;
+        return HTML_APPLY_ADD_APPLYFORM;
     }
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)

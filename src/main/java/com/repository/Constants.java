@@ -43,7 +43,7 @@ public interface Constants {
     String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
     String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
     String HTML_APPLY_ADD_PREFIX = HTML_APPLY_PREFIX + "add/";
-    String HTML_APPLY_ADD_APPLYLIST = HTML_APPLY_ADD_PREFIX + "applyList";
+    String HTML_APPLY_ADD_APPLYFORM = HTML_APPLY_ADD_PREFIX + "apply_form";
     String HTML_APPLY_ADD_ADDITEM = HTML_APPLY_ADD_PREFIX + "additem";
 
 

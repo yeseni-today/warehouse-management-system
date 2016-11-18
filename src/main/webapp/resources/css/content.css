@@ -12,11 +12,12 @@
 }
 
 .content-function {
-    float: right;
+    margin-top: 1em;
     height: 3em;
 }
 
 .content-query {
+    margin-top: 1em;
     width: 65em;
     height: 3em;
 }
@@ -37,6 +38,7 @@
 }
 
 .content-result {
+    margin-top: 1em;
     width: 65em;
 }
 
