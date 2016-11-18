@@ -3,29 +3,26 @@ package com.repository.config;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import java.util.Properties;
 
 import javax.sql.DataSource;
 
+
 @Configuration
-public class DataSourceConfig {
+@PropertySource(value = "classpath:/lx_jdbc.properties")
+@Profile("lx")
+public class SqlServerDataSourceConfig {
 
     @Value("${db.driver}")
     private String DB_DRIVER;
 
-    @Value("${db.password}")
-    private String DB_PASSWORD;
-
     @Value("${db.url}")
     private String DB_URL;
-
-    @Value("${db.username}")
-    private String DB_USERNAME;
 
     @Value("${hibernate.dialect}")
     private String HIBERNATE_DIALECT;
@@ -35,14 +32,16 @@ public class DataSourceConfig {
 
     @Value("${entitymanager.packagesToScan}")
     private String ENTITYMANAGER_PACKAGES_TO_SCAN;
+    @Value("${hibernate.default.schma}")
+    private String HIBERNATE_SCHMA;
+    @Value("${hibernate.default.catalog}")
+    private String HIBERNATE_CATALOG;
 
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(DB_DRIVER);
         dataSource.setUrl(DB_URL);
-        dataSource.setUsername(DB_USERNAME);
-        dataSource.setPassword(DB_PASSWORD);
         return dataSource;
     }
 
@@ -54,7 +53,8 @@ public class DataSourceConfig {
         Properties hibernateProperties = new Properties();
         hibernateProperties.put("hibernate.dialect", HIBERNATE_DIALECT);
         hibernateProperties.put("hibernate.show_sql", HIBERNATE_SHOW_SQL);
-//        hibernateProperties.put("hibernate.hbm2ddl.auto", HIBERNATE_HBM2DDL_AUTO);
+        hibernateProperties.put("hibernate.default_schema", HIBERNATE_SCHMA);
+        hibernateProperties.put("hibernate.default_catalog", HIBERNATE_CATALOG);
         sessionFactoryBean.setHibernateProperties(hibernateProperties);
         return sessionFactoryBean;
     }

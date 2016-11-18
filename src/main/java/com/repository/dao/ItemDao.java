@@ -21,4 +21,12 @@ public class ItemDao extends AbstractDao<ItemEntity> {
         session.close();
         return result;
     }
+
+    public List<ItemEntity> getOne() {
+        Session session = sessionFactory.openSession();
+        String hql = "select e from ItemEntity e where ( e.itemCode='0000000000003' or e.itemCount>10 ) and e.itemPrice>10 ";
+        List<ItemEntity> result = session.createQuery(hql).list();
+        session.close();
+        return result;
+    }
 }
