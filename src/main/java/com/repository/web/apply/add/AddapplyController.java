@@ -1,8 +1,8 @@
 package com.repository.web.apply.add;
 
+import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.entity.ItemEntity;
-import com.sun.deploy.net.HttpResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,31 +11,21 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyEmitterAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import static com.repository.Constants.*;
+
 /**
  * Created by Finderlo on 2016/11/15.
  */
 @Controller
-@RequestMapping("/apply/add")
-public class AddapplyController {
+public class AddapplyController extends BaseController {
 
-    public static final String SESSION_APPLY_FORM = "apply_form";
 
-    public static final String APPLY_ADD_PREFIX = "tiles/apply/add/";
-
-    public static final String HTML_APPLY_ADD_APPLYLIST = APPLY_ADD_PREFIX + "applyList";
-    public static final String HTML_APPLY_ADD_ADDITEM = APPLY_ADD_PREFIX + "additem";
-
-    public static final String URL_APPLY_ADD_APPLYFORM = "/apply/add";
-
-    public static final String REDIRECT = "redirect: ";
     @Autowired
     ItemDao itemDao;
 
@@ -45,19 +35,20 @@ public class AddapplyController {
         if (applyForm == null) {
             session.setAttribute(SESSION_APPLY_FORM, new ApplyForm());
         }
+        logger.info("123");
     }
 
-    @RequestMapping(value = {"/", ""})
+    @RequestMapping(URL_APPLY_ADD)
     public String apply() {
         return HTML_APPLY_ADD_APPLYLIST;
     }
 
-    @RequestMapping(value = "/additem", method = RequestMethod.GET)
+    @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
     public String getaddItem() {
         return HTML_APPLY_ADD_ADDITEM;
     }
 
-    @RequestMapping("/queryItem")
+    @RequestMapping(URL_APPLY_ADD_QUERY_ITEM)
     public String queryItem(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
                             @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
                             @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
@@ -69,20 +60,8 @@ public class AddapplyController {
         return HTML_APPLY_ADD_ADDITEM;
     }
 
-    //    //itemCodes
-//    @RequestMapping("additems")
-//    public String additems(
-//            @RequestParam(name = "itemCodes", required = false) String[] itemCodes,
-//            HttpSession session) {
-//        ApplyForm applyForm = getApplyForm(session);
-//        for (String code : itemCodes) {
-//            applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
-//        }
-////        return REDIRECT+URL_APPLY_ADD_APPLYFORM;
-//        return "redirect:/apply/add";
-//    }
 //itemCodes
-    @RequestMapping("/additems")
+@RequestMapping(URL_APPLY_ADD_ADDITEMS)
     public String additems(
             @RequestParam(name = "itemCodes", required = false) String[] itemCodes,
             HttpSession session) {
@@ -90,7 +69,8 @@ public class AddapplyController {
         for (String code : itemCodes) {
             applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
         }
-        return "redirect:/apply/add";
+    logger.info("additems");
+    return REDIRECT + URL_APPLY_ADD;
     }
 
     public ApplyForm getApplyForm(HttpSession session) {

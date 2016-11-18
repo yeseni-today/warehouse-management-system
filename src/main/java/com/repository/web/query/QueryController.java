@@ -1,5 +1,6 @@
 package com.repository.web.query;
 
+import com.repository.base.BaseController;
 import com.repository.entity.ItemCategoryEntity;
 import com.repository.entity.ItemEntity;
 import com.repository.dao.ItemCategoryDao;
@@ -17,21 +18,30 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import static com.repository.Constants.*;
 
+@RequestMapping(URL_QUERY)
 @Controller
-public class QueryController {
+public class QueryController extends BaseController {
 
     @Autowired
     ItemDao itemDao;
     @Autowired
     ItemCategoryDao categoryDao;
 
+
     @ModelAttribute
     public void init(HttpSession session) {
         session.setAttribute("categories", categories());
     }
 
-    @RequestMapping("/queryItem")
+    @RequestMapping()
+    public String queryTo(Model model) {
+        model.addAttribute("items", itemDao.findAll());
+        return HTML_QUERY_LIST;
+    }
+
+    @RequestMapping(URL_QUERY_QUERYITEM)
     public String queryItem(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
                             @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
                             @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
@@ -40,34 +50,12 @@ public class QueryController {
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));
         model.addAttribute("items", result);
-        return "tiles/query/list";
+        return HTML_QUERY_LIST;
     }
 
-
-
-    @RequestMapping("/query")
-    public String queryTo(Model model) {
-        model.addAttribute("items", itemDao.findAll());
-        return "tiles/query/list";
-    }
 
     public List<ItemCategoryEntity> categories() {
         return categoryDao.findAll();
-    }
-
-
-    @RequestMapping("/queryItemRes")
-    @ResponseBody
-    public List<ItemEntity> queryItemPres(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
-                                          @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
-                                          @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
-                                          Model model) {
-//        List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
-//                , new String[]{itemCode, itemName});
-//        result.addAll(itemDao.queryByCategoryId(itemCategoryId));
-        List<ItemEntity> result = itemDao.findAll();
-        System.out.println("success");
-        return result;
     }
 
 

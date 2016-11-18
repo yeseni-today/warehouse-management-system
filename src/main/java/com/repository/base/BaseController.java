@@ -6,5 +6,5 @@ package com.repository.base;
 
 import static com.repository.Constants.*;
 
-public class BaseController {
+public class BaseController extends BaseObject {
 }

@@ -1,5 +1,6 @@
 package com.repository.web.apply;
 
+import com.repository.base.BaseController;
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
 
@@ -8,11 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static com.repository.Constants.*;
 @Controller
-@RequestMapping("/apply")
-public class ApplyController {
-
-    private static final String PREFIX = "tiles/apply/";
+public class ApplyController extends BaseController {
 
     @Autowired
     ItemApplicationDao applicationDao;
@@ -20,10 +19,10 @@ public class ApplyController {
     @Autowired
     ItemApplicationOperationDao applicationOperationDao;
 
-    @RequestMapping(value = {"/", ""})
+    @RequestMapping(URL_APPLY)
     public String apply(Model model) {
+        logger.trace("apply/");
         model.addAttribute("applications", applicationOperationDao.findAll());
-        System.out.println("test");
-        return PREFIX + "history";
+        return HTML_APPLY_HISTORY;
     }
 }
