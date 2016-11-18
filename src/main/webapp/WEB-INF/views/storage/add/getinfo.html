@@ -13,16 +13,18 @@
 <body>
 
 <div class="content" tiles:fragment="content">
-    <div class="titleNav">
-        <div class="title_nav title_nav_previous">
-            <a href="additem.html">添加物品</a>
-        </div>
-        <div class="title_nav title_nav_Now">
-            <a>详细信息</a>
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_previous">
+                <a href="additem.html">添加物品</a>
+            </div>
+            <div class="title_nav title_nav_Now">
+                <a>详细信息</a>
+            </div>
         </div>
     </div>
     <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
-    <div class="myInfoList myInput">
+    <div class="content-info myInfoList myInput">
         <form action="additem.html" method="post"
               th:action="@{additem}">
             <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>

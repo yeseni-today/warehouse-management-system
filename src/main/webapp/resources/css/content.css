@@ -31,7 +31,18 @@
     text-align: right;
 }
 
+.content-info {
+    width: 65em;
+    margin-top: 5em;
+}
+
 .content-result {
     width: 65em;
+}
+
+.content-result-operation div {
+
+    margin: 0.5em 0 0 1em;
+
 }
 

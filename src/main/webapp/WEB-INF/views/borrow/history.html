@@ -1,56 +1,57 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">借用历史</title>
 
-    <link rel="stylesheet" type="text/css" href="../myCSS/titleNav.css"/>
-    <link rel="stylesheet" type="text/css" href="../myCSS/myDivBt.css"/>
-    <link rel="stylesheet" type="text/css" href="../myCSS/myTable.css"/>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        .result{
-            width: 800px;
-            margin: 20px auto;
-        }
-    </style>
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../resources/js/main.js"></script>
 </head>
+
 <body>
-<div tiles:fragment="content" class="content">
-<div class="title">
-    <div class="title1">借用历史></div>
+
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_Now">
+                <a>借用历史</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-function">
+        <div class="myDivBt">
+            <a href="add/borrow_form.html" th:href="@{/apply/add}">新建借用单</a>
+        </div>
+    </div>
+
+    <div class="content-result myTable">
+        <table>
+            <tr>
+                <th>借用单编号</th>
+                <th>借用日期</th>
+                <th>审核人员编号</th>
+                <th>审核状态</th>
+                <th>审核日期</th>
+                <th>归还状态</th>
+            </tr>
+            <tr th:if="${borrowOpreations == null || borrowOpreations.isEmpty()}">
+                <td colspan="6">没有借用操作表记录</td>
+            </tr>
+            <tr th:each="borrowOpreation : ${borrowOpreations}">
+                <!--/*@thymesVar id="borrowOpreation" type="com.repository.entity.ItemBorrowOperationEntity"*/-->
+                <td th:text="${borrowOpreation.getBorrowId()}"></td>
+                <td th:text="${borrowOpreation.getBorrowTime()}"></td>
+                <td th:text="${borrowOpreation.getUsersId()}"></td>
+                <td th:text="${borrowOpreation.getStates()}"></td>
+                <td th:text="${borrowOpreation.getStatesTime()}"></td>
+                <td th:text="${borrowOpreation.getStatesTime()}"></td>
+            </tr>
+        </table>
+    </div>
 </div>
-<div class="myDivBt">
-    <a href="borrowList.html">新建借用单</a>
-</div>
-<div class="result">
-    <table class="myTable">
-        <tr>
-            <th>借用单编号</th>
-            <th>借用日期</th>
-            <th>审核人员编号</th>
-            <th>审核状态</th>
-            <th>审核日期</th>
-            <th>归还状态</th>
-        </tr>
-        <tr th:if="${borrowOpreations == null || borrowOpreations.isEmpty()}">
-            <td colspan="6">没有借用操作表记录</td>
-        </tr>
-        <tr th:each="borrowOpreation : ${borrowOpreations}">
-            <!--/*@thymesVar id="borrowOpreation" type="com.repository.entity.ItemBorrowOperationEntity"*/-->
-            <td th:text="${borrowOpreation.getBorrowId()}"></td>
-            <td th:text="${borrowOpreation.getStatesTime()}"></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-        </tr>
-    </table>
-</div>
-</div>
+
 </body>
 </html>

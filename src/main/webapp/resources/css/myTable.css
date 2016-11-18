@@ -4,6 +4,11 @@
     border-collapse: collapse;
 }
 
+.myTable caption {
+    text-align: left;
+}
+
+
 .myTable tr {
     height: 2.7em;
 }
