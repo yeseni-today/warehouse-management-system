@@ -56,7 +56,7 @@ public class StorageFormContoller {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         storageForm.getItemForms().add(itemForm);
         session.setAttribute(SESSION_STORAGE_FORM, storageForm);
-        return HTML_STORAGE_ADD_STORAGE_FORM;
+        return REDIRECT + URL_STORAGE_ADD;
     }
 
     /**
