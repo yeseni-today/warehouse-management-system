@@ -24,6 +24,7 @@ public class UmessageEntity {
     private Timestamp messageDate;
     private String messageSendId;
     private String messageReceiveId;
+    private String messageTitle;
 
     @Id
     @Column(name = "message_ID")
@@ -117,5 +118,15 @@ public class UmessageEntity {
         result = 31 * result + (messageSendId != null ? messageSendId.hashCode() : 0);
         result = 31 * result + (messageReceiveId != null ? messageReceiveId.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "message_title")
+    public String getMessageTitle() {
+        return messageTitle;
+    }
+
+    public void setMessageTitle(String messageTitle) {
+        this.messageTitle = messageTitle;
     }
 }

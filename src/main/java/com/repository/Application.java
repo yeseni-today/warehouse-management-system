@@ -22,13 +22,9 @@ import org.springframework.core.io.Resource;
 import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = {Application.class, Util.class, QueryController.class, AbstractDao.class})
 @EnableAutoConfiguration(exclude = {WebConfig.class, SecurityManager.class})
-//@ActiveProfiles("lx")
-//@ActiveProfiles("default")
-
+@ComponentScan("com")
 public class Application {
-
 
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);

@@ -6,6 +6,7 @@ package com.repository;
 public interface Constants {
     String TILES_PREFIX = "tiles/";
     String REDIRECT = "redirect:";
+    int ALLOW_COUNT = 5;
     //session
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";
@@ -27,6 +28,7 @@ public interface Constants {
     String URL_STORAGE_ADD = "/storage/add";
     String URL_STORAGE_ADD_ADDITEM = URL_STORAGE_ADD + "/additem";
     String URL_STORAGE_ADD_SET_ITEM_INFO = URL_STORAGE_ADD + "/set_item_info";
+    String URL_STORAGE_ADD_SUBMIT = URL_STORAGE_ADD + "/submit";
     String HTML_STORAGE_ADD_PREFIX = HTML_STORAGE_PREFIX + "add/";
     String HTML_STORAGE_ADD_STORAGE_FORM = HTML_STORAGE_ADD_PREFIX + "storage_form";
     String HTML_STORAGE_ADD_ADDITEM = HTML_STORAGE_ADD_PREFIX + "additem";
@@ -42,6 +44,7 @@ public interface Constants {
     String URL_APPLY_ADD_ADDITEM = URL_APPLY_ADD + "/additem";
     String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
     String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
+
     String HTML_APPLY_ADD_PREFIX = HTML_APPLY_PREFIX + "add/";
     String HTML_APPLY_ADD_APPLYFORM = HTML_APPLY_ADD_PREFIX + "apply_form";
     String HTML_APPLY_ADD_ADDITEM = HTML_APPLY_ADD_PREFIX + "additem";

@@ -1,5 +1,7 @@
 package com.repository.entity;
 
+import org.springframework.data.annotation.Transient;
+
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -30,6 +32,8 @@ public class ItemEntity {
     private ItemCompanyEntity itemCompanyEntity;
 
     private int itemCount;
+    @Transient
+    private boolean isInSchool;
     @Id
     @Column(name = "item_code")
     public String getItemCode() {
@@ -204,5 +208,13 @@ public class ItemEntity {
         result = 31 * result + (itemExamine != null ? itemExamine.hashCode() : 0);
         result = 31 * result + itemRemind;
         return result;
+    }
+
+    public boolean isInSchool() {
+        return isInSchool;
+    }
+
+    public void setInSchool(boolean inSchool) {
+        isInSchool = inSchool;
     }
 }

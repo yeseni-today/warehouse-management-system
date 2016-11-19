@@ -95,7 +95,7 @@ public abstract class AbstractDao<T extends Object> {
     }
 
     public void save(T t) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.beginTransaction();
         session.save(t);
         session.getTransaction().commit();

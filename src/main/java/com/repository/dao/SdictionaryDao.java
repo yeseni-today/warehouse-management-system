@@ -25,6 +25,10 @@ public class SdictionaryDao extends AbstractDao<SdictionaryEntity> {
         return handleCode(findById("borrow_ID"));
     }
 
+    public String getInSchoolId(String categoryId) {
+        return handleCode(findById(categoryId));
+    }
+
     public String getApplicationId() {
         return handleCode(findById("application_ID"));
     }

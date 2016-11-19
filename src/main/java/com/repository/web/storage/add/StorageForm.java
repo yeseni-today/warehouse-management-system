@@ -12,9 +12,12 @@ import java.util.List;
 public class StorageForm {
 
 
-    public StorageForm(SdictionaryEntity entity) {
-        this.inStorageId = Util.getInstorgeId(entity);
+    public StorageForm(String inStorageId, String opreationId) {
+        this.inStorageId = inStorageId;
+        this.opreationId = opreationId;
     }
+
+    private String opreationId;
 
     private String inStorageId;
 
@@ -34,5 +37,13 @@ public class StorageForm {
 
     public void setInStorageId(String inStorageId) {
         this.inStorageId = inStorageId;
+    }
+
+    public String getOpreationId() {
+        return opreationId;
+    }
+
+    public void setOpreationId(String opreationId) {
+        this.opreationId = opreationId;
     }
 }

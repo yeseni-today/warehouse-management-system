@@ -11,4 +11,9 @@ import org.springframework.stereotype.Repository;
 @Component
 @Repository
 public class ItemInOperationDao extends AbstractDao<ItemInOperationEntity> {
+
+    @Override
+    public void save(ItemInOperationEntity entity) {
+        super.save(entity);
+    }
 }

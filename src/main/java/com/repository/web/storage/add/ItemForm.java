@@ -7,9 +7,9 @@ public class ItemForm {
 
     private String itemCode;// 物品条形码);
     private String itemName;// 物品名称);
-    private String itemCount;// 物品数量);
+    private int itemCount;// 物品数量);
     private String itemSpec;// 物品规格);ui
-    private String itemPrice;// 物品单价（人民币 元）);
+    private double itemPrice;// 物品单价（人民币 元）);
     private String itemIntroduce;// 物品介绍);
     private String itemCompanyID;//物品生产厂商ID);
     private String itemCompanyPhone;//物品生产厂商联系方式);
@@ -20,6 +20,8 @@ public class ItemForm {
 
     private String billCode;//物品发票代码
     private boolean isInschool;//是否是校内编码
+    private String itemBatch;//物品批次
+    private String itemSlot;//物品库位
 
     public String getItemCode() {
         return itemCode;
@@ -37,11 +39,11 @@ public class ItemForm {
         this.itemName = itemName;
     }
 
-    public String getItemCount() {
+    public int getItemCount() {
         return itemCount;
     }
 
-    public void setItemCount(String itemCount) {
+    public void setItemCount(int itemCount) {
         this.itemCount = itemCount;
     }
 
@@ -53,11 +55,11 @@ public class ItemForm {
         this.itemSpec = itemSpec;
     }
 
-    public String getItemPrice() {
+    public double getItemPrice() {
         return itemPrice;
     }
 
-    public void setItemPrice(String itemPrice) {
+    public void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
     }
 
@@ -131,5 +133,21 @@ public class ItemForm {
 
     public void setItemCompanyPhone(String itemCompanyPhone) {
         this.itemCompanyPhone = itemCompanyPhone;
+    }
+
+    public String getItemBatch() {
+        return itemBatch;
+    }
+
+    public void setItemBatch(String itemBatch) {
+        this.itemBatch = itemBatch;
+    }
+
+    public String getItemSlot() {
+        return itemSlot;
+    }
+
+    public void setItemSlot(String itemSlot) {
+        this.itemSlot = itemSlot;
     }
 }
