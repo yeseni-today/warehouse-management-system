@@ -28,8 +28,18 @@
         <!--/*@thymesVar id="itemForm" type="com.repository.web.storage.AddStorageForm.ItemForm"*/-->
         <form action="additem.html" method="post"
               th:action="@{additem}">
-            <input type="hidden" name="isInschool" value="1"/>
+            <input type="hidden" name="isInschool" th:value="${isInschool}"/>
             <ul>
+                <li th:if="${isInschool == 0}">
+                    <label>
+                        <div class="name">
+                            物品编码：
+                        </div>
+                        <div class="value">
+                            <input type="text" name="itemCode"/>
+                        </div>
+                    </label>
+                </li>
                 <li>
                     <label>
                         <div class="name">
@@ -45,7 +55,7 @@
                         <div class="name">
                             物品类别：
                         </div>
-                        <select name="itemCategoryId">
+                        <select name="itemCategoryID">
                             <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
                             <option th:if="${session.categories == null || session.categories.empty}">
                                 没有找到分类,请刷新重试
@@ -103,7 +113,7 @@
                             物品介绍：
                         </div>
                         <div class="value">
-                            <input type="text" name="itemIntroduction"/>
+                            <input type="text" name="itemIntroduce"/>
                         </div>
                     </label>
                 </li>

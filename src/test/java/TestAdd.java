@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by Finderlo on 2016/11/18.
@@ -29,17 +30,19 @@ public class TestAdd {
     @Autowired
     SessionFactory sessionFactory;
 
-    @Test
+    //    @Test
+    @Transactional
     public void set() {
         Session session = sessionFactory.getCurrentSession();
-        Transaction transaction = session.beginTransaction();
-        transaction.begin();
+//        Transaction transaction = session.beginTransaction();
+//        transaction.begin();
         SdictionaryEntity entity = new SdictionaryEntity();
         entity.setIndex(55);
         entity.setField("9999");
         entity.setIndexlength(88);
         entity.setTable("adsdsd");
         sdictionaryDao.save(entity);
+//        transaction.commit();
 //        transaction.rollback();
     }
 }
