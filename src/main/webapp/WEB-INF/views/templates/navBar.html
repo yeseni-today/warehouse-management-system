@@ -19,7 +19,8 @@
             <nav>
                 <ul class="nav">
                     <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/query}">查询</a></li>
-                    <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/storage}">入库</a></li>
+                    <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/storage}">入库</a>
+                    </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#"
                                                                                th:href="@{/apply}">申请</a>
                     </li>
@@ -56,9 +57,12 @@
             <ul class="nav">
                 <!--<li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/login" th:href="@{/login}">Sign in</a></li>-->
                 <!--<li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>-->
-                <li ><!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
-                <a href="/logout" th:if="${session.user!= null}" th:href="@{/logout}" th:text="${session.user.usersName}">小明</a></li>
-                <li ><a href="/logout" th:href="@{/logout}">Logout</a></li>
+                <li class="icon-user">
+                    <!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
+                    <a href="../login/signin.html"
+                       th:text="'1'+${principal}">小明</a>
+                </li>
+                <li><a href="/logout" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
     </div>
