@@ -17,21 +17,7 @@ import java.util.List;
 public class Util {
 
 
-    public static String getInstorgeId(SdictionaryEntity entity) {
-        return handleCode(entity);
-    }
 
-//    public static String getOutStorageId() {
-//        return handleCode(getSdictionaryDao().findById("out_ID"));
-//    }
-//
-//    public static String getBorrowId() {
-//        return handleCode(getSdictionaryDao().findById("borrow_ID"));
-//    }
-//
-//    public static String getApplicationId() {
-//        return handleCode(getSdictionaryDao().findById("application_ID"));
-//    }
 
     public static String handleCode(SdictionaryEntity sdictionaryEntity) {
         String code = null;

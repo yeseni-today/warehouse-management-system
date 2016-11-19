@@ -59,8 +59,8 @@ public class AddapplyController extends BaseController {
         return HTML_APPLY_ADD_ADDITEM;
     }
 
-//itemCodes
-@RequestMapping(URL_APPLY_ADD_ADDITEMS)
+    //itemCodes
+    @RequestMapping(URL_APPLY_ADD_ADDITEMS)
     public String additems(
             @RequestParam(name = "itemCodes", required = false) String[] itemCodes,
             HttpSession session) {
@@ -68,8 +68,8 @@ public class AddapplyController extends BaseController {
         for (String code : itemCodes) {
             applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
         }
-    logger.info("additems");
-    return REDIRECT + URL_APPLY_ADD;
+        logger.info("additems");
+        return REDIRECT + URL_APPLY_ADD;
     }
 
     public ApplyForm getApplyForm(HttpSession session) {
