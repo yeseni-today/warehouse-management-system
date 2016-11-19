@@ -32,8 +32,8 @@ public class ItemEntity {
     private ItemCompanyEntity itemCompanyEntity;
 
     private int itemCount;
-    @Transient
-    private boolean isInSchool;
+
+
     @Id
     @Column(name = "item_code")
     public String getItemCode() {
@@ -210,11 +210,4 @@ public class ItemEntity {
         return result;
     }
 
-    public boolean isInSchool() {
-        return isInSchool;
-    }
-
-    public void setInSchool(boolean inSchool) {
-        isInSchool = inSchool;
-    }
 }

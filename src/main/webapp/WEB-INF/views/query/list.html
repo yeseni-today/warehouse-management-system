@@ -39,6 +39,7 @@
                     物品类别：
                     <select name="itemCategoryId">
                         <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                        <option value=""></option>
                         <option th:if="${session.categories == null || session.categories.empty}">
                             没有找到分类，请刷新重试
                         </option>
