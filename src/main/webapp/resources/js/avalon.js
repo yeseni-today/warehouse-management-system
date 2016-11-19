@@ -999,7 +999,7 @@
      'ss': Second in minute, padded (00-59)
      's': Second in minute (0-59)
      'a': am/pm marker
-     'Z': 4 digit (+sign) representation of the timezone offset (-1200-+1200)
+     'Z': 4 digit (+login) representation of the timezone offset (-1200-+1200)
      format string can also be one of the following predefined localizable formats:
 
      'medium': equivalent to 'MMM d, y h:mm:ss a' for en_US locale (e.g. Sep 3, 2010 12:05:08 pm)

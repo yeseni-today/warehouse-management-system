@@ -13,6 +13,10 @@
     border-color: #1abc9c;
 }
 
+.myInput select:focus {
+    border-color: #1abc9c;
+}
+
 .myInput input:read-only {
     border: 0.15em solid #eaeded;
     background: #eaeded;
@@ -21,8 +25,8 @@
 .myInput input[type="submit"], input[type="button"] {
     width: 8em;
     height: 2.5em;
-    color: white;
     border: 0;
+    color: white;
     background: #1abc9c;
 }
 
@@ -31,8 +35,10 @@
 }
 
 .myInput select {
-    width: 10em;
+    width: 12.3em;
     height: 2.5em;
+    padding-left: 1em;
+    padding-right: 0;
 }
 
 .myInput select:hover {

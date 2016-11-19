@@ -1,16 +1,9 @@
-package com.repository.web.sign;
+package com.repository.web.login;
 
-import com.repository.Constants;
 import com.repository.base.BaseController;
-import com.repository.entity.UsersEntity;
-import com.repository.dao.UsersDao;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
 
 import static com.repository.Constants.*;
 /**
@@ -24,7 +17,7 @@ public class LoginController extends BaseController {
         return HTML_QUERY_LIST;
     }
 
-    @RequestMapping(URL_SIGNIN)
+    @RequestMapping(SIGNIN)
     public String login() {
         return HTML_LOGIN_SIGNIN;
     }

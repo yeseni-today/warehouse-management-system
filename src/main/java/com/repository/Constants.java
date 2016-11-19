@@ -10,9 +10,9 @@ public interface Constants {
     //session
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";
-    //signin
+    //login
     String URL_INDEX = "/";
-    String URL_SIGNIN = "/signin";
+    String SIGNIN = "/signin";
     String HTML_LOGIN_SIGNIN = TILES_PREFIX + "login/signin";
 
     //query

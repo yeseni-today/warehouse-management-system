@@ -2,15 +2,18 @@
 @import "layout.css";
 @import "navBar.css";
 @import "myInput.css";
+@import "icon-demo.css";
 
 .myInput input[type="button"] {
     color: white;
 }
-.myInput input[type="text"],input[type="password"]{
+
+.myInput input[type="text"], input[type="password"] {
     width: 20em;
+    height: 3.0em;
+    border-radius: 0.5em;
     background: #ffffff;
 }
-
 
 body {
     min-width: 65em;
@@ -26,7 +29,7 @@ body {
     min-height: 36em;
 }
 
-.login-title{
+.login-title {
     position: absolute;
     font-size: 3em;
     top: 2em;
@@ -36,9 +39,30 @@ div.login {
     position: absolute;
     top: 20em;
     right: 20em;
-
-    width: 23em;
+    width: 22em;
     height: 16em;
     line-height: 4em;
     text-align: center;
 }
+
+.login .name, .password {
+    position: relative;
+    margin: 2em 0;
+    line-height: 3em;
+}
+
+.login input:focus + .icon-after-user {
+    color: #1abc9c;
+}
+
+.login input:focus + .icon-after-lock {
+    color: #1abc9c;
+}
+
+.icon-after-user, .icon-after-lock {
+    position: absolute;
+    right: 1em;
+    top: 0;
+    transition: color 0.3s;
+}
+

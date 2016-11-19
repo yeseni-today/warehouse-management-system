@@ -55,16 +55,19 @@
                         <div class="name">
                             物品类别：
                         </div>
-                        <select name="itemCategoryID">
-                            <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
-                            <option th:if="${session.categories == null || session.categories.empty}">
-                                没有找到分类,请刷新重试
-                            </option>
-                            <option th:each="category : ${session.categories}"
-                                    th:value="${category.categoryId}"
-                                    th:text="${category.categoryName}">
-                            </option>
-                        </select>
+                        <div class="value">
+                            <select name="itemCategoryID">
+                                <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                                <option value=""></option>
+                                <option th:if="${session.categories == null || session.categories.empty}">
+                                    没有找到分类,请刷新重试
+                                </option>
+                                <option th:each="category : ${session.categories}"
+                                        th:value="${category.categoryId}"
+                                        th:text="${category.categoryName}">
+                                </option>
+                            </select>
+                        </div>
                     </label>
                 </li>
                 <li>

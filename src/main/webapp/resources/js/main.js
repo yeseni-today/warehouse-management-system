@@ -16,19 +16,26 @@ function alert_info(info) {
 }
 
 function openPopAdd(code, name) {
-
-    var popAdd = document.getElementsByClassName('pop_add-bg');
+    var popAddBg = document.getElementsByClassName('pop_add-bg');
+    var popAdd = document.getElementsByClassName('pop_add');
     var a = document.getElementsByName("itemCode");
     var b = document.getElementsByName("itemName");
-    // alert("code:" + code + "name:" + name + "length:" + popAdd.length+"itemCode"+b.length);
-    // var itemCode = popAdd[0].getElementsByName("itemCode");
-    // var itemName = popAdd[0].getElementsByName("itemName");
     a[1].value = code;
     b[1].value = name;
-    popAdd[0].style.display = "block";
+    popAddBg[0].style.display = "block";
+    setTimeout(function () {
+        popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
+        popAdd[0].style.transform = "scale(1,1)"
+    }, 1);
+
 }
 
 function closePopAdd() {
-    var popAdd = document.getElementsByClassName('pop_add-bg');
-    popAdd[0].style.display = "none";
+    var popAddBg = document.getElementsByClassName('pop_add-bg');
+    var popAdd = document.getElementsByClassName('pop_add');
+    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
+    popAdd[0].style.transform = "scale(0,0)";
+    setTimeout(function () {
+        popAddBg[0].style.display = "none";
+    }, 500);
 }
