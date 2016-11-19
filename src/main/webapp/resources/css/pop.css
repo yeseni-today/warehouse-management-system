@@ -1,0 +1,32 @@
+.pop_add {
+    position: relative;
+    z-index: 900;
+    width: 30em;
+    height: 25em;
+    padding-top: 3em;
+    background: #eaeded;
+    top: 10em;
+    /*left: 35em;*/
+    margin: auto;
+    border-radius: 1em;
+    border: 0.3em solid #1abc9c;
+}
+
+.pop_add-bg {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 899;
+    width: 100%;
+    height: 60em;
+    background: rgba(181, 181, 181, 0.57);
+}
+
+.pop-close {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    width: 2em;
+    height: 2em;
+}

@@ -1,14 +1,16 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.w3.org/2005/Atom">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
     <title>header</title>
-    <link type="text/css" rel="stylesheet" href="../../../resources/myCSS/navBar.css"/>
-    <link type="text/css" rel="stylesheet" href="../../../resources/myCSS/init.css"/>
+
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../resources/js/main.js"></script>
 </head>
+
 <body>
-<div  th:fragment="navBar" class="navBar">
+<div class="navBar" th:fragment="navBar">
     <div class="navBar-container">
         <div class="navBar-title">
             <a>Repository Manage</a>
@@ -28,10 +30,12 @@
                         <a href="#" th:href="@{/storage}">日志</a>
                         <span class="arrow"></span>
                         <dl>
-                            <dd><a href="#">111</a></dd>
-                            <dd><a href="#">222</a></dd>
-                            <dd><a href="#">333</a></dd>
-                            <dd><a href="#">444</a></dd>
+                            <dd><a href="#">系统日志</a></dd>
+                            <dd><a href="#">入库日志</a></dd>
+                            <dd><a href="#">出库日志</a></dd>
+                            <dd><a href="#">申请日志</a></dd>
+                            <dd><a href="#">借用日志</a></dd>
+                            <dd><a href="#">物品维护日志</a></dd>
                         </dl>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">

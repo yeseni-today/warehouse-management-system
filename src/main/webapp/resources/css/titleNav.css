@@ -6,7 +6,7 @@
 .titleNav a {
     float: left;
     font-size: 1.25em;
-    padding: 0 1em;
+    padding: 0 0.5em;
     color: #ececec;
     line-height: 2em;
     text-decoration: none;
@@ -23,7 +23,7 @@
 }
 
 .titleNav .title_nav_previous {
-    border-right: 0.1em solid black;
+    border-right: 0.1em solid #a8a8a8;
 }
 
 .titleNav .title_nav_Now {
