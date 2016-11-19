@@ -1,5 +1,5 @@
 .content {
-    padding: 4em;
+    padding: 5em;
     width: 65em;
     margin: auto;
 }
@@ -12,12 +12,11 @@
 }
 
 .content-function {
-    margin-top: 1em;
     height: 3em;
 }
 
 .content-query {
-    margin-top: 1em;
+    margin-top: 2em;
     width: 65em;
     height: 3em;
 }

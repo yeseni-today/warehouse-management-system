@@ -7,9 +7,9 @@
 @import "myInput.css";
 @import "myInfoList.css";
 @import "myTable.css";
+@import "pop.css";
+@import "icon.css";
 
-/*@import "flat-ui.css";*/
-/*@import "vendor/bootstrap/css/bootstrap.min.css";*/
 
 #bar_code {
     display: none;
