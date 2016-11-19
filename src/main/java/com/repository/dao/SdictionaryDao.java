@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import static com.repository.util.Util.*;
+
 /**
  * Created by Finderlo on 11/16/2016.
  */
@@ -26,8 +27,10 @@ public class SdictionaryDao extends AbstractDao<SdictionaryEntity> {
     }
 
     public String getInSchoolId(String categoryId) {
-        return handleCode(findById(categoryId));
+        logger.info("categoryId:" + categoryId);
+        return handleCode(findById(categoryId.trim()));
     }
+
 
     public String getApplicationId() {
         return handleCode(findById("application_ID"));

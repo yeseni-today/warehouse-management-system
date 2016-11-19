@@ -5,6 +5,7 @@ import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.dao.ItemDao;
+import com.repository.service.StorageFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -79,11 +80,20 @@ public class StorageFormContoller extends BaseController {
         return REDIRECT + URL_STORAGE_ADD;
     }
 
-    @RequestMapping(value = URL_STORAGE_ADD_SUBMIT, method = RequestMethod.POST)
-    public String submitStorageForm() {
+    @Autowired
+    StorageFormService service;
 
-//        itemInOperationDao.save(storageForm,principal.getName());
-        return REDIRECT + URL_STORAGE;
+    @RequestMapping(value = URL_STORAGE_ADD_SUBMIT, method = RequestMethod.GET)
+    public String submitStorageForm(HttpSession session) {
+        try {
+            service.save(storageForm);
+            session.setAttribute(SESSION_STORAGE_FORM, null);
+            return REDIRECT + URL_STORAGE;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return REDIRECT + URL_STORAGE_ADD;
+        }
+
     }
 
     /**
@@ -100,12 +110,14 @@ public class StorageFormContoller extends BaseController {
         if (!isInschool) {
             ItemEntity itemEntity = itemDao.findById(itemCode);
             if (itemEntity == null) {
-                return HTML_STORAGE_ADD_ADDITEM;
+                model.addAttribute("isInschool", 0);
+                return HTML_STORAGE_ADD_SETINFO;
             } else {
                 model.addAttribute("item", itemEntity);
                 return HTML_STORAGE_ADD_GETINFO;
             }
         } else {
+            model.addAttribute("isInschool", 1);
             return HTML_STORAGE_ADD_SETINFO;
         }
     }

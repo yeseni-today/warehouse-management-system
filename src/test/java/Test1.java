@@ -35,7 +35,11 @@ public class Test1 extends
     ItemDao itemDao;
     @Test
     public void isNull() {
-        Assert.assertNull(sdictionaryDao);
+        Assert.assertNotNull(sdictionaryDao);
+    }
+
+    public void sdictionaryDaoTestId() {
+        Assert.assertNotNull(sdictionaryDao.findById("000"));
     }
 
     @Test

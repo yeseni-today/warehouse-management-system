@@ -19,6 +19,7 @@ import javax.sql.DataSource;
 @Configuration
 @PropertySource(value = "classpath:/finderlo_jdbc.properties")
 @Profile({"finderlo", "default"})
+@EnableTransactionManagement
 public class MysqlDataSourceConfig {
 
     @Value("${db.driver}")
@@ -64,7 +65,7 @@ public class MysqlDataSourceConfig {
 
         return sessionFactoryBean;
     }
-
+//
 //    @Bean
 //    public HibernateTransactionManager transactionManager() {
 //        HibernateTransactionManager transactionManager =

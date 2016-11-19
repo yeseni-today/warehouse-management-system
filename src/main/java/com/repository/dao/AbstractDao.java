@@ -1,10 +1,14 @@
 package com.repository.dao;
 
 
+import com.repository.base.BaseObject;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -17,7 +21,8 @@ import java.util.Map;
 
 //@Component
 @Repository
-public abstract class AbstractDao<T extends Object> {
+@Transactional(propagation = Propagation.REQUIRED)
+public abstract class AbstractDao<T extends Object> extends BaseObject {
 
 //    protected SessionFactory sessionFactory = Factory.sessionFactory();
 
@@ -45,21 +50,20 @@ public abstract class AbstractDao<T extends Object> {
     }
 
     public T findByIds(Map<String, String> idAndValues) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         String hql = jointHqlByIdsQuery(idAndValues);
         List<T> tList = session.createQuery(hql).list();
-        session.close();
         if (tList.isEmpty()) {
+            logger.error("tlist is empty");
             return null;
         }
-        System.out.println(tList.get(0));
+        logger.info(tList.get(0));
         return tList.get(0);
     }
 
     public List<T> findAll(){
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         List<T> tList = session.createQuery("from " + bindClassName()).list();
-        session.close();
         return tList;
     }
 
@@ -86,36 +90,26 @@ public abstract class AbstractDao<T extends Object> {
             return new ArrayList<T>();
         }
 
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
 
 
         List<T> result = session.createQuery(hql).list();
-        session.close();
         return result;
     }
 
     public void save(T t) {
         Session session = sessionFactory.getCurrentSession();
-        session.beginTransaction();
         session.save(t);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public void saveOrUpdate(T t){
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
         session.saveOrUpdate(t);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public void delete(T t) {
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
         session.delete(t);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public void update(T t) {
@@ -123,10 +117,7 @@ public abstract class AbstractDao<T extends Object> {
             return;
         }
         Session session = sessionFactory.openSession();
-        session.beginTransaction();
         session.update(t);
-        session.getTransaction().commit();
-        session.close();
     }
 
     public Class bindClass() {
