@@ -6,7 +6,7 @@
     background: #f5f5f5;
     border-radius: 0.25em;
     outline: 0;
-    transition: border 2s, background 0.3s;
+    transition: border 0.4s linear, background 0.3s;
 }
 
 .myInput input:focus {
