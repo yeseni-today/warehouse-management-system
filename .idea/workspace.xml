@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="builer160">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/circle.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/moon.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/night.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/resources/picture/green.svg" />
+    <list default="true" id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/config/secuity/SecurityConifg.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/config/secuity/SecurityConifg.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/dao/AbstractDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/dao/AbstractDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/login/LoginController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/login/LoginController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/list.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/list.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/loginPage.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/loginPage.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/myInput.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/myInput.css" />
     </list>
     <ignored path="untitled1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -41,8 +30,8 @@
       <file leaf-file-name="signin.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="466">
-              <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+            <state relative-caret-position="1486">
+              <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
               <folding />
             </state>
           </provider>
@@ -51,8 +40,8 @@
       <file leaf-file-name="list.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/list.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+            <state relative-caret-position="136">
+              <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -61,11 +50,9 @@
       <file leaf-file-name="layout.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="49" />
-              <folding>
-                <element signature="e#619#1099#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="102">
+              <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,7 +106,7 @@
             <state relative-caret-position="306">
               <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
               <folding>
-                <marker date="1479642454341" expanded="true" signature="23:228" ph="{...}" />
+                <marker date="1479655736708" expanded="true" signature="23:237" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -1662,7 +1649,7 @@
       <workItem from="1479458369594" duration="5943000" />
       <workItem from="1479466876489" duration="8668000" />
       <workItem from="1479522741005" duration="15165000" />
-      <workItem from="1479631065511" duration="15706000" />
+      <workItem from="1479631065511" duration="17265000" />
     </task>
     <task id="LOCAL-00001" summary="a">
       <created>1478664616898</created>
@@ -1811,7 +1798,14 @@
       <option name="project" value="LOCAL" />
       <updated>1479632446996</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="builer161//没有完成的部分，需要再每次查询后来清空原有的值">
+      <created>1479655578887</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1479655578887</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1847,7 +1841,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="273200000" />
+    <option name="totallyTimeSpent" value="274759000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1966,7 +1960,9 @@
     <MESSAGE value="builer158" />
     <MESSAGE value="builer159" />
     <MESSAGE value="builer160" />
-    <option name="LAST_COMMIT_MESSAGE" value="builer160" />
+    <MESSAGE value="builer161//没有完成的部分，需要再每次查询后来清空原有的值" />
+    <MESSAGE value="builer162" />
+    <option name="LAST_COMMIT_MESSAGE" value="builer162" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1979,7 +1975,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
           <url>file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html</url>
-          <line>50</line>
+          <line>34</line>
           <properties />
           <option name="timeStamp" value="12" />
         </line-breakpoint>
@@ -2348,8 +2344,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="466">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        <state relative-caret-position="1486">
+          <caret line="52" column="31" selection-start-line="52" selection-start-column="31" selection-end-line="52" selection-end-column="31" />
           <folding />
         </state>
       </provider>
@@ -2359,7 +2355,7 @@
         <state relative-caret-position="306">
           <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
           <folding>
-            <marker date="1479642454341" expanded="true" signature="23:228" ph="{...}" />
+            <marker date="1479655736708" expanded="true" signature="23:237" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -2420,19 +2416,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/list.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="70" column="17" selection-start-line="70" selection-start-column="17" selection-end-line="70" selection-end-column="17" />
+        <state relative-caret-position="136">
+          <caret line="61" column="25" selection-start-line="61" selection-start-column="25" selection-end-line="61" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="49" />
-          <folding>
-            <element signature="e#619#1099#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="102">
+          <caret line="17" column="1" selection-start-line="17" selection-start-column="1" selection-end-line="17" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
