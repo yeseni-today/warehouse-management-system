@@ -37,12 +37,10 @@ public class StorageFormContoller extends BaseController {
     private ItemInOperationDao itemInOperationDao;
 
     StorageForm storageForm;
-
     @ModelAttribute
     public void storageForm(HttpSession session, Principal principal) {
         storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         if (storageForm == null) {
-
             storageForm = new StorageForm(sdictionaryDao.getInstorgeId(), principal.getName());
             session.setAttribute(SESSION_STORAGE_FORM, storageForm);
         }

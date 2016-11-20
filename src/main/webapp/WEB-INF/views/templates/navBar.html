@@ -57,7 +57,8 @@
                 <!--<li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/login" th:href="@{/login}">Sign in</a></li>-->
                 <!--<li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>-->
                 <li ><!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
-                <a href="/logout" th:if="${session.user!= null}" th:href="@{/logout}" th:text="${session.user.usersName}">小明</a></li>
+                    <a href="#" th:if="${session.user!= null}" th:text="${session.user.usersName}">小明</a>
+                </li>
                 <li ><a href="/logout" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>

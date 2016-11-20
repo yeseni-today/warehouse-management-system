@@ -11,6 +11,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 import javax.sql.DataSource;
 
+import static com.repository.Constants.*;
 /**
  * Created by Finderlo on 2016/11/8.
  */
@@ -30,12 +31,14 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .formLogin()
-                .loginPage("/signin")
-                .successForwardUrl("/query");
+                .loginPage(URL_SIGNIN)
+                .defaultSuccessUrl(URL_SIGNIN_SUCCESS)
+                .failureUrl(URL_SIGNIN_FAIL);
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
-                .antMatchers("/signin").permitAll()
+                .antMatchers(URL_SIGNIN_FAIL).permitAll()
+                .antMatchers(URL_SIGNIN).permitAll()
                 .antMatchers("/generalError").permitAll()
                 .antMatchers("/**").authenticated()
                 .and()
