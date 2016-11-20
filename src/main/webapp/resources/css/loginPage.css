@@ -4,15 +4,18 @@
 @import "myInput.css";
 @import "icon-demo.css";
 
-.myInput input[type="button"] {
-    color: white;
+.login input {
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    width: 15.2em;
+    height: 2.7em;
+    border: 0.15em solid #eaeded;
+    background: #ffffff;
 }
 
-.myInput input[type="text"], input[type="password"] {
-    width: 20em;
-    height: 3.0em;
-    border-radius: 0.5em;
-    background: #ffffff;
+.login input[type="submit"] {
+    width: 10em;
+    color: white;
 }
 
 body {
@@ -33,15 +36,19 @@ body {
     position: absolute;
     font-size: 3em;
     top: 2em;
+    left: 0.5em;
+    text-shadow: 0.1em 0.1em 0.1em #292929;
 }
 
 div.login {
     position: absolute;
     top: 20em;
     right: 20em;
-    width: 22em;
-    height: 16em;
+    width: 21em;
+    padding: 0 2em 2em;
     line-height: 4em;
+    background: rgb(234, 237, 237);
+    border-radius: 1em;
     text-align: center;
 }
 
@@ -60,8 +67,11 @@ div.login {
 }
 
 .icon-after-user, .icon-after-lock {
+    font-size: 1.5em;
+    line-height: 2.4em;
     position: absolute;
-    right: 1em;
+    color: #bfc9ca;
+    right: 0.7em;
     top: 0;
     transition: color 0.3s;
 }
