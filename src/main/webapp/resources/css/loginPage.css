@@ -21,6 +21,7 @@
 body {
     min-width: 65em;
     min-height: 36em;
+    overflow: hidden;
 }
 
 .login-background {
@@ -37,7 +38,7 @@ body {
     font-size: 3em;
     top: 2em;
     left: 0.5em;
-    text-shadow: 0.1em 0.1em 0.1em #292929;
+    /*text-shadow: 0.1em 0.1em 0.1em #e5e5e5;*/
 }
 
 div.login {
