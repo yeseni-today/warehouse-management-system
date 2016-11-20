@@ -9,7 +9,8 @@
     border-radius: 0.5em;
     width: 15.2em;
     height: 2.7em;
-    border: 0.15em solid #eaeded;
+    /*border: 0.15em solid #eaeded;*/
+    border: 0.15em solid rgba(234, 237, 237, 0);
     background: #ffffff;
 }
 
@@ -26,9 +27,12 @@ body {
 .login-background {
     position: absolute;
     z-index: -1;
+
     width: 100%;
+    /*min-width: 100em;*/
     min-width: 65em;
     height: 100%;
+    /*min-height: 80em;*/
     min-height: 36em;
 }
 
@@ -47,8 +51,8 @@ div.login {
     width: 21em;
     padding: 0 2em 2em;
     line-height: 4em;
-    background: rgb(234, 237, 237);
-    border-radius: 1em;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5em;
     text-align: center;
 }
 

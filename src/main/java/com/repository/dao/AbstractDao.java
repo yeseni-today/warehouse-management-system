@@ -92,7 +92,6 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
 
         Session session = sessionFactory.getCurrentSession();
 
-
         List<T> result = session.createQuery(hql).list();
         return result;
     }

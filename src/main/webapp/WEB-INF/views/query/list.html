@@ -8,6 +8,7 @@
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
     <script src="../../../resources/js/main.js"></script>
+
 </head>
 
 <body>
@@ -25,7 +26,7 @@
     <div class="content-query myInput">
         <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
-        <form action="#" th:action="@{/query/queryItem}" method="get">
+        <form action="#" id="queryinput" th:action="@{/query/queryItem}" method="get">
             <div class="content-query-left">
                 <label>
                     物品条码：
@@ -51,14 +52,13 @@
                 </label>
             </div>
             <div class="content-query-right icon-search">
-                <input type="submit" value="查询"/>
-                <!--<div class="icon-after-search"></div>-->
+                <input type="button" id="button1" value="查询"/>
             </div>
         </form>
     </div>
 
     <div class="content-result myTable">
-        <table>
+        <table id="result_table">
             <tr>
                 <th>条码</th>
                 <th>名称</th>
@@ -69,11 +69,11 @@
             <tr th:if="${items == null || items.empty}">
                 <td colspan="5">No messages</td>
             </tr>
-            <tr th:each="item : ${items} ">
+            <tr id="result_tr" th:each="item : ${items} ">
                 <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
                 <td th:text="${item.itemCode}"></td>
                 <td th:text="${item.itemName}"></td>
-                <td th:text="${item.itemCategoryEntity.getCategoryName()}"></td>
+                <td th:text="${item.itemCategoryEntity.categoryName()}"></td>
                 <td th:text="${item.itemCount}"></td>
                 <td></td>
             </tr>

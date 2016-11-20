@@ -32,6 +32,7 @@ public class LoginController extends BaseController {
     @RequestMapping(URL_SIGNIN_SUCCESS)
     public String signinSuccess(HttpSession session, Principal principal) {
         UsersEntity usersEntity = usersDao.findById(principal.getName());
+        logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
         session.setAttribute(SESSION_USER, usersEntity);
         return REDIRECT + URL_QUERY;
     }
