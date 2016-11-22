@@ -11,10 +11,12 @@
     height: 2.7em;
     /*border: 0.15em solid #eaeded;*/
     border: 0.15em solid rgba(234, 237, 237, 0);
-    background: #ffffff;
+    /*background: #ffffff;*/
+    background: #1abc9c;
+
 }
 
-.login input[type="submit"] {
+.login input[type="submit"], input[type="button"] {
     width: 10em;
     color: white;
 }
@@ -22,7 +24,19 @@
 body {
     min-width: 65em;
     min-height: 36em;
-    overflow: hidden;
+    /*overflow: hidden;*/
+}
+
+.login-top {
+    position: absolute;
+    z-index: 999;
+
+    width: 100%;
+    /*min-width: 100em;*/
+    min-width: 65em;
+    height: 100%;
+    /*min-height: 80em;*/
+    min-height: 36em;
 }
 
 .login-background {

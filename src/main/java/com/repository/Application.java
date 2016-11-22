@@ -21,6 +21,8 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.test.context.ActiveProfiles;
 
+import org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext;
+
 @SpringBootApplication
 @EnableAutoConfiguration(exclude = {WebConfig.class, SecurityManager.class})
 @ComponentScan("com")

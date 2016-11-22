@@ -15,6 +15,18 @@ function alert_info(info) {
     alert(info);
 }
 
+function addItem() {
+    closePopAdd();
+    var da = $("applyform").serialize();
+    $.ajax({
+        url: "/apply/add/additem",
+        type: "post",
+        data: da,
+        success: function (result) {
+        }
+    })
+}
+
 function openPopAdd(code, name) {
     var popAddBg = document.getElementsByClassName('pop_add-bg');
     var popAdd = document.getElementsByClassName('pop_add');
@@ -39,3 +51,22 @@ function closePopAdd() {
         popAddBg[0].style.display = "none";
     }, 500);
 }
+
+function showLoading() {
+    // $("#topdiv").style.display = "block";
+    $("#topdiv").css("display", "block");
+}
+function hideLoading() {
+    $("#topdiv").style.display = "none";
+
+}
+
+function oneTest() {
+    var $current = $("#currentPage");
+    var $next = $("#nextPage");
+    $("#body1").load("resources/js/storage_form.html")
+}
+
+
+
+

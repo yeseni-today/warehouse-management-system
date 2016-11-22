@@ -13,6 +13,12 @@
       </list>
     </option>
   </component>
+  <component name="PlugProxyProjectComponent">
+    <option name="host" value="" />
+    <option name="hostPort" value="" />
+    <option name="localPort" value="" />
+    <option name="hexDump" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />

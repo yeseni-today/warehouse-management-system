@@ -57,7 +57,7 @@
     </div>
 
     <div class="content-result myTable">
-        <form action="apply_form.html" method="post" th:action="@{/apply/add}">
+        <form id="applyform" action="apply_form.html" method="post" th:action="@{/apply/add}">
 
             <div class="pop_add-bg">
                 <div class="pop_add myInfoList myInput">
@@ -128,7 +128,7 @@
                             </li>
                             <li>
                                 <input type="button" onclick="closePopAdd()" value="取消"/>
-                                <input type="submit" onclick="closePopAdd()" value="增加物品"/>
+                                <input type="button" onclick="addItem()" value="增加物品"/>
                             </li>
                         </ul>
                     </form>

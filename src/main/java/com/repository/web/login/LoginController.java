@@ -2,10 +2,12 @@ package com.repository.web.login;
 
 import com.repository.base.BaseController;
 import com.repository.entity.UsersEntity;
+import com.repository.model.SimpleResponseBody;
 
 import org.omg.CORBA.PUBLIC_MEMBER;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
@@ -29,12 +31,25 @@ public class LoginController extends BaseController {
         return HTML_LOGIN_SIGNIN;
     }
 
-    @RequestMapping(URL_SIGNIN_SUCCESS)
+    //    @RequestMapping(URL_SIGNIN_SUCCESS)
     public String signinSuccess(HttpSession session, Principal principal) {
         UsersEntity usersEntity = usersDao.findById(principal.getName());
         logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
         session.setAttribute(SESSION_USER, usersEntity);
         return REDIRECT + URL_QUERY;
+    }
+
+    @RequestMapping(URL_SIGNIN_SUCCESS)
+    @ResponseBody
+    public SimpleResponseBody signindo(HttpSession session, Principal principal) {
+        SimpleResponseBody responseBody = new SimpleResponseBody();
+        responseBody.setStatus(200);
+        responseBody.setMessage("success");
+        responseBody.setContent(URL_QUERY);
+        UsersEntity usersEntity = usersDao.findById(principal.getName());
+        logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
+        session.setAttribute(SESSION_USER, usersEntity);
+        return responseBody;
     }
 
     @RequestMapping(URL_SIGNIN_FAIL)
