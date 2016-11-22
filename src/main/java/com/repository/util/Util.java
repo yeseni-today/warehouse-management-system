@@ -1,25 +1,15 @@
 package com.repository.util;
 
 import com.repository.dao.ItemDao;
-import com.repository.dao.SdictionaryDao;
-import com.repository.dao.UsersDao;
-import com.repository.entity.ItemCompanyEntity;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.ItemInOperationEntity;
-import com.repository.entity.ItemInStorageEntity;
 import com.repository.entity.SdictionaryEntity;
-import com.repository.entity.UsersEntity;
-import com.repository.web.storage.add.StorageForm;
-
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
-import static com.repository.Constants.*;
 
 /**
  * Created by Finderlo on 11/16/2016.
@@ -31,6 +21,8 @@ public class Util {
     public ItemDao itemDao;
     @Autowired
     public static Util util;
+
+    protected static Logger logger = LogManager.getLogger(Util.class);
 
 
 
@@ -59,6 +51,7 @@ public class Util {
                 code = sdictionaryEntity.getField().trim() + String.format("%tY", _date) + "0" + String.format("%05d", sdictionaryEntity.getIndex());
                 break;
         }
+        logger.info("code:" + code);
         return code;
     }
 

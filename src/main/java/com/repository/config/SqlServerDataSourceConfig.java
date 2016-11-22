@@ -1,18 +1,13 @@
 package com.repository.config;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
-import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.*;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
-
-import java.util.Properties;
+import org.springframework.orm.hibernate5.HibernateTransactionManager;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 
 @Configuration
@@ -67,6 +62,7 @@ public class SqlServerDataSourceConfig {
     public HibernateTransactionManager transactionManager() {
         HibernateTransactionManager transactionManager =
                 new HibernateTransactionManager();
+        System.out.println("do this");
         transactionManager.setSessionFactory(sessionFactory().getObject());
         return transactionManager;
     }

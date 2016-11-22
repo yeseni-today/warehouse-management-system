@@ -23,6 +23,7 @@ public class ApplyController extends BaseController {
     public String apply(Model model) {
         logger.trace("apply/");
         model.addAttribute("applications", applicationOperationDao.findAll());
+        logger.info("applications:" + applicationOperationDao.findAll().size());
         return HTML_APPLY_HISTORY;
     }
 }

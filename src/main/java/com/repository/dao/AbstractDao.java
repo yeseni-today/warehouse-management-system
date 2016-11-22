@@ -64,6 +64,11 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
     public List<T> findAll(){
         Session session = sessionFactory.getCurrentSession();
         List<T> tList = session.createQuery("from " + bindClassName()).list();
+
+        if (tList == null) {
+            logger.info("findAll:Type:'" + this.getClass().getSimpleName() + "'" + "find null");
+            return new ArrayList<T>();
+        }
         return tList;
     }
 
@@ -169,8 +174,8 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         StringBuilder hqlbuilder = new StringBuilder();
         boolean isFirst = true;
         for (Map.Entry<String, String> entry : idAndValues.entrySet()) {
-            String value = entry.getValue();
-            String key = entry.getKey();
+            String value = entry.getValue().trim();
+            String key = entry.getKey().trim();
             if (!isFirst) {
                 hqlbuilder.append(" and");
             } else {
