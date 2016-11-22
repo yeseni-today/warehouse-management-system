@@ -32,3 +32,16 @@
     font-weight: normal;
     background: #16A085;
 }
+
+.myTable-operation {
+    transition: background linear 0.3s;
+}
+
+.myTable-operation:hover {
+    background: #16A085;
+    font-size: 1.5em;
+}
+
+.myTable-operation div[class^='icon'] {
+    transition: font-size 0.3s;
+}

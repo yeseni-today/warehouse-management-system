@@ -58,83 +58,6 @@
 
     <div class="content-result myTable">
         <form action="apply_form.html" method="post" th:action="@{/apply/add}">
-
-            <div class="pop_add-bg">
-                <div class="pop_add myInfoList myInput">
-                    <div class="pop-close">
-                        <div class="close_button" onclick="closePopAdd()">
-                            <div class="close_button-icon"></div>
-                        </div>
-                    </div>
-                    <form action="additem.html" method="get">
-                        <ul>
-                            <li>
-                                <label>
-                                    <div class="name">
-                                        物品条形码：
-                                    </div>
-                                    <div class="value">
-                                        <input type="text" name="itemCode" value="条形码"
-                                               readonly="readonly"/>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <div class="name">
-                                        物品名称：
-                                    </div>
-                                    <div class="value">
-                                        <input type="text" name="itemName" value="名称"
-                                               readonly="readonly"/>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <div class="name">
-                                        申请数量：
-                                    </div>
-                                    <div class="value">
-                                        <input type="number" name="applyNum"/>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <div class="name">
-                                        申请备注：
-                                    </div>
-                                    <div class="value">
-                                        <input type="text" name="remark"/>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <div class="name">
-                                        申请类型：
-                                    </div>
-                                    <div class="value">
-                                        <select name="applyType">
-                                            <option value="常规使用">常规使用</option>
-                                            <option value="特殊需求">特殊需求</option>
-                                            <option value="过期处理">过期处理</option>
-                                            <option value="库存清点">库存清点</option>
-                                            <option value="其他">其他</option>
-                                        </select>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <input type="button" onclick="closePopAdd()" value="取消"/>
-                                <input type="submit" onclick="closePopAdd()" value="增加物品"/>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
-
             <table>
                 <tr>
                     <th>条码</th>
@@ -152,16 +75,86 @@
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.itemCategoryEntity.getCategoryName()}"></td>
                     <td th:text="${item.itemCount}"></td>
-                    <td>
-                        <div class="myDivBt"
-                             th:onclick="'javascript:openPopAdd(\''+${item.itemCode}+'\',\''+${item.itemName}+'\')'">
-                            <a>添加物品</a>
-                        </div>
-                        <!--th:onclick="'javascript:popAddInfo('+${item.itemCode}+')'"-->
-
-                        <!--<input type="radio" name="itemCodes" th:value="${item.itemCode}"/>-->
+                    <td class="myTable-operation"
+                        th:onclick="'javascript:openPopAdd(\''+${item.itemCode}+'\',\''+${item.itemName}+'\')'">
+                        <div class="icon-plus"></div>
                     </td>
                 </tr>
+                <div class="pop_add-bg">
+                    <div class="pop_add myInfoList myInput">
+                        <div class="pop-close">
+                            <div class="close_button" onclick="closePopAdd()">
+                                <div class="close_button-icon"></div>
+                            </div>
+                        </div>
+                        <form action="additem.html" method="get">
+                            <ul>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            物品条形码：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="itemCode" value="条形码"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            物品名称：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="itemName" value="名称"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请数量：
+                                        </div>
+                                        <div class="value">
+                                            <input type="number" name="applyNum"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请备注：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="remark"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请类型：
+                                        </div>
+                                        <div class="value">
+                                            <select name="applyType">
+                                                <option value="常规使用">常规使用</option>
+                                                <option value="特殊需求">特殊需求</option>
+                                                <option value="过期处理">过期处理</option>
+                                                <option value="库存清点">库存清点</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="button" onclick="closePopAdd()" value="取消"/>
+                                    <input type="submit" onclick="closePopAdd()" value="增加物品"/>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
             </table>
             <div class="content-result-operation">
                 <div class="myDivBt">
