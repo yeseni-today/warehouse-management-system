@@ -32,7 +32,7 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
         http
                 .formLogin()
                 .loginPage(URL_SIGNIN)
-                .defaultSuccessUrl(URL_SIGNIN_SUCCESS)
+                .successForwardUrl(URL_SIGNIN_SUCCESS)
                 .failureUrl(URL_SIGNIN_FAIL);
         http
                 .authorizeRequests()

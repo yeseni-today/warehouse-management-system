@@ -2,7 +2,9 @@ package com.repository.web.apply.add;
 
 import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
+import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
+import com.repository.model.SimpleResponseBody;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,13 +31,17 @@ public class AddapplyController extends BaseController {
     @Autowired
     ItemDao itemDao;
 
+    @Autowired
+    SdictionaryDao sdictionaryDao;
+
+
     @ModelAttribute
-    public void storageForm(HttpSession session) {
+    public void applyForm(HttpSession session) {
         ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
         if (applyForm == null) {
-            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm());
+            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId()));
         }
-        logger.info("123");
+        logger.info("applyForm: ");
     }
 
     @RequestMapping(URL_APPLY_ADD)
@@ -45,6 +52,14 @@ public class AddapplyController extends BaseController {
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
     public String getaddItem() {
         return HTML_APPLY_ADD_ADDITEM;
+    }
+
+    @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
+    @ResponseBody
+    public SimpleResponseBody getaddItemAjax(@RequestParam(name = "itemCodes", required = false) String itemCodes, HttpSession session) {
+        ApplyForm applyForm = getApplyForm(session);
+        applyForm.getItems().add(new ApplyItem(itemDao.findById(itemCodes)));
+        return new SimpleResponseBody();
     }
 
     @RequestMapping(URL_APPLY_ADD_QUERY_ITEM)
@@ -74,14 +89,17 @@ public class AddapplyController extends BaseController {
 
     public ApplyForm getApplyForm(HttpSession session) {
         ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
-        if (applyForm == null) {
-            applyForm = new ApplyForm();
-        }
         return applyForm;
     }
 
     static class ApplyForm {
         private List<ApplyItem> items = new ArrayList();
+
+        private String applicationId;
+
+        public ApplyForm(String applicationId) {
+            this.applicationId = applicationId;
+        }
 
         public List<ApplyItem> getItems() {
             return items;
@@ -89,6 +107,14 @@ public class AddapplyController extends BaseController {
 
         public void setItems(List<ApplyItem> items) {
             this.items = items;
+        }
+
+        public String getApplicationId() {
+            return applicationId;
+        }
+
+        public void setApplicationId(String applicationId) {
+            this.applicationId = applicationId;
         }
     }
 
