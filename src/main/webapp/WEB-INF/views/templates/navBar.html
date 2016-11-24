@@ -18,13 +18,17 @@
         <div class="navBar-content">
             <nav>
                 <ul class="nav">
-                    <li th:classappend="${page == 'home' ? 'active' : ''}"><a href="#" th:href="@{/query}">查询</a></li>
-                    <li th:classappend="${page == 'messages' ? 'active' : ''}"><a href="#" th:href="@{/storage}">入库</a></li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#"
-                                                                               th:href="@{/apply}">申请</a>
+                    <li th:classappend="${page == 'home' ? 'active' : ''}">
+                        <a href="#" th:href="@{/query}">查询</a>
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}"><a href="#"
-                                                                               th:href="@{/borrow}">借用</a>
+                    <li th:classappend="${page == 'messages' ? 'active' : ''}">
+                        <a href="#" th:href="@{/storage}">入库</a>
+                    </li>
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
+                        <a href="#" th:href="@{/apply}">申请</a>
+                    </li>
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
+                        <a href="#" th:href="@{/borrow}">借用</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/storage}">日志</a>
@@ -39,7 +43,7 @@
                         </dl>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
-                        <a href="#" th:href="@{/storage}">消息</a>
+                        <a href="#" th:href="@{/message}">消息</a>
                         <span class="arrow"></span>
                         <dl>
                             <dd><a href="#">待审核消息</a></dd>
@@ -56,10 +60,10 @@
             <ul class="nav">
                 <!--<li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/login" th:href="@{/login}">Sign in</a></li>-->
                 <!--<li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>-->
-                <li ><!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
+                <li><!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
                     <a href="#" th:if="${session.user!= null}" th:text="${session.user.usersName}">小明</a>
                 </li>
-                <li ><a href="/logout" th:href="@{/logout}">Logout</a></li>
+                <li><a href="/logout" th:href="@{/logout}">Logout</a></li>
             </ul>
         </div>
     </div>

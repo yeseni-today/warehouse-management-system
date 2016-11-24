@@ -7,16 +7,16 @@
     <title tiles:replace="title">Title</title>
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
-          th:href="@{/resources/css/loginPage.css}"/>
-    <script src="../../../resources/js/main.js"
-            th:src="@{/resources/js/main.js}">
-    </script>
-    <script src="../../../resources/js/jquery-3.1.1.js"
-            th:src="@{/resources/js/jquery-3.1.1.js}"></script>
-    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
           th:href="@{/resources/css/all.css}"/>
     <script src="../../../resources/js/main.js"
-            th:src="@{/resources/js/main.js}"></script>
+            th:src="@{/resources/js/main.js}">
+
+    </script>
+    <script src="../../../resources/js/pageSwitch.js"
+            th:src="@{/resources/js/pageSwitch.js}"></script>
+
+    <script src="../../../resources/js/jquery-3.1.1.js"
+            th:src="@{/resources/js/jquery-3.1.1.js}"></script>
     <script src="../../../resources/js/modernizr.custom.js"
             th:src="@{/resources/js/modernizr.custom.js}"></script>
     <script>
@@ -44,7 +44,6 @@
     </script>
 
     <script>
-
         $(document).ready(function () {
             $("#button1").click(function () {
                 var values = $("#queryinput").serialize();
@@ -70,34 +69,44 @@
             });
         })
     </script>
-
 </head>
 
 <body>
 
-<div id="topdiv" class="login-top" style="background-color: rgba(0, 0, 0, 0.51);display: none">
-    <img src="../../../resources/picture/loading.gif" id="loading"
-         style="position: absolute;top:50%;left:50%;"/>
-</div>
+<!--<div id="background">-->
+<!--<div id="background-content"></div>-->
+<!--</div>-->
 
 <div>
-    <div class="header">
+    <div id="topdiv" class="login-top" style="background-color: rgba(0, 0, 0, 0.51);display: none">
+        <img src="../../../resources/picture/loading.gif" id="loading"
+             style="position: absolute;top:50%;left:50%;"/>
+    </div>
+
+    <div id="header">
         <div th:replace="templates/navBar :: navBar">
         </div>
     </div>
 
-    <div class="body">
-        <div id="currentPage" style="display: block" tiles:replace="content">
+    <div id="body">
+        <div id="currentPage">
+            <div id="background">
+                <div id="background-content"></div>
+            </div>
+            <button onclick="Switch()" style="position: absolute;top: 40em"> asd</button>
+            <div tiles:replace="content"></div>
         </div>
 
-        <div id="nextPage"></div>
+        <div id="nextPage">
+            <button onclick="Switch()" style="position: absolute;top: 40em"> asd</button>
+        </div>
     </div>
 
-    <div class="footer">
+    <div id="footer">
         <div th:replace="templates/footer :: footer">
         </div>
     </div>
-</div>
 
+</div>
 </body>
 </html>

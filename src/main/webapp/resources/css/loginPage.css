@@ -9,22 +9,20 @@
     border-radius: 0.5em;
     width: 15.2em;
     height: 2.7em;
-    /*border: 0.15em solid #eaeded;*/
-    border: 0.15em solid rgba(234, 237, 237, 0);
-    /*background: #ffffff;*/
-    background: #1abc9c;
-
+    border: 0.2em solid rgba(234, 237, 237, 0);
+    background: #ffffff;
 }
 
 .login input[type="submit"], input[type="button"] {
     width: 10em;
     color: white;
+    background: #1abc9c;
 }
 
 body {
     min-width: 65em;
     min-height: 36em;
-    /*overflow: hidden;*/
+    overflow: hidden;
 }
 
 .login-top {

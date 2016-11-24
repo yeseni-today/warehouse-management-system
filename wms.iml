@@ -30,7 +30,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/webapp" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="1.8 " jdkType="JavaSDK" />
+    <orderEntry type="jdk" jdkName="1.8" jdkType="JavaSDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mysql:mysql-connector-java:5.1.40" level="project" />
     <orderEntry type="module-library">
