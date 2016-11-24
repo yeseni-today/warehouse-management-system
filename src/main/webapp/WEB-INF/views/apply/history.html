@@ -36,16 +36,16 @@
                 <th>审核状态</th>
                 <th>审核日期</th>
             </tr>
-            <tr th:if="${applications == null || applications.isEmpty()}">
+            <tr th:if="${history==null||history.isEmpty()}">
                 <td colspan="5">没有申请单信息</td>
             </tr>
-            <tr th:each="application : ${applications}" th:if="${applications != null}">
-                <!--/*@thymesVar id="applicaiton" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
-                <td th:text="${applicaiton.applicationId}"></td>
-                <td th:text="${applicaiton.applicationTime}">表中没有此列</td>
-                <td th:text="${applicaiton.getUsersId()}"></td>
-                <td th:text="${applicaiton.getStates()}"></td>
-                <td th:text="${applicaiton.getStatesTime()}"></td>
+            <tr th:each="itemApplicationOperation:${history}">
+                <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
+                <td th:text="${itemApplicationOperation.applicationId}"></td>
+                <td th:text="${itemApplicationOperation.applicationTime}">表中没有此列</td>
+                <td th:text="${itemApplicationOperation.usersId}"></td>
+                <td th:text="${itemApplicationOperation.states}"></td>
+                <td th:text="${itemApplicationOperation.statesTime}"></td>
             </tr>
         </table>
     </div>
