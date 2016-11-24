@@ -4,17 +4,15 @@ import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.SdictionaryDao;
-import com.repository.web.storage.add.StorageFormContoller;
-import com.repository.web.storage.add.StorageForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import javax.servlet.http.HttpSession;
-
-import static com.repository.Constants.*;
+import static com.repository.Constants.HTML_STORAGE_HISTORY;
+import static com.repository.Constants.TILES_PREFIX;
+import static com.repository.Constants.URL_STORAGE;
 
 /**
  * Created by Finderlo on 2016/11/6.
@@ -35,7 +33,7 @@ public class StorageController extends BaseController {
     @RequestMapping
     public String storage(Model model) {
         model.addAttribute("history", inOperationDao.findAll());
-        return HTML_STORAGE_HISTORY;
+        return TILES_PREFIX + HTML_STORAGE_HISTORY;
     }
 
 

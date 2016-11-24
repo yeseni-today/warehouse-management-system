@@ -42,8 +42,27 @@
 }
 
 .content-result-operation div {
-
     margin: 0.5em 0 0 1em;
-
 }
+
+.content-left {
+    position: absolute;
+    top: 0;
+    width: 12em;
+    height: 50em;
+    padding-left: 3em;
+    padding-top: 8em;
+    float: left;
+    background: rgb(255, 255, 255);
+}
+
+.content-right {
+    margin-top: 5em;
+    float: right;
+    width: 50em;
+}
+
+
+
+
 

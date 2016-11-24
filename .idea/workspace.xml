@@ -2,15 +2,62 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/untitled1_war.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/artifacts/untitled1_war_exploded.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mysql_mysql_connector_java_5_1_40.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/moment/BeanUtils.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/moment/Caretaker.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/moment/Client.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/moment/Memento.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/moment/Originator.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/flat-ui.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/flat-ui.css.map" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/flat-ui.min.css" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/base/BaseController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/base/BaseController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/dao/UsersDao.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/dao/UsersDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/util/Util.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/util/Util.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/StorageController.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/StorageController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/ItemForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/ItemForm.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/StorageFormContoller.java" afterPath="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/StorageFormContoller.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/additem.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/additem.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_form.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_info.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_info.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/layout.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/layout.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/list.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/list.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/message.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/message/message.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/additem.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/additem.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/getinfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/getinfo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setInfo11.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setInfo11.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setinfo.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setinfo.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/storage_form.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/storage_form.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/history.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/history.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/layout.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/layout.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/navBar.html" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/navBar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/all.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/all.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/content.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/content.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/icon.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/icon.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/init.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/init.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/layout.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/layout.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/loginPage.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/loginPage.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/myTable.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/myTable.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/pop.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/pop.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/wms.iml" afterPath="$PROJECT_DIR$/wms.iml" />
     </list>
-    <ignored path="untitled1.iws" />
-    <ignored path=".idea/workspace.xml" />
-    <ignored path="$PROJECT_DIR$/out/" />
-    <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
-    <ignored path="C:\OneDrive\Project\WMS\.idea\shelf/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,12 +73,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Application.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="238">
+              <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="misc.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="510">
+              <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="170">
-                <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
+                <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -59,94 +126,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Constants.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Constants.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="374">
-              <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="43" />
+              <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Client.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/moment/Client.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BeanUtils.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/moment/BeanUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#327#343#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Caretaker.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/moment/Caretaker.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#137#154#0" expanded="false" />
-                <element signature="e#203#204#0" expanded="false" />
-                <element signature="e#266#267#0" expanded="false" />
-                <element signature="e#327#328#0" expanded="false" />
-                <element signature="e#374#375#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Memento.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/moment/Memento.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding>
-                <element signature="e#143#144#0" expanded="false" />
-                <element signature="e#178#179#0" expanded="false" />
-                <element signature="e#226#227#0" expanded="false" />
-                <element signature="e#257#258#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Originator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/moment/Originator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="442">
-              <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-              <folding>
-                <element signature="e#209#210#0" expanded="false" />
-                <element signature="e#236#237#0" expanded="false" />
-                <element signature="e#276#277#0" expanded="false" />
-                <element signature="e#308#309#0" expanded="false" />
-                <element signature="e#422#423#0" expanded="false" />
-                <element signature="e#462#463#0" expanded="false" />
-                <element signature="e#498#499#0" expanded="false" />
-                <element signature="e#530#531#0" expanded="false" />
-                <element signature="e#580#581#0" expanded="false" />
-                <element signature="e#622#623#0" expanded="false" />
-                <element signature="e#654#655#0" expanded="false" />
-                <element signature="e#682#683#0" expanded="false" />
-                <element signature="e#724#725#0" expanded="false" />
-                <element signature="e#758#759#0" expanded="false" />
-                <element signature="e#1044#1045#0" expanded="false" />
-                <element signature="e#1126#1127#0" expanded="false" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -163,73 +148,23 @@
       </list>
     </option>
   </component>
-  <component name="Git.Settings">
-    <option name="UPDATE_TYPE" value="MERGE" />
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="FORCE_PUSH_ALLOWED" value="true" />
-    <option name="PUSH_TAGS">
-      <GitPushTagMode />
-    </option>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/entity/UmessageEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/dao/ItemInOperationDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/StorageForm.java" />
-        <option value="$PROJECT_DIR$/src/test/java/UtilTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/util/Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/entity/ItemEntity.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/config/MysqlDataSourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/test/java/TestAdd.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/dao/SdictionaryDao.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/storage_form.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/ItemForm.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/getinfo.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/service/StorageFormService.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/add/setinfo.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/storage/add/StorageFormContoller.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/Constants.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/base/BaseController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/config/secuity/SecurityConifg.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/myInput.css" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/dao/AbstractDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/list.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/Application.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/model/SimpleResponseBody.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/login/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_form.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/additem.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/apply/add/AddapplyController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/tiles.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/navBar.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/footer.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/loginPage.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/signin.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/1.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/css/chanall.css" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/storage/history.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/templates/layout.html" />
-        <option value="$PROJECT_DIR$/src/main/webapp/resources/js/main.js" />
-        <option value="$PROJECT_DIR$/src/test/java/Test1.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/config/SqlServerDataSourceConfig.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/web/apply/ApplyController.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/history.html" />
-        <option value="$PROJECT_DIR$/src/main/java/com/repository/other/moment/Client.java" />
         <option value="$PROJECT_DIR$/src/main/java/moment/BeanUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/moment/Caretaker.java" />
-        <option value="$PROJECT_DIR$/src/main/java/moment/Originator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/moment/Client.java" />
+        <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
         <option value="$PROJECT_DIR$/readme.md" />
       </list>
     </option>
@@ -239,16 +174,6 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="importAutomatically" value="true" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="MavenProjectNavigator">
-    <treeState />
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
@@ -316,32 +241,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wms" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="WMS" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="moment" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -913,6 +812,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="wms" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WMS" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value=".idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scratches" />
@@ -920,154 +833,30 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="restartRequiresConfirmation" value="false" />
+    <property name="js.eslint.eslintPackage" value="" />
     <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.3162963" />
-    <property name="Downloaded.Files.Path.Enabled" value="true" />
-    <property name="Downloaded.Files.Path" value="C:\Users\Finderlo\OneDrive\library" />
-    <property name="Repository.Attach.JavaDocs" value="true" />
-    <property name="Repository.Attach.Sources" value="true" />
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../桌面/code/page-transitions" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.General" />
-    <property name="settings.editor.splitter.proportion" value="0.25526074" />
-    <property name="JPA.DatabaseSchemaImportDialog" value="1e8cfbda-0dac-479e-a997-b6424f4f25c7" />
-    <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\WEB-INF\views\templates" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\WEB-INF\views\apply\add" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\WEB-INF\views\storage\add" />
-      <recent name="C:\Users\22340\Desktop\WMS\src\main\webapp\WEB-INF\views\login" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\WEB-INF\views" />
-    </key>
-    <key name="ImportMappingsDialog.RecentPackages">
-      <recent name="com.repository.entity" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.repository.config" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\java\com\repository\other" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\resources\js" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\resources\css\chan" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\resources\picture" />
-      <recent name="C:\Users\Finderlo\OneDrive\Project\WMS\src\main\webapp\WEB-INF\views\login" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Spring Boot.Application">
-    <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true">
+  <component name="RunManager" selected="Application.Application">
+    <configuration default="false" name="Application" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
           <option name="PATTERN" value="com.repository.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.repository.Application" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <module name="wms" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="false" name="Test1.one" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="wms" />
+      <option name="MAIN_CLASS_NAME" value="com.repository.Application" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="Test1" />
-      <option name="METHOD_NAME" value="one" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
       <option name="ENV_VARIABLES" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="LxBeginServer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="wms" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="LxBeginServer" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
       <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="UtilTest.ts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="wms" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="UtilTest" />
-      <option name="METHOD_NAME" value="ts" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="TestAdd.set" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="wms" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" value="TestAdd" />
-      <option name="METHOD_NAME" value="set" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
-      <deployment />
-      <server-settings />
-      <predefined_log_file id="Tomcat" enabled="true" />
-      <predefined_log_file id="Tomcat Catalina" enabled="true" />
-      <predefined_log_file id="Tomcat Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Host Manager" enabled="false" />
-      <predefined_log_file id="Tomcat Localhost Access" enabled="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
@@ -1075,6 +864,34 @@
       <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
+      <module name="" />
+      <option name="DEPLOY" value="true" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="DEBUGGER_TYPE" value="Java" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <Java />
+      <Profilers>
+        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
+        <option name="GAPID_ENABLED" value="false" />
+        <option name="GAPID_DISABLE_PCS" value="false" />
+        <option name="SUPPORT_LIB_ENABLED" value="true" />
+        <option name="INSTRUMENTATION_ENABLED" value="true" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -1088,7 +905,7 @@
       <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
       <option name="PREFERRED_AVD" value="" />
       <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
       <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
       <option name="FORCE_STOP_RUNNING_APP" value="true" />
       <option name="DEBUGGER_TYPE" value="Java" />
@@ -1127,7 +944,7 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="ArquillianJUnit" factoryName="">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <option name="arquillianRunConfiguration">
@@ -1279,8 +1096,6 @@
       <setting name="passParentEnv" value="true" />
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
-      <setting name="depsClasspath" value="false" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -1325,6 +1140,12 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
@@ -1337,7 +1158,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="untitled1" />
+      <module name="wms" />
       <envs />
       <method />
     </configuration>
@@ -1351,28 +1172,6 @@
       <option name="workingDirectory" />
       <option name="isAlternativeJrePathEnabled" value="false" />
       <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list />
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="false" />
-            <option name="workingDirPath" value="" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -1418,12 +1217,6 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
-      <node-interpreter>project</node-interpreter>
-      <node-options />
-      <gulpfile />
-      <tasks />
-      <arguments />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -1439,368 +1232,31 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="mvn" type="MavenRunConfiguration" factoryName="Maven">
-      <MavenSettings>
-        <option name="myGeneralSettings" />
-        <option name="myRunnerSettings" />
-        <option name="myRunnerParameters">
-          <MavenRunnerParameters>
-            <option name="profiles">
-              <set />
-            </option>
-            <option name="goals">
-              <list>
-                <option value="spring-boot:run" />
-              </list>
-            </option>
-            <option name="profilesMap">
-              <map />
-            </option>
-            <option name="resolveToWorkspace" value="true" />
-            <option name="workingDirPath" value="$PROJECT_DIR$" />
-          </MavenRunnerParameters>
-        </option>
-      </MavenSettings>
+    <configuration default="false" name="Application" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.repository.Application" />
+      <module name="wms" />
+      <envs />
       <method />
     </configuration>
-    <list size="6">
-      <item index="0" class="java.lang.String" itemvalue="Maven.mvn" />
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Application.Application" />
       <item index="1" class="java.lang.String" itemvalue="Spring Boot.Application" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.Test1.one" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.LxBeginServer" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UtilTest.ts" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.TestAdd.set" />
     </list>
     <recent_temporary>
-      <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Spring Boot.Application" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.TestAdd.set" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UtilTest.ts" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.LxBeginServer" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.Test1.one" />
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Application.Application" />
       </list>
     </recent_temporary>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="GAPID_DISABLE_PCS" value="false" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="fe59fa1e-d234-496b-b41b-6c4e08d256b8" name="Default" comment="" />
-      <created>1478450930956</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1478450930956</updated>
-      <workItem from="1478450933539" duration="8023000" />
-      <workItem from="1478486807463" duration="20700000" />
-      <workItem from="1478510236013" duration="21000" />
-      <workItem from="1478513013168" duration="20183000" />
-      <workItem from="1478572544544" duration="9758000" />
-      <workItem from="1478583473615" duration="9910000" />
-      <workItem from="1478594096115" duration="2669000" />
-      <workItem from="1478606544740" duration="14636000" />
-      <workItem from="1478657059953" duration="26565000" />
-      <workItem from="1478693676726" duration="221000" />
-      <workItem from="1478693959559" duration="15000" />
-      <workItem from="1478694043501" duration="190000" />
-      <workItem from="1478694427065" duration="10372000" />
-      <workItem from="1478753443103" duration="13642000" />
-      <workItem from="1478775549725" duration="1358000" />
-      <workItem from="1478863138882" duration="3578000" />
-      <workItem from="1479184455583" duration="249000" />
-      <workItem from="1479185140501" duration="14241000" />
-      <workItem from="1479218783939" duration="748000" />
-      <workItem from="1479282573561" duration="15781000" />
-      <workItem from="1479301036682" duration="10357000" />
-      <workItem from="1479355343089" duration="21433000" />
-      <workItem from="1479386725405" duration="6062000" />
-      <workItem from="1479393184047" duration="7415000" />
-      <workItem from="1479443533818" duration="9591000" />
-      <workItem from="1479458369594" duration="5943000" />
-      <workItem from="1479466876489" duration="8668000" />
-      <workItem from="1479522741005" duration="15165000" />
-      <workItem from="1479631065511" duration="17975000" />
-      <workItem from="1479724795515" duration="2076000" />
-      <workItem from="1479728986536" duration="925000" />
-      <workItem from="1479729961839" duration="5069000" />
-      <workItem from="1479790157691" duration="6240000" />
-      <workItem from="1479796812738" duration="1204000" />
-      <workItem from="1479800826437" duration="7859000" />
-      <workItem from="1479819976369" duration="690000" />
-      <workItem from="1479820703754" duration="5405000" />
-      <workItem from="1479887157868" duration="1607000" />
-      <workItem from="1480004421247" duration="138000" />
-      <workItem from="1480005035722" duration="128000" />
-    </task>
-    <task id="LOCAL-00001" summary="a">
-      <created>1478664616898</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1478664616898</updated>
-    </task>
-    <task id="LOCAL-00002" summary="5">
-      <created>1478668312981</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1478668312981</updated>
-    </task>
-    <task id="LOCAL-00003" summary="d">
-      <created>1478669381496</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1478669381497</updated>
-    </task>
-    <task id="LOCAL-00004" summary="dd">
-      <created>1478669906385</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1478669906385</updated>
-    </task>
-    <task id="LOCAL-00005" summary="instroage">
-      <created>1478694090835</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1478694090835</updated>
-    </task>
-    <task id="LOCAL-00006" summary="builer123">
-      <created>1479193060466</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1479193060466</updated>
-    </task>
-    <task id="LOCAL-00007" summary="builer147">
-      <created>1479311293776</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1479311293776</updated>
-    </task>
-    <task id="LOCAL-00008" summary="builer148">
-      <created>1479369578920</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1479369578920</updated>
-    </task>
-    <task id="LOCAL-00009" summary="builer149">
-      <created>1479373438537</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1479373438537</updated>
-    </task>
-    <task id="LOCAL-00010" summary="builer149">
-      <created>1479378966183</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1479378966183</updated>
-    </task>
-    <task id="LOCAL-00011" summary="builer149">
-      <created>1479380513050</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1479380513050</updated>
-    </task>
-    <task id="LOCAL-00012" summary="builer151">
-      <created>1479395675904</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1479395675904</updated>
-    </task>
-    <task id="LOCAL-00013" summary="builer152">
-      <created>1479400423894</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1479400423894</updated>
-    </task>
-    <task id="LOCAL-00014" summary="builer153">
-      <created>1479455668573</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1479455668573</updated>
-    </task>
-    <task id="LOCAL-00015" summary="builer154">
-      <created>1479461575033</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1479461575033</updated>
-    </task>
-    <task id="LOCAL-00016" summary="builer155">
-      <created>1479467794978</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1479467794978</updated>
-    </task>
-    <task id="LOCAL-00017" summary="builer156">
-      <created>1479468111010</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1479468111010</updated>
-    </task>
-    <task id="LOCAL-00018" summary="builer157">
-      <created>1479468601034</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1479468601034</updated>
-    </task>
-    <task id="LOCAL-00019" summary="builer158">
-      <created>1479526462638</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1479526462638</updated>
-    </task>
-    <task id="LOCAL-00020" summary="builer159">
-      <created>1479536250273</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1479536250273</updated>
-    </task>
-    <task id="LOCAL-00021" summary="builer160">
-      <created>1479632446996</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1479632446996</updated>
-    </task>
-    <task id="LOCAL-00022" summary="builer161//没有完成的部分，需要再每次查询后来清空原有的值">
-      <created>1479655578887</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1479655578887</updated>
-    </task>
-    <task id="LOCAL-00023" summary="builer162">
-      <created>1479658189457</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1479658189457</updated>
-    </task>
-    <task id="LOCAL-00024" summary="builer163">
-      <created>1479658251411</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1479658251411</updated>
-    </task>
-    <task id="LOCAL-00025" summary="builer164">
-      <created>1479817644784</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1479817644784</updated>
-    </task>
-    <task id="LOCAL-00026" summary="builer165">
-      <created>1479824619899</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1479824619899</updated>
-    </task>
-    <task id="LOCAL-00027" summary="builer166">
-      <created>1479830202617</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1479830202617</updated>
-    </task>
-    <task id="LOCAL-00028" summary="builer167">
-      <created>1479830344239</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1479830344239</updated>
-    </task>
-    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
-  <component name="TestHistory">
-    <history-entry file="TestAdd_set - 2016.11.19 at 11h 31m 27s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 11h 32m 04s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 11h 36m 41s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 02m 32s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 04m 01s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 07m 30s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 08m 36s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 09m 54s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="TestAdd_set - 2016.11.19 at 12h 10m 49s.xml">
-      <configuration name="TestAdd.set" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="UtilTest_ts - 2016.11.19 at 12h 05m 43s.xml">
-      <configuration name="UtilTest.ts" configurationId="JUnit" />
-    </history-entry>
-  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306810000" />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
+    <option name="totallyTimeSpent" value="357000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="29" width="1938" height="1060" extended-state="6" />
@@ -1825,7 +1281,7 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2780269" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2780269" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295964" sideWeight="0.49785638" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4753363" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24973205" sideWeight="0.48230088" order="0" side_tool="false" content_ui="combo" />
@@ -1879,25 +1335,10 @@
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="processedProjectFiles" value="true" />
-  </component>
-  <component name="UpdateCopyrightCheckinHandler">
-    <option name="UPDATE_COPYRIGHT" value="true" />
-  </component>
-  <component name="Vcs.Log.UiProperties">
-    <option name="RECENTLY_FILTERED_USER_GROUPS">
-      <collection />
-    </option>
-    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
-      <collection />
-    </option>
-  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="instroage" />
     <MESSAGE value="builer123" />
     <MESSAGE value="builer145" />
     <MESSAGE value="builer146" />
@@ -1922,7 +1363,8 @@
     <MESSAGE value="builer166" />
     <MESSAGE value="builer167" />
     <MESSAGE value="builer168" />
-    <option name="LAST_COMMIT_MESSAGE" value="builer168" />
+    <MESSAGE value="Merge branch 'master' of https://github.com/finderlo/WMS-GROUP&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/moment/BeanUtils.java&#10;#&#9;src/main/java/moment/Caretaker.java&#10;#&#9;src/main/java/moment/Client.java&#10;#&#9;src/main/java/moment/Memento.java&#10;#&#9;src/main/java/moment/Originator.java&#10;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/finderlo/WMS-GROUP&#10;&#10;# Conflicts:&#10;#&#9;.idea/misc.xml&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/moment/BeanUtils.java&#10;#&#9;src/main/java/moment/Caretaker.java&#10;#&#9;src/main/java/moment/Client.java&#10;#&#9;src/main/java/moment/Memento.java&#10;#&#9;src/main/java/moment/Originator.java&#10;" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
@@ -1966,28 +1408,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/web/apply/add/AddapplyController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-841">
-          <caret line="58" column="29" lean-forward="false" selection-start-line="58" selection-start-column="29" selection-end-line="58" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/apply/add/apply_form.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="29" column="40" lean-forward="false" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/query/layout.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="42" column="13" lean-forward="false" selection-start-line="16" selection-start-column="3" selection-end-line="42" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/views/borrow/history.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="340">
@@ -2160,18 +1580,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#1424#1425#0" expanded="false" />
-            <element signature="e#1486#1487#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/Test1.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
@@ -2250,26 +1658,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/moment/Originator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="17" column="33" lean-forward="false" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
-          <folding>
-            <element signature="e#209#210#0" expanded="false" />
-            <element signature="e#236#237#0" expanded="false" />
-            <element signature="e#276#277#0" expanded="false" />
-            <element signature="e#308#309#0" expanded="false" />
-            <element signature="e#422#423#0" expanded="false" />
-            <element signature="e#462#463#0" expanded="false" />
-            <element signature="e#498#499#0" expanded="false" />
-            <element signature="e#530#531#0" expanded="false" />
-            <element signature="e#580#581#0" expanded="false" />
-            <element signature="e#622#623#0" expanded="false" />
-            <element signature="e#654#655#0" expanded="false" />
-            <element signature="e#682#683#0" expanded="false" />
-            <element signature="e#724#725#0" expanded="false" />
-            <element signature="e#758#759#0" expanded="false" />
-            <element signature="e#1044#1045#0" expanded="false" />
-            <element signature="e#1126#1127#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="612">
+          <caret line="18" column="33" lean-forward="false" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -2277,63 +1668,15 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding>
-            <element signature="e#143#144#0" expanded="false" />
-            <element signature="e#178#179#0" expanded="false" />
-            <element signature="e#226#227#0" expanded="false" />
-            <element signature="e#257#258#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/moment/BeanUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#327#343#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/moment/Caretaker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#137#154#0" expanded="false" />
-            <element signature="e#203#204#0" expanded="false" />
-            <element signature="e#266#267#0" expanded="false" />
-            <element signature="e#327#328#0" expanded="false" />
-            <element signature="e#374#375#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/moment/Memento-DESKTOP-R1QCKAH.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/moment/Client.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="12" column="0" lean-forward="false" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="170">
-            <caret line="5" column="11" lean-forward="false" selection-start-line="5" selection-start-column="11" selection-end-line="5" selection-end-column="11" />
-            <folding />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        <state relative-caret-position="442">
+          <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -2370,18 +1713,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Constants.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="11" column="43" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/web/query/QueryController-DESKTOP-R1QCKAH.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
           <caret line="30" column="7" lean-forward="false" selection-start-line="30" selection-start-column="7" selection-end-line="30" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Constants.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="11" column="10" lean-forward="false" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/moment/Caretaker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="110">
+          <caret line="6" column="6" lean-forward="false" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/moment/BeanUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/repository/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc-DESKTOP-R1QCKAH.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-198">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.idea/misc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="15" column="10" lean-forward="false" selection-start-line="15" selection-start-column="10" selection-end-line="15" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="170">
+            <caret line="5" column="1" lean-forward="false" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+            <folding />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
@@ -2392,11 +1800,11 @@
       <state key="ArtifactsStructureConfigurable.UI">
         <settings>
           <artifact-editor />
-          <last-edited>untitled1:war</last-edited>
+          <last-edited>wms:war</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.34731182" />
+                <option value="0.2" />
                 <option value="0.5" />
               </list>
             </option>
@@ -2405,11 +1813,11 @@
       </state>
       <state key="FacetStructureConfigurable.UI">
         <settings>
-          <last-edited>Detection</last-edited>
+          <last-edited>Spring</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.3162963" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -2421,7 +1829,7 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.34731182" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
@@ -2445,15 +1853,15 @@
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.3162963" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ProjectJDKs.UI">
+      <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>Maven: antlr:antlr:2.7.7</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2463,22 +1871,6 @@
           </splitter-proportions>
         </settings>
       </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>mysql:mysql-connector-java:5.1.40</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.3162963" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
     </states>
-  </component>
-  <component name="mavenExecuteGoalHistory">
-    <option value="$PROJECT_DIR$" />
-    <option value="install:install-file -Dfile=sqljdbc42.jar -Dpackaging=jar -DgroupId=com.microsoft.sqlserver - DartifactId=sqljdbc42 -Dversion=4.2" />
   </component>
 </project>

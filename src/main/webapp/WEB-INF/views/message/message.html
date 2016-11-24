@@ -1,21 +1,43 @@
-<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-4.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <title>message</title>
-    <link rel="stylesheet" type="text/css" href="../../static/myCSS/titleNav.css">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../resources/js/main.js"></script>
 </head>
 
 <body>
-<div class="title">
-    <div class="title1">消息列表></div>
-</div>
+<div class="content" tiles:fragment="content">
+    <div class="content-left">
+        <div class="listNav-title">消息中心</div>
+        <ul class="listNav">
+            <li><a>创建消息</a></li>
+            <li><a>我的消息</a></li>
+            <li>
+                <a>系统消息</a>
+                <ul class="listNav2">
+                    <li><a>用户消息</a></li>
+                    <li><a>系统消息</a></li>
+                    <li><a>领取消息</a></li>
+                    <li><a>提醒消息</a></li>
+                    <li><a>审核消息</a></li>
+                    <li><a>库存提醒</a></li>
+                    <li><a>保质期提醒</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="content-right">
+        <div class="message" th:each="message:${messages}">
+            <span class="message-name" th:text="${message.title}">name</span>
+            <span class="message-date" th:text="${#calendars.format(message.created)}" }>data</span>
+            <div class="message-content" th:text="${message.text}">content</div>
+        </div>
+    </div>
+
 </body>
 </html>

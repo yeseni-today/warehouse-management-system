@@ -1,10 +1,8 @@
-.pop_add {
+.pop {
     position: relative;
     z-index: 900;
     width: 30em;
-    height: 25em;
     padding-top: 3em;
-    overflow: hidden;
     background: #eaeded;
     top: 10em;
     margin: auto;
@@ -15,7 +13,7 @@
 
 }
 
-.pop_add-bg {
+.pop-bg {
     display: none;
     position: fixed;
     top: 0;
@@ -33,4 +31,9 @@
     top: 1em;
     width: 2em;
     height: 2em;
+}
+
+.pop-details {
+    top: 5em;
+    padding-top: 1em;
 }

@@ -1,25 +1,12 @@
 package com.repository.util;
 
 import com.repository.dao.ItemDao;
-import com.repository.dao.SdictionaryDao;
-import com.repository.dao.UsersDao;
-import com.repository.entity.ItemCompanyEntity;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.ItemInOperationEntity;
-import com.repository.entity.ItemInStorageEntity;
 import com.repository.entity.SdictionaryEntity;
-import com.repository.entity.UsersEntity;
-import com.repository.web.storage.add.StorageForm;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import static com.repository.Constants.*;
 
 /**
  * Created by Finderlo on 11/16/2016.
@@ -62,49 +49,16 @@ public class Util {
         return code;
     }
 
+
+    public static String number() {
+        Date _date = new Date(System.currentTimeMillis());
+
+        int index = (int) (Math.random() * 1000);
+        String date1 = String.format("%tY", _date) + String.format("%tm", _date) + String.format("%td", _date);
+        return new StringBuilder().append(date1).append(index).toString();
+    }
+
     public static void main(String[] args) {
-        List<SdictionaryEntity> tests = new ArrayList<>();
-
-        SdictionaryEntity a = new SdictionaryEntity();
-        a.setField("021");
-        a.setIndex(1);
-        a.setIndexlength(5);
-        tests.add(a);
-        SdictionaryEntity b = new SdictionaryEntity();
-        b.setField("company_ID");
-        b.setIndex(1);
-        b.setIndexlength(5);
-        tests.add(b);
-        SdictionaryEntity c = new SdictionaryEntity();
-        c.setField("application_ID");
-        c.setIndex(100);
-        c.setIndexlength(5);
-        tests.add(c);
-        SdictionaryEntity d = new SdictionaryEntity();
-        d.setField("borrow_ID");
-        d.setIndex(100);
-        d.setIndexlength(5);
-        tests.add(d);
-        SdictionaryEntity e = new SdictionaryEntity();
-        e.setField("storage_ID");
-        e.setIndex(100);
-        e.setIndexlength(5);
-        tests.add(e);
-        SdictionaryEntity f = new SdictionaryEntity();
-        f.setField("out_ID");
-        f.setIndex(100);
-        f.setIndexlength(5);
-        tests.add(f);
-        SdictionaryEntity g = new SdictionaryEntity();
-        g.setField("029");
-        g.setIndex(1);
-        g.setIndexlength(5);
-        tests.add(g);
-        for (SdictionaryEntity sdictionaryEntity : tests) {
-            System.out.println(Util.handleCode(sdictionaryEntity));
-        }
-
-        //System.out.println(String.format("%05d",12));
-
+        System.out.println(number());
     }
 }
