@@ -28,8 +28,8 @@ function addItem() {
 }
 
 function openPopAdd(code, name) {
-    var popAddBg = document.getElementsByClassName('pop_add-bg');
-    var popAdd = document.getElementsByClassName('pop_add');
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
     var a = document.getElementsByName("itemCode");
     var b = document.getElementsByName("itemName");
     a[1].value = code;
@@ -43,8 +43,44 @@ function openPopAdd(code, name) {
 }
 
 function closePopAdd() {
-    var popAddBg = document.getElementsByClassName('pop_add-bg');
-    var popAdd = document.getElementsByClassName('pop_add');
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
+    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
+    popAdd[0].style.transform = "scale(0,0)";
+    setTimeout(function () {
+        popAddBg[0].style.display = "none";
+    }, 500);
+}
+
+function openPopDetails(itemForm) {
+    showLoading();
+    var item = $
+    console.log(itemForm.itemCode);
+    // var popAddBg = document.getElementsByClassName('pop-bg');
+    // var popAdd = document.getElementsByClassName('pop');
+    // var itemName = document.getElementsByName("itemName");
+    // var itemCategory = document.getElementsByName("itemCategory");
+    // var itemCount = document.getElementsByName("itemCount");
+    // var itemPrice = document.getElementsByName("itemPrice");
+    // var itemSpec = document.getElementsByName("itemSpec");
+    // var itemCompany = document.getElementsByName("itemCompany");
+    // var itemCount = document.getElementsByName("itemCount");
+    // var itemPrice = document.getElementsByName("itemPrice");
+    // var billCode = document.getElementsByName("billCode");
+    // var storageLocation = document.getElementsByName("storageLocation");
+    //
+    //
+    // popAddBg[0].style.display = "block";
+    // setTimeout(function () {
+    //     popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
+    //     popAdd[0].style.transform = "scale(1,1)"
+    // }, 1);
+
+}
+
+function closePopAdd() {
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
     popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
     popAdd[0].style.transform = "scale(0,0)";
     setTimeout(function () {
@@ -53,7 +89,8 @@ function closePopAdd() {
 }
 
 function showLoading() {
-    // $("#topdiv").style.display = "block";
+    $("#loading").css("top", window.innerHeight / 2 - 16 + "px");
+    $("#loading").css("left", window.innerWidth / 2 - 16 + "px");
     $("#topdiv").css("display", "block");
 }
 function hideLoading() {

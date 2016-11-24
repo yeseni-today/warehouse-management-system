@@ -14,6 +14,21 @@
     height: inherit;
 }
 
+#topdiv {
+    position: fixed;
+    z-index: 900;
+    width: 100em;
+    height: 100em;
+    background-color: rgba(0, 0, 0, 0.51);
+    display: none;
+}
+
+#loading {
+    position: relative;
+    width: 32px;
+    height: 32px;
+}
+
 #header {
     position: fixed;
     z-index: 1000;

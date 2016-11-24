@@ -1,4 +1,4 @@
-.pop_add {
+.pop {
     position: relative;
     z-index: 900;
     width: 30em;
@@ -15,7 +15,7 @@
 
 }
 
-.pop_add-bg {
+.pop-bg {
     display: none;
     position: fixed;
     top: 0;

@@ -43,23 +43,22 @@
             <tr th:if="${session.storageForm.itemForms.isEmpty()}">
                 <td colspan="5">入库单中没有物品，请添加</td>
             </tr>
-            <r th:if="${session.storageForm != null}"
+            <tr th:if="${session.storageForm != null}"
                 th:each="itemForm:${session.storageForm.itemForms}">
                 <td th:text="${itemForm.itemCode}"></td>
                 <td th:text="${itemForm.itemCount}"></td>
                 <td th:text="${itemForm.itemPrice}"></td>
                 <td th:text="${itemForm.billCode}"></td>
                 <td class="icon-search"
-                    th:onclick="'javascript:openPopAdd(\''+${itemForm.itemCode}+'\',\''+${itemForm.itemName}+'\')'">
+                    th:onclick="'javascript:openPopDetails( '+${itemForm}+' )'">
                 </td>
                 <td
                     th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\')'">
                     <div class="icon-cross"></div>
                 </td>
-
-            </r>
-            <div class="pop_add-bg">
-                <div class="pop_add myInfoList myInput">
+            </tr>
+            <div class="pop-bg">
+                <div class="pop myInfoList myInput">
                     <div class="pop-close">
                         <div class="close_button" onclick="closePopAdd()">
                             <div class="close_button-icon"></div>
@@ -70,64 +69,102 @@
                             <li>
                                 <label>
                                     <div class="name">
-                                        物品条形码：
-                                    </div>
-                                    <div class="value">
-                                        <input type="text" name="itemCode" value="条形码"
-                                               readonly="readonly"/>
-                                    </div>
-                                </label>
-                            </li>
-                            <li>
-                                <label>
-                                    <div class="name">
                                         物品名称：
                                     </div>
                                     <div class="value">
-                                        <input type="text" name="itemName" value="名称"
-                                               readonly="readonly"/>
+                                        <input type="text" name="itemName" readonly="readonly"/>
                                     </div>
                                 </label>
                             </li>
                             <li>
                                 <label>
                                     <div class="name">
-                                        申请数量：
+                                        物品类别：
                                     </div>
                                     <div class="value">
-                                        <input type="number" name="applyNum"/>
+                                        <input type="text" class="itemCategory" readonly="readonly"/>
                                     </div>
                                 </label>
                             </li>
                             <li>
                                 <label>
                                     <div class="name">
-                                        申请备注：
+                                        库存数量：
                                     </div>
                                     <div class="value">
-                                        <input type="text" name="remark"/>
+                                        <input type="number" class="itemCount" readonly="readonly"/>
                                     </div>
                                 </label>
                             </li>
                             <li>
                                 <label>
                                     <div class="name">
-                                        申请类型：
+                                        物品单价：
                                     </div>
                                     <div class="value">
-                                        <select name="applyType">
-                                            <option value="常规使用">常规使用</option>
-                                            <option value="特殊需求">特殊需求</option>
-                                            <option value="过期处理">过期处理</option>
-                                            <option value="库存清点">库存清点</option>
-                                            <option value="其他">其他</option>
-                                        </select>
+                                        <input type="text" class="itemPrice" readonly="readonly"/>
                                     </div>
                                 </label>
                             </li>
                             <li>
-                                <input type="button" onclick="closePopAdd()" value="取消"/>
-                                <input type="submit" onclick="closePopAdd()" value="增加物品"/>
+                                <label>
+                                    <div class="name">
+                                        物品规格：
+                                    </div>
+                                    <div class="value">
+                                        <input type="text" class="itemSpec" readonly="readonly"/>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <div class="name">
+                                        生产厂商：
+                                    </div>
+                                    <div class="value">
+                                        <input type="text" class="itemCompany" readonly="readonly"/>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <div class="name">
+                                        入库数量：
+                                    </div>
+                                    <div class="value">
+                                        <input type="number" name="itemCount" readonly="readonly"/>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <div class="name">
+                                        此次入库单价：
+                                    </div>
+                                    <div class="value">
+                                        <input type="number" name="itemPrice" readonly="readonly"/>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <div class="name">
+                                        发票代码：
+                                    </div>
+                                    <div class="value">
+                                        <input type="text" name="billCode" readonly="readonly"/>
+                                    </div>
+                                </label>
+                            </li>
+                            <li>
+                                <label>
+                                    <div class="name">
+                                        入库库位：
+                                    </div>
+                                    <div class="value">
+                                        <input type="text" name="storageLocation" readonly="readonly"/>
+                                    </div>
+                                </label>
                             </li>
                         </ul>
                     </form>
