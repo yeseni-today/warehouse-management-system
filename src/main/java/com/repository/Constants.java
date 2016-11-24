@@ -28,15 +28,17 @@ public interface Constants {
     String HTML_STORAGE_PREFIX = TILES_PREFIX + "storage/";
     String HTML_STORAGE_HISTORY = HTML_STORAGE_PREFIX + "history";
     //storage-add
-    String URL_STORAGE_ADD = "/storage/add";
+    String URL_STORAGE_ADD = URL_STORAGE+ "/add";
     String URL_STORAGE_ADD_ADDITEM = URL_STORAGE_ADD + "/additem";
     String URL_STORAGE_ADD_SET_ITEM_INFO = URL_STORAGE_ADD + "/set_item_info";
+    String URL_STORAGE_ADD_DELETEITEM_AJAX = URL_STORAGE_ADD + "/deleteItem";
     String URL_STORAGE_ADD_SUBMIT = URL_STORAGE_ADD + "/submit";
     String HTML_STORAGE_ADD_PREFIX = HTML_STORAGE_PREFIX + "add/";
     String HTML_STORAGE_ADD_STORAGE_FORM = HTML_STORAGE_ADD_PREFIX + "storage_form";
     String HTML_STORAGE_ADD_ADDITEM = HTML_STORAGE_ADD_PREFIX + "additem";
     String HTML_STORAGE_ADD_GETINFO = HTML_STORAGE_ADD_PREFIX + "getinfo";
     String HTML_STORAGE_ADD_SETINFO = HTML_STORAGE_ADD_PREFIX + "setinfo";
+
 
     //apply
     String URL_APPLY = "/apply";

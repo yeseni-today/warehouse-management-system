@@ -28,7 +28,7 @@
     </div>
 
     <div class="content-result myTable">
-        <table>
+        <table id="storagetable">
             <caption>
                 入库单编号：<p th:text="${session.storageForm.inStorageId}"></p>
             </caption>
@@ -40,10 +40,10 @@
                 <th>详情</th>
                 <th>删除</th>
             </tr>
-            <tr th:if="${session.storageForm.itemForms.isEmpty()}">
-                <td colspan="5">入库单中没有物品，请添加</td>
-            </tr>
-            <r th:if="${session.storageForm != null}"
+            <!--<tr th:if="${session.storageForm.itemForms.isEmpty()}">-->
+                <!--<td colspan="5">入库单中没有物品，请添加</td>-->
+            <!--</tr>-->
+            <tr th:if="${session.storageForm != null}"
                 th:each="itemForm:${session.storageForm.itemForms}">
                 <td th:text="${itemForm.itemCode}"></td>
                 <td th:text="${itemForm.itemCount}"></td>
@@ -52,12 +52,14 @@
                 <td class="icon-search"
                     th:onclick="'javascript:openPopAdd(\''+${itemForm.itemCode}+'\',\''+${itemForm.itemName}+'\')'">
                 </td>
-                <td
-                    th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\')'">
+                <td th:onclick="'javascript:two(\''+${itemForm}+'\')'">
                     <div class="icon-cross"></div>
                 </td>
-
-            </r>
+                <!--<td-->
+                    <!--th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\','+${itemFormStat.index}+')'">-->
+                    <!--<div class="icon-cross"></div>-->
+                <!--</td>-->
+            </tr>
             <div class="pop_add-bg">
                 <div class="pop_add myInfoList myInput">
                     <div class="pop-close">

@@ -32,6 +32,7 @@ import static com.repository.Constants.SESSION_STORAGE_FORM;
 import static com.repository.Constants.URL_STORAGE;
 import static com.repository.Constants.URL_STORAGE_ADD;
 import static com.repository.Constants.URL_STORAGE_ADD_ADDITEM;
+import static com.repository.Constants.URL_STORAGE_ADD_DELETEITEM_AJAX;
 import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
 import static com.repository.Constants.URL_STORAGE_ADD_SUBMIT;
 /**
@@ -57,7 +58,7 @@ public class StorageFormContoller extends BaseController {
         }
     }
 
-    @RequestMapping("/deleteItem")
+    @RequestMapping(URL_STORAGE_ADD_DELETEITEM_AJAX)
     @ResponseBody
     public SimpleResponseBody deleteItem(HttpSession session,@RequestParam("itemCode") String itemcode){
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);

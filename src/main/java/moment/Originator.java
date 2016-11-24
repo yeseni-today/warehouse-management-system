@@ -1,4 +1,5 @@
 package moment;
+
 //���лָ����ܵ�Bean
 class Originator {
 	private String time = "";

@@ -7,6 +7,7 @@
           <element id="module-output" name="wms" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.8.0" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-web:1.4.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter-tomcat:1.4.0.RELEASE" />
           <element id="library" level="project" name="Maven: org.apache.tomcat.embed:tomcat-embed-core:8.5.4" />

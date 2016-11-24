@@ -57,14 +57,32 @@ function showLoading() {
     $("#topdiv").css("display", "block");
 }
 function hideLoading() {
-    $("#topdiv").style.display = "none";
+    $("#topdiv").css("display", "none");
 }
 
-function deleteStroageItem(itemCode) {
-
+function deleteStroageItem(itemCode,index) {
+    showLoading();
+    $.ajax({
+        url:"/storage/add/deleteItem",
+        data:{"itemCode":itemCode},
+        type:"get",
+        success:function (result) {
+            setTimeout(function () {
+                hideLoading();
+            },1000);
+            var i = index+1;
+            $('#storagetable tr:eq('+i+')').remove()
+        }
+    });
 }
 function deleteAll() {
 
+}
+
+function two(two) {
+    var three =$.parseJSON(two);
+   console.log( three);
+   console.log(three.itemCode);
 }
 
 
