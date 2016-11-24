@@ -1,0 +1,37 @@
+.close_button {
+    height: 2em;
+    width: 2em;
+    overflow: hidden;
+}
+
+.close_button-icon {
+    height: 2em;
+    width: 2em;
+    position: relative;
+}
+
+.close_button-icon::before, .close_button-icon::after {
+    content: '';
+    position: absolute;
+    right: 0.3em;
+    top: 0.8em;
+    height: 0.4em;
+    width: 1.4em;
+    border-radius: 0.2em;
+    background: #292929;
+    transition: all 0.2s;
+}
+
+.close_button:hover .close_button-icon::before {
+    right: 0.2em;
+    width: 1.6em;
+    transform: rotate(-45deg);
+    background: #2fe2bf;
+}
+
+.close_button:hover .close_button-icon::after {
+    right: 0.2em;
+    width: 1.6em;
+    transform: rotate(45deg);
+    background: #2fe2bf;
+}

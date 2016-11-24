@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:replace="title">Title</title>
+
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
+          th:href="@{/resources/css/all.css}"/>
+    <script src="../../../resources/js/main.js"
+            th:src="@{/resources/js/main.js}">
+
+    </script>
+    <script src="../../../resources/js/pageSwitch.js"
+            th:src="@{/resources/js/pageSwitch.js}"></script>
+
+    <script src="../../../resources/js/jquery-3.1.1.js"
+            th:src="@{/resources/js/jquery-3.1.1.js}"></script>
+    <script src="../../../resources/js/modernizr.custom.js"
+            th:src="@{/resources/js/modernizr.custom.js}"></script>
+    <script>
+        $(document).ready(function () {
+            $("#loginButton").click(function () {
+                var values = $("#loginform").serialize();
+                $("#loginButton").value = "正在登陆";
+                $.ajax({
+                    type: "post",
+                    url: "/signin",    //向springboot请求数据的url
+                    data: values,
+                    success: function (json) {
+                        if (json.message == ("success")) {
+                            $("#loginButton").val("登陆成功");
+                            setTimeout(function () {
+                                location = json.content;
+                            }, 1000)
+                        } else {
+                            $("#loginButton").val("登陆失败请重试");
+                        }
+                    }
+                })
+            });
+        })
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            $("#button1").click(function () {
+                var values = $("#queryinput").serialize();
+                $.ajax({
+                    type: "get",
+                    url: "/query/queryItem",    //向springboot请求数据的url
+                    data: values,
+                    success: function (items) {
+                        $("#result_table tr").remove("tr:gt(0)")
+                        //没有完成的部分，需要再每次查询后来清空原有的值
+                        $.each(items, function (i, item) {
+                            item = "<tr> " +
+                                    "   <th>" + item.itemCode + "</th>" +
+                                    "   <th>" + item.itemName + "</th>" +
+                                    "   <th>" + item.itemCategoryEntity.categoryName + "</th>" +
+                                    "   <th>" + item.itemCount + "</th>" +
+                                    "   <th>" + "操作" + "</th>" +
+                                    "</tr>";
+                            $("#result_table").append(item)
+                        });
+                    }
+                })
+            });
+        })
+    </script>
+</head>
+
+<body>
+
+
+<div >
+    <div id="topdiv" class="login-top" style="height: 1080px;width: 1920px; background-color: rgba(0,0,0,0.51);display: none">
+        <img src="../../../resources/picture/loading.gif" id="loading"
+             style="position: absolute;top:50%;left:50%;"/>
+    </div>
+    <div class="background">
+        <div class="background-content"></div>
+    </div>
+    <div id="header">
+        <div th:replace="templates/navBar :: navBar">
+        </div>
+    </div>
+
+    <div id="body">
+
+        <div id="prePage">
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
+        </div>
+
+        <div id="currentPage">
+            <div class="background">
+                <div class="background-content"></div>
+            </div>
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
+            <div tiles:replace="content"></div>
+        </div>
+
+        <div id="nextPage">
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div th:replace="templates/footer :: footer">
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

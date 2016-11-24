@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:fragment="title">新建申请单</title>
+
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
+</head>
+
+<body>
+
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_Now">
+                <a>新建申请单</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-function">
+        <div class="myDivBt">
+            <a href="additem.html" th:href="@{/apply/add/additem}" th:method="get">添加物品</a>
+        </div>
+    </div>
+
+    <div class="content-result myTable">
+        <table>
+            <caption>
+                申请单编号：<p th:text="${session.apply_form.applicationId}"></p>
+            </caption>
+            <tr>
+                <th>物品条形码</th>
+                <th>物品名称</th>
+                <th>数量</th>
+                <th>备注</th>
+                <th>删除</th>
+            </tr>
+            <!--/*@thymesVar id="apply_form" type="com.repository.web.apply.add.AddapplyController.ApplyForm"*/-->
+            <tr th:if="${session.apply_form == null || session.apply_form.items.isEmpty()}">
+                <td colspan="4">申请单中没有物品，请添加</td>
+            </tr>
+            <tr th:each="item : ${session.apply_form.getItems()}">
+                <td th:text="${item.getItemCode()}"></td>
+                <td th:text="${item.getItemName()}"></td>
+                <td th:text="${item.getItemCount()}"></td>
+                <td th:text="${item.getOthers()}"></td>
+                <td class="myTable-operation">
+                    <div class="icon-cross"></div>
+                </td>
+            </tr>
+        </table>
+        <div class="content-result-operation">
+            <div class="myDivBt">
+                <a href="../history.html" onclick="alert_info('系统正忙，请稍后重试')">提交</a>
+            </div>
+            <div class="myDivBt">
+                <a href="../history.html">取消</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
