@@ -1,5 +1,7 @@
 package com.repository.web.storage.add;
 
+import com.google.gson.Gson;
+
 /**
  * Created by Finderlo on 2016/11/9.
  */
@@ -149,5 +151,10 @@ public class ItemForm {
 
     public void setItemSlot(String itemSlot) {
         this.itemSlot = itemSlot;
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 }
