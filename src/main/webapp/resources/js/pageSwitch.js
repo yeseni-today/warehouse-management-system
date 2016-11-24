@@ -2,12 +2,18 @@
  * Created by 22340 on 2016/11/23.
  */
 
-function Switch() {
+function switch_page() {
+    switch_page1( $('#currentPage'),$('#nextPage'))
+}
+
+function switch_page1(current,next) {
     var width = document.documentElement.clientWidth;
     var height = window.innerHeight + 5;
     console.log(height);
-    var currentPage = $('#currentPage');
-    var nextPage = $('#nextPage');
+    // var currentPage = $('#currentPage');
+    // var nextPage = $('#nextPage');
+    var currentPage = current;
+    var nextPage = next;
     var body = $('#body');
 
     //init
@@ -21,10 +27,10 @@ function Switch() {
     nextPage.css("height", height + "px");
     nextPage.css("width", width + "px");
 
+    //设置css过场动画
     currentPage.addClass('currentPage');
     nextPage.addClass('nextPage');
-
-    //end
+    //end,
     setTimeout(function () {
         currentPage.addClass('currentPageAfter');
         nextPage.addClass('nextPageAfter');

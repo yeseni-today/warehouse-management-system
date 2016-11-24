@@ -1,10 +1,11 @@
 package com.repository.web.storage.add;
 
 import com.repository.base.BaseController;
+import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
-import com.repository.dao.ItemDao;
+import com.repository.model.SimpleResponseBody;
 import com.repository.service.StorageFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,15 +15,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 import java.util.List;
+import java.util.stream.Collectors;
 
-import javax.print.DocFlavor;
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.*;
-import static com.repository.util.Util.*;
+import static com.repository.Constants.HTML_STORAGE_ADD_ADDITEM;
+import static com.repository.Constants.HTML_STORAGE_ADD_GETINFO;
+import static com.repository.Constants.HTML_STORAGE_ADD_SETINFO;
+import static com.repository.Constants.HTML_STORAGE_ADD_STORAGE_FORM;
+import static com.repository.Constants.REDIRECT;
+import static com.repository.Constants.SESSION_STORAGE_FORM;
+import static com.repository.Constants.URL_STORAGE;
+import static com.repository.Constants.URL_STORAGE_ADD;
+import static com.repository.Constants.URL_STORAGE_ADD_ADDITEM;
+import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
+import static com.repository.Constants.URL_STORAGE_ADD_SUBMIT;
 /**
  * Created by Finderlo on 2016/11/9.
  */
@@ -44,6 +55,25 @@ public class StorageFormContoller extends BaseController {
             storageForm = new StorageForm(sdictionaryDao.getInstorgeId(), principal.getName());
             session.setAttribute(SESSION_STORAGE_FORM, storageForm);
         }
+    }
+
+    @RequestMapping("/deleteItem")
+    @ResponseBody
+    public SimpleResponseBody deleteItem(HttpSession session,@RequestParam("itemCode") String itemcode){
+        StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
+        List one = storageForm.getItemForms().stream().filter(e -> e.getItemCode().equals(itemcode.trim())).collect(Collectors.toList());
+        if(!one.isEmpty()){
+            storageForm.getItemForms().remove(one.get(0));
+        }
+        return new SimpleResponseBody();
+    }
+
+    @RequestMapping("/deleteAll")
+    @ResponseBody
+    public SimpleResponseBody deleteItem(HttpSession session){
+        StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
+        storageForm.getItemForms().clear();
+        return new SimpleResponseBody();
     }
 
     /**

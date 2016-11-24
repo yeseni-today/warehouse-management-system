@@ -13,9 +13,7 @@ public class UsersDao extends AbstractDao<UsersEntity> {
 
 
     public static void main(String[] args) {
-
         UsersDao usersDao = new UsersDao();
-
         UsersEntity usersEntity  = new UsersEntity();
         usersEntity.setUsersId("4564");
         usersEntity.setUsersPassword("password5");

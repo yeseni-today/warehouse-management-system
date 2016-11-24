@@ -58,34 +58,14 @@ function showLoading() {
 }
 function hideLoading() {
     $("#topdiv").style.display = "none";
-
 }
 
-function oneTest() {
-    var $current = $("#currentPage");
-    var $next = $("#nextPage");
-    var outClass = 'pt-page-moveToLeft';
-    var inClass = 'pt-page-moveFromRight';
-    $next.load("resources/js/storage_form.html");
-    var animEndEventNames = {
-        'WebkitAnimation': 'webkitAnimationEnd',
-        'OAnimation': 'oAnimationEnd',
-        'msAnimation': 'MSAnimationEnd',
-        'animation': 'animationend'
-    };
+function deleteStroageItem(itemCode) {
 
-    // animation end event name
-    var animEndEventName = animEndEventNames[Modernizr.prefixed('animation')];
-    $current.addClass(outClass).on(animEndEventName, function () {
-        alert("done");
-        $current.off(animEndEventName);
-    });
-    $next.addClass(inClass).on(animEndEventName, function () {
-        $next.off(animEndEventName);
-    });
 }
+function deleteAll() {
 
-
+}
 
 
 
