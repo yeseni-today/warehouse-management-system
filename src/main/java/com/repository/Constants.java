@@ -11,6 +11,9 @@ public interface Constants {
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";
     String SESSION_USER = "user";
+    String SESSION_COMPANY = "companyID";
+    String SESSION_ITEMCATOARY_A = "itemcatoryA";
+    String SESSION_ITEMCATOARY = "categories";
     //login
     String URL_INDEX = "/";
     String URL_SIGNIN = "/signin";
@@ -25,13 +28,17 @@ public interface Constants {
 
     //storage
     String URL_STORAGE = "/storage";
-    String HTML_STORAGE_PREFIX = TILES_PREFIX + "storage/";
+    String HTML_STORAGE_PREFIX = "storage/";
     String HTML_STORAGE_HISTORY = HTML_STORAGE_PREFIX + "history";
     //storage-add
     String URL_STORAGE_ADD = URL_STORAGE+ "/add";
+    String URL_STORAGE_ADD_AJAX = URL_STORAGE+ "/addajax";
     String URL_STORAGE_ADD_ADDITEM = URL_STORAGE_ADD + "/additem";
+    String URL_STORAGE_ADD_ADDITEM_AJAX = URL_STORAGE_ADD + "/additemajax";
     String URL_STORAGE_ADD_SET_ITEM_INFO = URL_STORAGE_ADD + "/set_item_info";
+    String URL_STORAGE_ADD_SET_ITEM_INFO_AJAX = URL_STORAGE_ADD + "/set_item_info_ajax";
     String URL_STORAGE_ADD_DELETEITEM_AJAX = URL_STORAGE_ADD + "/deleteItem";
+    String URL_STORAGE_ADD_DELETEALL_AJAX = URL_STORAGE_ADD + "/deleteAll";
     String URL_STORAGE_ADD_SUBMIT = URL_STORAGE_ADD + "/submit";
     String HTML_STORAGE_ADD_PREFIX = HTML_STORAGE_PREFIX + "add/";
     String HTML_STORAGE_ADD_STORAGE_FORM = HTML_STORAGE_ADD_PREFIX + "storage_form";
