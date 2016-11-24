@@ -1,4 +1,4 @@
-#background {
+.background {
     position: fixed;
     z-index: -1;
     background: #1abc9c;
@@ -6,7 +6,7 @@
     height: 100em;
 }
 
-#background-content {
+.background-content {
     padding: 5em;
     width: 65em;
     margin: auto;
@@ -59,7 +59,7 @@
     position: absolute;
     z-index: -1;
     width: 100%;
-    background: #6f6f6f;
+    background: #1abc9c;
     overflow: hidden;
     display: block;
     transform-origin: 50% 50% -30em;

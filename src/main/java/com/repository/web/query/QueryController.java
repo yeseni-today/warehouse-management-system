@@ -4,7 +4,6 @@ import com.repository.base.BaseController;
 import com.repository.entity.ItemCategoryEntity;
 import com.repository.entity.ItemEntity;
 
-import org.springframework.boot.json.JsonParser;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,25 +12,32 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.*;
+import static com.repository.Constants.HTML_QUERY_LIST;
+import static com.repository.Constants.SESSION_COMPANY;
+import static com.repository.Constants.SESSION_ITEMCATOARY;
+import static com.repository.Constants.SESSION_ITEMCATOARY_A;
+import static com.repository.Constants.URL_QUERY;
+import static com.repository.Constants.URL_QUERY_QUERYITEM;
 
 @RequestMapping(URL_QUERY)
 @Controller
 public class QueryController extends BaseController {
 
-
-
     @ModelAttribute
     public void init(HttpSession session) {
-        session.setAttribute("categories", categories());
+        session.setAttribute(SESSION_ITEMCATOARY, categories());
+        session.setAttribute(SESSION_ITEMCATOARY_A,categoriesA());
+        session.setAttribute(SESSION_COMPANY,itemCompanyDao.findAll());
     }
+
+
 
     @RequestMapping()
     public String queryTo(Model model) {
@@ -41,7 +47,6 @@ public class QueryController extends BaseController {
     @RequestMapping("/hello")
     @ResponseBody
     public List<ItemEntity> queryTo1(Model model) {
-//        model.addAttribute("items", itemDao.findAll());
         return new ArrayList<>();
     }
 
@@ -72,5 +77,7 @@ public class QueryController extends BaseController {
         return itemCategoryDao.findAll();
     }
 
-
+    private List<ItemCategoryEntity> categoriesA() {
+        return itemCategoryDao.findAll().stream().filter(entity -> entity.getCategoryName().endsWith("A")).collect(Collectors.toList());
+    }
 }

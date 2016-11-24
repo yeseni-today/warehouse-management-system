@@ -79,23 +79,30 @@
         <img src="../../../resources/picture/loading.gif" id="loading"
              style="position: absolute;top:50%;left:50%;"/>
     </div>
-
+    <div class="background">
+        <div class="background-content"></div>
+    </div>
     <div id="header">
         <div th:replace="templates/navBar :: navBar">
         </div>
     </div>
 
     <div id="body">
+
+        <div id="prePage">
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
+        </div>
+
         <div id="currentPage">
-            <div id="background">
-                <div id="background-content"></div>
+            <div class="background">
+                <div class="background-content"></div>
             </div>
-            <button onclick="switch_page()" style="position: absolute;top: 40em"> asd</button>
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
             <div tiles:replace="content"></div>
         </div>
 
         <div id="nextPage">
-            <button onclick="switch_page()" style="position: absolute;top: 40em"> asd</button>
+            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd</button>
         </div>
     </div>
 

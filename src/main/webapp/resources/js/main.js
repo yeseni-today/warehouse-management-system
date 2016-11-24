@@ -53,36 +53,54 @@ function closePopAdd() {
 }
 
 function showLoading() {
-    // $("#topdiv").style.display = "block";
     $("#topdiv").css("display", "block");
 }
 function hideLoading() {
     $("#topdiv").css("display", "none");
 }
 
-function deleteStroageItem(itemCode,index) {
+function deleteStroageItem(itemCode, index) {
     showLoading();
     $.ajax({
-        url:"/storage/add/deleteItem",
-        data:{"itemCode":itemCode},
-        type:"get",
-        success:function (result) {
+        url: "/storage/add/deleteItem",
+        data: {"itemCode": itemCode},
+        type: "get",
+        success: function (result) {
             setTimeout(function () {
                 hideLoading();
-            },1000);
-            var i = index+1;
-            $('#storagetable tr:eq('+i+')').remove()
+            }, 500);
+            var i = index + 1;
+            $('#storagetable tr:eq(' + i + ')').remove()
         }
     });
 }
 function deleteAll() {
-
+    showLoading();
+    $.ajax({
+        url: "/storage/add/deleteAll",
+        success: function (result) {
+            setTimeout(function () {
+                hideLoading();
+            }, 500);
+            $('#storagetable tr:gt(0)').remove();
+        }
+    })
 }
 
 function two(two) {
-    var three =$.parseJSON(two);
-   console.log( three);
-   console.log(three.itemCode);
+    var three = $.parseJSON(two);
+    console.log(three);
+    console.log(three.itemCode);
+}
+
+function change1() {
+    $('#nextPage').load("/test");
+    jump2NextPageAndChangeId();
+}
+
+function jump2StorageAddItem(){
+    $('#nextPage').load("/storage/add/additemajax");
+    jump2NextPageAndChangeId();
 }
 
 

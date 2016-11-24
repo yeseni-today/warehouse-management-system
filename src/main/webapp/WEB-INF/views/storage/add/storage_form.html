@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="content" tiles:fragment="content">
+<div class="content" id="content" th:fragment="content" tiles:fragment="content">
     <div class="content-nav">
         <div class="titleNav">
             <div class="title_nav title_nav_Now">
@@ -24,6 +24,11 @@
     <div class="content-function">
         <div class="myDivBt">
             <a href="additem.html" th:href="@{/storage/add/additem}" th:method="get">添加物品</a>
+        </div>
+    </div>
+    <div class="content-function">
+        <div class="myDivBt">
+            <a type="button" onclick="jump2StorageAddItem()">添加物品ajax</a>
         </div>
     </div>
 
@@ -52,13 +57,13 @@
                 <td class="icon-search"
                     th:onclick="'javascript:openPopAdd(\''+${itemForm.itemCode}+'\',\''+${itemForm.itemName}+'\')'">
                 </td>
-                <td th:onclick="'javascript:two(\''+${itemForm}+'\')'">
-                    <div class="icon-cross"></div>
-                </td>
-                <!--<td-->
-                    <!--th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\','+${itemFormStat.index}+')'">-->
+                <!--<td th:onclick="'javascript:two(\''+${itemForm}+'\')'">-->
                     <!--<div class="icon-cross"></div>-->
                 <!--</td>-->
+                <td
+                    th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\','+${itemFormStat.index}+')'">
+                    <div class="icon-cross"></div>
+                </td>
             </tr>
             <div class="pop_add-bg">
                 <div class="pop_add myInfoList myInput">
