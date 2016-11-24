@@ -16,7 +16,7 @@ function alert_info(info) {
 }
 
 function addItem() {
-    closePopAdd();
+    closePop();
     var da = $("applyform").serialize();
     $.ajax({
         url: "/apply/add/additem",
@@ -27,58 +27,39 @@ function addItem() {
     })
 }
 
-function openPopAdd(code, name) {
+function openPop() {
     var popAddBg = document.getElementsByClassName('pop-bg');
     var popAdd = document.getElementsByClassName('pop');
-    var a = document.getElementsByName("itemCode");
-    var b = document.getElementsByName("itemName");
-    a[1].value = code;
-    b[1].value = name;
+
     popAddBg[0].style.display = "block";
     setTimeout(function () {
         popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
         popAdd[0].style.transform = "scale(1,1)"
     }, 1);
-
 }
+function openPopAdd(code, name) {
 
-function closePopAdd() {
-    var popAddBg = document.getElementsByClassName('pop-bg');
-    var popAdd = document.getElementsByClassName('pop');
-    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
-    popAdd[0].style.transform = "scale(0,0)";
-    setTimeout(function () {
-        popAddBg[0].style.display = "none";
-    }, 500);
+    document.getElementsByName("itemCode")[1].value = code;
+    document.getElementsByName("itemName")[1].value = name;
+    openPop();
 }
-
 function openPopDetails(itemForm) {
-    showLoading();
-    var item = $
-    console.log(itemForm.itemCode);
-    // var popAddBg = document.getElementsByClassName('pop-bg');
-    // var popAdd = document.getElementsByClassName('pop');
-    // var itemName = document.getElementsByName("itemName");
-    // var itemCategory = document.getElementsByName("itemCategory");
-    // var itemCount = document.getElementsByName("itemCount");
-    // var itemPrice = document.getElementsByName("itemPrice");
-    // var itemSpec = document.getElementsByName("itemSpec");
-    // var itemCompany = document.getElementsByName("itemCompany");
-    // var itemCount = document.getElementsByName("itemCount");
-    // var itemPrice = document.getElementsByName("itemPrice");
-    // var billCode = document.getElementsByName("billCode");
-    // var storageLocation = document.getElementsByName("storageLocation");
-    //
-    //
-    // popAddBg[0].style.display = "block";
-    // setTimeout(function () {
-    //     popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
-    //     popAdd[0].style.transform = "scale(1,1)"
-    // }, 1);
+    console.log(itemForm);
+    var item = $.parseJSON(itemForm);
+    console.log(item.itemCount);
 
+    $("[name='itemName']").val(item.itemName);
+    $("[name='itemCategory']").val(item.itemCategoryID);
+    $("[name='itemCount']").val(item.itemCount);
+    $("[name='itemPrice']").val(item.itemPrice);
+    $("[name='itemSpec']").val(item.itemSpec);
+    $("[name='itemCompany']").val(item.itemCompanyID);
+    $("[name='billCode']").val(item.billCode);
+    $("[name='storageLocation']").val(item.storageLocation);
+
+    openPop();
 }
-
-function closePopAdd() {
+function closePop() {
     var popAddBg = document.getElementsByClassName('pop-bg');
     var popAdd = document.getElementsByClassName('pop');
     popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
@@ -97,29 +78,23 @@ function hideLoading() {
     $("#topdiv").css("display", "none");
 }
 
-function deleteStroageItem(itemCode,index) {
+function deleteStroageItem(itemCode) {
     showLoading();
     $.ajax({
-        url:"/storage/add/deleteItem",
-        data:{"itemCode":itemCode},
-        type:"get",
-        success:function (result) {
+        url: "/storage/add/deleteItem",
+        data: {"itemCode": itemCode},
+        type: "get",
+        success: function () {
             setTimeout(function () {
                 hideLoading();
-            },1000);
-            var i = index+1;
-            $('#storagetable tr:eq('+i+')').remove()
+                $("tr#" + itemCode).remove();
+            }, 1000);
         }
     });
 }
+
 function deleteAll() {
 
-}
-
-function two(two) {
-    var three =$.parseJSON(two);
-   console.log( three);
-   console.log(three.itemCode);
 }
 
 

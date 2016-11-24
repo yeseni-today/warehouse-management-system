@@ -16,6 +16,7 @@ public class ItemForm {
     private String itemCompanyID;//物品生产厂商ID);
     private String itemCompanyPhone;//物品生产厂商联系方式);
     private String itemCategoryID;//物品分类ID);
+
     private String itemBorrowTimeLimit;// 物品允许借取最大时间);
     private String itemState;// 物品状态);
     private String itemExamine;//物品审核信息);
@@ -24,6 +25,11 @@ public class ItemForm {
     private boolean isInschool;//是否是校内编码
     private String itemBatch;//物品批次
     private String itemSlot;//物品库位
+
+    private String itemCategoryName;//物品分类name);
+    private String itemOrignCount;//物品分类name);
+    private String itemCompanyName;//物品companyname);
+
 
     public String getItemCode() {
         return itemCode;
@@ -156,5 +162,29 @@ public class ItemForm {
     @Override
     public String toString() {
         return new Gson().toJson(this);
+    }
+
+    public String getItemCategoryName() {
+        return itemCategoryName;
+    }
+
+    public void setItemCategoryName(String itemCategoryName) {
+        this.itemCategoryName = itemCategoryName;
+    }
+
+    public String getItemOrignCount() {
+        return itemOrignCount;
+    }
+
+    public void setItemOrignCount(String itemOrignCount) {
+        this.itemOrignCount = itemOrignCount;
+    }
+
+    public String getItemCompanyName() {
+        return itemCompanyName;
+    }
+
+    public void setItemCompanyName(String itemCompanyName) {
+        this.itemCompanyName = itemCompanyName;
     }
 }
