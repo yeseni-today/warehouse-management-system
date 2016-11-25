@@ -11,9 +11,9 @@ public interface Constants {
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";
     String SESSION_USER = "user";
-    String SESSION_COMPANY = "companyID";
-    String SESSION_ITEMCATOARY_A = "itemcatoryA";
-    String SESSION_ITEMCATOARY = "categories";
+    String SESSION_COMPANIES = "companies";
+    String SESSION_CATEGORIES_A = "categoriesA";
+    String SESSION_CATEGORIES = "categories";
     //login
     String URL_INDEX = "/";
     String URL_SIGNIN = "/signin";

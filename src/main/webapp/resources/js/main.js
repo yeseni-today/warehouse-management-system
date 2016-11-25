@@ -92,6 +92,7 @@ function deleteStroageItem(itemCode) {
         }
     });
 }
+
 function deleteAll() {
     showLoading();
     $.ajax({
@@ -105,21 +106,7 @@ function deleteAll() {
     })
 }
 
-function two(two) {
-    var three = $.parseJSON(two);
-    console.log(three);
-    console.log(three.itemCode);
-}
 
-function change1() {
-    $('#nextPage').load("/test");
-    jump2NextPageAndChangeId();
-}
-
-function jump2StorageAddItem(){
-    $('#nextPage').load("/storage/add/additemajax");
-    jump2NextPageAndChangeId();
-}
 
 
 

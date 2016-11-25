@@ -20,9 +20,9 @@ import java.util.stream.Collectors;
 import javax.servlet.http.HttpSession;
 
 import static com.repository.Constants.HTML_QUERY_LIST;
-import static com.repository.Constants.SESSION_COMPANY;
-import static com.repository.Constants.SESSION_ITEMCATOARY;
-import static com.repository.Constants.SESSION_ITEMCATOARY_A;
+import static com.repository.Constants.SESSION_COMPANIES;
+import static com.repository.Constants.SESSION_CATEGORIES;
+import static com.repository.Constants.SESSION_CATEGORIES_A;
 import static com.repository.Constants.URL_QUERY;
 import static com.repository.Constants.URL_QUERY_QUERYITEM;
 
@@ -32,9 +32,9 @@ public class QueryController extends BaseController {
 
     @ModelAttribute
     public void init(HttpSession session) {
-        session.setAttribute(SESSION_ITEMCATOARY, categories());
-        session.setAttribute(SESSION_ITEMCATOARY_A,categoriesA());
-        session.setAttribute(SESSION_COMPANY,itemCompanyDao.findAll());
+        session.setAttribute(SESSION_CATEGORIES, categories());
+        session.setAttribute(SESSION_CATEGORIES_A, categoriesA());
+        session.setAttribute(SESSION_COMPANIES, itemCompanyDao.findAll());
     }
 
 
