@@ -5,13 +5,11 @@ package com.repository.base;
  */
 
 import com.repository.dao.ItemCategoryDao;
+import com.repository.dao.ItemCompanyDao;
 import com.repository.dao.ItemDao;
 import com.repository.dao.UsersDao;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import static com.repository.util.Util.*;
-import static com.repository.Constants.*;
 
 public class BaseController extends BaseObject {
     @Autowired
@@ -20,4 +18,7 @@ public class BaseController extends BaseObject {
     protected ItemCategoryDao itemCategoryDao;
     @Autowired
     protected UsersDao usersDao;
+
+    @Autowired
+    protected ItemCompanyDao itemCompanyDao;
 }

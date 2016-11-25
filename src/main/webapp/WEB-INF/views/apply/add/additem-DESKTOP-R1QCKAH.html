@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:fragment="title">添加</title>
+
+    <link href="../../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../../resources/js/main.js"></script>
+</head>
+
+<body>
+
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_previous">
+                <a href="apply_form.html">新建申请单</a>
+            </div>
+            <div class="title_nav title_nav_Now">
+                <a>添加物品</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-query myInput">
+        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
+        <!--/*@thymesVar id="do" type=""*/-->
+        <form action="#" th:action="@{/apply/add/queryItem}" method="get">
+            <div class="content-query-left">
+                <label>
+                    物品条码：
+                    <input type="text" name="itemCode"/>
+                </label>
+                <label>
+                    物品名称：
+                    <input type="text" name="itemName"/>
+                </label>
+                <label>
+                    物品类别：
+                    <select name="itemCategoryId">
+                        <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                        <option th:if="${session.categories == null || session.categories.empty}">
+                            没有找到分类，请刷新重试
+                        </option>
+                        <option th:each="category : ${session.categories}"
+                                th:value="${category.categoryId}"
+                                th:text="${category.categoryName}">
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div class="content-query-right">
+                <input type="submit" value="查询"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="content-result myTable">
+        <form action="apply_form.html" method="post" th:action="@{/apply/add}">
+            <table>
+                <tr>
+                    <th>条码</th>
+                    <th>名称</th>
+                    <th>类别</th>
+                    <th>数量</th>
+                    <th>选择</th>
+                </tr>
+                <tr th:if="${items == null || items.empty}">
+                    <td colspan="5">No messages</td>
+                </tr>
+                <tr th:each="item : ${items} ">
+                    <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
+                    <td th:text="${item.itemCode}"></td>
+                    <td th:text="${item.itemName}"></td>
+                    <td th:text="${item.itemCategoryEntity.getCategoryName()}"></td>
+                    <td th:text="${item.itemCount}"></td>
+                    <td class="myTable-operation"
+                        th:onclick="'javascript:openPopAdd(\''+${item.itemCode}+'\',\''+${item.itemName}+'\')'">
+                        <div class="icon-plus"></div>
+                    </td>
+                </tr>
+                <div class="pop_add-bg">
+                    <div class="pop_add myInfoList myInput">
+                        <div class="pop-close">
+                            <div class="close_button" onclick="closePopAdd()">
+                                <div class="close_button-icon"></div>
+                            </div>
+                        </div>
+                        <form action="additem.html" method="get">
+                            <ul>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            物品条形码：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="itemCode" value="条形码"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            物品名称：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="itemName" value="名称"
+                                                   readonly="readonly"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请数量：
+                                        </div>
+                                        <div class="value">
+                                            <input type="number" name="applyNum"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请备注：
+                                        </div>
+                                        <div class="value">
+                                            <input type="text" name="remark"/>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <label>
+                                        <div class="name">
+                                            申请类型：
+                                        </div>
+                                        <div class="value">
+                                            <select name="applyType">
+                                                <option value="常规使用">常规使用</option>
+                                                <option value="特殊需求">特殊需求</option>
+                                                <option value="过期处理">过期处理</option>
+                                                <option value="库存清点">库存清点</option>
+                                                <option value="其他">其他</option>
+                                            </select>
+                                        </div>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="button" onclick="closePopAdd()" value="取消"/>
+                                    <input type="submit" onclick="closePopAdd()" value="增加物品"/>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </table>
+            <div class="content-result-operation">
+                <div class="myDivBt">
+                    <a href="apply_form.html" onclick="alert_info('系统正忙，请稍后重试')">添加</a>
+                </div>
+                <div class="myDivBt">
+                    <a href="apply_form.html">取消</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

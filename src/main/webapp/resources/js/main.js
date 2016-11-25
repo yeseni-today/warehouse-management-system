@@ -16,7 +16,7 @@ function alert_info(info) {
 }
 
 function addItem() {
-    closePopAdd();
+    closePop();
     var da = $("applyform").serialize();
     $.ajax({
         url: "/apply/add/additem",
@@ -27,24 +27,41 @@ function addItem() {
     })
 }
 
-function openPopAdd(code, name) {
-    var popAddBg = document.getElementsByClassName('pop_add-bg');
-    var popAdd = document.getElementsByClassName('pop_add');
-    var a = document.getElementsByName("itemCode");
-    var b = document.getElementsByName("itemName");
-    a[1].value = code;
-    b[1].value = name;
+function openPop() {
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
+
     popAddBg[0].style.display = "block";
     setTimeout(function () {
         popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
         popAdd[0].style.transform = "scale(1,1)"
     }, 1);
-
 }
+function openPopAdd(code, name) {
 
-function closePopAdd() {
-    var popAddBg = document.getElementsByClassName('pop_add-bg');
-    var popAdd = document.getElementsByClassName('pop_add');
+    document.getElementsByName("itemCode")[1].value = code;
+    document.getElementsByName("itemName")[1].value = name;
+    openPop();
+}
+function openPopDetails(itemForm) {
+    console.log(itemForm);
+    var item = $.parseJSON(itemForm);
+    console.log(item.itemCount);
+
+    $("[name='itemName']").val(item.itemName);
+    $("[name='itemCategory']").val(item.itemCategoryID);
+    $("[name='itemCount']").val(item.itemCount);
+    $("[name='itemPrice']").val(item.itemPrice);
+    $("[name='itemSpec']").val(item.itemSpec);
+    $("[name='itemCompany']").val(item.itemCompanyID);
+    $("[name='billCode']").val(item.billCode);
+    $("[name='storageLocation']").val(item.storageLocation);
+
+    openPop();
+}
+function closePop() {
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
     popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
     popAdd[0].style.transform = "scale(0,0)";
     setTimeout(function () {
@@ -53,39 +70,56 @@ function closePopAdd() {
 }
 
 function showLoading() {
-    // $("#topdiv").style.display = "block";
+    $("#loading").css("top", window.innerHeight / 2 - 16 + "px");
+    $("#loading").css("left", window.innerWidth / 2 - 16 + "px");
     $("#topdiv").css("display", "block");
 }
 function hideLoading() {
-    $("#topdiv").style.display = "none";
-
+    $("#topdiv").css("display", "none");
 }
 
-function oneTest() {
-    var $current = $("#currentPage");
-    var $next = $("#nextPage");
-    var outClass = 'pt-page-moveToLeft';
-    var inClass = 'pt-page-moveFromRight';
-    $next.load("resources/js/storage_form.html");
-    var animEndEventNames = {
-        'WebkitAnimation': 'webkitAnimationEnd',
-        'OAnimation': 'oAnimationEnd',
-        'msAnimation': 'MSAnimationEnd',
-        'animation': 'animationend'
-    };
-
-    // animation end event name
-    var animEndEventName = animEndEventNames[Modernizr.prefixed('animation')];
-    $current.addClass(outClass).on(animEndEventName, function () {
-        alert("done");
-        $current.off(animEndEventName);
-    });
-    $next.addClass(inClass).on(animEndEventName, function () {
-        $next.off(animEndEventName);
+function deleteStroageItem(itemCode) {
+    showLoading();
+    $.ajax({
+        url: "/storage/add/deleteItem",
+        data: {"itemCode": itemCode},
+        type: "get",
+        success: function () {
+            setTimeout(function () {
+                hideLoading();
+                $("tr#" + itemCode).remove();
+            }, 1000);
+        }
     });
 }
+function deleteAll() {
+    showLoading();
+    $.ajax({
+        url: "/storage/add/deleteAll",
+        success: function (result) {
+            setTimeout(function () {
+                hideLoading();
+            }, 500);
+            $('#storagetable tr:gt(0)').remove();
+        }
+    })
+}
 
+function two(two) {
+    var three = $.parseJSON(two);
+    console.log(three);
+    console.log(three.itemCode);
+}
 
+function change1() {
+    $('#nextPage').load("/test");
+    jump2NextPageAndChangeId();
+}
+
+function jump2StorageAddItem() {
+    $('#nextPage').load("/storage/add/additemajax");
+    jump2NextPageAndChangeId();
+}
 
 
 
