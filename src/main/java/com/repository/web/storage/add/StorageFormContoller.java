@@ -65,10 +65,10 @@ public class StorageFormContoller extends BaseController {
 
     @RequestMapping(URL_STORAGE_ADD_DELETEITEM_AJAX)
     @ResponseBody
-    public SimpleResponseBody deleteItem(HttpSession session,@RequestParam("itemCode") String itemcode){
+    public SimpleResponseBody deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         List one = storageForm.getItemForms().stream().filter(e -> e.getItemCode().equals(itemcode.trim())).collect(Collectors.toList());
-        if(!one.isEmpty()){
+        if (!one.isEmpty()) {
             storageForm.getItemForms().remove(one.get(0));
         }
         return new SimpleResponseBody();
@@ -76,7 +76,7 @@ public class StorageFormContoller extends BaseController {
 
     @RequestMapping(URL_STORAGE_ADD_DELETEALL_AJAX)
     @ResponseBody
-    public SimpleResponseBody deleteItem(HttpSession session){
+    public SimpleResponseBody deleteItem(HttpSession session) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         storageForm.getItemForms().clear();
         return new SimpleResponseBody();
@@ -87,8 +87,9 @@ public class StorageFormContoller extends BaseController {
      */
     @RequestMapping(URL_STORAGE_ADD)
     public String addNew() {
-        return TILES_PREFIX+HTML_STORAGE_ADD_STORAGE_FORM;
+        return TILES_PREFIX + HTML_STORAGE_ADD_STORAGE_FORM;
     }
+
     @RequestMapping(URL_STORAGE_ADD_AJAX)
     public String addNewajax() {
         return HTML_STORAGE_ADD_STORAGE_FORM.concat(" :: content");
@@ -99,12 +100,12 @@ public class StorageFormContoller extends BaseController {
      */
     @RequestMapping(value = URL_STORAGE_ADD_ADDITEM, method = RequestMethod.GET)
     public String addItem() {
-        return TILES_PREFIX+HTML_STORAGE_ADD_ADDITEM;
+        return TILES_PREFIX + HTML_STORAGE_ADD_ADDITEM;
     }
 
     @RequestMapping(value = URL_STORAGE_ADD_ADDITEM_AJAX, method = RequestMethod.GET)
     public String addItemajax() {
-        return HTML_STORAGE_ADD_ADDITEM+" :: content";
+        return HTML_STORAGE_ADD_ADDITEM + " :: content";
     }
 
     /**
@@ -127,8 +128,8 @@ public class StorageFormContoller extends BaseController {
     StorageFormService service;
 
     /**
-    *2016/11/24 递交储存于session的入库单
-    **/
+     * 2016/11/24 递交储存于session的入库单
+     **/
     @RequestMapping(value = URL_STORAGE_ADD_SUBMIT, method = RequestMethod.GET)
     public String submitStorageForm(HttpSession session) {
         try {
@@ -156,26 +157,27 @@ public class StorageFormContoller extends BaseController {
             ItemEntity itemEntity = itemDao.findById(itemCode);
             if (itemEntity == null) {
                 model.addAttribute("isInschool", 0);
-                return TILES_PREFIX+ HTML_STORAGE_ADD_SETINFO;
+                return TILES_PREFIX + HTML_STORAGE_ADD_SETINFO;
             } else {
                 model.addAttribute("item", itemEntity);
-                return TILES_PREFIX+HTML_STORAGE_ADD_GETINFO;
+                return TILES_PREFIX + HTML_STORAGE_ADD_GETINFO;
             }
         } else {
             model.addAttribute("isInschool", 1);
-            return TILES_PREFIX+ HTML_STORAGE_ADD_SETINFO;
+            return TILES_PREFIX + HTML_STORAGE_ADD_SETINFO;
         }
     }
+
     @RequestMapping(URL_STORAGE_ADD_SET_ITEM_INFO_AJAX)
     public String setItemInfoajax(
             @RequestParam(name = "isInschool") boolean isInschool,
             @RequestParam(name = "itemCode", required = false) String itemCode,
             Model model) {
-      return setItemInfo(isInschool, itemCode, model).substring(6).concat(" :: content");
+        return setItemInfo(isInschool, itemCode, model).substring(6).concat(" :: content");
     }
 
     @RequestMapping("/test")
-    public String test(){
+    public String test() {
         return "storage/add/storage_form :: content";
     }
 }

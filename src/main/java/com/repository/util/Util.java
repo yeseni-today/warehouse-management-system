@@ -50,11 +50,10 @@ public class Util {
     }
 
 
-
-    public static String number(){
+    public static String number() {
         Date _date = new Date(System.currentTimeMillis());
 
-        int index = (int) (Math.random()*1000);
+        int index = (int) (Math.random() * 1000);
         String date1 = String.format("%tY", _date) + String.format("%tm", _date) + String.format("%td", _date);
         return new StringBuilder().append(date1).append(index).toString();
     }

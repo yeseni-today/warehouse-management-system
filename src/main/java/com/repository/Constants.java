@@ -31,8 +31,8 @@ public interface Constants {
     String HTML_STORAGE_PREFIX = "storage/";
     String HTML_STORAGE_HISTORY = HTML_STORAGE_PREFIX + "history";
     //storage-add
-    String URL_STORAGE_ADD = URL_STORAGE+ "/add";
-    String URL_STORAGE_ADD_AJAX = URL_STORAGE+ "/addajax";
+    String URL_STORAGE_ADD = URL_STORAGE + "/add";
+    String URL_STORAGE_ADD_AJAX = URL_STORAGE + "/addajax";
     String URL_STORAGE_ADD_ADDITEM = URL_STORAGE_ADD + "/additem";
     String URL_STORAGE_ADD_ADDITEM_AJAX = URL_STORAGE_ADD + "/additemajax";
     String URL_STORAGE_ADD_SET_ITEM_INFO = URL_STORAGE_ADD + "/set_item_info";

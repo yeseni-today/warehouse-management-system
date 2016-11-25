@@ -1,0 +1,94 @@
+@import "init.css";
+@import "layout.css";
+@import "navBar.css";
+@import "myInput.css";
+@import "icon-demo.css";
+
+.login input {
+    font-size: 1.2em;
+    border-radius: 0.5em;
+    width: 15.2em;
+    height: 2.7em;
+    border: 0.2em solid rgba(234, 237, 237, 0);
+    background: #ffffff;
+}
+
+.login input[type="submit"], input[type="button"] {
+    width: 10em;
+    color: white;
+    background: #1abc9c;
+}
+
+body {
+    min-width: 65em;
+    min-height: 36em;
+    overflow: hidden;
+}
+
+.login-top {
+    position: absolute;
+    z-index: 999;
+
+    width: 100%;
+    /*min-width: 100em;*/
+    min-width: 65em;
+    height: 100%;
+    /*min-height: 80em;*/
+    min-height: 36em;
+}
+
+.login-background {
+    position: absolute;
+    z-index: -1;
+
+    width: 100%;
+    /*min-width: 100em;*/
+    min-width: 65em;
+    height: 100%;
+    /*min-height: 80em;*/
+    min-height: 36em;
+}
+
+.login-title {
+    position: absolute;
+    font-size: 3em;
+    top: 2em;
+    left: 0.5em;
+}
+
+div.login {
+    position: absolute;
+    top: 20em;
+    right: 20em;
+    width: 21em;
+    padding: 0 2em 2em;
+    line-height: 4em;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 0.5em;
+    text-align: center;
+}
+
+.login .name, .password {
+    position: relative;
+    margin: 2em 0;
+    line-height: 3em;
+}
+
+.login input:focus + .icon-after-user {
+    color: #1abc9c;
+}
+
+.login input:focus + .icon-after-lock {
+    color: #1abc9c;
+}
+
+.icon-after-user, .icon-after-lock {
+    font-size: 1.5em;
+    line-height: 2.4em;
+    position: absolute;
+    color: #bfc9ca;
+    right: 0.7em;
+    top: 0;
+    transition: color 0.3s;
+}
+

@@ -33,7 +33,7 @@ public class StorageController extends BaseController {
     @RequestMapping
     public String storage(Model model) {
         model.addAttribute("history", inOperationDao.findAll());
-        return TILES_PREFIX+HTML_STORAGE_HISTORY;
+        return TILES_PREFIX + HTML_STORAGE_HISTORY;
     }
 
 
