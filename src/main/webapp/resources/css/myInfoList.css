@@ -1,5 +1,5 @@
 .myInfoList li {
-    height: 4em;
+    min-height: 4em;
     width: 30em;
     list-style: none;
     line-height: 4em;
@@ -16,8 +16,9 @@
 
 .myInfoList .value {
     float: left;
-    height: 4em;
+    min-height: 4em;
     width: 12em;
     line-height: 4em;
     margin-left: 3em;
+    text-align: left;
 }

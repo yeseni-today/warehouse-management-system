@@ -13,31 +13,121 @@
 <body>
 <div class="content" tiles:fragment="content">
     <div class="content-left">
-        <div class="listNav-title">消息中心</div>
+        <div class="listNav-title">
+            <img src="../../../resources/picture/message.png"/>
+            <span>消息中心</span>
+        </div>
         <ul class="listNav">
-            <li><a>创建消息</a></li>
-            <li><a>我的消息</a></li>
-            <li>
-                <a>系统消息</a>
-                <ul class="listNav2">
-                    <li><a>用户消息</a></li>
-                    <li><a>系统消息</a></li>
-                    <li><a>领取消息</a></li>
-                    <li><a>提醒消息</a></li>
-                    <li><a>审核消息</a></li>
-                    <li><a>库存提醒</a></li>
-                    <li><a>保质期提醒</a></li>
-                </ul>
-            </li>
+            <li><a>新建</a></li>
+            <li><a>通知</a></li>
+            <li><a>提醒</a></li>
+            <li><a>审核</a></li>
+            <li><a>其他</a></li>
         </ul>
     </div>
     <div class="content-right">
+        <div class="pop-bg">
+            <div class="pop pop-details myInfoList myInput">
+                <div class="pop-close">
+                    <div class="close_button" onclick="closePop()">
+                        <div class="close_button-icon"></div>
+                    </div>
+                </div>
+                <form action="" method="get">
+                    <ul>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息ID：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageID" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息类型：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageType" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息内容：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageContent" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息日期：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageData" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息发送者对象ID：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageSendID" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息接收者对象ID：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageReceiveID" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息状态：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageState" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    消息标题：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="messageTitle" readonly="readonly"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="button" onclick="closePop()" value="删除"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
         <div class="message" th:each="message:${messages}">
             <span class="message-name" th:text="${message.title}">name</span>
-            <span class="message-date" th:text="${#calendars.format(message.created)}" }>data</span>
+            <span class="message-date" th:text="${#calendars.format(message.created)}">data</span>
             <div class="message-content" th:text="${message.text}">content</div>
+            <div class="message-operation" onclick="openPop()">详情</div>
         </div>
     </div>
-
 </body>
 </html>
