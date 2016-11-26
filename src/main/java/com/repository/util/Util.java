@@ -20,8 +20,6 @@ public class Util {
     public static Util util;
 
 
-
-
     public static String handleCode(SdictionaryEntity sdictionaryEntity) {
         String code = null;
         Date _date = new Date();

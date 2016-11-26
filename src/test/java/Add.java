@@ -1,16 +1,30 @@
+import com.repository.Application;
+import com.repository.dao.SLogDao;
 import com.repository.entity.ItemEntity;
 import com.repository.entity.ItemInOperationEntity;
 import com.repository.entity.ItemInStorageEntity;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.ItemInStorageDao;
+import com.repository.entity.SlogEntity;
+
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Random;
 
 /**
  * Created by Finderlo on 2016/11/7.
  */
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
+@WebAppConfiguration
 public class Add {
 
     public static void main(String[] args) {
@@ -88,5 +102,22 @@ public class Add {
             entity.setAllowCount(i*5+98-85+5);
             inStorageDao.saveOrUpdate(entity);
         }
+    }
+
+    @Autowired
+    SLogDao sLogDao;
+
+    @Test
+    public void addLog() {
+        SlogEntity slogEntity = new SlogEntity();
+        slogEntity.setLogAnnonation("注释");
+        slogEntity.setLogDate(new Timestamp(System.currentTimeMillis()));
+        slogEntity.setLogId(123);
+        slogEntity.setLogInfo("信息");
+        slogEntity.setOperationId("6666");
+        slogEntity.setLogLevel("info");
+        slogEntity.setLogTable("item");
+        slogEntity.setLogType("logtype");
+        sLogDao.save(slogEntity);
     }
 }

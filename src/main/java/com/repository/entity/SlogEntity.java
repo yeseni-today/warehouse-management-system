@@ -14,7 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "slog")
 public class SlogEntity {
-    private String logId;
+    private int logId;
     private String logType;
     private String operationId;
     private Timestamp logDate;
@@ -25,11 +25,11 @@ public class SlogEntity {
 
     @Id
     @Column(name = "log_ID")
-    public String getLogId() {
+    public int getLogId() {
         return logId;
     }
 
-    public void setLogId(String logId) {
+    public void setLogId(int logId) {
         this.logId = logId;
     }
 
@@ -110,7 +110,7 @@ public class SlogEntity {
 
         SlogEntity entity = (SlogEntity) o;
 
-        if (logId != null ? !logId.equals(entity.logId) : entity.logId != null) return false;
+        if (logId != 0 ? logId == (entity.logId) : entity.logId != 0) return false;
         if (logType != null ? !logType.equals(entity.logType) : entity.logType != null)
             return false;
         if (operationId != null ? !operationId.equals(entity.operationId) : entity.operationId != null)
@@ -131,7 +131,7 @@ public class SlogEntity {
 
     @Override
     public int hashCode() {
-        int result = logId != null ? logId.hashCode() : 0;
+        int result = logId != 0 ? logId : 0;
         result = 31 * result + (logType != null ? logType.hashCode() : 0);
         result = 31 * result + (operationId != null ? operationId.hashCode() : 0);
         result = 31 * result + (logDate != null ? logDate.hashCode() : 0);

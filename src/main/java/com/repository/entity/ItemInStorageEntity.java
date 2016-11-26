@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "item_in_storage")
 @IdClass(ItemInStorageEntityPK.class)
-public class ItemInStorageEntity {
+public class ItemInStorageEntity implements Cloneable {
     private String storageId;
     private String itemCode;
     private int counts;
@@ -25,6 +25,16 @@ public class ItemInStorageEntity {
     private String itemBatch;
     private Date itemIndate;
     private int allowCount;
+
+    @Override
+    public ItemInStorageEntity clone() {
+        try {
+            return (ItemInStorageEntity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 
     @Id
     @Column(name = "storage_ID")

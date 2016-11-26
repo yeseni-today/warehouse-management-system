@@ -53,6 +53,7 @@ public interface Constants {
     String HTML_APPLY_HISTORY = HTML_APPLY_PREFIX + "history";
     //APPLY ADD
     String URL_APPLY_ADD = URL_APPLY + "/add";
+    String URL_APPLY_CLEARFORM_AJAX = URL_APPLY_ADD + "/clearformajax";
     String URL_APPLY_ADD_ADDITEM = URL_APPLY_ADD + "/additem";
     String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
     String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
@@ -70,13 +71,18 @@ public interface Constants {
 
     //message
     String URL_MESSAGE = "/message";
+    String URL_MESSAGE_NEW = "/newMessage";
     String HTML_MESSAGE_PREFIX = TILES_PREFIX + "message/";
     String HTML_MESSAGE_LIST = HTML_MESSAGE_PREFIX + "list";
+    String HTML_MESSAGE_NEWMESSAGE = HTML_MESSAGE_PREFIX + "new";
+
 
     //log
     String URL_LOG = "/log";
     String HTML_LOG_PREFIX = TILES_PREFIX + "log/";
     String HTML_LOG_HISTORY = HTML_LOG_PREFIX + "history";
+    String HTML_LOG_LOG = HTML_LOG_PREFIX + "log";
+
 
     //error
     String URL_ERROR_GENERAL = "/generalError";

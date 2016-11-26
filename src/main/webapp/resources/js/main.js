@@ -17,14 +17,32 @@ function alert_info(info) {
 
 function addItem() {
     closePop();
-    var da = $("applyform").serialize();
+    var da = $('#applyForm').serialize();
     $.ajax({
         url: "/apply/add/additem",
         type: "post",
         data: da,
         success: function (result) {
+            alert("添加成功");
+        },
+        error: function () {
+            alert("添加失败，请重试")
         }
     });
+}
+
+function clearApplyForm() {
+    $.ajax({
+        url: "/apply/add/clearformajax",
+        type: "post",
+        data: {},
+        success: function () {
+            alert("清空成功");
+        },
+        error: function () {
+            alert("清空失败，请重试");
+        }
+    })
 }
 
 function openPop() {

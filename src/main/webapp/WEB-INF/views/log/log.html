@@ -3,7 +3,7 @@
       xmlns:tiles="http://www.thymeleaf.org">
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>日志</title>
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
@@ -123,15 +123,18 @@
                 </form>
             </div>
         </div>
-        <div class="message" th:each="log:${logs}">
-            <span class="message-name" th:text="${log}">name</span>
-            <span class="message-date" th:text="${#calendars.format(log.created)}">data</span>
-            <div class="message-content" th:text="${log.text}">content</div>
+        <div class="message" th:if="${logs == null}">
+            <!--/*@thymesVar id="slog" type="com.repository.entity.SlogEntity"*/-->
+            没有日志
+        </div>
+        <div class="message" th:if="${logs != null}" th:each="slog:${logs}">
+            <!--/*@thymesVar id="slog" type="com.repository.entity.SlogEntity"*/-->
+            <span class="message-name" th:text="${slog}">name</span>
+            <span class="message-date" th:text="${#calendars.format(slog.getLogDate())}">data</span>
+            <div class="message-content" th:text="${slog.getLogInfo()}">content</div>
             <div class="message-operation" onclick="openPop()">详情</div>
         </div>
-
-
     </div>
-
+</div>
 </body>
 </html>
