@@ -9,3 +9,6 @@
         日志和消息
 * v-0.59.2 
 finderlo bug fix
+* v-0.60.0
+lx add a encoging test
+   fix categoryID

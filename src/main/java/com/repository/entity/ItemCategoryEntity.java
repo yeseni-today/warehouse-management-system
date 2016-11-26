@@ -1,14 +1,8 @@
 package com.repository.entity;
 
-import java.util.Set;
+import com.google.gson.Gson;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * Created by Finderlo on 2016/11/4.
@@ -27,6 +21,12 @@ public class ItemCategoryEntity {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId;
+    }
+
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
     }
 
     @Basic
