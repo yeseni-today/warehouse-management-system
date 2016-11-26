@@ -59,10 +59,10 @@
                             <select name="itemCategoryID">
                                 <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
                                 <option value=""></option>
-                                <option th:if="${session.categories == null || session.categories.empty}">
+                                <option th:if="${session.categoriesA == null || session.categoriesA.empty}">
                                     没有找到分类,请刷新重试
                                 </option>
-                                <option th:each="category : ${session.categories}"
+                                <option th:each="category : ${session.categoriesA}"
                                         th:value="${category.categoryId}"
                                         th:text="${category.categoryName}">
                                 </option>
@@ -136,7 +136,17 @@
                             生成厂商ID：
                         </div>
                         <div class="value">
-                            <input type="text" name="itemCompanyID"/>
+                            <select name="companyID">
+                                <!--/*@thymesVar id="companyID" type="com.repository.entity.ItemCompanyEntity"*/-->
+                                <option value=""></option>
+                                <option th:if="${session.companies == null || session.companies.empty}">
+                                    没有找到分类,请刷新重试
+                                </option>
+                                <option th:each="company : ${session.companies}"
+                                        th:value="${company.getCompanyId()}"
+                                        th:text="${company.getCompanyName()}">
+                                </option>
+                            </select>
                         </div>
                     </label>
                 </li>

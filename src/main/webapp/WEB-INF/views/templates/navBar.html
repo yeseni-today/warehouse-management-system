@@ -31,6 +31,14 @@
                         <a href="#" th:href="@{/borrow}">借用</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
+                        <a href="#" th:href="@{/message}">消息</a>
+                        <span class="arrow"></span>
+                        <dl>
+                            <dd><a href="#" th:href="@{/message}">我的消息</a></dd>
+                            <dd><a href="#" th:href="@{/newMessage}">新建消息</a></dd>
+                        </dl>
+                    </li>
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/storage}">日志</a>
                         <span class="arrow"></span>
                         <dl>
@@ -43,15 +51,7 @@
                         </dl>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
-                        <a href="#" th:href="@{/message}">消息</a>
-                        <span class="arrow"></span>
-                        <dl>
-                            <dd><a href="#">待审核消息</a></dd>
-                            <dd><a href="#">通知领取消息</a></dd>
-                            <dd><a href="#">分配消息</a></dd>
-                            <dd><a href="#">归还提醒消息</a></dd>
-                            <dd><a href="#">库存提醒消息</a></dd>
-                        </dl>
+                        <a href="#" th:href="@{/borrow}">管理</a>
                     </li>
                 </ul>
             </nav>

@@ -24,7 +24,7 @@ function addItem() {
         data: da,
         success: function (result) {
         }
-    })
+    });
 }
 
 function openPop() {
@@ -44,9 +44,7 @@ function openPopAdd(code, name) {
     openPop();
 }
 function openPopDetails(itemForm) {
-    console.log(itemForm);
     var item = $.parseJSON(itemForm);
-    console.log(item.itemCount);
 
     $("[name='itemName']").val(item.itemName);
     $("[name='itemCategory']").val(item.itemCategoryID);
@@ -56,6 +54,7 @@ function openPopDetails(itemForm) {
     $("[name='itemCompany']").val(item.itemCompanyID);
     $("[name='billCode']").val(item.billCode);
     $("[name='storageLocation']").val(item.storageLocation);
+    console.log(item.storageLocation);
 
     openPop();
 }
@@ -92,6 +91,7 @@ function deleteStroageItem(itemCode) {
         }
     });
 }
+
 function deleteAll() {
     showLoading();
     $.ajax({
@@ -105,21 +105,7 @@ function deleteAll() {
     })
 }
 
-function two(two) {
-    var three = $.parseJSON(two);
-    console.log(three);
-    console.log(three.itemCode);
-}
 
-function change1() {
-    $('#nextPage').load("/test");
-    jump2NextPageAndChangeId();
-}
-
-function jump2StorageAddItem() {
-    $('#nextPage').load("/storage/add/additemajax");
-    jump2NextPageAndChangeId();
-}
 
 
 

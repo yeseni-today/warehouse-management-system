@@ -40,6 +40,7 @@
                     物品类别：
                     <select name="itemCategoryId">
                         <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                        <option value=""></option>
                         <option th:if="${session.categories == null || session.categories.empty}">
                             没有找到分类，请刷新重试
                         </option>
@@ -150,7 +151,7 @@
                                 </li>
                                 <li>
                                     <input type="button" onclick="closePop()" value="取消"/>
-                                    <input type="submit" onclick="closePop()" value="增加物品"/>
+                                    <input type="submit" onclick="addItem()" value="增加物品"/>
                                 </li>
                             </ul>
                         </form>

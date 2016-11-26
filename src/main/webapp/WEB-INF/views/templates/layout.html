@@ -81,9 +81,7 @@
     <div id="topdiv" class="login-top">
         <img id="loading" src="../../../resources/picture/loading.gif"/>
     </div>
-    <div class="background">
-        <div class="background-content"></div>
-    </div>
+
     <div id="header">
         <div th:replace="templates/navBar :: navBar">
         </div>
@@ -92,22 +90,14 @@
     <div id="body">
 
         <div id="prePage">
-            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd
-            </button>
         </div>
-
-        <div id="currentPage">
-            <div class="background">
-                <div class="background-content"></div>
-            </div>
-            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd
-            </button>
+        <div class="background"></div>
+        <div id="currentPage" class="current">
+            <button onclick="change1()" style="position: absolute;top: 20em"> asd</button>
             <div tiles:replace="content"></div>
         </div>
 
-        <div id="nextPage">
-            <button onclick="jump2NextPageAndChangeId()" style="position: absolute;top: 40em"> asd
-            </button>
+        <div id="nextPage" class="next">
         </div>
     </div>
 

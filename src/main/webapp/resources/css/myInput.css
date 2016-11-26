@@ -1,4 +1,4 @@
-.myInput input, select {
+.myInput input, select, textarea {
     width: 10em;
     height: 2.2em;
     padding: 0 1em;
@@ -16,6 +16,7 @@
 .myInput select:focus {
     border-color: #1abc9c;
 }
+
 
 .myInput input:read-only {
     border: 0.15em solid #eaeded;
@@ -42,6 +43,16 @@
 }
 
 .myInput select:hover {
+}
+
+.myInput textarea {
+    width: 20em;
+    height: 10em;
+    border: 0.15em solid #7c8185;
+}
+
+.myInput textarea:focus {
+    border-color: #1abc9c;
 }
 
 
