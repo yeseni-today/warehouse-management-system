@@ -2,13 +2,10 @@ package com.repository.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.Profile;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.HibernateTransactionManager;
 import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -68,10 +65,12 @@ public class MysqlDataSourceConfig {
 //
 //    @Bean
 //    public HibernateTransactionManager transactionManager() {
-//        HibernateTransactionManager transactionManager =
+    //<editor-fold desc="Description">
+    //        HibernateTransactionManager transactionManager =
 //                new HibernateTransactionManager();
 //        transactionManager.setSessionFactory(sessionFactory().getObject());
 //        return transactionManager;
+    //</editor-fold>
 //    }
 
 } // class DatabaseConfig

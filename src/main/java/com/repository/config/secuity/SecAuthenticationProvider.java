@@ -1,5 +1,6 @@
 package com.repository.config.secuity;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,6 +22,8 @@ public class SecAuthenticationProvider implements AuthenticationProvider {
     @Autowired
     private SecUsersDetailService userService;
 
+    private static final Logger logger = Logger.getLogger(SecAuthenticationProvider.class);
+
     /**
      * 自定义验证方式
      */
@@ -28,7 +31,7 @@ public class SecAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
-        System.out.println(username + ":" + password);
+        logger.info("authenticate: " + username + ":" + password);
         SecUserDetails user = (SecUserDetails) userService.loadUserByUsername(username);
         if (user == null) {
             System.out.println("登陆失败，找不到用户");

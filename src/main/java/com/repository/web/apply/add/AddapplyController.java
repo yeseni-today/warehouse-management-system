@@ -4,6 +4,7 @@ import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
+import com.repository.model.MessageResponse;
 import com.repository.model.SimpleResponseBody;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +16,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.*;
+import static com.repository.Constants.HTML_APPLY_ADD_ADDITEM;
+import static com.repository.Constants.HTML_APPLY_ADD_APPLYFORM;
+import static com.repository.Constants.REDIRECT;
+import static com.repository.Constants.SESSION_APPLY_FORM;
+import static com.repository.Constants.URL_APPLY_ADD;
+import static com.repository.Constants.URL_APPLY_ADD_ADDITEM;
+import static com.repository.Constants.URL_APPLY_ADD_ADDITEMS;
+import static com.repository.Constants.URL_APPLY_ADD_QUERY_ITEM;
+import static com.repository.Constants.URL_APPLY_CLEARFORM_AJAX;
 
 /**
  * Created by Finderlo on 2016/11/15.
@@ -41,12 +49,20 @@ public class AddapplyController extends BaseController {
         if (applyForm == null) {
             session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId()));
         }
-        logger.info("applyForm: ");
+        logger.info("applyForm: " + applyForm);
     }
 
     @RequestMapping(URL_APPLY_ADD)
     public String apply() {
         return HTML_APPLY_ADD_APPLYFORM;
+    }
+
+    @RequestMapping(URL_APPLY_CLEARFORM_AJAX)
+    @ResponseBody
+    public MessageResponse clear(HttpSession session) {
+        session.setAttribute(SESSION_APPLY_FORM, null);
+        logger.info("clear: ");
+        return MessageResponse.success();
     }
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
@@ -56,9 +72,11 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
-    public SimpleResponseBody getaddItemAjax(@RequestParam(name = "itemCodes", required = false) String itemCodes, HttpSession session) {
+    public SimpleResponseBody getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
         ApplyForm applyForm = getApplyForm(session);
-        applyForm.getItems().add(new ApplyItem(itemDao.findById(itemCodes)));
+        applyForm.getItems().add(applyItemForm);
+        logger.info("getaddItemAjax: " + applyItemForm);
+        ;
         return new SimpleResponseBody();
     }
 
@@ -81,7 +99,7 @@ public class AddapplyController extends BaseController {
             HttpSession session) {
         ApplyForm applyForm = getApplyForm(session);
         for (String code : itemCodes) {
-            applyForm.getItems().add(new ApplyItem(itemDao.findById(code)));
+            applyForm.getItems().add(new ApplyItemForm(itemDao.findById(code)));
         }
         logger.info("additems");
         return REDIRECT + URL_APPLY_ADD;
@@ -92,87 +110,4 @@ public class AddapplyController extends BaseController {
         return applyForm;
     }
 
-    static class ApplyForm {
-        private List<ApplyItem> items = new ArrayList();
-
-        private String applicationId;
-
-        public ApplyForm(String applicationId) {
-            this.applicationId = applicationId;
-        }
-
-        public List<ApplyItem> getItems() {
-            return items;
-        }
-
-        public void setItems(List<ApplyItem> items) {
-            this.items = items;
-        }
-
-        public String getApplicationId() {
-            return applicationId;
-        }
-
-        public void setApplicationId(String applicationId) {
-            this.applicationId = applicationId;
-        }
-    }
-
-    private static class ApplyItem {
-        private String itemCode;
-        private String itemName;
-        private String itemCategroyId;
-        private int itemCount;
-        private String others;
-
-        public ApplyItem() {
-        }
-
-        public ApplyItem(ItemEntity itemEntity) {
-            this.itemCode = itemEntity.getItemCode();
-            this.itemName = itemEntity.getItemName();
-            this.itemCategroyId = itemEntity.getItemCategoryEntity().getCategoryId();
-            this.itemCount = itemEntity.getItemCount();
-        }
-
-        public String getItemCode() {
-            return itemCode;
-        }
-
-        public void setItemCode(String itemCode) {
-            this.itemCode = itemCode;
-        }
-
-        public String getItemName() {
-            return itemName;
-        }
-
-        public void setItemName(String itemName) {
-            this.itemName = itemName;
-        }
-
-        public String getItemCategroyId() {
-            return itemCategroyId;
-        }
-
-        public void setItemCategroyId(String itemCategroyId) {
-            this.itemCategroyId = itemCategroyId;
-        }
-
-        public int getItemCount() {
-            return itemCount;
-        }
-
-        public void setItemCount(int itemCount) {
-            this.itemCount = itemCount;
-        }
-
-        public String getOthers() {
-            return others;
-        }
-
-        public void setOthers(String others) {
-            this.others = others;
-        }
-    }
 }

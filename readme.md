@@ -7,3 +7,5 @@
 入库和申请完成完成，，部分 -finderlo
 * v-0.58.1
         日志和消息
+* v-0.59.2 
+finderlo bug fix
