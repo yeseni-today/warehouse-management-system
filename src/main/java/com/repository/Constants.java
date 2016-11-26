@@ -7,6 +7,7 @@ public interface Constants {
     String TILES_PREFIX = "tiles/";
     String REDIRECT = "redirect:";
     int ALLOW_COUNT = 5;
+    long DAY_1_MILLIS = 1000 * 60 * 60 * 24;
     //session
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";

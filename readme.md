@@ -9,3 +9,5 @@
         日志和消息
 * v-0.59.2 
 finderlo bug fix
+* v-0.59.3
+finderlo SHOW before 30 day record instorage html
