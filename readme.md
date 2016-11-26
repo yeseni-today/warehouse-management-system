@@ -2,12 +2,16 @@
 
 ### version
 * v-0.56.0 finderlo
-查询、入库完成，申请正在完成
-* v-0.57.0 
-入库和申请完成完成，，部分 -finderlo
-* v-0.58.1
-        日志和消息
-* v-0.59.2 
-finderlo bug fix
-* v-0.59.3
-finderlo SHOW before 30 day record instorage html
+   查询、入库完成，申请正在完成
+* v-0.57.0 finderlo
+   入库和申请完成完成，，部分
+* v-0.58.1 L
+   日志和消息
+* v-0.59.2 finderlo
+   fix bug
+* v-0.59.3 finderlo
+   Show before 30 day record in_storage html
+* v-0.60.0 lx
+   add a encoding test
+   fix categoryID
+   update readme
