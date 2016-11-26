@@ -3,7 +3,6 @@ package com.repository.web.query;
 import com.repository.base.BaseController;
 import com.repository.entity.ItemCategoryEntity;
 import com.repository.entity.ItemEntity;
-
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,18 +12,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
-
-import static com.repository.Constants.HTML_QUERY_LIST;
-import static com.repository.Constants.SESSION_CATEGORIES;
-import static com.repository.Constants.SESSION_COMPANIES;
-import static com.repository.Constants.SESSION_CATEGORIES_A;
-import static com.repository.Constants.URL_QUERY;
-import static com.repository.Constants.URL_QUERY_QUERYITEM;
+import static com.repository.Constants.*;
 
 @RequestMapping(URL_QUERY)
 @Controller
@@ -35,6 +28,8 @@ public class QueryController extends BaseController {
         session.setAttribute(SESSION_CATEGORIES, categories());
         session.setAttribute(SESSION_CATEGORIES_A, categoriesA());
         session.setAttribute(SESSION_COMPANIES, itemCompanyDao.findAll());
+        logger.info(categories());
+        logger.info(categoriesA());
     }
 
 

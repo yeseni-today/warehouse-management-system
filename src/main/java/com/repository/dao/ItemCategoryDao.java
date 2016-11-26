@@ -15,6 +15,7 @@ public class ItemCategoryDao extends AbstractDao<ItemCategoryEntity> {
     @Override
     public List<ItemCategoryEntity> findAll() {
         List<ItemCategoryEntity> result = super.findAll();
+        result.forEach(e -> e.setCategoryName(e.getCategoryName().trim()));
         return result.stream().filter(entity -> !checkIsNull(entity)).collect(Collectors.toList());
     }
 
