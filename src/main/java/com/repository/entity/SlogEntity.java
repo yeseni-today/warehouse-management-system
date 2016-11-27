@@ -14,7 +14,7 @@ import javax.persistence.Table;
  * Created by Finderlo on 2016/11/11.
  */
 @Entity
-@Table(name = "slog")
+@Table(name = "item_slog")
 public class SlogEntity {
     private int logId;
     private String logType;

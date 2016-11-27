@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
  * Created by Finderlo on 2016/11/4.
  */
 @Entity
-@Table(name = "umessage")
+@Table(name = "item_umessage")
 public class UmessageEntity {
     private String messageId;
     private String messageType;
