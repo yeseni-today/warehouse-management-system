@@ -1,23 +1,15 @@
 import com.repository.Application;
 import com.repository.base.BaseObject;
 import com.repository.dao.ItemDao;
-import com.repository.dao.ItemInStorageDao;
-import com.repository.dao.ItemOutOperationDao;
 import com.repository.dao.SdictionaryDao;
-import com.repository.entity.ItemInStorageEntity;
-import com.repository.entity.ItemOutOperationEntity;
 
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
-
-import java.sql.Date;
-import java.util.List;
 
 /**
  * Created by Finderlo on 2016/11/10.
@@ -35,6 +27,7 @@ public class Test1 extends
     ItemDao itemDao;
     @Test
     public void isNull() {
+        System.out.println();
         Assert.assertNotNull(sdictionaryDao);
     }
 

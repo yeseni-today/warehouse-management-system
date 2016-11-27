@@ -4,18 +4,20 @@
 function change1() {
     var url = "/test";
     var animation = 'move-to-right';
-    jumpTo(url, animation);
+    jumpToWithAnim(url, animation);
 }
 
 function jump2StorageAddItem() {
     var url = "/storage/add/additemajax";
     var animation = 'move-to-left';
-    jumpTo(url, animation);
-
+    jumpToWithAnim(url, animation);
 }
 
+function jumpTo(url) {
+    jumpToWithAnim(url, 'move-to-left');
+}
 
-function jumpTo(url, animation) {
+function jumpToWithAnim(url, animation) {
     var currentPageId = "currentPage";
     var nextPageId = "nextPage";
 

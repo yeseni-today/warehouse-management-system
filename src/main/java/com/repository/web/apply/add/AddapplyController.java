@@ -24,9 +24,12 @@ import static com.repository.Constants.HTML_APPLY_ADD_ADDITEM;
 import static com.repository.Constants.HTML_APPLY_ADD_APPLYFORM;
 import static com.repository.Constants.REDIRECT;
 import static com.repository.Constants.SESSION_APPLY_FORM;
+import static com.repository.Constants.TILES_PREFIX;
 import static com.repository.Constants.URL_APPLY_ADD;
 import static com.repository.Constants.URL_APPLY_ADD_ADDITEM;
+import static com.repository.Constants.URL_APPLY_ADD_ADDITEMAJAX;
 import static com.repository.Constants.URL_APPLY_ADD_ADDITEMS;
+import static com.repository.Constants.URL_APPLY_ADD_AJAX;
 import static com.repository.Constants.URL_APPLY_ADD_QUERY_ITEM;
 import static com.repository.Constants.URL_APPLY_CLEARFORM_AJAX;
 
@@ -52,9 +55,15 @@ public class AddapplyController extends BaseController {
         logger.info("applyForm: " + applyForm);
     }
 
+    @RequestMapping(URL_APPLY_ADD_AJAX)
+    public String applyajax() {
+        return HTML_APPLY_ADD_APPLYFORM.concat(" :: content");
+    }
+
+
     @RequestMapping(URL_APPLY_ADD)
     public String apply() {
-        return HTML_APPLY_ADD_APPLYFORM;
+        return TILES_PREFIX + HTML_APPLY_ADD_APPLYFORM;
     }
 
     @RequestMapping(URL_APPLY_CLEARFORM_AJAX)
@@ -67,7 +76,12 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
     public String getaddItem() {
-        return HTML_APPLY_ADD_ADDITEM;
+        return TILES_PREFIX + HTML_APPLY_ADD_ADDITEM;
+    }
+
+    @RequestMapping(value = URL_APPLY_ADD_ADDITEMAJAX, method = RequestMethod.GET)
+    public String getaddItemajax() {
+        return HTML_APPLY_ADD_ADDITEM.concat(" :: content");
     }
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
@@ -89,7 +103,7 @@ public class AddapplyController extends BaseController {
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));
         model.addAttribute("items", result);
-        return HTML_APPLY_ADD_ADDITEM;
+        return TILES_PREFIX + HTML_APPLY_ADD_ADDITEM;
     }
 
     //itemCodes

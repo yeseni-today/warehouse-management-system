@@ -29,6 +29,16 @@ public class ApplyController extends BaseController {
         model.addAttribute("history", entities);
         logger.info("apply: applications size:" + entities.size());
         entities.forEach(entity -> logger.info("apply: id:" + entity.getApplicationId()));
-        return HTML_APPLY_HISTORY;
+        return TILES_PREFIX + HTML_APPLY_HISTORY;
+    }
+
+    @RequestMapping(URL_APPLY_AJAX)
+    public String applyajax(Model model) {
+        logger.trace("apply/");
+        List<ItemApplicationOperationEntity> entities = applicationOperationDao.findAll();
+        model.addAttribute("history", entities);
+        logger.info("apply: applications size:" + entities.size());
+        entities.forEach(entity -> logger.info("apply: id:" + entity.getApplicationId()));
+        return HTML_APPLY_HISTORY.concat(" ::content");
     }
 }

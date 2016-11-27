@@ -131,9 +131,9 @@ public class StorageFormContoller extends BaseController {
      * 2016/11/24 递交储存于session的入库单
      **/
     @RequestMapping(value = URL_STORAGE_ADD_SUBMIT, method = RequestMethod.GET)
-    public String submitStorageForm(HttpSession session) {
+    public String submitStorageForm(Principal principal, HttpSession session) {
         try {
-            service.save(storageForm);
+            service.save(principal, storageForm);
             session.setAttribute(SESSION_STORAGE_FORM, null);
             return REDIRECT + URL_STORAGE;
         } catch (Exception e) {

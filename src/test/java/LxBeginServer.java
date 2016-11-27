@@ -6,6 +6,7 @@ import org.junit.Test;
  * Created by Finderlo on 2016/11/18.
  */
 
+
 public class LxBeginServer extends BaseObject {
     @Test
     public void run() {

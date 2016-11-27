@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="content" tiles:fragment="content">
+<div class="content" th:fragment="content" tiles:fragment="content">
     <div class="content-nav">
         <div class="titleNav">
             <div class="title_nav title_nav_Now">
@@ -21,9 +21,15 @@
         </div>
     </div>
 
+    <!--<div class="content-function">-->
+    <!--<div class="myDivBt">-->
+    <!--<a href="add/apply_form.html" th:href="@{/apply/add}">新建申请</a>-->
+    <!--</div>-->
+    <!--</div>-->
+
     <div class="content-function">
         <div class="myDivBt">
-            <a href="add/apply_form.html" th:href="@{/apply/add}">新建申请</a>
+            <a onclick="jumpTo('apply/addajax')">新建申请</a>
         </div>
     </div>
 

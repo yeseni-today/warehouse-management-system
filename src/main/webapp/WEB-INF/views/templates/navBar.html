@@ -25,7 +25,7 @@
                         <a href="#" th:href="@{/storage}">入库</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
-                        <a href="#" th:href="@{/apply}">申请</a>
+                        <a onclick="jumpTo('applyajax')">申请</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/borrow}">借用</a>

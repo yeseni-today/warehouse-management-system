@@ -11,6 +11,8 @@
    fix bug
 * v-0.59.3 finderlo
    Show before 30 day record in_storage html
+* v-0.59.4 finderlo
+   instorage buf fix and log
 * v-0.60.0 lx
    add a encoding test
    fix categoryID

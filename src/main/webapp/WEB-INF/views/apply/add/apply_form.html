@@ -12,7 +12,7 @@
 
 <body>
 
-<div class="content" tiles:fragment="content">
+<div class="content" th:fragment="content" tiles:fragment="content">
     <div class="content-nav">
         <div class="titleNav">
             <div class="title_nav title_nav_Now">
@@ -21,9 +21,14 @@
         </div>
     </div>
 
+    <!--<div class="content-function">-->
+    <!--<div class="myDivBt">-->
+    <!--<a href="additem.html" th:href="@{/apply/add/additem}" th:method="get">添加物品</a>-->
+    <!--</div>-->
+    <!--</div>-->
     <div class="content-function">
         <div class="myDivBt">
-            <a href="additem.html" th:href="@{/apply/add/additem}" th:method="get">添加物品</a>
+            <button onclick="jumpTo('apply/add/additemajax')" th:method="get">添加物品</button>
         </div>
     </div>
 

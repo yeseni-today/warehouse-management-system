@@ -1,5 +1,7 @@
 package com.repository.entity;
 
+import com.google.gson.Gson;
+
 import java.sql.Date;
 
 import javax.persistence.Basic;
@@ -17,6 +19,11 @@ public class ItemInOperationEntity {
     private String storageId;
     private Date storageTime;
     private String operationId;
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 
     @Id
     @Column(name = "storage_ID")

@@ -1,6 +1,6 @@
 package com.repository.entity;
 
-import org.springframework.data.annotation.Transient;
+import com.google.gson.Gson;
 
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item")
-public class ItemEntity {
+public class ItemEntity implements Cloneable {
     private String itemCode;
     private String itemName;
 
@@ -32,6 +32,21 @@ public class ItemEntity {
     private ItemCompanyEntity itemCompanyEntity;
 
     private int itemCount;
+
+    @Override
+    public ItemEntity clone() {
+        try {
+            return (ItemEntity) super.clone();
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 
     //    @Transient
 //    private boolean isInSchool;

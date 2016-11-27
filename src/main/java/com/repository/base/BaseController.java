@@ -8,6 +8,7 @@ import com.repository.dao.ItemCategoryDao;
 import com.repository.dao.ItemCompanyDao;
 import com.repository.dao.ItemDao;
 import com.repository.dao.UsersDao;
+import com.repository.service.LogSerivce;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -21,4 +22,7 @@ public class BaseController extends BaseObject {
 
     @Autowired
     protected ItemCompanyDao itemCompanyDao;
+
+    @Autowired
+    protected LogSerivce logSerivce;
 }

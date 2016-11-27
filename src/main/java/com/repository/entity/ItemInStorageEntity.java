@@ -1,5 +1,7 @@
 package com.repository.entity;
 
+import com.google.gson.Gson;
+
 import java.sql.Date;
 
 import javax.persistence.Basic;
@@ -25,6 +27,11 @@ public class ItemInStorageEntity implements Cloneable {
     private String itemBatch;
     private Date itemIndate;
     private int allowCount;
+
+    @Override
+    public String toString() {
+        return new Gson().toJson(this);
+    }
 
     @Override
     public ItemInStorageEntity clone() {
