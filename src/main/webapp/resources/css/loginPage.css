@@ -4,10 +4,17 @@
 @import "myInput.css";
 @import "icon-demo.css";
 
+body {
+    overflow-y: hidden;
+}
+
+/*覆盖 input*/
 .login input {
-    font-size: 1.2em;
+    position: relative;
+    font-size: inherit;
     border-radius: 0.5em;
-    width: 15.2em;
+    width: 100%;
+    left: -1.2em;
     height: 2.7em;
     border: 0.2em solid rgba(234, 237, 237, 0);
     background: #ffffff;
@@ -19,36 +26,7 @@
     background: #1abc9c;
 }
 
-body {
-    min-width: 65em;
-    min-height: 36em;
-    overflow: hidden;
-}
-
-.login-top {
-    position: absolute;
-    z-index: 999;
-
-    width: 100%;
-    /*min-width: 100em;*/
-    min-width: 65em;
-    height: 100%;
-    /*min-height: 80em;*/
-    min-height: 36em;
-}
-
-.login-background {
-    position: absolute;
-    z-index: -1;
-
-    width: 100%;
-    /*min-width: 100em;*/
-    min-width: 65em;
-    height: 100%;
-    /*min-height: 80em;*/
-    min-height: 36em;
-}
-
+/*登陆*/
 .login-title {
     position: absolute;
     font-size: 3em;
@@ -56,22 +34,26 @@ body {
     left: 0.5em;
 }
 
-div.login {
+.login {
+    font-size: 1.2em;
     position: absolute;
-    top: 20em;
-    right: 20em;
-    width: 21em;
-    padding: 0 2em 2em;
-    line-height: 4em;
+    top: 30%;
+    right: 10%;
+    width: 25em;
+    padding: 2em 0;
     background: rgba(0, 0, 0, 0.4);
-    border-radius: 0.5em;
+    border-radius: 0.4em;
+    line-height: 5em;
     text-align: center;
 }
-
 .login .name, .password {
+    font-size: inherit;
     position: relative;
-    margin: 2em 0;
-    line-height: 3em;
+    width: 80%;
+    height: 5em;
+    padding: 0 1em;
+    margin: auto;
+    line-height: 5em;
 }
 
 .login input:focus + .icon-after-user {
@@ -84,11 +66,11 @@ div.login {
 
 .icon-after-user, .icon-after-lock {
     font-size: 1.5em;
-    line-height: 2.4em;
     position: absolute;
     color: #bfc9ca;
-    right: 0.7em;
+    right: 0.3em;
     top: 0;
+    margin: auto 0;
     transition: color 0.3s;
 }
 

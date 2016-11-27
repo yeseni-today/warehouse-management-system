@@ -1,31 +1,35 @@
+/*layout*/
 .background {
     position: fixed;
     z-index: -1;
     background: #1abc9c;
     width: 100%;
-    height: 100em;
+    height: 100%;
 }
 
-#topdiv {
+#load {
     position: fixed;
-    z-index: 900;
-    width: 100em;
-    height: 100em;
+    z-index: 999;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0, 0, 0, 0.51);
     display: none;
 }
 
-#loading {
-    position: relative;
-    width: 32px;
-    height: 32px;
+#loadGif {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
 }
 
 #header {
     position: fixed;
     z-index: 1000;
     width: 100%;
-    height: 50px;
+    height: 50px; /*TODO*/
 }
 
 #body {
@@ -43,19 +47,20 @@
     background: #333333;
 }
 
+/*页面内容*/
 .content {
     padding: 5em;
     width: 65em;
     min-height: 40em;
     margin: auto;
-    background: white;
+    background: #eaeaea;
 }
 
-/*页面切换*/
+
 .current, .next {
     position: absolute;
     width: 100%;
-    background: rgb(26, 188, 156);
+    background: rgb(68, 203, 169);
 }
 
 .current {

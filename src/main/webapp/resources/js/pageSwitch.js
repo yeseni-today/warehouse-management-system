@@ -1,6 +1,7 @@
 /**
  * Created by 22340 on 2016/11/23.
  */
+
 function change1() {
     var url = "/test";
     var animation = 'move-to-right';
@@ -17,6 +18,8 @@ function jumpTo(url) {
     jumpToWithAnim(url, 'move-to-left');
 }
 
+
+//
 function jumpToWithAnim(url, animation) {
     var currentPageId = "currentPage";
     var nextPageId = "nextPage";

@@ -1,5 +1,6 @@
 window.onload = function () {
     document.body.style.fontSize = screen.width * 0.01 + "px";
+    document.body.style.display = "block";
 };
 
 function setVisible(bool) {
@@ -55,6 +56,15 @@ function openPop() {
         popAdd[0].style.transform = "scale(1,1)"
     }, 1);
 }
+function closePop() {
+    var popAddBg = document.getElementsByClassName('pop-bg');
+    var popAdd = document.getElementsByClassName('pop');
+    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
+    popAdd[0].style.transform = "scale(0,0)";
+    setTimeout(function () {
+        popAddBg[0].style.display = "none";
+    }, 500);
+}
 function openPopAdd(code, name) {
 
     document.getElementsByName("itemCode")[1].value = code;
@@ -76,23 +86,13 @@ function openPopDetails(itemForm) {
 
     openPop();
 }
-function closePop() {
-    var popAddBg = document.getElementsByClassName('pop-bg');
-    var popAdd = document.getElementsByClassName('pop');
-    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
-    popAdd[0].style.transform = "scale(0,0)";
-    setTimeout(function () {
-        popAddBg[0].style.display = "none";
-    }, 500);
-}
 
 function showLoading() {
-    $("#loading").css("top", window.innerHeight / 2 - 16 + "px");
-    $("#loading").css("left", window.innerWidth / 2 - 16 + "px");
-    $("#topdiv").css("display", "block");
+    $("#load").css("display", "block");
 }
+
 function hideLoading() {
-    $("#topdiv").css("display", "none");
+    $("#load").css("display", "none");
 }
 
 function deleteStroageItem(itemCode) {

@@ -4,93 +4,39 @@
 
 <head>
     <meta charset="UTF-8"/>
-    <title tiles:replace="title">Title</title>
+    <title tiles:replace="title">登陆模板</title>
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
           th:href="@{/resources/css/loginPage.css}"/>
     <script src="../../../resources/js/main.js"
-            th:src="@{/resources/js/main.js}">
-    </script>
+            th:src="@{/resources/js/main.js}"></script>
     <script src="../../../resources/js/jquery-3.1.1.js"
             th:src="@{/resources/js/jquery-3.1.1.js}"></script>
-
-    <script>
-        $(document).ready(function () {
-            $("#loginButton").click(function () {
-                var values = $("#loginform").serialize();
-                $("#loginButton").value = "正在登陆";
-                showLoading();
-                $.ajax({
-                    type: "post",
-                    url: "/signin",    //向springboot请求数据的url
-                    data: values,
-                    success: function (json) {
-                        if (json.message == ("success")) {
-                            $("#loginButton").val("登陆成功");
-                            setTimeout(function () {
-                                location = json.content;
-                            }, 1000)
-                        } else {
-                            $("#loginButton").val("登陆失败请重试");
-                        }
-                        setTimeout(function () {
-                            hideLoading();
-                        }, 2000);
-                    }
-                })
-            });
-        })
-    </script>
-
-    <script>
-
-        $(document).ready(function () {
-            $("#button1").click(function () {
-                var values = $("#queryinput").serialize();
-                $.ajax({
-                    type: "get",
-                    url: "/query/queryItem",    //向springboot请求数据的url
-                    data: values,
-                    success: function (items) {
-                        $("#result_table tr").remove("tr:gt(0)")
-                        //没有完成的部分，需要再每次查询后来清空原有的值
-                        $.each(items, function (i, item) {
-                            item = "<tr> " +
-                                    "   <th>" + item.itemCode + "</th>" +
-                                    "   <th>" + item.itemName + "</th>" +
-                                    "   <th>" + item.itemCategoryEntity.categoryName + "</th>" +
-                                    "   <th>" + item.itemCount + "</th>" +
-                                    "   <th>" + "操作" + "</th>" +
-                                    "</tr>";
-                            $("#result_table").append(item)
-                        });
-                    }
-                })
-            });
-        })
-    </script>
+    <script src="../../../resources/js/signin.js"
+            th:src="@{/resources/js/signin.js}"></script>
 </head>
 
 <body>
-<div>
-    <div id="topdiv" class="login-top">
-        <img id="loading" src="../../../resources/picture/loading.gif"/>
-    </div>
 
-    <div id="header">
-        <div th:replace="templates/navBar :: navBar">
-        </div>
-    </div>
+<div class="background"></div>
 
-    <div id="body">
-        <div tiles:replace="content"></div>
-    </div>
-
-    <div id="footer">
-        <div th:replace="templates/footer :: footer">
-        </div>
-    </div>
-
+<div id="load" class="load">
+    <img id="loadGif" src="../../../resources/picture/loading.gif"/>
 </div>
+
+<div id="header">
+    <div th:replace="templates/navBar :: navBar">
+    </div>
+</div>
+
+
+<div tiles:replace="content"></div>
+
+
+<div id="footer">
+    <div th:replace="templates/footer :: footer">
+    </div>
+</div>
+
 </body>
 </html>

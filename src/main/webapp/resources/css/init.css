@@ -1,6 +1,23 @@
+/*init*/
 * {
     margin: 0;
     padding: 0;
     font-family: "微软雅黑", serif;
     color: #000000;
+}
+
+html {
+    height: 100%;
+    overflow: hidden; /*去滚动条*/
+}
+
+body {
+    display: none; /*防止刷新闪动*/
+    position: absolute;
+    right: -17px;
+    left: 0;
+
+    height: 100%;
+    overflow-x: hidden; /*去滚动条*/
+    overflow-y: scroll;
 }
