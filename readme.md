@@ -17,3 +17,5 @@
    add a encoding test
    fix categoryID
    update readme
+* v-0.60.1 lx
+   fix bug

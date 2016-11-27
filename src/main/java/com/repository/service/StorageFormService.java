@@ -1,24 +1,12 @@
 package com.repository.service;
 
 import com.repository.base.BaseObject;
-import com.repository.dao.ItemCategoryDao;
-import com.repository.dao.ItemCompanyDao;
-import com.repository.dao.ItemDao;
-import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.ItemInStorageDao;
-import com.repository.dao.SdictionaryDao;
-import com.repository.entity.ItemCategoryEntity;
-import com.repository.entity.ItemCompanyEntity;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.ItemInOperationEntity;
-import com.repository.entity.ItemInStorageEntity;
-import com.repository.entity.SdictionaryEntity;
+import com.repository.dao.*;
+import com.repository.entity.*;
 import com.repository.util.Util;
 import com.repository.web.storage.add.StorageForm;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -107,8 +95,8 @@ public class StorageFormService extends BaseObject {
         Session session = sessionFactory.getCurrentSession();
         //保存入库表
         //首先将所有item存入item表中，如果为校内编码需要先查询编码
-        Transaction transaction = (Transaction) session.beginTransaction();
-        transaction.begin();
+//        Transaction transaction = (Transaction) session.beginTransaction();
+//        transaction.begin();
         try {
 
             List<ItemCompound> compounds = formToComound(storageForm);
@@ -149,14 +137,20 @@ public class StorageFormService extends BaseObject {
             for (ItemCompound e : compounds) {
                 if (e.isInSchool) {
                     e.itemCompoundList.forEach(compound ->
-                            session.save(compound.itemInStorageEntity)
+                            {
+                                session.save(compound.itemInStorageEntity);
+                                logSerivce.saveInStorage(principal.getName(), compound.itemInStorageEntity);
+                            }
                     );
-                } else session.save(e.itemInStorageEntity);
+                } else {
+                    session.save(e.itemInStorageEntity);
+                    logSerivce.saveInStorage(principal.getName(), e.itemInStorageEntity);
+                }
             }
-            transaction.commit();
+//            transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
-            transaction.rollback();
+//            transaction.rollback();
         }
     }
 
