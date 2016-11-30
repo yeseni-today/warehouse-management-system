@@ -32,7 +32,6 @@ function addItem() {
     });
 }
 
-<<<<<<< HEAD
 function msg_send() {
     showLoading();
     $.ajax({
@@ -67,8 +66,6 @@ function msg_findmsg() {
     hideLoading();
 }
 
-=======
->>>>>>> 7c27124b91eb57c50f957f238b588aee12c3d171
 function clearApplyForm() {
     $.ajax({
         url: "/apply/add/clearformajax",
