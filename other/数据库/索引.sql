@@ -1,0 +1,6 @@
+create index index_name on Item(item_name)
+create index index_company on Item_company(company_name)
+create index index_app_date on Item_application_operation (application_time)
+create index index_borrow_date on Item_borrow (borrow_time)
+create index index_out_date on Item_out_operation (out_time)
+create index index_in_date on Item_in_operation (storage_time)
