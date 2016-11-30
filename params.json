@@ -1,0 +1,6 @@
+{
+  "name": "Wms-group",
+  "tagline": "",
+  "body": "## WMS\r\n\r\n### version\r\n* v-0.56.0 finderlo\r\n   查询、入库完成，申请正在完成\r\n* v-0.57.0 finderlo\r\n   入库和申请完成完成，，部分\r\n* v-0.58.1 L\r\n   日志和消息\r\n* v-0.59.2 finderlo\r\n   fix bug\r\n* v-0.59.3 finderlo\r\n   Show before 30 day record in_storage html\r\n* v-0.59.4 finderlo\r\n   instorage buf fix and log\r\n* v-0.60.0 lx\r\n   add a encoding test\r\n   fix categoryID\r\n   update readme\r\n* v-0.60.1 lx\r\n   fix bug",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
