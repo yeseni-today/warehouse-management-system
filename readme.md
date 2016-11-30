@@ -20,4 +20,6 @@
 * v-0.60.1 lx
    fix bug
 * v-0.60.2 finderlo
-       message
+   message
+* v-0.60.3 lx
+   fix sqlserver package bug

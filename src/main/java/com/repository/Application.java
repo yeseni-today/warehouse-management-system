@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration(exclude = {WebConfig.class, SecurityManager.class})
 @ComponentScan("com")
 public class Application {
-
+//lx
     public static void main(String[] args) {
         SpringApplication.run(Application.class, args);
     }
