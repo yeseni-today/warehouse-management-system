@@ -24,6 +24,11 @@ public class MessageResponse {
         return new MessageResponse(400, "eoor");
     }
 
+    public static MessageResponse error(String message) {
+        return new MessageResponse(400, message);
+    }
+
+
     public int getStatus() {
         return status;
     }

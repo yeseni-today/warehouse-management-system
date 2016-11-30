@@ -2,9 +2,9 @@ package com.repository.web.login;
 
 import com.repository.base.BaseController;
 import com.repository.entity.UsersEntity;
-import com.repository.model.SimpleResponseBody;
+import com.repository.model.SimpleResponse;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -41,8 +41,8 @@ public class LoginController extends BaseController {
 
     @RequestMapping(URL_SIGNIN_SUCCESS)
     @ResponseBody
-    public SimpleResponseBody signindo(HttpSession session, Principal principal) {
-        SimpleResponseBody responseBody = new SimpleResponseBody();
+    public SimpleResponse signindo(HttpSession session, Principal principal) {
+        SimpleResponse responseBody = new SimpleResponse();
         responseBody.setStatus(200);
         responseBody.setMessage("success");
         responseBody.setContent(URL_QUERY);

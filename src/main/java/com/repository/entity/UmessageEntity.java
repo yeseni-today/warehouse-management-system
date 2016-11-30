@@ -5,6 +5,9 @@ import java.sql.Timestamp;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -26,8 +29,24 @@ public class UmessageEntity {
     private String messageReceiveId;
     private String messageTitle;
 
+    private State messageState;
+    @Basic
+    @Column(name = "message_state")
+    public State getMessageState() {
+        return messageState;
+    }
+
+    public void setMessageState(State messageState) {
+        this.messageState = messageState;
+    }
+
+    public enum State{
+        UNREAD,READ,DELETE
+    }
+
     @Id
     @Column(name = "message_ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public String getMessageId() {
         return messageId;
     }

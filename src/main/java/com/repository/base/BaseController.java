@@ -7,6 +7,7 @@ package com.repository.base;
 import com.repository.dao.ItemCategoryDao;
 import com.repository.dao.ItemCompanyDao;
 import com.repository.dao.ItemDao;
+import com.repository.dao.UmessageDao;
 import com.repository.dao.UsersDao;
 import com.repository.service.LogSerivce;
 
@@ -25,4 +26,7 @@ public class BaseController extends BaseObject {
 
     @Autowired
     protected LogSerivce logSerivce;
+
+    @Autowired
+    protected UmessageDao messageDao;
 }

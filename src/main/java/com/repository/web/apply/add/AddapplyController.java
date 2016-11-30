@@ -5,7 +5,7 @@ import com.repository.dao.ItemDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.model.MessageResponse;
-import com.repository.model.SimpleResponseBody;
+import com.repository.model.SimpleResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -86,12 +86,12 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
-    public SimpleResponseBody getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
+    public SimpleResponse getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
         ApplyForm applyForm = getApplyForm(session);
         applyForm.getItems().add(applyItemForm);
         logger.info("getaddItemAjax: " + applyItemForm);
         ;
-        return new SimpleResponseBody();
+        return new SimpleResponse();
     }
 
     @RequestMapping(URL_APPLY_ADD_QUERY_ITEM)

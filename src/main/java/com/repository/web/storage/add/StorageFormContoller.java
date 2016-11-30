@@ -5,7 +5,7 @@ import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
-import com.repository.model.SimpleResponseBody;
+import com.repository.model.SimpleResponse;
 import com.repository.service.StorageFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,21 +65,22 @@ public class StorageFormContoller extends BaseController {
 
     @RequestMapping(URL_STORAGE_ADD_DELETEITEM_AJAX)
     @ResponseBody
-    public SimpleResponseBody deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
+    public SimpleResponse deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         List one = storageForm.getItemForms().stream().filter(e -> e.getItemCode().equals(itemcode.trim())).collect(Collectors.toList());
         if (!one.isEmpty()) {
             storageForm.getItemForms().remove(one.get(0));
         }
-        return new SimpleResponseBody();
+        return new SimpleResponse();
     }
 
     @RequestMapping(URL_STORAGE_ADD_DELETEALL_AJAX)
     @ResponseBody
-    public SimpleResponseBody deleteItem(HttpSession session) {
+    public SimpleResponse deleteItem(HttpSession session) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         storageForm.getItemForms().clear();
-        return new SimpleResponseBody();
+        return new SimpleResponse();
+
     }
 
     /**

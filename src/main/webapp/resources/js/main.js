@@ -32,6 +32,43 @@ function addItem() {
     });
 }
 
+<<<<<<< HEAD
+function msg_send() {
+    showLoading();
+    $.ajax({
+        url:"/message/sendajax",
+        type:"post",
+        data: $('#newmessage').serialize(),
+        success:function (result) {
+            if(result.status == 200){
+                //发送成功
+                alert("发送成功")
+            }else {
+                alert("发送失败" )
+            }
+        },
+        error:alert("发送失败" )
+    })
+    hideLoading();
+}
+
+function msg_findmsg() {
+    showLoading();
+    $.ajax({
+        url:"/message/findmessagebyid",
+        type:"get",
+        success:function (result) {
+            //result.content 是一个umessage的list列表
+            result.content;
+            alert("获取成功")
+        },
+        error:alert("发送失败" )
+    })
+    hideLoading();
+}
+
+=======
+>>>>>>> 7c27124b91eb57c50f957f238b588aee12c3d171
 function clearApplyForm() {
     $.ajax({
         url: "/apply/add/clearformajax",

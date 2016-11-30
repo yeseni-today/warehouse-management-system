@@ -75,6 +75,12 @@ public interface Constants {
 
     //message
     String URL_MESSAGE = "/message";
+    String URL_MESSAGE_SEND_AJAX = URL_MESSAGE+"/sendajax";
+    String URL_MESSAGE_FIND_WRANTYPE_AJAX=URL_MESSAGE+"/wranmsg";
+    String URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX=URL_MESSAGE+"/findmessagebyid";
+    String URL_MESSAGE_READWHITID_AJAX=URL_MESSAGE+"/read";
+    String URL_MESSAGE_DELETWHITID_AJAX=URL_MESSAGE+"/delete";
+
     String URL_MESSAGE_NEW = "/newMessage";
     String HTML_MESSAGE_PREFIX = TILES_PREFIX + "message/";
     String HTML_MESSAGE_LIST = HTML_MESSAGE_PREFIX + "list";
