@@ -19,7 +19,7 @@
 
     <script>
         $(document).ready(function () {
-            $("#button1").click(function () {
+            $("#query").click(function () {
                 var values = $("#queryinput").serialize();
                 $.ajax({
                     type: "get",
@@ -30,11 +30,11 @@
                         //没有完成的部分，需要再每次查询后来清空原有的值
                         $.each(items, function (i, item) {
                             item = "<tr> " +
-                                    "   <th>" + item.itemCode + "</th>" +
-                                    "   <th>" + item.itemName + "</th>" +
-                                    "   <th>" + item.itemCategoryEntity.categoryName + "</th>" +
-                                    "   <th>" + item.itemCount + "</th>" +
-                                    "   <th>" + "操作" + "</th>" +
+                                    "   <td>" + item.itemCode + "</td>" +
+                                    "   <td>" + item.itemName + "</td>" +
+                                    "   <td>" + item.itemCategoryEntity.categoryName + "</td>" +
+                                    "   <td>" + item.itemCount + "</td>" +
+                                    "   <td>" + "操作" + "</td>" +
                                     "</tr>";
                             $("#result_table").append(item)
                         });
@@ -42,6 +42,7 @@
                 })
             });
         })
+        $(document).ready(msg_findmsg());
     </script>
 </head>
 

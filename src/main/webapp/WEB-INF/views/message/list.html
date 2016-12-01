@@ -33,7 +33,7 @@
                         <div class="close_button-icon"></div>
                     </div>
                 </div>
-                <form action="" method="get">
+                <form action="" method="get" id="message-form">
                     <ul>
                         <li>
                             <label>
@@ -125,13 +125,19 @@
                 </form>
             </div>
         </div>
-        <div class="message" th:each="message:${messages}">
-            <span class="message-name" th:text="${message.title}">name</span>
-            <span class="message-date"
-                  th:text="${#calendars.format(message.created)}">data</span>
-            <div class="message-content" th:text="${message.text}">content</div>
+        <div class="message" >
+            <span class="message-name" >name</span>
+            <span class="message-date">data</span>
+            <div class="message-content" >content</div>
             <div class="message-operation" onclick="openPop()">详情</div>
         </div>
+        <!--<div class="message" th:each="message:${messages}">-->
+            <!--<span class="message-name" th:text="${message.title}">name</span>-->
+            <!--<span class="message-date"-->
+                  <!--th:text="${#calendars.format(message.created)}">data</span>-->
+            <!--<div class="message-content" th:text="${message.text}">content</div>-->
+            <!--<div class="message-operation" onclick="openPop()">详情</div>-->
+        <!--</div>-->
     </div>
 </div>
 </body>

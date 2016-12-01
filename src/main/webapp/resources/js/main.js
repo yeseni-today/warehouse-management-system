@@ -35,18 +35,18 @@ function addItem() {
 function msg_send() {
     showLoading();
     $.ajax({
-        url:"/message/sendajax",
-        type:"post",
+        url: "/message/sendajax",
+        type: "post",
         data: $('#newmessage').serialize(),
-        success:function (result) {
-            if(result.status == 200){
+        success: function (result) {
+            if (result.status == 200) {
                 //发送成功
                 alert("发送成功")
-            }else {
-                alert("发送失败" )
+            } else {
+                alert("发送失败")
             }
         },
-        error:alert("发送失败" )
+        error: alert("发送失败")
     })
     hideLoading();
 }
@@ -54,14 +54,25 @@ function msg_send() {
 function msg_findmsg() {
     showLoading();
     $.ajax({
-        url:"/message/findmessagebyid",
-        type:"get",
-        success:function (result) {
+        url: "/message/findmessagebyid",
+        type: "get",
+        success: function (result) {
             //result.content 是一个umessage的list列表
-            result.content;
-            alert("获取成功")
+            var messages = result.content;
+            $(".content-right .message").remove();
+            var contentRight = $(".content-right");
+            $.each(messages, function (i, message) {
+                messageBox = "<div class='message'>" +
+                    "<span class='message-name' >" + message.messageId + "</span>" +
+                    " <span class='message-date'>" + message.messageDate + "</span>" +
+                    "<div class='message-content' >" + message.messageContent + "</div>" +
+                    "<div class='message-operation' onclick='openPop()'>详情</div>" +
+                    "</div>";
+                contentRight.append(messageBox);
+            })
+
         },
-        error:alert("发送失败" )
+        // error:alert("发送失败" )
     })
     hideLoading();
 }
