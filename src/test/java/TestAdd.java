@@ -14,6 +14,9 @@ import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
 
 /**
  * Created by Finderlo on 2016/11/18.
@@ -29,20 +32,25 @@ public class TestAdd {
     SdictionaryDao sdictionaryDao;
     @Autowired
     SessionFactory sessionFactory;
+    SdictionaryEntity entity;
 
-    //    @Test
-    @Transactional
-    public void set() {
-        Session session = sessionFactory.getCurrentSession();
-//        Transaction transaction = session.beginTransaction();
-//        transaction.begin();
-        SdictionaryEntity entity = new SdictionaryEntity();
+    @Before
+    public void before() {
+        entity = new SdictionaryEntity();
         entity.setIndex(55);
         entity.setField("9999");
         entity.setIndexlength(88);
         entity.setTable("adsdsd");
+    }
+
+    @Test
+    @Transactional
+    public void set() {
         sdictionaryDao.save(entity);
-//        transaction.commit();
-//        transaction.rollback();
+    }
+
+    @After
+    public void after() {
+        sdictionaryDao.delete(entity);
     }
 }
