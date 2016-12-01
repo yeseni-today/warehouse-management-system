@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -87,6 +88,13 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
 
         if (keys ==null || values==null || keys.length == 0 || values.length == 0){
             return new ArrayList<T>();
+        }
+        int length = keys.length <= values.length ? keys.length : values.length;
+        int enableCount = 0;
+        for (int i = 0; i < length; i++) {
+            if (!bindKeys().contains(keys[i])){
+                //todo 空值判定
+            }
         }
 
         String hql = jointLikeQuery(keys, values, isLikeQuery);
@@ -220,6 +228,14 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         if (ids.size() == 1) {
             id = ids.get(0);
         }
+    }
+
+    private List<String> bindKeys(){
+        List<String> results = new ArrayList<>();
+        for (Field field : bindClass().getDeclaredFields()) {
+            results.add(field.getName());
+        }
+        return results;
     }
 
     private boolean isMoreId() {

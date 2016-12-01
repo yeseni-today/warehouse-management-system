@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -47,10 +48,10 @@ public class AddapplyController extends BaseController {
 
 
     @ModelAttribute
-    public void applyForm(HttpSession session) {
+    public void applyForm(HttpSession session, Principal principal) {
         ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
         if (applyForm == null) {
-            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId()));
+            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId(),principal.getName()));
         }
         logger.info("applyForm: " + applyForm);
     }

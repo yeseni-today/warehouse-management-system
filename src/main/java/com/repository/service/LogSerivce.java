@@ -57,15 +57,15 @@ public class LogSerivce {
 
     @Transactional
     public void saveInOpreation(String opreation_id, ItemInOperationEntity inOperationEntity) {
-//        logDao.save(
-//                new LogBuilder()
-//                .table(INOPERATION_TABLE)
-//                .type(SAVE_TYPE)
-//                .level(SAVE_ITEM_LEVEL)
-//                .opreationID(opreation_id)
-//                .info(inOperationEntity.toString())
-//                .build()
-//        );
+        logDao.save(
+                new LogBuilder()
+                .table(INOPERATION_TABLE)
+                .type(SAVE_TYPE)
+                .level(SAVE_ITEM_LEVEL)
+                .opreationID(opreation_id)
+                .info(inOperationEntity.toString())
+                .build()
+        );
     }
 
     @Transactional
