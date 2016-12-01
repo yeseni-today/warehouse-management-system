@@ -26,3 +26,7 @@ dist/
 nbdist/
 .nb-gradle/
 target/
+#build.gradle
+#gradle/
+#settings.gradle
+#src/test/resources/
