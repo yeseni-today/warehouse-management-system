@@ -13,8 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
+
 import static com.repository.Constants.HTML_MESSAGE_LIST;
 import static com.repository.Constants.HTML_MESSAGE_NEWMESSAGE;
 import static com.repository.Constants.URL_MESSAGE;
@@ -24,7 +23,6 @@ import static com.repository.Constants.URL_MESSAGE_FIND_WRANTYPE_AJAX;
 import static com.repository.Constants.URL_MESSAGE_NEW;
 import static com.repository.Constants.URL_MESSAGE_READWHITID_AJAX;
 import static com.repository.Constants.URL_MESSAGE_SEND_AJAX;
-import static com.repository.Constants.URL_MESSAGE_NEW;
 
 @Controller
 public class MessageController extends BaseController {
@@ -56,7 +54,7 @@ public class MessageController extends BaseController {
     }
 
     /**
-     * 获取d当前用户收到的消息
+     * 获取当前用户收到的所有消息
      */
     @RequestMapping(URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX)
     @ResponseBody

@@ -9,12 +9,15 @@ import java.util.List;
  * Created by Finderlo on 2016/11/26.
  */
 public class ApplyForm {
+
     private List<ApplyItemForm> items = new ArrayList();
 
     private String applicationId;
+    private String usersId;
 
-    public ApplyForm(String applicationId) {
+    public ApplyForm(String applicationId ,String usersId) {
         this.applicationId = applicationId;
+        this.usersId = usersId;
     }
 
     public List<ApplyItemForm> getItems() {
@@ -36,5 +39,9 @@ public class ApplyForm {
     @Override
     public String toString() {
         return new Gson().toJson(this);
+    }
+
+    public String getUsersId() {
+        return usersId;
     }
 }

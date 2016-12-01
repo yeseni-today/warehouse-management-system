@@ -35,8 +35,8 @@ public class QueryController extends BaseController {
         session.setAttribute(SESSION_CATEGORIES, categories());
         session.setAttribute(SESSION_CATEGORIES_A, categoriesA());
         session.setAttribute(SESSION_COMPANIES, itemCompanyDao.findAll());
-        logger.info(categories());
-        logger.info(categoriesA());
+        logger.trace(categories());
+        logger.trace(categoriesA());
     }
 
 
@@ -53,11 +53,12 @@ public class QueryController extends BaseController {
 
     @RequestMapping(URL_QUERY_QUERYITEM)
     @ResponseBody
-    public List<ItemEntity> queryItem(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
-                                      @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
-                                      @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
-                                      ModelMap model,
-                                      Principal principal) {
+    public List<ItemEntity> queryItem(
+            @RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
+            @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
+            @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
+            ModelMap model,
+            Principal principal) {
         model.clear();
         List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
                 , new String[]{itemCode, itemName});
