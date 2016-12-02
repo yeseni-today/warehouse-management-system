@@ -24,8 +24,8 @@ public interface Constants {
 
     //query
     String URL_QUERY = "/query";
-    String URL_QUERY_QUERYITEM = "/queryItem";
-    String HTML_QUERY_LIST = TILES_PREFIX + "query/list";
+    String URL_QUERY_QUERYITEM = URL_QUERY + "/queryItem";
+    String HTML_QUERY_LIST = "query/list";
 
     //storage
     String URL_STORAGE = "/storage";
@@ -75,11 +75,11 @@ public interface Constants {
 
     //message
     String URL_MESSAGE = "/message";
-    String URL_MESSAGE_SEND_AJAX = URL_MESSAGE+"/sendajax";
-    String URL_MESSAGE_FIND_WRANTYPE_AJAX=URL_MESSAGE+"/wranmsg";
-    String URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX=URL_MESSAGE+"/findmessagebyid";
-    String URL_MESSAGE_READWHITID_AJAX=URL_MESSAGE+"/read";
-    String URL_MESSAGE_DELETWHITID_AJAX=URL_MESSAGE+"/delete";
+    String URL_MESSAGE_SEND_AJAX = URL_MESSAGE + "/sendajax";
+    String URL_MESSAGE_FIND_WRANTYPE_AJAX = URL_MESSAGE + "/wranmsg";
+    String URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX = URL_MESSAGE + "/findmessagebyid";
+    String URL_MESSAGE_READWHITID_AJAX = URL_MESSAGE + "/read";
+    String URL_MESSAGE_DELETWHITID_AJAX = URL_MESSAGE + "/delete";
 
     String URL_MESSAGE_NEW = "/newMessage";
     String HTML_MESSAGE_PREFIX = TILES_PREFIX + "message/";

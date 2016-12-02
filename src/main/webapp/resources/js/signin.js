@@ -20,6 +20,7 @@ function sign() {
                 showLoading();
                 setTimeout(function () {
                     if (json.message == ("success")) {
+                        console.log(json.content)
                         location = json.content;        //跳转
                     } else {
                         $("#loginButton").val("登陆失败请重试");

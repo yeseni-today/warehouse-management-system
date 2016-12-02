@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import static com.repository.Constants.*;
+
 @Controller
 class CustomErrorController implements ErrorController {
 

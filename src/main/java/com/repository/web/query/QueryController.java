@@ -23,10 +23,11 @@ import static com.repository.Constants.HTML_QUERY_LIST;
 import static com.repository.Constants.SESSION_CATEGORIES;
 import static com.repository.Constants.SESSION_CATEGORIES_A;
 import static com.repository.Constants.SESSION_COMPANIES;
+import static com.repository.Constants.TILES_PREFIX;
 import static com.repository.Constants.URL_QUERY;
 import static com.repository.Constants.URL_QUERY_QUERYITEM;
 
-@RequestMapping(URL_QUERY)
+
 @Controller
 public class QueryController extends BaseController {
 
@@ -40,9 +41,11 @@ public class QueryController extends BaseController {
     }
 
 
-    @RequestMapping()
-    public String queryTo(Model model) {
-        return HTML_QUERY_LIST;
+    @RequestMapping(URL_QUERY)
+    public String queryTo() {
+        logger.info("query");
+        System.out.println(TILES_PREFIX + HTML_QUERY_LIST);
+        return TILES_PREFIX + HTML_QUERY_LIST;
     }
 
     @RequestMapping("/hello")

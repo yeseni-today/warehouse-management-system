@@ -2,7 +2,7 @@ package com.repository.web.login;
 
 import com.repository.base.BaseController;
 import com.repository.entity.UsersEntity;
-import com.repository.model.SimpleResponse;
+import com.repository.model.SimpleRes;
 
 
 import org.springframework.stereotype.Controller;
@@ -23,7 +23,7 @@ public class LoginController extends BaseController {
 
     @RequestMapping(URL_INDEX)
     public String greeting() {
-        return HTML_QUERY_LIST;
+        return TILES_PREFIX + HTML_QUERY_LIST;
     }
 
     @RequestMapping(URL_SIGNIN)
@@ -41,8 +41,8 @@ public class LoginController extends BaseController {
 
     @RequestMapping(URL_SIGNIN_SUCCESS)
     @ResponseBody
-    public SimpleResponse signindo(HttpSession session, Principal principal) {
-        SimpleResponse responseBody = new SimpleResponse();
+    public SimpleRes signindo(HttpSession session, Principal principal) {
+        SimpleRes responseBody = new SimpleRes();
         responseBody.setStatus(200);
         responseBody.setMessage("success");
         responseBody.setContent(URL_QUERY);

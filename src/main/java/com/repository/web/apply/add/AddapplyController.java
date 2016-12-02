@@ -4,8 +4,7 @@ import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
-import com.repository.model.MessageResponse;
-import com.repository.model.SimpleResponse;
+import com.repository.model.SimpleRes;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -51,7 +50,7 @@ public class AddapplyController extends BaseController {
     public void applyForm(HttpSession session, Principal principal) {
         ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
         if (applyForm == null) {
-            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId(),principal.getName()));
+            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId(), principal.getName()));
         }
         logger.info("applyForm: " + applyForm);
     }
@@ -69,10 +68,10 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(URL_APPLY_CLEARFORM_AJAX)
     @ResponseBody
-    public MessageResponse clear(HttpSession session) {
+    public SimpleRes clear(HttpSession session) {
         session.setAttribute(SESSION_APPLY_FORM, null);
         logger.info("clear: ");
-        return MessageResponse.success();
+        return SimpleRes.success();
     }
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
@@ -87,12 +86,12 @@ public class AddapplyController extends BaseController {
 
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
-    public SimpleResponse getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
+    public SimpleRes getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
         ApplyForm applyForm = getApplyForm(session);
         applyForm.getItems().add(applyItemForm);
         logger.info("getaddItemAjax: " + applyItemForm);
         ;
-        return new SimpleResponse();
+        return new SimpleRes();
     }
 
     @RequestMapping(URL_APPLY_ADD_QUERY_ITEM)

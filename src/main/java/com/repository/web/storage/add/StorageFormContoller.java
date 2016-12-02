@@ -5,7 +5,7 @@ import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.SdictionaryDao;
 import com.repository.entity.ItemEntity;
-import com.repository.model.SimpleResponse;
+import com.repository.model.SimpleRes;
 import com.repository.service.StorageFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +40,7 @@ import static com.repository.Constants.URL_STORAGE_ADD_DELETEITEM_AJAX;
 import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
 import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO_AJAX;
 import static com.repository.Constants.URL_STORAGE_ADD_SUBMIT;
+
 /**
  * Created by Finderlo on 2016/11/9.
  */
@@ -54,6 +55,7 @@ public class StorageFormContoller extends BaseController {
     private ItemInOperationDao itemInOperationDao;
 
     StorageForm storageForm;
+
     @ModelAttribute
     public void storageForm(HttpSession session, Principal principal) {
         storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
@@ -65,21 +67,21 @@ public class StorageFormContoller extends BaseController {
 
     @RequestMapping(URL_STORAGE_ADD_DELETEITEM_AJAX)
     @ResponseBody
-    public SimpleResponse deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
+    public SimpleRes deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         List one = storageForm.getItemForms().stream().filter(e -> e.getItemCode().equals(itemcode.trim())).collect(Collectors.toList());
         if (!one.isEmpty()) {
             storageForm.getItemForms().remove(one.get(0));
         }
-        return new SimpleResponse();
+        return new SimpleRes();
     }
 
     @RequestMapping(URL_STORAGE_ADD_DELETEALL_AJAX)
     @ResponseBody
-    public SimpleResponse deleteItem(HttpSession session) {
+    public SimpleRes deleteItem(HttpSession session) {
         StorageForm storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         storageForm.getItemForms().clear();
-        return new SimpleResponse();
+        return new SimpleRes();
 
     }
 

@@ -1,8 +1,7 @@
 package com.repository.web.message;
 
 import com.repository.base.BaseController;
-import com.repository.model.MessageResponse;
-import com.repository.model.SimpleResponse;
+import com.repository.model.SimpleRes;
 import com.repository.service.MessageService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,11 +45,11 @@ public class MessageController extends BaseController {
      */
     @RequestMapping(value = URL_MESSAGE_SEND_AJAX, method = RequestMethod.POST)
     @ResponseBody
-    public MessageResponse send(MessageForm messageForm, Principal principal) {
+    public SimpleRes send(MessageForm messageForm, Principal principal) {
         messageForm.setSend_ID(principal.getName());
         if (messageService.send(messageForm)) {
-            return MessageResponse.success();
-        } else return MessageResponse.error();
+            return SimpleRes.success();
+        } else return SimpleRes.error();
     }
 
     /**
@@ -58,10 +57,10 @@ public class MessageController extends BaseController {
      */
     @RequestMapping(URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX)
     @ResponseBody
-    public SimpleResponse findmsg(Principal principal) {
-        SimpleResponse simpleResponse = new SimpleResponse();
-        simpleResponse.setContent(messageService.findMessage(principal.getName()));
-        return simpleResponse;
+    public SimpleRes findmsg(Principal principal) {
+        SimpleRes simpleRes = new SimpleRes();
+        simpleRes.setContent(messageService.findMessage(principal.getName()));
+        return simpleRes;
     }
 
     /**
@@ -69,8 +68,8 @@ public class MessageController extends BaseController {
      */
     @RequestMapping(URL_MESSAGE_FIND_WRANTYPE_AJAX)
     @ResponseBody
-    public SimpleResponse wran() {
-        return SimpleResponse.withObject(messageService.findWranMessage());
+    public SimpleRes wran() {
+        return SimpleRes.withObject(messageService.findWranMessage());
     }
 
     /**
@@ -78,13 +77,13 @@ public class MessageController extends BaseController {
      */
     @RequestMapping(URL_MESSAGE_READWHITID_AJAX)
     @ResponseBody
-    public MessageResponse read(
+    public SimpleRes read(
             @RequestParam(name = "messageID", required = false, defaultValue = "") String msgId) {
         if (msgId != null && !msgId.trim().equals("")) {
             messageService.read(msgId);
-            return MessageResponse.success();
+            return SimpleRes.success();
         } else {
-            return MessageResponse.error("消息id为空");
+            return SimpleRes.error("消息id为空");
         }
 
     }
@@ -94,12 +93,12 @@ public class MessageController extends BaseController {
      */
     @RequestMapping(URL_MESSAGE_DELETWHITID_AJAX)
     @ResponseBody
-    public MessageResponse delete(@RequestParam(name = "messageID", required = false, defaultValue = "") String msgId) {
+    public SimpleRes delete(@RequestParam(name = "messageID", required = false, defaultValue = "") String msgId) {
         if (msgId != null && !msgId.trim().equals("")) {
             messageService.read(msgId);
-            return MessageResponse.success();
+            return SimpleRes.success();
         } else {
-            return MessageResponse.error("消息id为空");
+            return SimpleRes.error("消息id为空");
         }
     }
 }

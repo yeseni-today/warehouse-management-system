@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 import static com.repository.Constants.*;
+
 @Controller
 public class ApplyController extends BaseController {
 

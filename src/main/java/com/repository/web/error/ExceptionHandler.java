@@ -3,13 +3,12 @@ package com.repository.web.error;
 import com.google.common.base.Throwables;
 import com.repository.base.BaseController;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
-import static com.repository.Constants.*;
+import static com.repository.Constants.HTML_ERROR_GENERAL;
+
 /**
  * General error handler for the application.
  */
