@@ -40,17 +40,15 @@
 }
 
 .content-left {
-    position: absolute;
+    position: fixed;
     top: 0;
     width: 12em;
-    height: 50em;
-    padding-top: 8em;
-    float: left;
+    height: 100%;
+    padding-top: 5em;
     background: rgb(255, 255, 255);
 }
 
 .content-right {
-    margin-top: 5em;
     float: right;
     width: 50em;
 }

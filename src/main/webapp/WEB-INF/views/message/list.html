@@ -18,14 +18,15 @@
             <span>消息中心</span>
         </div>
         <ul class="listNav">
-            <li><a>新建</a></li>
-            <li><a>通知</a></li>
-            <li><a>提醒</a></li>
-            <li><a>审核</a></li>
-            <li><a>其他</a></li>
+            <li><a href="#">新建</a></li>
+            <li><a href="#">通知</a></li>
+            <li><a href="#" onclick="msg_findWarnMsg()">提醒</a></li>
+            <li><a href="#">审核</a></li>
+            <li><a href="#">其他</a></li>
         </ul>
     </div>
-    <div class="content-right">
+    <div id="message" class="content-right">
+
         <div class="pop-bg">
             <div class="pop pop-details myInfoList myInput">
                 <div class="pop-close">
@@ -61,8 +62,7 @@
                                     消息内容：
                                 </div>
                                 <div class="value">
-                                    <input type="text" name="messageContent"
-                                           readonly="readonly"/>
+                                    <input type="text" name="messageContent" readonly="readonly"/>
                                 </div>
                             </label>
                         </li>
@@ -82,8 +82,7 @@
                                     消息发送者对象ID：
                                 </div>
                                 <div class="value">
-                                    <input type="text" name="messageSendID"
-                                           readonly="readonly"/>
+                                    <input type="text" name="messageSendID" readonly="readonly"/>
                                 </div>
                             </label>
                         </li>
@@ -93,8 +92,7 @@
                                     消息接收者对象ID：
                                 </div>
                                 <div class="value">
-                                    <input type="text" name="messageReceiveID"
-                                           readonly="readonly"/>
+                                    <input type="text" name="messageReceiveID" readonly="readonly"/>
                                 </div>
                             </label>
                         </li>
@@ -119,25 +117,21 @@
                             </label>
                         </li>
                         <li>
-                            <input type="button" onclick="closePop()" value="删除"/>
+                            <input type="button" onclick="msg_delete()" value="删除"/>
                         </li>
                     </ul>
                 </form>
             </div>
         </div>
+
+        <div class="message-type">通知</div>
+
         <div class="message" >
             <span class="message-name" >name</span>
             <span class="message-date">data</span>
             <div class="message-content" >content</div>
-            <div class="message-operation" onclick="openPop()">详情</div>
+            <div class="message-operation" onclick="openPopMessage()">详情</div>
         </div>
-        <!--<div class="message" th:each="message:${messages}">-->
-            <!--<span class="message-name" th:text="${message.title}">name</span>-->
-            <!--<span class="message-date"-->
-                  <!--th:text="${#calendars.format(message.created)}">data</span>-->
-            <!--<div class="message-content" th:text="${message.text}">content</div>-->
-            <!--<div class="message-operation" onclick="openPop()">详情</div>-->
-        <!--</div>-->
     </div>
 </div>
 </body>

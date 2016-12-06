@@ -14,7 +14,7 @@ html {
 body {
     display: none; /*防止刷新闪动*/
     position: absolute;
-    right: -17px;
+    right: -17px; /*隐藏滚动条*/
     left: 0;
 
     height: 100%;

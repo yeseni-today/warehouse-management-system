@@ -1,6 +1,11 @@
 /**
  * Created by 22340 on 2016/11/27.
  */
+window.onload = function () {
+    document.body.style.fontSize = screen.width * 0.01 + "px";
+    document.body.style.display = "block";
+};
+
 $(document).ready(function () {
     $("#loginButton").click(function () {
         sign();
@@ -42,4 +47,12 @@ function checkForm(username, password) {
         $("#loginButton").val("请输入密码");
     }
     return ifInput;
+}
+
+function showLoading() {
+    $("#load").css("display", "block");
+}
+
+function hideLoading() {
+    $("#load").css("display", "none");
 }

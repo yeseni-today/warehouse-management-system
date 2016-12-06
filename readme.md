@@ -23,3 +23,5 @@
    message
 * v-0.60.3 lx
    fix sqlserver package bug +1
+* v-0.60.4 StvL <br/>
+   &nbsp; 消息页面调整

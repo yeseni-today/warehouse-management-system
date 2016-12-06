@@ -13,15 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
-import static com.repository.Constants.HTML_MESSAGE_LIST;
-import static com.repository.Constants.HTML_MESSAGE_NEWMESSAGE;
-import static com.repository.Constants.URL_MESSAGE;
-import static com.repository.Constants.URL_MESSAGE_DELETWHITID_AJAX;
-import static com.repository.Constants.URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX;
-import static com.repository.Constants.URL_MESSAGE_FIND_WRANTYPE_AJAX;
-import static com.repository.Constants.URL_MESSAGE_NEW;
-import static com.repository.Constants.URL_MESSAGE_READWHITID_AJAX;
-import static com.repository.Constants.URL_MESSAGE_SEND_AJAX;
+import static com.repository.Constants.*;
 
 @Controller
 public class MessageController extends BaseController {
@@ -66,9 +58,9 @@ public class MessageController extends BaseController {
     /**
      * 获取提醒消息，库存提醒，返回为message的list
      */
-    @RequestMapping(URL_MESSAGE_FIND_WRANTYPE_AJAX)
+    @RequestMapping(URL_MESSAGE_FIND_WARNTYPE_AJAX)
     @ResponseBody
-    public SimpleRes wran() {
+    public SimpleRes warn() {
         return SimpleRes.withObject(messageService.findWranMessage());
     }
 
@@ -82,6 +74,21 @@ public class MessageController extends BaseController {
         if (msgId != null && !msgId.trim().equals("")) {
             messageService.read(msgId);
             return SimpleRes.success();
+        } else {
+            return SimpleRes.error("消息id为空");
+        }
+
+    }
+
+    /**
+     * 通过id获得消息
+     */
+    @RequestMapping(URL_MESSAGE_FINDBYID_AJAX)
+    @ResponseBody
+    public SimpleRes findById(
+            @RequestParam(name = "messageID", required = false, defaultValue = "") String msgId) {
+        if (msgId != null && !msgId.trim().equals("")) {
+            return SimpleRes.withObject(messageService.findById(msgId));
         } else {
             return SimpleRes.error("消息id为空");
         }

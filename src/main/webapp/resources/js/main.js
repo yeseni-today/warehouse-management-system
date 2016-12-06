@@ -3,6 +3,14 @@ window.onload = function () {
     document.body.style.display = "block";
 };
 
+$(document).ready(function () {
+    $("#query").click(function () {
+        query();
+    });
+});
+
+$(document).ready(msg_findmsg());
+
 function setVisible(bool) {
     var code = document.getElementById("bar_code");
     if (bool) {
@@ -32,6 +40,29 @@ function addItem() {
     });
 }
 
+function query() {
+    var values = $("#queryinput").serialize();
+    $.ajax({
+        type: "get",
+        url: "/query/queryItem",    //向springboot请求数据的url
+        data: values,
+        success: function (items) {
+            $("#result_table").find("tr").remove("tr:gt(0)")
+            //没有完成的部分，需要再每次查询后来清空原有的值
+            $.each(items, function (i, item) {
+                item = "<tr>" +
+                    "<td>" + item.itemCode + "</td>" +
+                    "<td>" + item.itemName + "</td>" +
+                    "<td>" + item.itemCategoryEntity.categoryName + "</td>" +
+                    "<td>" + item.itemCount + "</td>" +
+                    "<td>" + "操作" + "</td>" +
+                    "</tr>";
+                $("#result_table").append(item)
+            });
+        }
+    })
+}
+
 function msg_send() {
     showLoading();
     $.ajax({
@@ -51,32 +82,86 @@ function msg_send() {
     hideLoading();
 }
 
+var msgs = new Array();
+
 function msg_findmsg() {
+    var url = "/message/findmessagebyid";
+    var type = "get";
+    msgFindBy(url, type);
+}
+
+function msg_findWarnMsg() {
+    var url = "/message/warnmsg";
+    var type = "get";
+    msgFindBy(url, type);
+}
+
+function msgFindBy(url, type) {
     showLoading();
     $.ajax({
-        url: "/message/findmessagebyid",
+        url: url,
+        type: type,
+        success: function (result) {
+            //result.content 是一个umessage的list列表
+            var messages = result.content;
+            $(".content-right .message").remove();
+            var contentRight = $("#message");
+            $.each(messages, function (i, message) {
+                msgs.push(message);
+                messageBox = "<div class='message'>" +
+                    "<span class='message-name' >" + message.messageId + "</span>" +
+                    "<span class='message-date'>" + message.messageDate + "</span>" +
+                    "<div class='message-content' >" + message.messageContent + "</div>" +
+                    "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
+                    "</div>";
+                contentRight.append(messageBox);
+            })
+        }
+    });
+    hideLoading();
+}
+
+function msg_delete() {
+    var messageID = $("[name='messageID']").val();
+    $.ajax({
+        url: "/message/delete?messageID=" + messageID,
+        type: "get",
+        success: function (result) {
+            if (result.message = "success") {
+                //todo
+                msg_findmsg();
+                alert("success");
+            }
+        }
+    });
+    closePop();
+}
+
+
+function findLogs() {//todo
+    showLoading();
+    $.ajax({
+        url: "/log/findLogs",
         type: "get",
         success: function (result) {
             //result.content 是一个umessage的list列表
             var messages = result.content;
             $(".content-right .message").remove();
-            var contentRight = $(".content-right");
+            var contentRight = $("#message");
             $.each(messages, function (i, message) {
+                msgs.push(message);
                 messageBox = "<div class='message'>" +
                     "<span class='message-name' >" + message.messageId + "</span>" +
-                    " <span class='message-date'>" + message.messageDate + "</span>" +
+                    "<span class='message-date'>" + message.messageDate + "</span>" +
                     "<div class='message-content' >" + message.messageContent + "</div>" +
-                    "<div class='message-operation' onclick='openPop()'>详情</div>" +
+                    "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
                     "</div>";
                 contentRight.append(messageBox);
             })
-
-        },
-        // error:alert("发送失败" )
-    })
+        }
+    });
     hideLoading();
 }
-
 function clearApplyForm() {
     $.ajax({
         url: "/apply/add/clearformajax",
@@ -92,26 +177,21 @@ function clearApplyForm() {
 }
 
 function openPop() {
-    var popAddBg = document.getElementsByClassName('pop-bg');
-    var popAdd = document.getElementsByClassName('pop');
-
-    popAddBg[0].style.display = "block";
+    $(".pop-bg").css('display', 'block');
     setTimeout(function () {
-        popAddBg[0].style.background = "rgba(181, 181, 181, 0.5)";
-        popAdd[0].style.transform = "scale(1,1)"
+        $(".pop-bg").css('background', 'rgba(181, 181, 181, 0.5)');
+        $(".pop").css('transform', 'scale(1,1)');
     }, 1);
 }
 function closePop() {
-    var popAddBg = document.getElementsByClassName('pop-bg');
-    var popAdd = document.getElementsByClassName('pop');
-    popAddBg[0].style.background = "rgba(181, 181, 181, 0)";
-    popAdd[0].style.transform = "scale(0,0)";
+    $(".pop-bg").css('background', 'rgba(181, 181, 181, 0)');
+    $(".pop").css('transform', 'scale(0,0)');
     setTimeout(function () {
-        popAddBg[0].style.display = "none";
+        $(".pop-bg").css('display', 'none');
     }, 500);
 }
-function openPopAdd(code, name) {
 
+function openPopAdd(code, name) {
     document.getElementsByName("itemCode")[1].value = code;
     document.getElementsByName("itemName")[1].value = name;
     openPop();
@@ -128,6 +208,26 @@ function openPopDetails(itemForm) {
     $("[name='billCode']").val(item.billCode);
     $("[name='storageLocation']").val(item.storageLocation);
     console.log(item.storageLocation);
+
+    openPop();
+}
+function openPopMessage(message) {
+    // alert(msgs[0]);
+    // var d = "";
+    // for (var name in msgs[0]) {
+    //     d += name + ":" + msgs[0][name] + ";"
+    // }
+    // console.log(d);
+    var msg = msgs[message];
+
+    $("[name='messageID']").val(msg.messageId);
+    $("[name='messageType']").val(msg.messageType);
+    $("[name='messageContent']").val(msg.messageContent);
+    $("[name='messageData']").val(msg.messageDate);
+    $("[name='messageSendID']").val(msg.messageSendId);
+    $("[name='messageReceiveID']").val(msg.messageReceiveId);
+    $("[name='messageState']").val(msg.messageState);
+    $("[name='messageTitle']").val(msg.messageTitle);
 
     openPop();
 }

@@ -4,17 +4,15 @@ import com.repository.dao.UmessageDao;
 import com.repository.entity.UmessageEntity;
 import com.repository.model.ItemIndate;
 import com.repository.web.message.MessageForm;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/11/30.
@@ -35,6 +33,10 @@ public class MessageService {
             return false;
         }
         return true;
+    }
+
+    public UmessageEntity findById(String id){
+        return umessageDao.findById(id);
     }
 
     @Transactional

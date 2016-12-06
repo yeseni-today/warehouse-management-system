@@ -6,10 +6,9 @@
     <meta charset="UTF-8"/>
     <title tiles:replace="title">登陆模板</title>
 
-    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
+    <link href="../../../resources/css/loginPage.css" rel="stylesheet" type="text/css"
           th:href="@{/resources/css/loginPage.css}"/>
-    <script src="../../../resources/js/main.js"
-            th:src="@{/resources/js/main.js}"></script>
+
     <script src="../../../resources/js/jquery-3.1.1.js"
             th:src="@{/resources/js/jquery-3.1.1.js}"></script>
     <script src="../../../resources/js/signin.js"
@@ -29,9 +28,7 @@
     </div>
 </div>
 
-
 <div tiles:replace="content"></div>
-
 
 <div id="footer">
     <div th:replace="templates/footer :: footer">

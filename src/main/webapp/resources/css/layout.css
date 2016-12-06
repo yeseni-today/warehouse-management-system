@@ -1,11 +1,4 @@
 /*layout*/
-.background {
-    position: fixed;
-    z-index: -1;
-    background: #1abc9c;
-    width: 100%;
-    height: 100%;
-}
 
 #load {
     position: fixed;
@@ -32,12 +25,6 @@
     height: 50px; /*TODO*/
 }
 
-#body {
-    position: relative;
-    z-index: 0;
-    width: 100%;
-}
-
 #footer {
     position: fixed;
     z-index: 999;
@@ -56,6 +43,11 @@
     background: #eaeaea;
 }
 
+.content::after{
+    content: " ";
+    display: block;
+    clear: both;
+}
 
 .current, .next {
     position: absolute;

@@ -65,6 +65,7 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
     //
     @Autowired
     public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception {
+        //auth.inMemoryAuthentication().withUser("admin").password("admin").roles("ROLE_ADMIN");
     }
 
     //全局设置
