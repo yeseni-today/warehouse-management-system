@@ -52,6 +52,12 @@
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/manage}">管理</a>
+                        <span class="arrow"></span>
+                        <dl>
+                            <dd><a href="#">有效期管理</a></dd>
+                            <dd><a href="#">库存管理</a></dd>
+                            <dd><a href="#">统计信息</a></dd>
+                        </dl>
                     </li>
                 </ul>
             </nav>

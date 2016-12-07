@@ -56,7 +56,7 @@
                             物品类别：
                         </div>
                         <div class="value">
-                            <select name="itemCategoryID">
+                            <select name="itemCategoryID" th:if="${#httpServletRequest.getParameter('isInschool')=='1'}">
                                 <!--/*@thymesVar id="category" type="com.repository.entity.CategoryEntity"*/-->
                                 <option value=""></option>
                                 <option th:if="${session.categoriesA == null || session.categoriesA.empty}">
@@ -67,9 +67,20 @@
                                         th:text="${category.categoryName}">
                                 </option>
                             </select>
-
+                            <select name="itemCategoryID" th:if="${#httpServletRequest.getParameter('isInschool') != '1'}">
+                                <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                                <option value=""></option>
+                                <option th:if="${session.categories == null || session.categories.empty}">
+                                    没有找到分类,请刷新重试
+                                </option>
+                                <option th:each="category : ${session.categories}"
+                                        th:value="${category.categoryId}"
+                                        th:text="${category.categoryName}">
+                                </option>
+                            </select>
                         </div>
                     </label>
+                    <div class="icon-after-plus" onclick="openAddCategory()"></div>
                 </li>
                 <li>
                     <label>
@@ -134,7 +145,7 @@
                 <li>
                     <label>
                         <div class="name">
-                            生成厂商ID：
+                            生成厂商：
                         </div>
                         <div class="value">
                             <select name="itemCompanyID">
@@ -150,6 +161,7 @@
                             </select>
                         </div>
                     </label>
+                    <div class="icon-after-plus" onclick="openAddCompany()"></div>
                 </li>
                 <li>
                     <label>
@@ -179,6 +191,91 @@
                 </li>
             </ul>
         </form>
+        <div class="pop-bg pop-addCompany">
+            <div class="pop myInfoList myInput">
+                <div class="pop-close">
+                    <div class="close_button" onclick="closePop()">
+                        <div class="close_button-icon"></div>
+                    </div>
+                </div>
+                <form id="form_addCompany" method="post">
+                    <ul>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    厂家名称：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="companyName"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    厂家地址：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="companyAddress"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    联系方式：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="companyPhone"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="button" onclick="closePop()" value="取消"/>
+                            <input type="button" onclick="addCompany()" value="增加厂商"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+        <div class="pop-bg pop-addCategory">
+            <div class="pop myInfoList myInput">
+                <div class="pop-close">
+                    <div class="close_button" onclick="closePop()">
+                        <div class="close_button-icon"></div>
+                    </div>
+                </div>
+                <form id="form_addCategory" method="post">
+                    <ul>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    类别：
+                                </div>
+                                <div class="value">
+                                    <input type="radio" name="itemCategory" value="A类" checked="checked"/>A类&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="itemCategory" value="非A类"/>非A类
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    分类名称：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="categoryName"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="button" onclick="closePop()" value="取消"/>
+                            <input type="button" onclick="addCategory()" value="增加分类"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
 

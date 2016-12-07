@@ -24,6 +24,10 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+[class^="icon-after-"]{
+float: right;
+}
+
 .icon-triangle-up:before {
     content: "\e600";
 }
@@ -411,6 +415,7 @@
 .icon-apple:before {
     content: "\e660";
 }
+
 
 .icon-after-after-triangle-up:after {
     content: "\e600";

@@ -1,10 +1,10 @@
 /*右移*/
 .move-to-right-contentStart {
-
+    opacity: 1;
 }
 
 .move-to-right-nextStart {
-    right: -100em;
+    left: -100em;
 }
 
 .move-to-right-currentEnd, .move-to-right-nextEnd {
@@ -12,21 +12,22 @@
 }
 
 .move-to-right-currentEnd {
+    opacity: 0.5;
     z-index: -2;
 }
 
 .move-to-right-nextEnd {
     z-index: 100;
-    right: 0;
+    left: 0;
 }
 
 /*左移*/
 .move-to-left-contentStart {
-
+    opacity: 1;
 }
 
 .move-to-left-nextStart {
-    left: -100em;
+    right: -100em;
 }
 
 .move-to-left-currentEnd, .move-to-left-nextEnd {
@@ -34,10 +35,11 @@
 }
 
 .move-to-left-currentEnd {
+    opacity: 0.5;
     z-index: -2;
 }
 
 .move-to-left-nextEnd {
     z-index: 100;
-    left: 0;
+    right: 0;
 }

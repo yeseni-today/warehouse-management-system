@@ -25,19 +25,53 @@ function alert_info(info) {
 }
 
 function addItem() {
-    closePop();
     var da = $('#applyForm').serialize();
+    alert(da);
     $.ajax({
         url: "/apply/add/additem",
         type: "post",
         data: da,
         success: function (result) {
+            closePop();
             alert("添加成功");
         },
         error: function () {
-            alert("添加失败，请重试")
+            alert("添加失败，请重试");
         }
     });
+}
+
+function addCategory() {
+    var a = $('#form_addCategory').serialize();
+    $.ajax({
+        url: "/newcategory",
+        type: "post",
+        data: a,
+        success: function (result) {
+            closePop();
+            alert("添加分类成功");
+
+        },
+        error: function () {
+            alert("添加分类失败，请重试");
+        }
+    })
+}
+
+function addCompany() {
+    var a = $('#form_addCompany').serialize();
+    $.ajax({
+        url: "/newcompany",
+        type: "post",
+        data: a,
+        success: function (result) {
+            closePop();
+            alert("添加厂家信息成功");
+        },
+        error: function () {
+            alert("添加厂家信息失败，请重试");
+        }
+    })
 }
 
 function query() {
@@ -78,7 +112,7 @@ function msg_send() {
             }
         },
         error: alert("发送失败")
-    })
+    });
     hideLoading();
 }
 
@@ -136,8 +170,6 @@ function msg_delete() {
     });
     closePop();
 }
-
-
 function findLogs() {//todo
     showLoading();
     $.ajax({
@@ -162,6 +194,7 @@ function findLogs() {//todo
     });
     hideLoading();
 }
+
 function clearApplyForm() {
     $.ajax({
         url: "/apply/add/clearformajax",
@@ -175,7 +208,7 @@ function clearApplyForm() {
         }
     })
 }
-
+//弹出框
 function openPop() {
     $(".pop-bg").css('display', 'block');
     setTimeout(function () {
@@ -183,6 +216,7 @@ function openPop() {
         $(".pop").css('transform', 'scale(1,1)');
     }, 1);
 }
+
 function closePop() {
     $(".pop-bg").css('background', 'rgba(181, 181, 181, 0)');
     $(".pop").css('transform', 'scale(0,0)');
@@ -191,6 +225,21 @@ function closePop() {
     }, 500);
 }
 
+function openAddCategory() {
+    $(".pop-addCategory").css('display', 'block');
+    setTimeout(function () {
+        $(".pop-addCategory").css('background', 'rgba(181, 181, 181, 0.5)');
+        $(".pop-addCategory .pop").css('transform', 'scale(1,1)');
+    }, 1);
+}
+
+function openAddCompany() {
+    $(".pop-addCompany").css('display', 'block');
+    setTimeout(function () {
+        $(".pop-addCompany").css('background', 'rgba(181, 181, 181, 0.5)');
+        $(".pop-addCompany .pop").css('transform', 'scale(1,1)');
+    }, 1);
+}
 function openPopAdd(code, name) {
     document.getElementsByName("itemCode")[1].value = code;
     document.getElementsByName("itemName")[1].value = name;
@@ -211,6 +260,8 @@ function openPopDetails(itemForm) {
 
     openPop();
 }
+
+
 function openPopMessage(message) {
     // alert(msgs[0]);
     // var d = "";
@@ -232,6 +283,8 @@ function openPopMessage(message) {
     openPop();
 }
 
+
+//加载界面
 function showLoading() {
     $("#load").css("display", "block");
 }
