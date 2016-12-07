@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item_slog")
-public class SlogEntity {
+public class LogEntity {
     private int logId;
     private String logType;
     private String operationId;
@@ -111,7 +111,7 @@ public class SlogEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SlogEntity entity = (SlogEntity) o;
+        LogEntity entity = (LogEntity) o;
 
         if (logId != 0 ? logId == (entity.logId) : entity.logId != 0) return false;
         if (logType != null ? !logType.equals(entity.logType) : entity.logType != null)

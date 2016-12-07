@@ -57,7 +57,7 @@
                         </div>
                         <div class="value">
                             <select name="itemCategoryID">
-                                <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                                <!--/*@thymesVar id="category" type="com.repository.entity.CategoryEntity"*/-->
                                 <option value=""></option>
                                 <option th:if="${session.categoriesA == null || session.categoriesA.empty}">
                                     没有找到分类,请刷新重试
@@ -137,7 +137,7 @@
                         </div>
                         <div class="value">
                             <select name="itemCompanyID">
-                                <!--/*@thymesVar id="companyID" type="com.repository.entity.ItemCompanyEntity"*/-->
+                                <!--/*@thymesVar id="companyID" type="com.repository.entity.CompanyEntity"*/-->
                                 <option value=""></option>
                                 <option th:if="${session.companies == null || session.companies.empty}">
                                     没有找到分类,请刷新重试

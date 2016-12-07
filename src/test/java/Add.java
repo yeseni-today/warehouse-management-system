@@ -1,12 +1,12 @@
 import com.repository.Application;
-import com.repository.dao.SLogDao;
+import com.repository.dao.LogDao;
 import com.repository.entity.ItemEntity;
 import com.repository.entity.ItemInOperationEntity;
 import com.repository.entity.ItemInStorageEntity;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.ItemInStorageDao;
-import com.repository.entity.SlogEntity;
+import com.repository.entity.LogEntity;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -105,19 +105,19 @@ public class Add {
     }
 
     @Autowired
-    SLogDao sLogDao;
+    LogDao logDao;
 
     @Test
     public void addLog() {
-        SlogEntity slogEntity = new SlogEntity();
-        slogEntity.setLogAnnonation("注释");
-        slogEntity.setLogDate(new Timestamp(System.currentTimeMillis()));
-        slogEntity.setLogId(123);
-        slogEntity.setLogInfo("信息");
-        slogEntity.setOperationId("6666");
-        slogEntity.setLogLevel("info");
-        slogEntity.setLogTable("item");
-        slogEntity.setLogType("logtype");
-        sLogDao.save(slogEntity);
+        LogEntity logEntity = new LogEntity();
+        logEntity.setLogAnnonation("注释");
+        logEntity.setLogDate(new Timestamp(System.currentTimeMillis()));
+        logEntity.setLogId(123);
+        logEntity.setLogInfo("信息");
+        logEntity.setOperationId("6666");
+        logEntity.setLogLevel("info");
+        logEntity.setLogTable("item");
+        logEntity.setLogType("logtype");
+        logDao.save(logEntity);
     }
 }

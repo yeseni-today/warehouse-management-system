@@ -47,7 +47,7 @@
             <label>
                 物品类别：
                 <select name="itemCategoryId">
-                    <!--/*@thymesVar id="category" type="com.repository.entity.ItemCategoryEntity"*/-->
+                    <!--/*@thymesVar id="category" type="com.repository.entity.CategoryEntity"*/-->
                     <option th:if="${categories == null || categories.empty}"
                             th:text="没有找到分类，请刷新重试" value=" "></option>
                     <option value=""
@@ -77,8 +77,8 @@
                 <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
                 <td th:text="${item.itemCode}">{{el.itemCode}}</td>
                 <td th:text="${item.itemName}">{{el.itemName}}</td>
-                <td th:text="${item.itemCategoryEntity.getCategoryName()}">
-                    {{el.itemCategoryEntity.categoryName}}
+                <td th:text="${item.categoryEntity.getCategoryName()}">
+                    {{el.categoryEntity.categoryName}}
                 </td>
                 <td th:text="${item.itemCount}">{{el.itemCount}}</td>
                 <td></td>
@@ -88,7 +88,7 @@
                 <td>{{el.itemCode}}</td>
                 <td>{{el.itemName}}</td>
                 <td>
-                    {{el.itemCategoryEntity.categoryName}}
+                    {{el.categoryEntity.categoryName}}
                 </td>
                 <td>{{el.itemCount}}</td>
                 <td></td>

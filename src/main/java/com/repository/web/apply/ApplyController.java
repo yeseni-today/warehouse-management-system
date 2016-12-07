@@ -23,6 +23,11 @@ public class ApplyController extends BaseController {
     @Autowired
     ItemApplicationOperationDao applicationOperationDao;
 
+    /**
+     * 申请历史
+     *
+     * @return html view
+     */
     @RequestMapping(URL_APPLY)
     public String apply(Model model) {
         logger.trace("apply/");
@@ -33,6 +38,11 @@ public class ApplyController extends BaseController {
         return TILES_PREFIX + HTML_APPLY_HISTORY;
     }
 
+    /**
+     * 申请历史 ajax
+     *
+     * @return div view
+     */
     @RequestMapping(URL_APPLY_AJAX)
     public String applyajax(Model model) {
         logger.trace("apply/");

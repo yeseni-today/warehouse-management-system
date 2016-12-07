@@ -1,6 +1,6 @@
 package com.repository.dao;
 
-import com.repository.entity.SdictionaryEntity;
+import com.repository.entity.DictionaryEntity;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
@@ -12,7 +12,7 @@ import static com.repository.util.Util.*;
  */
 @Component
 @Repository
-public class SdictionaryDao extends AbstractDao<SdictionaryEntity> {
+public class DictionaryDao extends AbstractDao<DictionaryEntity> {
 
     public String getInstorgeId() {
         return handleCode(findById("storage_ID"));

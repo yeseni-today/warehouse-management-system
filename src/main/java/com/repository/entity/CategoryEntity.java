@@ -9,7 +9,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "item_category")
-public class ItemCategoryEntity {
+public class CategoryEntity {
     private String categoryId;
     private String categoryName;
 
@@ -44,7 +44,7 @@ public class ItemCategoryEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ItemCategoryEntity entity = (ItemCategoryEntity) o;
+        CategoryEntity entity = (CategoryEntity) o;
 
         if (categoryId != null ? !categoryId.equals(entity.categoryId) : entity.categoryId != null)
             return false;

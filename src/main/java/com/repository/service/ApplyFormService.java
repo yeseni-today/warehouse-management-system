@@ -1,14 +1,14 @@
 package com.repository.service;
 
-import com.repository.dao.ItemCategoryDao;
-import com.repository.dao.ItemCompanyDao;
+import com.repository.dao.CategoryDao;
+import com.repository.dao.CompanyDao;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.ItemInStorageDao;
-import com.repository.dao.SdictionaryDao;
+import com.repository.dao.DictionaryDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
-import com.repository.entity.SdictionaryEntity;
+import com.repository.entity.DictionaryEntity;
 import com.repository.util.Util;
 import com.repository.web.apply.add.ApplyForm;
 import com.repository.web.apply.add.ApplyItemForm;
@@ -18,6 +18,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,20 +38,22 @@ public class ApplyFormService {
     @Autowired
     ItemInStorageDao storageDao;
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
     @Autowired
     SessionFactory sessionFactory;
     @Autowired
     LogSerivce logSerivce;
     @Autowired
-    ItemCompanyDao companyDao;
+    CompanyDao companyDao;
     @Autowired
-    ItemCategoryDao categoryDao;
+    CategoryDao categoryDao;
     @Autowired
     OutStorageService outStorageService;
+    @Autowired
+    MessageService messageService;
 
     @Transactional
-    public boolean save(ApplyForm applyForm) {
+    public boolean save(Principal principal, ApplyForm applyForm) {
         if (!check(applyForm)) {
             return false;
         }
@@ -59,21 +62,34 @@ public class ApplyFormService {
         try {
             //保存入库操作表
             ItemApplicationOperationEntity operationEntities = toApplyOpreation(applyForm);
-            SdictionaryEntity applicationIdEntity = sdictionaryDao.findById("application_ID");
+            DictionaryEntity applicationIdEntity = dictionaryDao.findById("application_ID");
             operationEntities.setApplicationId((String.valueOf(Util.handleCode(applicationIdEntity))));
             applicationIdEntity.setIndex(applicationIdEntity.getIndex() + 1);
+
             session.save(operationEntities);
             session.update(applicationIdEntity);
             //保存入库表
             List<ItemApplicationEntity> items = toApplyItem(applyForm, operationEntities.getApplicationId());
             items.forEach(entity -> {
                 session.save(entity);
+                //log
+                logSerivce.saveApply(principal.getName(),entity);
             });
             if (operationEntities.getStates().equals(DEFAULT_STATES)) {
                 //todo 发送消息给管理员
+                //messageService.send();
+                new MessageService.SendBuilder(principal.getName())
+                        .content("审核")
+                        .type("审核")
+                        .receId("admin")
+                        .title("需要审核")
+                        .send();
             } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
-                outStorageService.saveAutoStoage(operationEntities, items);
+                outStorageService.saveAutoStoage(principal,operationEntities, items);
             }
+
+            //日志记录
+            logSerivce.saveApplyOpreation(principal.getName(),operationEntities);
 
 
         } catch (Exception e) {
@@ -151,10 +167,5 @@ public class ApplyFormService {
         return false;
     }
 
-    public static void main(String[] args) {
-//        String a;
-//        String b;
-//        a.getClass().newInstance();
-    }
 
 }

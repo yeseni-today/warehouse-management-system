@@ -29,7 +29,7 @@
               th:action="@{additem}">
             <input type="hidden" name="itemCode" th:value="${item.itemCode}"/>
             <input type="hidden" name="itemCategoryID" readonly="readonly"
-                   th:value="${item.itemCategoryEntity.categoryId}"/>
+                   th:value="${item.categoryEntity.categoryId}"/>
             <ul>
                 <li>
                     <label>
@@ -49,7 +49,7 @@
                         </div>
                         <div class="value">
                             <input type="text" name="itemCategoryName" readonly="readonly"
-                                   th:value="${item.itemCategoryEntity.categoryName}"/>
+                                   th:value="${item.categoryEntity.categoryName}"/>
                         </div>
                     </label>
                 </li>
@@ -93,7 +93,7 @@
                         </div>
                         <div class="value">
                             <input type="text" name="itemCompanyName" readonly="readonly"
-                                   th:value="${item.itemCompanyEntity.getCompanyName()}"/>
+                                   th:value="${item.companyEntity.getCompanyName()}"/>
                         </div>
                     </label>
                 </li>

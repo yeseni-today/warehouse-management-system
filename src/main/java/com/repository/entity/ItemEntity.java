@@ -28,8 +28,8 @@ public class ItemEntity implements Cloneable {
     private String itemExamine;
     private int itemRemind;
 
-    private ItemCategoryEntity itemCategoryEntity;
-    private ItemCompanyEntity itemCompanyEntity;
+    private CategoryEntity categoryEntity;
+    private CompanyEntity companyEntity;
 
     private int itemCount;
 
@@ -151,36 +151,36 @@ public class ItemEntity implements Cloneable {
     }
 
 
-    @OneToOne(targetEntity = ItemCategoryEntity.class,cascade = CascadeType.REFRESH)
+    @OneToOne(targetEntity = CategoryEntity.class,cascade = CascadeType.REFRESH)
     @JoinColumn(name = "item_categoryId")
-    public ItemCategoryEntity getItemCategoryEntity() {
-        return itemCategoryEntity;
+    public CategoryEntity getCategoryEntity() {
+        return categoryEntity;
     }
 
-    public void setItemCategoryEntity(ItemCategoryEntity itemCategoryEntity) {
-        this.itemCategoryEntity = itemCategoryEntity;
+    public void setCategoryEntity(CategoryEntity categoryEntity) {
+        this.categoryEntity = categoryEntity;
     }
 
     public void setItemCategoryId(String itemCategoryId){
-        ItemCategoryEntity itemCategoryEntity = new ItemCategoryEntity();
-        itemCategoryEntity.setCategoryId(itemCategoryId);
-        this.itemCategoryEntity = itemCategoryEntity;
+        CategoryEntity categoryEntity = new CategoryEntity();
+        categoryEntity.setCategoryId(itemCategoryId);
+        this.categoryEntity = categoryEntity;
     }
 
-    @OneToOne(targetEntity = ItemCompanyEntity.class,cascade = CascadeType.REFRESH)
+    @OneToOne(targetEntity = CompanyEntity.class,cascade = CascadeType.REFRESH)
     @JoinColumn(name = "item_companyId")
-    public ItemCompanyEntity getItemCompanyEntity() {
-        return itemCompanyEntity;
+    public CompanyEntity getCompanyEntity() {
+        return companyEntity;
     }
 
-    public void setItemCompanyEntity(ItemCompanyEntity itemCompanyEntity) {
-        this.itemCompanyEntity = itemCompanyEntity;
+    public void setCompanyEntity(CompanyEntity companyEntity) {
+        this.companyEntity = companyEntity;
     }
 
     public void setItemCompanyId(String itemCompanyId){
-        ItemCompanyEntity itemCategoryEntity = new ItemCompanyEntity();
+        CompanyEntity itemCategoryEntity = new CompanyEntity();
         itemCategoryEntity.setCompanyId(itemCompanyId);
-        this.itemCompanyEntity = itemCategoryEntity;
+        this.companyEntity = itemCategoryEntity;
     }
 
     @Override

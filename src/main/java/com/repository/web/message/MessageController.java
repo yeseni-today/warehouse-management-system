@@ -19,21 +19,34 @@ import static com.repository.Constants.*;
 public class MessageController extends BaseController {
 
 
+    @Autowired
+    MessageService messageService;
+
+    /**
+     * 消息主页 返回view
+     * @return view
+     */
     @RequestMapping(URL_MESSAGE)
     public String message() {
         return HTML_MESSAGE_LIST;
     }
 
+    /**
+     * 新建消息 返回view
+     * @return view
+     */
     @RequestMapping(URL_MESSAGE_NEW)
     public String newmessage() {
         return HTML_MESSAGE_NEWMESSAGE;
     }
 
-    @Autowired
-    MessageService messageService;
 
     /**
      * 发送一条消息，参数/message/new中表单中的值
+     *
+     * @param messageForm ..
+     * @param principal   发送人
+     * @return
      */
     @RequestMapping(value = URL_MESSAGE_SEND_AJAX, method = RequestMethod.POST)
     @ResponseBody
@@ -46,6 +59,9 @@ public class MessageController extends BaseController {
 
     /**
      * 获取当前用户收到的所有消息
+     *
+     * @param principal .
+     * @return .
      */
     @RequestMapping(URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX)
     @ResponseBody
@@ -57,6 +73,8 @@ public class MessageController extends BaseController {
 
     /**
      * 获取提醒消息，库存提醒，返回为message的list
+     *
+     * @return
      */
     @RequestMapping(URL_MESSAGE_FIND_WARNTYPE_AJAX)
     @ResponseBody
@@ -66,6 +84,9 @@ public class MessageController extends BaseController {
 
     /**
      * 把信息设为已读，参数为消息的id
+     *
+     * @param msgId 消息Id
+     * @return success or error
      */
     @RequestMapping(URL_MESSAGE_READWHITID_AJAX)
     @ResponseBody
@@ -82,6 +103,9 @@ public class MessageController extends BaseController {
 
     /**
      * 通过id获得消息
+     *
+     * @param msgId 消息Id
+     * @return
      */
     @RequestMapping(URL_MESSAGE_FINDBYID_AJAX)
     @ResponseBody
@@ -97,6 +121,9 @@ public class MessageController extends BaseController {
 
     /**
      * 删除一条信息，参数为消息的id
+     *
+     * @param msgId 消息Id
+     * @return .
      */
     @RequestMapping(URL_MESSAGE_DELETWHITID_AJAX)
     @ResponseBody

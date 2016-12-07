@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item_company")
-public class ItemCompanyEntity {
+public class CompanyEntity {
     private String companyId;
     private String companyName;
     private String companyPhone;
@@ -62,7 +62,7 @@ public class ItemCompanyEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ItemCompanyEntity entity = (ItemCompanyEntity) o;
+        CompanyEntity entity = (CompanyEntity) o;
 
         if (companyId != null ? !companyId.equals(entity.companyId) : entity.companyId != null)
             return false;

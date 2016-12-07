@@ -125,11 +125,11 @@
             </div>
         </div>
         <div class="message" th:if="${logs == null}">
-            <!--/*@thymesVar id="slog" type="com.repository.entity.SlogEntity"*/-->
+            <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             没有日志
         </div>
         <div class="message" th:if="${logs != null}" th:each="slog:${logs}">
-            <!--/*@thymesVar id="slog" type="com.repository.entity.SlogEntity"*/-->
+            <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             <span class="message-name" th:text="${slog}">name</span>
             <span class="message-date" th:text="${#calendars.format(slog.getLogDate())}">data</span>
             <div class="message-content" th:text="${slog.getLogInfo()}">content</div>

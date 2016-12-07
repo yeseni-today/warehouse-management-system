@@ -36,6 +36,9 @@ public class SimpleRes {
     public static SimpleRes success() {
         return new SimpleRes(SUCCESS_STATUS, SUCCESS);
     }
+    public static SimpleRes success(final Object object) {
+        return new SimpleRes(SUCCESS_STATUS, SUCCESS,object);
+    }
 
     /**
      * @return 返回一个默认错误的response.

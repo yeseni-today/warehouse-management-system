@@ -2,9 +2,10 @@ package com.repository.web.apply.add;
 
 import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
-import com.repository.dao.SdictionaryDao;
+import com.repository.dao.DictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.model.SimpleRes;
+import com.repository.service.ApplyFormService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,18 +21,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.HTML_APPLY_ADD_ADDITEM;
-import static com.repository.Constants.HTML_APPLY_ADD_APPLYFORM;
-import static com.repository.Constants.REDIRECT;
-import static com.repository.Constants.SESSION_APPLY_FORM;
-import static com.repository.Constants.TILES_PREFIX;
-import static com.repository.Constants.URL_APPLY_ADD;
-import static com.repository.Constants.URL_APPLY_ADD_ADDITEM;
-import static com.repository.Constants.URL_APPLY_ADD_ADDITEMAJAX;
-import static com.repository.Constants.URL_APPLY_ADD_ADDITEMS;
-import static com.repository.Constants.URL_APPLY_ADD_AJAX;
-import static com.repository.Constants.URL_APPLY_ADD_QUERY_ITEM;
-import static com.repository.Constants.URL_APPLY_CLEARFORM_AJAX;
+import static com.repository.Constants.*;
+
 
 /**
  * Created by Finderlo on 2016/11/15.
@@ -43,29 +34,38 @@ public class AddapplyController extends BaseController {
     ItemDao itemDao;
 
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
 
 
     @ModelAttribute
     public void applyForm(HttpSession session, Principal principal) {
         ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
         if (applyForm == null) {
-            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(sdictionaryDao.getApplicationId(), principal.getName()));
+            session.setAttribute(SESSION_APPLY_FORM, new ApplyForm(dictionaryDao.getApplicationId(), principal.getName()));
         }
         logger.info("applyForm: " + applyForm);
     }
 
+    /**
+     * @return 返回添加申请单的div界面 ajax
+     */
     @RequestMapping(URL_APPLY_ADD_AJAX)
     public String applyajax() {
         return HTML_APPLY_ADD_APPLYFORM.concat(" :: content");
     }
 
 
+    /**
+     * @return 返回添加申请单的view界面
+     */
     @RequestMapping(URL_APPLY_ADD)
     public String apply() {
         return TILES_PREFIX + HTML_APPLY_ADD_APPLYFORM;
     }
 
+    /**
+     * @return 清空申请单 ajax
+     */
     @RequestMapping(URL_APPLY_CLEARFORM_AJAX)
     @ResponseBody
     public SimpleRes clear(HttpSession session) {
@@ -74,16 +74,27 @@ public class AddapplyController extends BaseController {
         return SimpleRes.success();
     }
 
+    /**
+     * @return 返回增加物品的view试图
+     */
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
     public String getaddItem() {
         return TILES_PREFIX + HTML_APPLY_ADD_ADDITEM;
     }
 
+    /**
+     * @return 返回增加物品的div视图，ajax
+     */
     @RequestMapping(value = URL_APPLY_ADD_ADDITEMAJAX, method = RequestMethod.GET)
     public String getaddItemajax() {
         return HTML_APPLY_ADD_ADDITEM.concat(" :: content");
     }
 
+    /**
+     * 向入库单增加物品，ajax
+     *
+     * @param applyItemForm .
+     */
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
     public SimpleRes getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
@@ -94,6 +105,13 @@ public class AddapplyController extends BaseController {
         return new SimpleRes();
     }
 
+    /**
+     * 查询物品
+     *
+     * @param itemCode       .
+     * @param itemName       .
+     * @param itemCategoryId .
+     */
     @RequestMapping(URL_APPLY_ADD_QUERY_ITEM)
     public String queryItem(@RequestParam(name = "itemCode", required = false, defaultValue = "") String itemCode,
                             @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
@@ -106,7 +124,35 @@ public class AddapplyController extends BaseController {
         return TILES_PREFIX + HTML_APPLY_ADD_ADDITEM;
     }
 
-    //itemCodes
+    @Autowired
+    ApplyFormService service;
+
+    /**
+     * 2016/11/24 递交储存于session的申请单
+     *
+     * @param principal .
+     * @param session   .
+     * @return
+     **/
+    @RequestMapping(value = URL_APPLY_ADD_SUBMIT, method = RequestMethod.GET)
+    @ResponseBody
+    public SimpleRes submit(Principal principal, HttpSession session) {
+        try {
+            service.save(principal, getApplyForm(session));
+            session.setAttribute(SESSION_STORAGE_FORM, null);
+            return SimpleRes.success();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return SimpleRes.error(e.getMessage());
+        }
+    }
+
+    /**
+     * 向入库单增加多个物品，
+     *
+     * @param itemCodes
+     * @return view
+     */
     @RequestMapping(URL_APPLY_ADD_ADDITEMS)
     public String additems(
             @RequestParam(name = "itemCodes", required = false) String[] itemCodes,

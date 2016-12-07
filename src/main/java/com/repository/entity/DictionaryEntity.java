@@ -11,7 +11,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item_sdictionary")
-public class SdictionaryEntity {
+public class DictionaryEntity {
     private String field;
     private String table;
     private int index;
@@ -62,7 +62,7 @@ public class SdictionaryEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        SdictionaryEntity entity = (SdictionaryEntity) o;
+        DictionaryEntity entity = (DictionaryEntity) o;
 
         if (indexlength != entity.indexlength) return false;
         if (field != null ? !field.equals(entity.field) : entity.field != null) return false;

@@ -1,18 +1,20 @@
 package com.repository.service;
 
-import com.repository.dao.UmessageDao;
-import com.repository.entity.UmessageEntity;
+import com.repository.dao.MessageDao;
+import com.repository.entity.MessageEntity;
 import com.repository.model.ItemIndate;
 import com.repository.web.message.MessageForm;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/11/30.
@@ -21,33 +23,36 @@ import java.util.List;
 public class MessageService {
 
     @Autowired
-    UmessageDao umessageDao;
+    MessageDao messageDao;
 
     @Autowired
     SessionFactory sessionFactory;
 
+    public static final String DEFAULT_MESSAGE_TYPE = "系统消息";
+    public static final String STATES_MESSAGE_TYPE = "系统消息";
+
     public boolean send(MessageForm messageForm) {
         try {
-            umessageDao.save(toMessage(messageForm));
+            messageDao.save(toMessage(messageForm));
         } catch (Exception e) {
             return false;
         }
         return true;
     }
 
-    public UmessageEntity findById(String id){
-        return umessageDao.findById(id);
+    public MessageEntity findById(String id) {
+        return messageDao.findById(id);
     }
 
     @Transactional
-    public List<UmessageEntity> findWranMessage() {
+    public List<MessageEntity> findWranMessage() {
         Session session = sessionFactory.getCurrentSession();
         String sql = "select *  from vcyk_itemindate";
         List<ItemIndate> indates = session.createSQLQuery(sql).addEntity(ItemIndate.class).list();
-        List<UmessageEntity> result = new ArrayList<>();
+        List<MessageEntity> result = new ArrayList<>();
         indates.forEach(indate -> {
-            UmessageEntity msg = new UmessageEntity();
-            msg.setMessageState(UmessageEntity.State.UNREAD);
+            MessageEntity msg = new MessageEntity();
+            msg.setMessageState(MessageEntity.State.UNREAD);
             msg.setMessageTitle("提醒");
             msg.setMessageContent(indate.toString());
             msg.setMessageType("提醒");
@@ -57,39 +62,88 @@ public class MessageService {
         return result;
     }
 
+    public static class SendBuilder {
+        private MessageEntity.State state = MessageEntity.State.UNREAD;
+        private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        private String content = "默认消息内容";
+        private String type = "默认消息类型";
+        private String receId = "0000";
+        private String title = "默认消息标题";
+        private String sendId;
+
+        public SendBuilder(String sendId) {
+            this.sendId = sendId;
+        }
+
+        public SendBuilder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public SendBuilder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public SendBuilder receId(String receId) {
+            this.receId = receId;
+            return this;
+        }
+
+        public SendBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+        @Autowired
+        MessageDao messageDao;
+
+        public void send() {
+            MessageEntity message = new MessageEntity();
+            message.setMessageDate(timestamp);
+            message.setMessageState(state);
+            message.setMessageTitle(title);
+            message.setMessageType(type);
+            message.setMessageContent(content);
+            message.setMessageReceiveId(receId);
+            message.setMessageSendId(sendId);
+            messageDao.save(message);
+        }
+    }
+
     public void read(String msgId) {
-        UmessageEntity msg = umessageDao.findById(msgId);
-        msg.setMessageState(UmessageEntity.State.READ);
-        umessageDao.update(msg);
+        MessageEntity msg = messageDao.findById(msgId);
+        msg.setMessageState(MessageEntity.State.READ);
+        messageDao.update(msg);
     }
 
     public void delete(String msgId) {
-        UmessageEntity msg = umessageDao.findById(msgId);
-        msg.setMessageState(UmessageEntity.State.DELETE);
-        umessageDao.update(msg);
+        MessageEntity msg = messageDao.findById(msgId);
+        msg.setMessageState(MessageEntity.State.DELETE);
+        messageDao.update(msg);
     }
 
-    public List<UmessageEntity> findMessage(String receiveId) {
-        return umessageDao.query(new String[]{"messageReceiveId"}, new String[]{receiveId}, false);
+    public List<MessageEntity> findMessage(String receiveId) {
+        return messageDao.query(new String[]{"messageReceiveId"}, new String[]{receiveId}, false);
     }
 
 
     public void delete(MessageForm messageForm) {
-        umessageDao.delete(toMessage(messageForm));
+        messageDao.delete(toMessage(messageForm));
     }
 
 
-    private UmessageEntity toMessage(MessageForm messageForm) {
-        UmessageEntity umessage = new UmessageEntity();
+    private MessageEntity toMessage(MessageForm messageForm) {
+        MessageEntity umessage = new MessageEntity();
         umessage.setMessageContent(messageForm.getMessageContent());
         umessage.setMessageDate(new Timestamp(System.currentTimeMillis()));
         umessage.setMessageReceiveId(messageForm.getReceive_ID());
         umessage.setMessageSendId(messageForm.getSend_ID());
         umessage.setMessageType(DEFAULT_MESSAGE_TYPE);
         umessage.setMessageTitle(messageForm.getMessageTitle());
-        umessage.setMessageState(UmessageEntity.State.UNREAD);
+        umessage.setMessageState(MessageEntity.State.UNREAD);
         return umessage;
     }
 
-    public static final String DEFAULT_MESSAGE_TYPE = "系统消息";
+
 }

@@ -10,7 +10,7 @@ import java.sql.Timestamp;
  */
 @Entity
 @Table(name = "item_umessage")
-public class UmessageEntity {
+public class MessageEntity {
     private String messageId;
     private String messageType;
     private String messageContent;
@@ -107,7 +107,7 @@ public class UmessageEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UmessageEntity entity = (UmessageEntity) o;
+        MessageEntity entity = (MessageEntity) o;
 
         if (messageId != null ? !messageId.equals(entity.messageId) : entity.messageId != null)
             return false;

@@ -1,15 +1,22 @@
 package com.repository.service;
 
-import com.repository.dao.SLogDao;
+import com.repository.dao.LogDao;
+import com.repository.entity.ItemApplicationEntity;
+import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.entity.ItemEntity;
 import com.repository.entity.ItemInOperationEntity;
 import com.repository.entity.ItemInStorageEntity;
-import com.repository.entity.SlogEntity;
+import com.repository.entity.ItemOutOperationEntity;
+import com.repository.entity.ItemOutStorageEntity;
+import com.repository.entity.LogEntity;
+import com.repository.entity.MessageEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.transaction.Transactional;
 
@@ -21,7 +28,7 @@ import javax.transaction.Transactional;
 public class LogSerivce {
 
     @Autowired
-    SLogDao logDao;
+    LogDao logDao;
     //log id
     //log 类型
     //操作人id
@@ -38,15 +45,96 @@ public class LogSerivce {
     public static final String SAVE_TYPE = "save";
     public static final String SAVE_ITEM_LEVEL = "important";
 
-    public static final String ITEM_TABLE = "items";
-    public static final String INOPERATION_TABLE = "item_in_opreation";
-    public static final String INSTORAGE_TABLE = "item_in_storage";
+    public static final String TABLE_ITEM = "items";
+    public static final String TABLE_INOPERATION = "item_in_opreation";
+    public static final String TABLE_INSTORAGE = "item_in_storage";
+    public static final String TABLE_OUTSTORAGE = "item_out_storage";
+    public static final String TABLE_OUTSTORAGE_OPREATION = "item_out_opreation";
+    public static final String TABLE_APPLY = "item_application";
+    public static final String TABLE_APPLY_OPEARTION = "item_application_opreation";
+    public static final String TABLE_MESSAGE = "item_umessage";
+
+    public List<LogEntity> findAll(){
+        return logDao.findAll();
+    }
+
+    public LogEntity findById(String id){
+        return logDao.findById(id);
+    }
+
+    public  List<LogEntity> findByType(String type){
+        return logDao.query(new String[]{"logType"},new String[]{type},false);
+    }
+
+    public void saveOutOpera(String opreation_id, ItemOutOperationEntity entity) {
+        logDao.save(
+                new LogBuilder()
+                        .table(TABLE_OUTSTORAGE_OPREATION)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(entity.toString())
+                        .build()
+        );
+    }
+
+    public void saveOutStorage(String opreation_id, ItemOutStorageEntity out) {
+        logDao.save(
+                new LogBuilder()
+                        .table(TABLE_OUTSTORAGE)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(out.toString())
+                        .build()
+        );
+    }
+
+
+    @Transactional
+    public void saveMessage(String opreation_id, MessageEntity operationEntities) {
+        logDao.save(
+                new LogBuilder()
+                        .table(TABLE_MESSAGE)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(operationEntities.toString())
+                        .build()
+        );
+    }
+
+    @Transactional
+    public void saveApplyOpreation(String opreation_id, ItemApplicationOperationEntity operationEntities) {
+        logDao.save(
+                new LogBuilder()
+                        .table(TABLE_APPLY_OPEARTION)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(operationEntities.toString())
+                        .build()
+        );
+    }
+
+    @Transactional
+    public void saveApply(String opreation_id, ItemApplicationEntity inStorageEntity) {
+        logDao.save(
+                new LogBuilder()
+                        .table(TABLE_APPLY)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(inStorageEntity.toString())
+                        .build()
+        );
+    }
 
     @Transactional
     public void saveInStorage(String opreation_id, ItemInStorageEntity inStorageEntity) {
         logDao.save(
                 new LogBuilder()
-                        .table(INSTORAGE_TABLE)
+                        .table(TABLE_INSTORAGE)
                         .type(SAVE_TYPE)
                         .level(SAVE_ITEM_LEVEL)
                         .opreationID(opreation_id)
@@ -59,12 +147,12 @@ public class LogSerivce {
     public void saveInOpreation(String opreation_id, ItemInOperationEntity inOperationEntity) {
         logDao.save(
                 new LogBuilder()
-                .table(INOPERATION_TABLE)
-                .type(SAVE_TYPE)
-                .level(SAVE_ITEM_LEVEL)
-                .opreationID(opreation_id)
-                .info(inOperationEntity.toString())
-                .build()
+                        .table(TABLE_INOPERATION)
+                        .type(SAVE_TYPE)
+                        .level(SAVE_ITEM_LEVEL)
+                        .opreationID(opreation_id)
+                        .info(inOperationEntity.toString())
+                        .build()
         );
     }
 
@@ -72,7 +160,7 @@ public class LogSerivce {
     public void saveItem(String opreation_id, ItemEntity itemEntity) {
         logDao.save(
                 new LogBuilder()
-                        .table(ITEM_TABLE)
+                        .table(TABLE_ITEM)
                         .level(SAVE_ITEM_LEVEL)
                         .type(SAVE_TYPE)
                         .opreationID(opreation_id)
@@ -86,8 +174,8 @@ public class LogSerivce {
     }
 
     public void queryItem(String opreation_id, String parm, String annotation) {
-        SlogEntity log = new SlogEntity();
-        log.setLogTable(ITEM_TABLE);
+        LogEntity log = new LogEntity();
+        log.setLogTable(TABLE_ITEM);
         log.setLogType(QUERY_TYPE);
         log.setLogDate(new Timestamp(System.currentTimeMillis()));
         log.setLogInfo(QUERY_ITEM_INFO);
@@ -97,6 +185,39 @@ public class LogSerivce {
         log.setLogAnnonation(annotation);
         logDao.save(log);
     }
+
+    /**
+     * todo 维护日志
+     * */
+    public List<LogEntity> findMaintain() {
+       return new ArrayList<>();
+    }
+    /**
+     * todo 借用日志
+     * */
+    public List<LogEntity> findBorrow() {
+        return new ArrayList<>();
+    }
+
+    public List<LogEntity> findApply() {
+        return logDao.query("logTable", TABLE_APPLY);
+    }
+
+    public List<LogEntity> findOutstorage() {
+        return logDao.query("logTable",TABLE_OUTSTORAGE);
+    }
+
+    public List<LogEntity> findInstorage() {
+        return logDao.query("logTable",TABLE_INSTORAGE);
+    }
+
+    /**
+     * todo 系统日志
+     * */
+    public List<LogEntity> findSystem() {
+        return new ArrayList<>();
+    }
+
 
 
     public static class LogBuilder {
@@ -146,11 +267,11 @@ public class LogSerivce {
             return this;
         }
 
-        public SlogEntity build() {
+        public LogEntity build() {
             if (date == null) {
                 date = new Timestamp(System.currentTimeMillis());
             }
-            SlogEntity log = new SlogEntity();
+            LogEntity log = new LogEntity();
             log.setLogTable(table);
             log.setLogType(type);
             log.setLogDate(date);

@@ -20,7 +20,7 @@ public class ApplyItemForm {
     public ApplyItemForm(ItemEntity itemEntity) {
         this.itemCode = itemEntity.getItemCode();
         this.itemName = itemEntity.getItemName();
-        this.applyType = itemEntity.getItemCategoryEntity().getCategoryId();
+        this.applyType = itemEntity.getCategoryEntity().getCategoryId();
         this.itemCount = itemEntity.getItemCount();
     }
 

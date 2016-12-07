@@ -3,7 +3,7 @@ package com.repository.web.storage.add;
 import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.SdictionaryDao;
+import com.repository.dao.DictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.model.SimpleRes;
 import com.repository.service.StorageFormService;
@@ -50,7 +50,7 @@ public class StorageFormContoller extends BaseController {
     @Autowired
     private ItemDao itemDao;
     @Autowired
-    private SdictionaryDao sdictionaryDao;
+    private DictionaryDao dictionaryDao;
     @Autowired
     private ItemInOperationDao itemInOperationDao;
 
@@ -60,11 +60,18 @@ public class StorageFormContoller extends BaseController {
     public void storageForm(HttpSession session, Principal principal) {
         storageForm = (StorageForm) session.getAttribute(SESSION_STORAGE_FORM);
         if (storageForm == null) {
-            storageForm = new StorageForm(sdictionaryDao.getInstorgeId(), principal.getName());
+            storageForm = new StorageForm(dictionaryDao.getInstorgeId(), principal.getName());
             session.setAttribute(SESSION_STORAGE_FORM, storageForm);
         }
     }
 
+    /**
+     * 删除入库表的一个物品 ajax
+     *
+     * @param itemcode
+     * @param session  .
+     * @return
+     */
     @RequestMapping(URL_STORAGE_ADD_DELETEITEM_AJAX)
     @ResponseBody
     public SimpleRes deleteItem(HttpSession session, @RequestParam("itemCode") String itemcode) {
@@ -76,6 +83,12 @@ public class StorageFormContoller extends BaseController {
         return new SimpleRes();
     }
 
+    /**
+     * 清空入库表 ajax
+     *
+     * @param session .
+     * @return
+     */
     @RequestMapping(URL_STORAGE_ADD_DELETEALL_AJAX)
     @ResponseBody
     public SimpleRes deleteItem(HttpSession session) {
@@ -87,12 +100,19 @@ public class StorageFormContoller extends BaseController {
 
     /**
      * 用来返回当前入库单列表视图
+     *
+     * @return html view
      */
     @RequestMapping(URL_STORAGE_ADD)
     public String addNew() {
         return TILES_PREFIX + HTML_STORAGE_ADD_STORAGE_FORM;
     }
 
+    /**
+     * 用来返回当前入库单列表视图
+     *
+     * @return div view
+     */
     @RequestMapping(URL_STORAGE_ADD_AJAX)
     public String addNewajax() {
         return HTML_STORAGE_ADD_STORAGE_FORM.concat(" :: content");
@@ -100,12 +120,19 @@ public class StorageFormContoller extends BaseController {
 
     /**
      * 返回入库单中增加物品的页面
+     *
+     * @return html view
      */
     @RequestMapping(value = URL_STORAGE_ADD_ADDITEM, method = RequestMethod.GET)
     public String addItem() {
         return TILES_PREFIX + HTML_STORAGE_ADD_ADDITEM;
     }
 
+    /**
+     * 返回入库单中增加物品的页面
+     *
+     * @return div view
+     */
     @RequestMapping(value = URL_STORAGE_ADD_ADDITEM_AJAX, method = RequestMethod.GET)
     public String addItemajax() {
         return HTML_STORAGE_ADD_ADDITEM + " :: content";
@@ -113,6 +140,11 @@ public class StorageFormContoller extends BaseController {
 
     /**
      * 增加一个item到入库单中，成功后重定向到当前入库单列表视图
+     *
+     * @param isInschool .
+     * @param itemForm   .
+     * @param session    .
+     * @return view
      */
     @RequestMapping(value = URL_STORAGE_ADD_ADDITEM, method = RequestMethod.POST)
     public String addItemTosession(ItemForm itemForm,
@@ -120,7 +152,7 @@ public class StorageFormContoller extends BaseController {
                                    HttpSession session) {
         itemForm.setInschool(isInschool);
         if (itemForm.isInschool()) {
-            itemForm.setItemCode(sdictionaryDao.getInSchoolId(itemForm.getItemCategoryID()));
+            itemForm.setItemCode(dictionaryDao.getInSchoolId(itemForm.getItemCategoryID()));
         }
         storageForm.getItemForms().add(itemForm);
         session.setAttribute(SESSION_STORAGE_FORM, storageForm);
@@ -132,9 +164,13 @@ public class StorageFormContoller extends BaseController {
 
     /**
      * 2016/11/24 递交储存于session的入库单
+     *
+     * @param principal .
+     * @param session   .
+     * @return redirect
      **/
     @RequestMapping(value = URL_STORAGE_ADD_SUBMIT, method = RequestMethod.GET)
-    public String submitStorageForm(Principal principal, HttpSession session) {
+    public String submit(Principal principal, HttpSession session) {
         try {
             service.save(principal, storageForm);
             session.setAttribute(SESSION_STORAGE_FORM, null);
@@ -150,6 +186,8 @@ public class StorageFormContoller extends BaseController {
      *
      * @param isInschool false，为自带编码，如果仓库中有，只需要更改数量。没有的话，则仍然需要输入信息.
      *                   true，为校内编码，需要自己输入相关信息.
+     * @param itemCode   .
+     * @return view
      */
     @RequestMapping(URL_STORAGE_ADD_SET_ITEM_INFO)
     public String setItemInfo(
@@ -171,6 +209,14 @@ public class StorageFormContoller extends BaseController {
         }
     }
 
+    /**
+     * 用户输入表格 设置物品信息
+     *
+     * @param isInschool false，为自带编码，如果仓库中有，只需要更改数量。没有的话，则仍然需要输入信息.
+     *                   true，为校内编码，需要自己输入相关信息.
+     * @param itemCode   .
+     * @return div view
+     */
     @RequestMapping(URL_STORAGE_ADD_SET_ITEM_INFO_AJAX)
     public String setItemInfoajax(
             @RequestParam(name = "isInschool") boolean isInschool,

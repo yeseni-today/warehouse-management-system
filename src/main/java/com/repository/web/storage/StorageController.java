@@ -3,7 +3,7 @@ package com.repository.web.storage;
 import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.SdictionaryDao;
+import com.repository.dao.DictionaryDao;
 import com.repository.entity.ItemInOperationEntity;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +23,6 @@ import static com.repository.Constants.URL_STORAGE;
  * Created by Finderlo on 2016/11/6.
  */
 @Controller
-@RequestMapping(URL_STORAGE)
 public class StorageController extends BaseController {
 
     @Autowired
@@ -33,9 +32,14 @@ public class StorageController extends BaseController {
     ItemDao itemDao;
 
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
 
-    @RequestMapping
+    /**
+     * 入库单历史
+     *
+     * @return html view
+     */
+    @RequestMapping(URL_STORAGE)
     public String storage(Model model) {
 
         logger.info("storage: date:" + System.currentTimeMillis());

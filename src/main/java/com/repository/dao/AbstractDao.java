@@ -50,6 +50,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         return findByIds(idAndValue);
     }
 
+
     public T findByIds(Map<String, String> idAndValues) {
         Session session = sessionFactory.getCurrentSession();
         String hql = jointHqlByIdsQuery(idAndValues);
@@ -62,7 +63,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         return tList.get(0);
     }
 
-    public List<T> findAll(){
+    public List<T> findAll() {
         Session session = sessionFactory.getCurrentSession();
         List<T> tList = session.createQuery("from " + bindClassName()).list();
 
@@ -75,31 +76,39 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
 
     /**
      * 分页获取所有博客
+     *
      * @param
      * @return
      */
 //    Page<T> findBlogs(Pageable pageable);
-
     public List<T> query(String[] keys, String[] values) {
         return query(keys, values, true);
     }
 
+    public List<T> query(String key, String value) {
+        return query(new String[]{key}, new String[]{value}, true);
+    }
+
+    public List<T> query(String key, String value, boolean isLikeQuery) {
+        return query(new String[]{key}, new String[]{value}, isLikeQuery);
+    }
+
     public List<T> query(String[] keys, String[] values, boolean isLikeQuery) {
 
-        if (keys ==null || values==null || keys.length == 0 || values.length == 0){
+        if (keys == null || values == null || keys.length == 0 || values.length == 0) {
             return new ArrayList<T>();
         }
         int length = keys.length <= values.length ? keys.length : values.length;
         int enableCount = 0;
         for (int i = 0; i < length; i++) {
-            if (!bindKeys().contains(keys[i])){
+            if (!bindKeys().contains(keys[i])) {
                 //todo 空值判定
             }
         }
 
         String hql = jointLikeQuery(keys, values, isLikeQuery);
 
-        if (hql==null){
+        if (hql == null) {
             return new ArrayList<T>();
         }
 
@@ -114,7 +123,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         session.save(t);
     }
 
-    public void saveOrUpdate(T t){
+    public void saveOrUpdate(T t) {
         Session session = sessionFactory.openSession();
         session.saveOrUpdate(t);
     }
@@ -169,7 +178,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
             hqlbuilder.append("'").append(values[i]).append("'");
             enableCount++;
         }
-        if (enableCount == 0){
+        if (enableCount == 0) {
             return null;
         }
         System.out.println(hqlbuilder.toString());
@@ -230,7 +239,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         }
     }
 
-    private List<String> bindKeys(){
+    private List<String> bindKeys() {
         List<String> results = new ArrayList<>();
         for (Field field : bindClass().getDeclaredFields()) {
             results.add(field.getName());
@@ -245,6 +254,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
             return false;
         }
     }
+
 
 
 }

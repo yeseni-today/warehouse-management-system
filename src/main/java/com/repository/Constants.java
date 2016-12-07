@@ -4,10 +4,28 @@ package com.repository;
  * Created by Finderlo on 11/17/2016.
  */
 public interface Constants {
+    /**
+     * 需要模块引擎前缀
+     * */
     String TILES_PREFIX = "tiles/";
+    /**
+     * 重定向前缀
+     * */
     String REDIRECT = "redirect:";
+    /**
+     * 默认允许借用的数量
+     * */
     int ALLOW_COUNT = 5;
+    /**
+     * 一天的毫秒数
+     * */
     long DAY_1_MILLIS = 1000 * 60 * 60 * 24;
+
+
+
+    String URL_ADD_NEW_CATEGORY = "/newcategory";
+    String URL_ADD_NEW_COMPANY = "/newcompany";
+
     //session
     String SESSION_STORAGE_FORM = "storageForm";
     String SESSION_APPLY_FORM = "apply_form";
@@ -61,6 +79,7 @@ public interface Constants {
     String URL_APPLY_ADD_ADDITEMAJAX = URL_APPLY_ADD + "/additemajax";
     String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
     String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
+    String URL_APPLY_ADD_SUBMIT = URL_APPLY_ADD + "/submit";
 
     String HTML_APPLY_ADD_PREFIX = HTML_APPLY_PREFIX + "add/";
     String HTML_APPLY_ADD_APPLYFORM = HTML_APPLY_ADD_PREFIX + "apply_form";
@@ -76,7 +95,7 @@ public interface Constants {
     //message
     String URL_MESSAGE = "/message";
     String URL_MESSAGE_SEND_AJAX = URL_MESSAGE + "/sendajax";
-    String URL_MESSAGE_FINDBYID_AJAX = URL_MESSAGE+"/findbyid";
+    String URL_MESSAGE_FINDBYID_AJAX = URL_MESSAGE + "/findbyid";
     String URL_MESSAGE_FIND_WARNTYPE_AJAX = URL_MESSAGE + "/warnmsg";
     String URL_MESSAGE_FINDMESSAGE_BY_ID_AJAX = URL_MESSAGE + "/findmessagebyid";
     String URL_MESSAGE_READWHITID_AJAX = URL_MESSAGE + "/read";
@@ -90,9 +109,18 @@ public interface Constants {
 
     //log
     String URL_LOG = "/log";
-    String HTML_LOG_PREFIX = TILES_PREFIX + "log/";
+
+    String URL_LOG_SYSTEM_AJAX = URL_LOG + "/system";
+    String URL_LOG_INSTORAGE_AJAX = URL_LOG + "/instorage";
+    String URL_LOG_OUTSTORAGE_AJAX = URL_LOG + "/outsturage";
+    String URL_LOG_APPLY_AJAX = URL_LOG + "/apply";
+    String URL_LOG_BORROW_AJAX = URL_LOG + "/borrow";
+    String URL_LOG_MAINTAIN_AJAX = URL_LOG + "/maintain";
+
+    String HTML_LOG_PREFIX = "log/";
     String HTML_LOG_HISTORY = HTML_LOG_PREFIX + "history";
     String HTML_LOG_LOG = HTML_LOG_PREFIX + "log";
+
 
 
     //error

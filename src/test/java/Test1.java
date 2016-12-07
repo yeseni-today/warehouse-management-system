@@ -2,7 +2,7 @@
 import com.repository.Application;
 import com.repository.base.BaseObject;
 import com.repository.dao.ItemDao;
-import com.repository.dao.SdictionaryDao;
+import com.repository.dao.DictionaryDao;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -22,18 +22,18 @@ public class Test1 extends
         BaseObject {
 
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
 
     @Autowired
     ItemDao itemDao;
     @Test
     public void isNull() {
         System.out.println();
-        Assert.assertNotNull(sdictionaryDao);
+        Assert.assertNotNull(dictionaryDao);
     }
 
     public void sdictionaryDaoTestId() {
-        Assert.assertNotNull(sdictionaryDao.findById("000"));
+        Assert.assertNotNull(dictionaryDao.findById("000"));
     }
 
     @Test

@@ -1,19 +1,21 @@
 package service;
 
 import com.repository.Application;
-import com.repository.dao.UmessageDao;
+import com.repository.dao.MessageDao;
 import com.repository.service.MessageService;
 import com.repository.web.message.MessageForm;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+
+import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/11/30.
@@ -38,6 +40,8 @@ public class MessageTest {
     }
 
     @Test
+    @Transactional
+    @Rollback
     public void test() {
         Assert.assertTrue(messageService.send(messageForm));
         Assert.assertNotNull(messageService.findMessage("4566"));
@@ -45,12 +49,9 @@ public class MessageTest {
     }
 
     @Autowired
-    UmessageDao umessageDao;
+    MessageDao messageDao;
 
-    @After
-    public void after(){
-        messageService.delete(messageForm);
-    }
+
 
 
 }

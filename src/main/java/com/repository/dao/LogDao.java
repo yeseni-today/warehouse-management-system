@@ -1,6 +1,6 @@
 package com.repository.dao;
 
-import com.repository.entity.SlogEntity;
+import com.repository.entity.LogEntity;
 
 import org.springframework.stereotype.Component;
 
@@ -8,5 +8,5 @@ import org.springframework.stereotype.Component;
  * Created by Finderlo on 2016/11/26.
  */
 @Component
-public class SLogDao extends AbstractDao<SlogEntity> {
+public class LogDao extends AbstractDao<LogEntity> {
 }

@@ -30,78 +30,87 @@ public class StorageFormService extends BaseObject {
     @Autowired
     ItemInStorageDao storageDao;
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
     @Autowired
     SessionFactory sessionFactory;
     @Autowired
     LogSerivce logSerivce;
     @Autowired
-    ItemCompanyDao companyDao;
+    CompanyDao companyDao;
     @Autowired
-    ItemCategoryDao categoryDao;
+    CategoryDao categoryDao;
 
 
     @Transactional
     public void save(Principal principal, StorageForm storageForm) throws Exception {
         Session session = sessionFactory.getCurrentSession();
-        //保存入库表
-        //首先将所有item存入item表中，如果为校内编码需要先查询编码
-//        Transaction transaction = (Transaction) session.beginTransaction();
-//        transaction.begin();
         try {
-
+            //转化为compounds，进行转化
             List<ItemCompound> compounds = formToComound(storageForm);
 
             for (ItemCompound compound : compounds) {
                 if (compound.isInSchool) {
+                    //如果是校内编码
                     for (ItemCompound itemCompound : compound.itemCompoundList) {
-                        SdictionaryEntity sdictionaryEntity = sdictionaryDao.findById(itemCompound.itemEntity.getItemCategoryEntity().getCategoryId());
-                        itemCompound.itemEntity.setItemCode(Util.handleCode(sdictionaryEntity));
+                        //获取字典用于编号
+                        DictionaryEntity dictionaryEntity = dictionaryDao.findById(itemCompound.itemEntity.getCategoryEntity().getCategoryId());
+                        //通过字典设置编号
+                        itemCompound.itemEntity.setItemCode(Util.handleCode(dictionaryEntity));
                         itemCompound.itemInStorageEntity.setItemCode(itemCompound.itemEntity.getItemCode());
-                        sdictionaryEntity.setIndex(sdictionaryEntity.getIndex() + 1);
+                        //字典index+1
+                        dictionaryEntity.setIndex(dictionaryEntity.getIndex() + 1);
+                        //持久化
                         session.save(itemCompound.itemEntity);
-                        session.saveOrUpdate(sdictionaryEntity);
+                        session.saveOrUpdate(dictionaryEntity);
+                        //log
                         logSerivce.saveItem(principal.getName(), itemCompound.itemEntity);
                     }
                 } else {
-                    //如果校内已经存在，则设置新的价格和新的数量
+
                     ItemEntity itemEntity = itemDao.findById(compound.itemEntity.getItemCode());
                     if (itemEntity != null) {
+                        //校内已经存在，则设置新的价格和新的数量
                         itemEntity.setItemCount(itemEntity.getItemCount() + compound.itemEntity.getItemCount());
                         session.save(itemEntity);
+                        //log
                         logSerivce.saveItem(principal.getName(), itemEntity);
                     } else {
-                        logger.info("isInschool:" + compound.isInSchool);
+                        //校内不存在，直接保存
                         session.save(compound.itemEntity);
+                        //log
                         logSerivce.saveItem(principal.getName(), compound.itemEntity);
                     }
                 }
             }
             //保存操作表
             ItemInOperationEntity operationEntity = formToInOpreation(storageForm);
-            SdictionaryEntity sdictionaryEntity = sdictionaryDao.findById("storage_ID");
-            operationEntity.setStorageId(Util.handleCode(sdictionaryEntity));
-            sdictionaryEntity.setIndex(sdictionaryEntity.getIndex() + 1);
+            //通过字典设置编号
+            DictionaryEntity dictionaryEntity = dictionaryDao.findById("storage_ID");
+            operationEntity.setStorageId(Util.handleCode(dictionaryEntity));
+            //字典index+1
+            dictionaryEntity.setIndex(dictionaryEntity.getIndex() + 1);
+            //持久化
             session.save(operationEntity);
-            session.saveOrUpdate(sdictionaryEntity);
+            session.saveOrUpdate(dictionaryEntity);
+            //log
             logSerivce.saveInOpreation(principal.getName(), operationEntity);
+            //遍历保存入库表
             for (ItemCompound e : compounds) {
+
                 if (e.isInSchool) {
-                    e.itemCompoundList.forEach(compound ->
-                            {
+                    //如果是校内，由于校内的个数只有1，多次保存，编码也不同
+                    e.itemCompoundList.forEach(compound -> {
                                 session.save(compound.itemInStorageEntity);
                                 logSerivce.saveInStorage(principal.getName(), compound.itemInStorageEntity);
-                            }
-                    );
+                            });
                 } else {
+                    //不是校内，直接保存
                     session.save(e.itemInStorageEntity);
                     logSerivce.saveInStorage(principal.getName(), e.itemInStorageEntity);
                 }
             }
-//            transaction.commit();
         } catch (Exception e) {
             e.printStackTrace();
-//            transaction.rollback();
         }
     }
 
@@ -139,16 +148,16 @@ public class StorageFormService extends BaseObject {
                 //如果不存在，则设置输入信息信息
                 logger.info("itemform name:" + itemForm.getItemName());
                 itemEntity.setItemName(itemForm.getItemName());
-                ItemCompanyEntity companyEntity = companyDao.findById(itemForm.getItemCompanyID());
-                ItemCategoryEntity catogoryEntity = categoryDao.findById(itemForm.getItemCategoryID());
+                CompanyEntity companyEntity = companyDao.findById(itemForm.getItemCompanyID());
+                CategoryEntity catogoryEntity = categoryDao.findById(itemForm.getItemCategoryID());
                 itemEntity.setItemCode(itemForm.getItemCode());
                 itemEntity.setItemCount(itemForm.getItemCount());
 
                 itemEntity.setItemSpec(itemForm.getItemSpec());
                 itemEntity.setItemIntroduce(itemForm.getItemIntroduce());
 
-                itemEntity.setItemCategoryEntity(catogoryEntity);
-                itemEntity.setItemCompanyEntity(companyEntity);
+                itemEntity.setCategoryEntity(catogoryEntity);
+                itemEntity.setCompanyEntity(companyEntity);
                 itemEntity.setItemPrice(itemForm.getItemPrice());
                 //默认值
                 itemEntity.setItemBorrowTimelimit(0);
@@ -187,16 +196,16 @@ public class StorageFormService extends BaseObject {
 
                 logger.info("itemform name:" + itemForm.getItemName());
                 itemEntity.setItemName(itemForm.getItemName());
-                ItemCompanyEntity companyitemEntity = companyDao.findById(itemForm.getItemCompanyID());
-                ItemCategoryEntity catogoryitemEntity = categoryDao.findById(itemForm.getItemCategoryID());
+                CompanyEntity companyitemEntity = companyDao.findById(itemForm.getItemCompanyID());
+                CategoryEntity catogoryitemEntity = categoryDao.findById(itemForm.getItemCategoryID());
                 itemEntity.setItemCode(itemForm.getItemCode());
                 itemEntity.setItemCount(itemForm.getItemCount());
 
                 itemEntity.setItemSpec(itemForm.getItemSpec());
                 itemEntity.setItemIntroduce(itemForm.getItemIntroduce());
 
-                itemEntity.setItemCategoryEntity(catogoryitemEntity);
-                itemEntity.setItemCompanyEntity(companyitemEntity);
+                itemEntity.setCategoryEntity(catogoryitemEntity);
+                itemEntity.setCompanyEntity(companyitemEntity);
                 itemEntity.setItemPrice(itemForm.getItemPrice());
                 //默认值
                 itemEntity.setItemBorrowTimelimit(0);

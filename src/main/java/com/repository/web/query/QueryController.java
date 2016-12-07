@@ -1,7 +1,7 @@
 package com.repository.web.query;
 
 import com.repository.base.BaseController;
-import com.repository.entity.ItemCategoryEntity;
+import com.repository.entity.CategoryEntity;
 import com.repository.entity.ItemEntity;
 
 import org.springframework.stereotype.Controller;
@@ -35,12 +35,17 @@ public class QueryController extends BaseController {
     public void init(HttpSession session) {
         session.setAttribute(SESSION_CATEGORIES, categories());
         session.setAttribute(SESSION_CATEGORIES_A, categoriesA());
-        session.setAttribute(SESSION_COMPANIES, itemCompanyDao.findAll());
+        session.setAttribute(SESSION_COMPANIES, companyDao.findAll());
         logger.trace(categories());
         logger.trace(categoriesA());
     }
 
 
+    /**
+     * query
+     *
+     * @return tiles html view
+     */
     @RequestMapping(URL_QUERY)
     public String queryTo() {
         logger.info("query");
@@ -54,6 +59,15 @@ public class QueryController extends BaseController {
         return new ArrayList<>();
     }
 
+    /**
+     * 查询物品
+     *
+     * @param principal .
+     * @param itemCode  .
+     * @param itemName  .
+     * @param model     .
+     * @return list
+     */
     @RequestMapping(URL_QUERY_QUERYITEM)
     @ResponseBody
     public List<ItemEntity> queryItem(
@@ -89,11 +103,11 @@ public class QueryController extends BaseController {
     }
 
 
-    public List<ItemCategoryEntity> categories() {
-        return itemCategoryDao.findAll();
+    public List<CategoryEntity> categories() {
+        return categoryDao.findAll();
     }
 
-    private List<ItemCategoryEntity> categoriesA() {
-        return itemCategoryDao.findAll().stream().filter(entity -> entity.getCategoryName().endsWith("A")).collect(Collectors.toList());
+    private List<CategoryEntity> categoriesA() {
+        return categoryDao.findAll().stream().filter(entity -> entity.getCategoryName().endsWith("A")).collect(Collectors.toList());
     }
 }

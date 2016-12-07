@@ -21,24 +21,30 @@ import static com.repository.Constants.*;
 @Controller
 public class LoginController extends BaseController {
 
+    /**
+     * @return query html view
+     */
     @RequestMapping(URL_INDEX)
     public String greeting() {
         return TILES_PREFIX + HTML_QUERY_LIST;
     }
 
+    /**
+     * @return login html view
+     */
     @RequestMapping(URL_SIGNIN)
     public String login() {
         return HTML_LOGIN_SIGNIN;
     }
 
-    //    @RequestMapping(URL_SIGNIN_SUCCESS)
-    public String signinSuccess(HttpSession session, Principal principal) {
-        UsersEntity usersEntity = usersDao.findById(principal.getName());
-        logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
-        session.setAttribute(SESSION_USER, usersEntity);
-        return REDIRECT + URL_QUERY;
-    }
 
+    /**
+     * 登陆成功 重定向 ajax
+     *
+     * @param session   .
+     * @param principal .
+     * @return
+     */
     @RequestMapping(URL_SIGNIN_SUCCESS)
     @ResponseBody
     public SimpleRes signindo(HttpSession session, Principal principal) {
@@ -52,6 +58,11 @@ public class LoginController extends BaseController {
         return responseBody;
     }
 
+    /**
+     * 登陆失败
+     *
+     * @return sign html view
+     */
     @RequestMapping(URL_SIGNIN_FAIL)
     public String signinFail() {
         return REDIRECT + URL_SIGNIN;

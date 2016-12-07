@@ -1,12 +1,9 @@
 import com.repository.Application;
 import com.repository.dao.ItemDao;
-import com.repository.dao.SdictionaryDao;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.SdictionaryEntity;
+import com.repository.dao.DictionaryDao;
+import com.repository.entity.DictionaryEntity;
 
-import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +12,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 
 /**
@@ -29,14 +25,14 @@ public class TestAdd {
     @Autowired
     ItemDao itemDao;
     @Autowired
-    SdictionaryDao sdictionaryDao;
+    DictionaryDao dictionaryDao;
     @Autowired
     SessionFactory sessionFactory;
-    SdictionaryEntity entity;
+    DictionaryEntity entity;
 
     @Before
     public void before() {
-        entity = new SdictionaryEntity();
+        entity = new DictionaryEntity();
         entity.setIndex(55);
         entity.setField("9999");
         entity.setIndexlength(88);
@@ -46,11 +42,11 @@ public class TestAdd {
     @Test
     @Transactional
     public void set() {
-        sdictionaryDao.save(entity);
+        dictionaryDao.save(entity);
     }
 
     @After
     public void after() {
-        sdictionaryDao.delete(entity);
+        dictionaryDao.delete(entity);
     }
 }
