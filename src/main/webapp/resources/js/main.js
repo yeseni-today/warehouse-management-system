@@ -24,22 +24,6 @@ function alert_info(info) {
     alert(info);
 }
 
-function addItem() {
-    var da = $('#applyForm').serialize();
-    alert(da);
-    $.ajax({
-        url: "/apply/add/additem",
-        type: "post",
-        data: da,
-        success: function (result) {
-            closePop();
-            alert("添加成功");
-        },
-        error: function () {
-            alert("添加失败，请重试");
-        }
-    });
-}
 
 function addCategory() {
     var a = $('#form_addCategory').serialize();
@@ -81,7 +65,7 @@ function query() {
         url: "/query/queryItem",    //向springboot请求数据的url
         data: values,
         success: function (items) {
-            $("#result_table").find("tr").remove("tr:gt(0)")
+            $("#result_table").find("tr").remove("tr:gt(0)");
             //没有完成的部分，需要再每次查询后来清空原有的值
             $.each(items, function (i, item) {
                 item = "<tr>" +
@@ -142,17 +126,25 @@ function msgFindBy(url, type) {
             var contentRight = $("#message");
             $.each(messages, function (i, message) {
                 msgs.push(message);
-                messageBox = "<div class='message'>" +
-                    "<span class='message-name' >" + message.messageId + "</span>" +
-                    "<span class='message-date'>" + message.messageDate + "</span>" +
+                messageBox = "<div class='message' id='" + message.messageId + "'>" +
+                    "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
+                    "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
                     "<div class='message-content' >" + message.messageContent + "</div>" +
-                    "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
+                    "<div class='message-operation'>" +
+                    "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
+                    "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
+                    "</div>" +
                     "</div>";
                 contentRight.append(messageBox);
+
             })
         }
     });
     hideLoading();
+}
+function getDate(ms) {
+    var d = new Date(ms);
+    return d.toLocaleString();
 }
 
 function msg_delete() {
@@ -183,7 +175,7 @@ function findLogs() {//todo
             $.each(messages, function (i, message) {
                 msgs.push(message);
                 messageBox = "<div class='message'>" +
-                    "<span class='message-name' >" + message.messageId + "</span>" +
+                    "<span class='message-title' >" + message.messageId + "</span>" +
                     "<span class='message-date'>" + message.messageDate + "</span>" +
                     "<div class='message-content' >" + message.messageContent + "</div>" +
                     "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
@@ -262,26 +254,26 @@ function openPopDetails(itemForm) {
 }
 
 
-function openPopMessage(message) {
-    // alert(msgs[0]);
-    // var d = "";
-    // for (var name in msgs[0]) {
-    //     d += name + ":" + msgs[0][name] + ";"
-    // }
-    // console.log(d);
-    var msg = msgs[message];
+/*function openPopMessage(message) {
+ // alert(msgs[0]);
+ // var d = "";
+ // for (var name in msgs[0]) {
+ //     d += name + ":" + msgs[0][name] + ";"
+ // }
+ // console.log(d);
+ var msg = msgs[message];
 
-    $("[name='messageID']").val(msg.messageId);
-    $("[name='messageType']").val(msg.messageType);
-    $("[name='messageContent']").val(msg.messageContent);
-    $("[name='messageData']").val(msg.messageDate);
-    $("[name='messageSendID']").val(msg.messageSendId);
-    $("[name='messageReceiveID']").val(msg.messageReceiveId);
-    $("[name='messageState']").val(msg.messageState);
-    $("[name='messageTitle']").val(msg.messageTitle);
+ $("[name='messageID']").val(msg.messageId);
+ $("[name='messageType']").val(msg.messageType);
+ $("[name='messageContent']").val(msg.messageContent);
+ $("[name='messageData']").val(msg.messageDate);
+ $("[name='messageSendID']").val(msg.messageSendId);
+ $("[name='messageReceiveID']").val(msg.messageReceiveId);
+ $("[name='messageState']").val(msg.messageState);
+ $("[name='messageTitle']").val(msg.messageTitle);
 
-    openPop();
-}
+ openPop();
+ }*/
 
 
 //加载界面
@@ -321,3 +313,116 @@ function deleteAll() {
     })
 }
 
+
+//apply
+
+function addItem() {
+    var da = $('#applyForm').serialize();
+    $.ajax({
+        url: "/apply/add/additem",
+        type: "post",
+        data: da,
+        success: function (result) {
+            closePop();
+            alert("添加成功");
+        },
+        error: function () {
+            alert("添加失败，请重试");
+        }
+    });
+}
+function applySubmitForm() {
+    $.ajax({
+        url: "/apply/add/submit",
+        type: "post",
+        success: function (result) {
+            if (result.message == "success") {
+                alert("提交成功");
+            } else {
+                alert("提交失败");
+            }
+        },
+        error: function () {
+            alert("提交失败");
+        }
+    })
+}
+
+function applyDelet(itemCode) {//todo
+    alert(itemCode);
+    $.ajax({
+        url: "apply/add/deleteajax",
+        type: "post",
+        data: {'itemCode': itemCode},
+        success: function (result) {
+            if (result.message == "success") {
+                $("." + itemCode).remove();
+                alert("删除成功");
+
+            } else {
+                alert("删除失败");
+            }
+        },
+        error: function () {
+            alert("删除失败!");
+        }
+    })
+}
+
+//message
+function msg_send() {
+    var newmessage = $('#newmessage').serialize();
+    $.ajax({
+        url: "/message/sendajax",
+        type: "post",
+        data: newmessage,
+        success: function (result) {
+            if (result.message == "success") {
+                alert("发送成功");
+            }
+        },
+        error: function () {
+            alert("发送失败，请检查网络");
+        }
+    })
+}
+//todo
+function msg_hide(messageID) {
+
+}
+
+function msg_read(messageID) {
+
+}
+
+//审核
+function getApplyFormByID(ApplyFormID) {
+    var html = "";
+
+    $.ajax({
+        url: "",
+        type: "post",
+        date: {"ApplyFormID": ApplyFormID},
+        success: function (result) {
+            if (result.message == "success") {
+                $('#applyFromID').val(ApplyFormID);
+                $('#usersId').val(result.content.usersId);
+                $('#applyTime').val(result.content.applicationTime);
+
+
+                var ApplyForm = result.content;
+                for (item in ApplyForm) {
+                    html += "<tr><td>" + item.itemCode + "</td>" +
+                        "<td>" +item.counts +"</td>" +
+                        "<td>" +item.applicationType+ "</td>" +
+                        "<td>" +item.applicationText+ "</td>" +
+                        "</td>"
+                }
+                $('#applyFormTable').append(html);
+            } else {
+
+            }
+        }
+
+    })
+}

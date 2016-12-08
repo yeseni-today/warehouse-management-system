@@ -1,25 +1,19 @@
 package com.repository.web.apply.add;
 
 import com.repository.base.BaseController;
-import com.repository.dao.ItemDao;
 import com.repository.dao.DictionaryDao;
+import com.repository.dao.ItemDao;
 import com.repository.entity.ItemEntity;
 import com.repository.model.SimpleRes;
 import com.repository.service.ApplyFormService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import java.security.Principal;
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
+import java.security.Principal;
+import java.util.List;
 
 import static com.repository.Constants.*;
 
@@ -75,6 +69,23 @@ public class AddapplyController extends BaseController {
     }
 
     /**
+     * @return 删除申请单 itemCode 物品 ajax
+     */
+    @RequestMapping(URL_APPLY_ADD_DELETE_AJAX)
+    @ResponseBody
+    public SimpleRes delete(@RequestParam(name = "itemCode") String itemCode, HttpSession session) {
+        ApplyForm applyForm = (ApplyForm) session.getAttribute(SESSION_APPLY_FORM);
+        for (ApplyItemForm itemForm : applyForm.getItems()) {
+            if (itemForm.getItemCode().equals(itemCode)) {
+                applyForm.getItems().remove(itemForm);
+                session.setAttribute(SESSION_APPLY_FORM, applyForm);
+                return SimpleRes.success();
+            }
+        }
+        return SimpleRes.error();
+    }
+
+    /**
      * @return 返回增加物品的view试图
      */
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.GET)
@@ -99,9 +110,18 @@ public class AddapplyController extends BaseController {
     @ResponseBody
     public SimpleRes getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
         ApplyForm applyForm = getApplyForm(session);
-        applyForm.getItems().add(applyItemForm);
+        boolean flag = false;
+        for (ApplyItemForm e : applyForm.getItems()) {
+            if (e.getItemCode().equals(applyItemForm.getItemCode())) {
+                e.setItemCount(e.getItemCount() + applyItemForm.getItemCount());
+                e.setOthers(applyItemForm.getOthers());
+                flag = true;
+            }
+        }
+        if (!flag){
+            applyForm.getItems().add(applyItemForm);
+        }
         logger.info("getaddItemAjax: " + applyItemForm);
-        ;
         return new SimpleRes();
     }
 
@@ -134,7 +154,7 @@ public class AddapplyController extends BaseController {
      * @param session   .
      * @return
      **/
-    @RequestMapping(value = URL_APPLY_ADD_SUBMIT, method = RequestMethod.GET)
+    @RequestMapping(value = URL_APPLY_ADD_SUBMIT, method = RequestMethod.POST)
     @ResponseBody
     public SimpleRes submit(Principal principal, HttpSession session) {
         try {
@@ -148,7 +168,7 @@ public class AddapplyController extends BaseController {
     }
 
     /**
-     * 向入库单增加多个物品，
+     * 向申请单增加多个物品，
      *
      * @param itemCodes
      * @return view

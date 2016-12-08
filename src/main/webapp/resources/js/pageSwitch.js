@@ -4,7 +4,7 @@
 
 function change1() {
     var url = "/test";
-    var animation = 'move-to-right';
+    var animation = 'move-to-left';
     jumpToWithAnim(url, animation);
 }
 

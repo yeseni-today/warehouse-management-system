@@ -28,7 +28,7 @@
     <!--</div>-->
     <div class="content-function">
         <div class="myDivBt">
-            <a onclick="jumpTo('apply/add/additemajax')" th:method="get">添加物品</a>
+            <a href="#" onclick="jumpTo('apply/add/additemajax')">添加物品</a>
         </div>
     </div>
 
@@ -48,19 +48,20 @@
             <tr th:if="${session.apply_form == null || session.apply_form.items.isEmpty()}">
                 <td colspan="4">申请单中没有物品，请添加</td>
             </tr>
-            <tr th:each="item : ${session.apply_form.getItems()}">
+            <tr th:each="item : ${session.apply_form.getItems()}"
+                th:class="${item.getItemCode()}">
                 <td th:text="${item.getItemCode()}"></td>
                 <td th:text="${item.getItemName()}"></td>
                 <td th:text="${item.getItemCount()}"></td>
                 <td th:text="${item.getOthers()}"></td>
-                <td class="myTable-operation">
+                <td class="myTable-operation" th:onclick="'applyDelet(\''+${item.getItemCode()}+'\')'" onclick="applyDelet()">
                     <div class="icon-cross"></div>
                 </td>
             </tr>
         </table>
         <div class="content-result-operation">
             <div class="myDivBt">
-                <a href="../history.html" onclick="alert_info('系统正忙，请稍后重试')">提交</a>
+                <a href="../history.html" onclick="applySubmitForm()">提交</a>
             </div>
             <div class="myDivBt">
                 <a type="button" onclick="clearApplyForm()">清空</a>

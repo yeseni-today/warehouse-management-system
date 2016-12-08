@@ -20,5 +20,5 @@ body {
     height: 100%;
     overflow-x: hidden; /*去滚动条*/
     overflow-y: scroll;
-    background: black;
+    background: #d1d1d1;
 }
