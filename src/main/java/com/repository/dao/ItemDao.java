@@ -15,7 +15,7 @@ public class ItemDao extends AbstractDao<ItemEntity> {
     public List<ItemEntity> queryByCategoryId(String categoryId) {
         if (categoryId==null || categoryId.trim().equals(""))
             return new ArrayList<>();
-        String hql = "select e from ItemEntity e where e.itemCategoryEntity.categoryId like '%"+categoryId+"%'";
+        String hql = "select e from ItemEntity e where e.categoryEntity.categoryId like '%"+categoryId+"%'";
         Session session = sessionFactory.openSession();
         List<ItemEntity> result = session.createQuery(hql).list();
         session.close();

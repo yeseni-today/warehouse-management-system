@@ -53,7 +53,7 @@ function query() {
                 item = "<tr>" +
                     "<td>" + item.itemCode + "</td>" +
                     "<td>" + item.itemName + "</td>" +
-                    "<td>" + item.itemCategoryEntity.categoryName + "</td>" +
+                    "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
                     "<td>" + "操作" + "</td>" +
                     "</tr>";
