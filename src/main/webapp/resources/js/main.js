@@ -321,9 +321,3 @@ function deleteAll() {
     })
 }
 
-
-
-
-
-
-
