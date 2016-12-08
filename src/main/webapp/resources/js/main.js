@@ -24,52 +24,6 @@ function alert_info(info) {
     alert(info);
 }
 
-<<<<<<< HEAD
-function addItem() {
-    var da = $('#applyForm').serialize();
-    alert(da);
-=======
-
-function addCategory() {
-    var a = $('#form_addCategory').serialize();
->>>>>>> origin/master
-    $.ajax({
-        url: "/newcategory",
-        type: "post",
-        data: a,
-        success: function (result) {
-            closePop();
-<<<<<<< HEAD
-            alert("添加成功");
-        },
-        error: function () {
-            alert("添加失败，请重试");
-=======
-            alert("添加分类成功");
-
-        },
-        error: function () {
-            alert("添加分类失败，请重试");
->>>>>>> origin/master
-        }
-    })
-}
-
-function addCompany() {
-    var a = $('#form_addCompany').serialize();
-    $.ajax({
-        url: "/newcompany",
-        type: "post",
-        data: a,
-        success: function (result) {
-            closePop();
-            alert("添加厂家信息成功");
-        },
-        error: function () {
-            alert("添加厂家信息失败，请重试");
-        }
-    })
-}
 
 function addCategory() {
     var a = $('#form_addCategory').serialize();
@@ -298,32 +252,8 @@ function openPopDetails(itemForm) {
 
     openPop();
 }
-<<<<<<< HEAD
 
 
-function openPopMessage(message) {
-    // alert(msgs[0]);
-    // var d = "";
-    // for (var name in msgs[0]) {
-    //     d += name + ":" + msgs[0][name] + ";"
-    // }
-    // console.log(d);
-    var msg = msgs[message];
-
-    $("[name='messageID']").val(msg.messageId);
-    $("[name='messageType']").val(msg.messageType);
-    $("[name='messageContent']").val(msg.messageContent);
-    $("[name='messageData']").val(msg.messageDate);
-    $("[name='messageSendID']").val(msg.messageSendId);
-    $("[name='messageReceiveID']").val(msg.messageReceiveId);
-    $("[name='messageState']").val(msg.messageState);
-    $("[name='messageTitle']").val(msg.messageTitle);
-=======
->>>>>>> origin/master
-
-
-<<<<<<< HEAD
-=======
 /*function openPopMessage(message) {
  // alert(msgs[0]);
  // var d = "";
@@ -345,7 +275,6 @@ function openPopMessage(message) {
  openPop();
  }*/
 
->>>>>>> origin/master
 
 //加载界面
 function showLoading() {
@@ -384,8 +313,6 @@ function deleteAll() {
     })
 }
 
-<<<<<<< HEAD
-=======
 
 //apply
 
@@ -499,4 +426,3 @@ function getApplyFormByID(ApplyFormID) {
 
     })
 }
->>>>>>> origin/master
