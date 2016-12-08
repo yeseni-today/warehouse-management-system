@@ -135,8 +135,8 @@
 
 .nav dd>a{
     font-size: 13px;
-    line-height: 15px;
-    padding: 10px;
+    line-height: 35px;
+    padding: 0 10px;
     color: #ececec;
     transition: all 0.3s ;
 }

@@ -3,7 +3,7 @@
  */
 
 function change1() {
-    var url = "/test";
+    var url = "/storage/addajax";
     var animation = 'move-to-right';
     jumpToWithAnim(url, animation);
 }

@@ -40,7 +40,7 @@
     width: 65em;
     min-height: 40em;
     margin: auto;
-    background: #eaeaea;
+    /*background: #f5f5f5;*/
 }
 
 .content::after{
@@ -52,7 +52,7 @@
 .current, .next {
     position: absolute;
     width: 100%;
-    background: rgb(68, 203, 169);
+    background: rgb(245, 245, 245);
 }
 
 .current {

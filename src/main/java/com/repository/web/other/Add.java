@@ -3,22 +3,16 @@ package com.repository.web.other;
 import com.repository.dao.CategoryDao;
 import com.repository.dao.CompanyDao;
 import com.repository.model.SimpleRes;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
-
-import static com.repository.Constants.SESSION_CATEGORIES;
-import static com.repository.Constants.SESSION_CATEGORIES_A;
-import static com.repository.Constants.SESSION_COMPANIES;
-import static com.repository.Constants.URL_ADD_NEW_CATEGORY;
-import static com.repository.Constants.URL_ADD_NEW_COMPANY;
+import static com.repository.Constants.*;
 
 /**
  * Created by Finderlo on 2016/12/7.
@@ -75,7 +69,7 @@ public class Add {
             HttpSession session) {
         boolean isSuccess = companyDao.addCompany(companyName,companyAddress,comanyPhone);
         if (isSuccess) {
-            session.setAttribute(SESSION_COMPANIES, categoryDao.findAll());
+            session.setAttribute(SESSION_COMPANIES, companyDao.findAll());
         }
         return isSuccess ? SimpleRes.success() : SimpleRes.error();
     }

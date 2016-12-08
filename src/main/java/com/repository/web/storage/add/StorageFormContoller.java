@@ -66,6 +66,25 @@ public class StorageFormContoller extends BaseController {
     }
 
     /**
+     * 用来返回当前入库单列表视图
+     *
+     * @return html view
+     */
+    @RequestMapping(URL_STORAGE_ADD)
+    public String addNew() {
+        return TILES_PREFIX + HTML_STORAGE_ADD_STORAGE_FORM;
+    }
+
+    /**
+     * 用来返回当前入库单列表视图
+     *
+     * @return div view
+     */
+    @RequestMapping(URL_STORAGE_ADD_AJAX)
+    public String addNewajax() {
+        return HTML_STORAGE_ADD_STORAGE_FORM.concat(" :: content");
+    }
+    /**
      * 删除入库表的一个物品 ajax
      *
      * @param itemcode
@@ -98,25 +117,7 @@ public class StorageFormContoller extends BaseController {
 
     }
 
-    /**
-     * 用来返回当前入库单列表视图
-     *
-     * @return html view
-     */
-    @RequestMapping(URL_STORAGE_ADD)
-    public String addNew() {
-        return TILES_PREFIX + HTML_STORAGE_ADD_STORAGE_FORM;
-    }
 
-    /**
-     * 用来返回当前入库单列表视图
-     *
-     * @return div view
-     */
-    @RequestMapping(URL_STORAGE_ADD_AJAX)
-    public String addNewajax() {
-        return HTML_STORAGE_ADD_STORAGE_FORM.concat(" :: content");
-    }
 
     /**
      * 返回入库单中增加物品的页面
@@ -225,8 +226,5 @@ public class StorageFormContoller extends BaseController {
         return setItemInfo(isInschool, itemCode, model).substring(6).concat(" :: content");
     }
 
-    @RequestMapping("/test")
-    public String test() {
-        return "storage/add/storage_form :: content";
-    }
+
 }
