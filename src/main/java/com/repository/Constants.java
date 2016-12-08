@@ -68,18 +68,21 @@ public interface Constants {
 
     //apply
     String URL_APPLY = "/apply";
-    String URL_APPLY_AJAX = "/applyajax";
     String HTML_APPLY_PREFIX = "apply/";
     String HTML_APPLY_HISTORY = HTML_APPLY_PREFIX + "history";
+
+    String URL_APPLY_AJAX = "/applyajax";
     //APPLY ADD
     String URL_APPLY_ADD = URL_APPLY + "/add";
-    String URL_APPLY_ADD_AJAX = URL_APPLY + "/addajax";
-    String URL_APPLY_CLEARFORM_AJAX = URL_APPLY_ADD + "/clearformajax";
     String URL_APPLY_ADD_ADDITEM = URL_APPLY_ADD + "/additem";
-    String URL_APPLY_ADD_ADDITEMAJAX = URL_APPLY_ADD + "/additemajax";
     String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
     String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
     String URL_APPLY_ADD_SUBMIT = URL_APPLY_ADD + "/submit";
+
+    String URL_APPLY_ADD_AJAX = URL_APPLY + "/addajax";
+    String URL_APPLY_CLEARFORM_AJAX = URL_APPLY_ADD + "/clearformajax";
+    String URL_APPLY_ADD_DELETE_AJAX = URL_APPLY_ADD + "/deleteajax";
+    String URL_APPLY_ADD_ADDITEMAJAX = URL_APPLY_ADD + "/additemajax";
 
     String HTML_APPLY_ADD_PREFIX = HTML_APPLY_PREFIX + "add/";
     String HTML_APPLY_ADD_APPLYFORM = HTML_APPLY_ADD_PREFIX + "apply_form";

@@ -13,7 +13,7 @@
 <div class="navBar" th:fragment="navBar">
     <div class="navBar-container">
         <div class="navBar-title">
-            <a>WMS</a>
+            <a href="#">WMS</a>
         </div>
         <div class="navBar-content">
             <nav>
@@ -25,7 +25,8 @@
                         <a href="#" th:href="@{/storage}">入库</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
-                        <a onclick="jumpTo('applyajax')">申请</a>
+                        <a href="#" th:href="@{/apply}">申请</a>
+                        <!--onclick="jumpTo('applyajax')"-->
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/borrow}">借用</a>
@@ -54,6 +55,10 @@
                         <a href="#" th:href="@{/manage}">管理</a>
                         <span class="arrow"></span>
                         <dl>
+<<<<<<< HEAD
+=======
+                            <dd><a href="#">审核</a></dd>
+>>>>>>> origin/master
                             <dd><a href="#">有效期管理</a></dd>
                             <dd><a href="#">库存管理</a></dd>
                             <dd><a href="#">统计信息</a></dd>

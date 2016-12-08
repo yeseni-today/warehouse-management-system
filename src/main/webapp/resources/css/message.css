@@ -67,12 +67,17 @@ ul.listNav {
     background: #ffffff;
 }
 
-.message-name, .message-date {
+.message-title, .message-date {
     font-size: 1.2em;
     margin: 1em;
 }
+.message-date{
+    color: #8e8e8e;
+}
 
 .message-content {
+    box-sizing: border-box;
+    padding: 1em;
     width: 40em;
 }
 

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:replace="title">模板</title>
+
+    <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"
+          th:href="@{/resources/css/all.css}"/>
+
+    <script src="../../../resources/js/jquery-3.1.1.js"
+            th:src="@{/resources/js/jquery-3.1.1.js}"></script>
+    <script src="../../../resources/js/main.js"
+            th:src="@{/resources/js/main.js}"></script>
+    <script src="../../../resources/js/pageSwitch.js"
+            th:src="@{/resources/js/pageSwitch.js}"></script>
+
+    <script>
+        $(document).ready(function(){
+
+        });
+    </script>
+</head>
+
+<body>
+
+<!--<div class="background"></div>-->
+
+<div id="load" class="load">
+    <img id="loadGif" src="../../../resources/picture/loading.gif"/>
+</div>
+
+<a href="#nextPage">申请</a>
+
+<div id="currentPage" class="current"></div>
+
+<div id="nextPage" class="next"></div>
+
+</body>
+</html>

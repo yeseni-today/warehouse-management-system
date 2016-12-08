@@ -24,9 +24,15 @@
 * v-0.60.3 lx
    fix sqlserver package bug +1
 * v-0.60.4 StvL <br/>
+<<<<<<< HEAD
    &nbsp; 消息页面调整
    
    
    
 * v-0.60.6 finderlo <br/>
    增加clean.py 用于删除奇怪的文件
+=======
+   &nbsp; 消息页面调整   添加增加厂家，分类功能
+* v-0.60.5 StvL <br/>
+     &nbsp; 增管理页面
+>>>>>>> origin/master

@@ -3,8 +3,13 @@
  */
 
 function change1() {
+<<<<<<< HEAD
     var url = "/storage/addajax";
     var animation = 'move-to-right';
+=======
+    var url = "/test";
+    var animation = 'move-to-left';
+>>>>>>> origin/master
     jumpToWithAnim(url, animation);
 }
 

@@ -29,7 +29,7 @@
 
     <div class="content-function">
         <div class="myDivBt">
-            <a onclick="jumpTo('apply/addajax')">新建申请</a>
+            <a href="#" onclick="jumpTo('apply/addajax')">新建申请</a>
         </div>
     </div>
 
@@ -49,7 +49,7 @@
                 <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
                 <td th:text="${itemApplicationOperation.applicationId}"></td>
                 <td th:text="${itemApplicationOperation.applicationTime}">表中没有此列</td>
-                <td th:text="${itemApplicationOperation.usersId}"></td>
+                <td th:text="${itemApplicationOperation.examineId}"></td>
                 <td th:text="${itemApplicationOperation.states}"></td>
                 <td th:text="${itemApplicationOperation.statesTime}"></td>
             </tr>
