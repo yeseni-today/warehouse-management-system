@@ -30,3 +30,5 @@
    增加clean.py 用于删除奇怪的文件
 * v-0.60.8 finderlo 
    修复message问题，增加入库和申请单查询，bug fix
+* v-0.60.9 finderlo 
+   bug fix

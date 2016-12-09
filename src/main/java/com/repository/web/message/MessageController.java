@@ -129,7 +129,7 @@ public class MessageController extends BaseController {
     @ResponseBody
     public SimpleRes delete(@RequestParam(name = "messageID", required = false, defaultValue = "") String msgId) {
         if (msgId != null && !msgId.trim().equals("")) {
-            messageService.read(msgId);
+            messageService.delete(msgId);
             return SimpleRes.success();
         } else {
             return SimpleRes.error("消息id为空");
