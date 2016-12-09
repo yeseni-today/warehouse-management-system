@@ -121,26 +121,30 @@ function msgFindBy(url, type) {
         type: type,
         success: function (result) {
             //result.content 是一个umessage的list列表
-            var messages = result.content;
-            $(".content-right .message").remove();
-            var contentRight = $("#message");
-            $.each(messages, function (i, message) {
-                msgs.push(message);
-                messageBox = "<div class='message' id='" + message.messageId + "'>" +
-                    "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
-                    "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
-                    "<div class='message-content' >" + message.messageContent + "</div>" +
-                    "<div class='message-operation'>" +
-                    "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
-                    "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
-                    "</div>" +
-                    "</div>";
-                contentRight.append(messageBox);
-
-            })
+            displayMsg(result.content)
         }
     });
     hideLoading();
+}
+
+function displayMsg(msgs) {
+    $(".content-right .message").remove();
+    var contentRight = $("#message");
+    $.each(msgs, function (i, message) {
+        if (message.messageState!=2){
+        msgs.push(message);
+        messageBox = "<div class='message' id='" + message.messageId + "'>" +
+            "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
+            "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
+            "<div class='message-content' >" + message.messageContent + "</div>" +
+            "<div class='message-operation'>" +
+            "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
+            "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
+            "</div>" +
+            "</div>";
+        contentRight.append(messageBox);
+        }
+    })
 }
 function getDate(ms) {
     var d = new Date(ms);
@@ -388,11 +392,85 @@ function msg_send() {
 }
 //todo
 function msg_hide(messageID) {
-
+    $.ajax({
+        url: "/message/delete",
+        data: {"messageID": messageID},
+        success:function (result) {
+            if(result.message=="success"){
+                //设为已读调用
+                alert("不再显示执行成功")
+            }else {
+                alert("不再显示执行失败，错误信息为："+result.message)
+            }
+        },
+        error: function () {
+            alert("你的网络有问题，请稍后重试")
+        },
+    })
 }
 
 function msg_read(messageID) {
+// alert(messageID)
+    $.ajax({
+        url: "/message/read",
+        data: {"messageID": messageID},
+        success:function (result) {
+            if(result.message=="success"){
+                //设为已读调用
+                alert("设为已读成功")
+            }else {
+                alert("设为已读失败，错误信息为："+result.message)
+            }
+        },
+        error: function () {
+            alert("你的网络有问题，请稍后重试")
+        },
+    })
+}
+//查询对应条件的入库单
+function queryStorageList() {
+    da = $('#storageQueryForm').serialize();
+    $.ajax({
+        url: "/storage/listajax",
+        data: da,
+        type: "get",
+        success: function (result) {
+            $("#result_storage_table").find("tr").remove("tr:gt(0)");
+            $.each(result.content, function (i, item) {
+                item = "<tr>" +
+                    "<td>" + item.storageId + "</td>" +
+                    "<td>" + getDate(item.storageTime) + "</td>" +
+                    "<td>" + item.opreationId + "</td>" +
+                    "<td>" + "操作" + "</td>" +
+                    "</tr>";
+                $("#result_storage_table").append(item)
+            })
+        },
+    })
+}
 
+//查询对应条件的入库单
+function queryApplyList() {
+    da = $('#applyQueryForm').serialize();
+    $.ajax({
+        url: "/apply/listajax",
+        data: da,
+        type: "get",
+        success: function (result) {
+            $("#result_apply_table").find("tr").remove("tr:gt(0)");
+            $.each(result.content, function (i, item) {
+                item = "<tr>" +
+                    "<td>" + item.applicationId + "</td>" +
+                    "<td>" + item.applicationTime + "</td>" +
+                    "<td>" + item.examineId + "</td>" +
+                    "<td>" + item.states + "</td>" +
+                    "<td>" + item.statesTime + "</td>" +
+                    "<td>" + "操作" + "</td>" +
+                    "</tr>";
+                $("#result_apply_table").append(item)
+            })
+        },
+    })
 }
 
 //审核
@@ -413,9 +491,9 @@ function getApplyFormByID(ApplyFormID) {
                 var ApplyForm = result.content;
                 for (item in ApplyForm) {
                     html += "<tr><td>" + item.itemCode + "</td>" +
-                        "<td>" +item.counts +"</td>" +
-                        "<td>" +item.applicationType+ "</td>" +
-                        "<td>" +item.applicationText+ "</td>" +
+                        "<td>" + item.counts + "</td>" +
+                        "<td>" + item.applicationType + "</td>" +
+                        "<td>" + item.applicationText + "</td>" +
                         "</td>"
                 }
                 $('#applyFormTable').append(html);

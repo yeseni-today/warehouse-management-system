@@ -28,4 +28,5 @@
 * v-0.60.5 StvL 新增管理页面
 * v-0.60.6 finderlo 
    增加clean.py 用于删除奇怪的文件
-
+* v-0.60.8 finderlo 
+   修复message问题，增加入库和申请单查询，bug fix

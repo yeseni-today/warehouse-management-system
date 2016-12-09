@@ -124,12 +124,12 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
     }
 
     public void saveOrUpdate(T t) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.saveOrUpdate(t);
     }
 
     public void delete(T t) {
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.delete(t);
     }
 
@@ -137,7 +137,7 @@ public abstract class AbstractDao<T extends Object> extends BaseObject {
         if (t == null) {
             return;
         }
-        Session session = sessionFactory.openSession();
+        Session session = sessionFactory.getCurrentSession();
         session.update(t);
     }
 

@@ -6,21 +6,20 @@ package com.repository;
 public interface Constants {
     /**
      * 需要模块引擎前缀
-     * */
+     */
     String TILES_PREFIX = "tiles/";
     /**
      * 重定向前缀
-     * */
+     */
     String REDIRECT = "redirect:";
     /**
      * 默认允许借用的数量
-     * */
+     */
     int ALLOW_COUNT = 5;
     /**
      * 一天的毫秒数
-     * */
+     */
     long DAY_1_MILLIS = 1000 * 60 * 60 * 24;
-
 
 
     String URL_ADD_NEW_CATEGORY = "/newcategory";
@@ -47,6 +46,7 @@ public interface Constants {
 
     //storage
     String URL_STORAGE = "/storage";
+    String URL_STORAGE_LIST_AJAX = URL_STORAGE + "/listajax";
     String HTML_STORAGE_PREFIX = "storage/";
     String HTML_STORAGE_HISTORY = HTML_STORAGE_PREFIX + "history";
     //storage-add
@@ -68,6 +68,7 @@ public interface Constants {
 
     //apply
     String URL_APPLY = "/apply";
+    String URL_APPLY_LIST_AJAX = URL_APPLY + "/listajax";
     String HTML_APPLY_PREFIX = "apply/";
     String HTML_APPLY_HISTORY = HTML_APPLY_PREFIX + "history";
 
@@ -124,7 +125,9 @@ public interface Constants {
     String HTML_LOG_HISTORY = HTML_LOG_PREFIX + "history";
     String HTML_LOG_LOG = HTML_LOG_PREFIX + "log";
 
-
+    //manage
+    String URL_MANAGE_EXAMEINE = "/manage/examine";
+    String HTML_MANAGE_EXAMINE = "/manage/examine";
 
     //error
     String URL_ERROR_GENERAL = "/generalError";

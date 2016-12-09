@@ -4,11 +4,13 @@ import com.repository.entity.MessageEntity;
 
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
 
 @Component
 @Repository
+@Transactional
 public class MessageDao extends AbstractDao<MessageEntity> {
 
 

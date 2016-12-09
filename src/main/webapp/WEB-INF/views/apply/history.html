@@ -33,17 +33,46 @@
         </div>
     </div>
 
+    <div class="content-query myInput">
+        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
+        <!--/*@thymesVar id="do" type=""*/-->
+        <form action="#" id="applyQueryForm" th:action="@{/query/queryItem}" method="get">
+            <div class="content-query-left">
+                <label>
+                    申请单Id：
+                    <input type="text" name="applicationId"/>
+                </label>
+                <label>
+                    审核状态：
+                    <input type="text" name="states"/>
+                </label>
+                <label>
+                    审核人ID：
+                    <input type="text" name="examineId"/>
+                </label>
+                <label>
+                    最近多少天：
+                    <input type="number" name="day"/>
+                </label>
+            </div>
+            <div class="content-query-right icon-search">
+                <input type="button" onclick="queryApplyList()" value="查询"/>
+            </div>
+        </form>
+    </div>
+
     <div class="content-result myTable">
-        <table>
+        <table id="result_apply_table">
             <tr>
                 <th>申请单编号</th>
                 <th>申请日期</th>
                 <th>审核人员编号</th>
                 <th>审核状态</th>
                 <th>审核日期</th>
+                <th>详情</th>
             </tr>
             <tr th:if="${history==null||history.isEmpty()}">
-                <td colspan="5">没有申请单信息</td>
+                <td colspan="6">没有申请单信息</td>
             </tr>
             <tr th:each="itemApplicationOperation:${history}">
                 <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
@@ -52,6 +81,7 @@
                 <td th:text="${itemApplicationOperation.examineId}"></td>
                 <td th:text="${itemApplicationOperation.states}"></td>
                 <td th:text="${itemApplicationOperation.statesTime}"></td>
+                <td>详情</td>
             </tr>
         </table>
     </div>

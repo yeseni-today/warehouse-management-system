@@ -1,5 +1,49 @@
+buildscript {
+	repositories {
+		maven { url "https://repo.spring.io/libs-release" }
+		mavenLocal()
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.BUILD-SNAPSHOT"
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+	maven { url "https://repo.spring.io/libs-release" }
+}
+
+apply plugin: 'spring-boot'
 apply plugin: 'java'
 apply plugin: 'maven'
+apply plugin: 'idea'
+
+idea {
+    module {
+        inheritOutputDirs = false
+        outputDir = file("$buildDir/classes/main/")
+    }
+}
+
+springBoot{
+    mainClass = 'com.repository.Application'
+    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
+}
+
+jar {
+    manifest{
+        attributes 'Main-Class':'com.repository.Application'
+    }
+	baseName = 'wms'
+	version =  '0.1.0'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
 
 group = 'com.repository'
 version = '0.04'
@@ -33,7 +77,6 @@ dependencies {
     compile ('jstl:jstl:1.2')
 //    compile group: 'org.jetbrains', name: 'annotations', version:'RELEASE'
     compile ('com.google.code.findbugs:jsr305:2.0.1')
-    testCompile('org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE') {
-        exclude(module: 'commons-logging')
-    }
+    testCompile('org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE')
+ 
 }

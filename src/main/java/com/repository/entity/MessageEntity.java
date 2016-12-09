@@ -22,6 +22,9 @@ public class MessageEntity {
     private String messageTitle;
 
     private State messageState;
+    public enum State{
+        UNREAD,READ,DELETE
+    }
     @Basic
     @Column(name = "message_state")
     public State getMessageState() {
@@ -32,9 +35,6 @@ public class MessageEntity {
         this.messageState = messageState;
     }
 
-    public enum State{
-        UNREAD,READ,DELETE
-    }
 
     @Override
     public String toString() {
