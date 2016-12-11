@@ -59,7 +59,8 @@
 
     <div class="content-result myTable">
         <table id="result_table">
-            <tr id="first">
+            <!--<tr id="first">-->
+            <tr>
                 <th>条码</th>
                 <th>名称</th>
                 <th>类别</th>
@@ -69,7 +70,8 @@
             <tr th:if="${items == null || items.empty}">
                 <td colspan="5">No messages</td>
             </tr>
-            <tr id="result_tr" th:each="item : ${items} ">
+            <!--<tr id="result_tr" th:each="item : ${items} ">-->
+            <tr  th:each="item : ${items} ">
                 <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
                 <td th:text="${item.itemCode}"></td>
                 <td th:text="${item.itemName}"></td>

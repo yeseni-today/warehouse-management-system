@@ -6,7 +6,7 @@ buildscript {
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.0.RELEASE")
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.BUILD-SNAPSHOT"
+//        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.4.1.BUILD-SNAPSHOT"
 	}
 }
 
@@ -30,7 +30,6 @@ idea {
 
 springBoot{
     mainClass = 'com.repository.Application'
-    jvmArgs "-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5005"
 }
 
 jar {

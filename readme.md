@@ -32,3 +32,5 @@
    修复message问题，增加入库和申请单查询，bug fix
 * v-0.60.9 finderlo 
    bug fix
+* v-0.60.9 finderlo
+   修改显示有特效

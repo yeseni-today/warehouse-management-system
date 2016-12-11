@@ -58,6 +58,7 @@ function addCompany() {
     })
 }
 
+
 function query() {
     var values = $("#queryinput").serialize();
     $.ajax({
@@ -65,20 +66,97 @@ function query() {
         url: "/query/queryItem",    //向springboot请求数据的url
         data: values,
         success: function (items) {
-            $("#result_table").find("tr").remove("tr:gt(0)");
-            //没有完成的部分，需要再每次查询后来清空原有的值
-            $.each(items, function (i, item) {
-                item = "<tr>" +
+            var table = $("#result_table");
+            table.find("tr").remove("tr:gt(0)");
+            var _display = function (item) {
+                var itemhtml = "<tr style='display: none' id='tr" + item.itemCode + "'>" +
                     "<td>" + item.itemCode + "</td>" +
                     "<td>" + item.itemName + "</td>" +
                     "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
                     "<td>" + "操作" + "</td>" +
                     "</tr>";
-                $("#result_table").append(item)
-            });
+                table.append(itemhtml);
+            }
+            var _afterdisplay = function (item) {
+                $("#tr" + item.itemCode).fadeIn(500);
+            }
+            beautifyDisplay(_display,_afterdisplay,items,"query");
         }
     })
+}
+var displayarraysId = [];
+var displayarraysIsLoading = [];
+var displayarraysInterValId = [];
+var displayarraysCurrentIntervalID;
+/**
+ * 定时执行显示的数据
+ * @param display 如何显示数据函数
+ * @param afterdisplay 显示数据之后的函数
+ * @param items 显示的数据数组
+ * @param id 指定一个id
+ * */
+function beautifyDisplay(display, afterdisplay, items, id) {
+    var flag = false;
+    //先查看是否是之前是否还有这个ID,有则获取index，没有则新增
+    var Idindex = 0;
+    for (i = 0; i < displayarraysId.length; i++) {
+        if (displayarraysId[i] == id) {
+            flag = true;
+            Idindex = i;
+            break;
+        }
+    }
+
+    //如果没有，放入到数组中
+    if (!flag) {
+        displayarraysId[displayarraysId.length] = id;
+        Idindex = displayarraysId.length - 1;
+    }
+
+    var intervid = displayarraysInterValId[Idindex]
+    //查看是否正在执行
+    if (displayarraysIsLoading[Idindex] == true) {
+        //如果正在执行，先关闭定时器
+        notifyClearInterval(intervid)
+    }
+    //启动定时器显示数据
+    var itemindex = items.length > 0 ? 0 : -1;
+    console.log("数据长度："+items.length)
+    //设置正在执行
+    displayarraysIsLoading[Idindex] = true;
+    //将interval的ID放置到数组中
+    var _close = function () {
+        if (typeof(displayarraysCurrentIntervalID) != "undefined") {
+            notifyClearInterval(displayarraysCurrentIntervalID)
+            displayarraysIsLoading[Idindex] = false;
+        }
+    };
+  displayarraysCurrentIntervalID =   displayarraysInterValId[Idindex] = setInterval(function () {
+        if (itemindex == -1) {
+            _close();
+            return;
+        }
+        var item = items[itemindex];
+        //显示数据
+        display(item);
+        //回调数据
+        afterdisplay(item);
+        if (itemindex < items.length - 1) {
+            itemindex++;
+        } else {
+            _close();
+        }
+    }, 100);
+}
+
+
+/**
+ * 通知关闭定时器
+ * @param a 定时器的ID
+ * */
+function notifyClearInterval(a) {
+    clearInterval(a);
 }
 
 function msg_send() {
@@ -131,18 +209,18 @@ function displayMsg(msgs) {
     $(".content-right .message").remove();
     var contentRight = $("#message");
     $.each(msgs, function (i, message) {
-        if (message.messageState!=2){
-        msgs.push(message);
-        messageBox = "<div class='message' id='" + message.messageId + "'>" +
-            "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
-            "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
-            "<div class='message-content' >" + message.messageContent + "</div>" +
-            "<div class='message-operation'>" +
-            "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
-            "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
-            "</div>" +
-            "</div>";
-        contentRight.append(messageBox);
+        if (message.messageState != 2) {
+            msgs.push(message);
+            messageBox = "<div class='message' id='" + message.messageId + "'>" +
+                "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
+                "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
+                "<div class='message-content' >" + message.messageContent + "</div>" +
+                "<div class='message-operation'>" +
+                "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
+                "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
+                "</div>" +
+                "</div>";
+            contentRight.append(messageBox);
         }
     })
 }
@@ -390,17 +468,20 @@ function msg_send() {
         }
     })
 }
-//todo
+/**
+ * todo 不再显示一条信息
+ * 这里直接调用删除信息ajax
+ * */
 function msg_hide(messageID) {
     $.ajax({
         url: "/message/delete",
         data: {"messageID": messageID},
-        success:function (result) {
-            if(result.message=="success"){
+        success: function (result) {
+            if (result.message == "success") {
                 //设为已读调用
                 alert("不再显示执行成功")
-            }else {
-                alert("不再显示执行失败，错误信息为："+result.message)
+            } else {
+                alert("不再显示执行失败，错误信息为：" + result.message)
             }
         },
         error: function () {
@@ -408,18 +489,20 @@ function msg_hide(messageID) {
         },
     })
 }
-
+/**
+ * 已读一条消息
+ * */
 function msg_read(messageID) {
 // alert(messageID)
     $.ajax({
         url: "/message/read",
         data: {"messageID": messageID},
-        success:function (result) {
-            if(result.message=="success"){
+        success: function (result) {
+            if (result.message == "success") {
                 //设为已读调用
                 alert("设为已读成功")
-            }else {
-                alert("设为已读失败，错误信息为："+result.message)
+            } else {
+                alert("设为已读失败，错误信息为：" + result.message)
             }
         },
         error: function () {
@@ -436,15 +519,20 @@ function queryStorageList() {
         type: "get",
         success: function (result) {
             $("#result_storage_table").find("tr").remove("tr:gt(0)");
-            $.each(result.content, function (i, item) {
-                item = "<tr>" +
+            var _display = function (item) {
+                var itemhtml = "<tr style='display: none' id='tr"+item.storageId+"'>" +
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.opreationId + "</td>" +
                     "<td>" + "操作" + "</td>" +
                     "</tr>";
-                $("#result_storage_table").append(item)
-            })
+                $("#result_storage_table").append(itemhtml)
+            }
+            var _afterdisplay = function (item) {
+                $("#tr" + item.storageId).fadeIn(500);
+            }
+            beautifyDisplay(
+                _display,_afterdisplay,result.content,"storage");
         },
     })
 }
@@ -458,8 +546,8 @@ function queryApplyList() {
         type: "get",
         success: function (result) {
             $("#result_apply_table").find("tr").remove("tr:gt(0)");
-            $.each(result.content, function (i, item) {
-                item = "<tr>" +
+            var _display = function (item) {
+               item1 = "<tr style='display: none' id='tr"+item.applicationId+"'>" +
                     "<td>" + item.applicationId + "</td>" +
                     "<td>" + item.applicationTime + "</td>" +
                     "<td>" + item.examineId + "</td>" +
@@ -467,8 +555,12 @@ function queryApplyList() {
                     "<td>" + item.statesTime + "</td>" +
                     "<td>" + "操作" + "</td>" +
                     "</tr>";
-                $("#result_apply_table").append(item)
-            })
+                $("#result_apply_table").append(item1)
+            }
+            var _afterdisplay = function (item) {
+                $("#tr"+item.applicationId).fadeIn(500);
+            }
+            beautifyDisplay(_display,_afterdisplay,result.content,"apply")
         },
     })
 }
