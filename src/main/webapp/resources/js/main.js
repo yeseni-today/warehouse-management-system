@@ -8,6 +8,15 @@ $(document).ready(function () {
         query();
     });
 });
+$(document).ready(function () {
+    $("#slide_panel_bt").click(function () {
+        if ($(".slide-panel").css("display") == "none") {
+            $(".slide-panel").slideDown("slow");
+        } else {
+            $(".slide-panel").slideUp("slow");
+        }
+    });
+});
 
 $(document).ready(msg_findmsg());
 
@@ -58,7 +67,6 @@ function addCompany() {
     })
 }
 
-
 function query() {
     var values = $("#queryinput").serialize();
     $.ajax({
@@ -74,17 +82,43 @@ function query() {
                     "<td>" + item.itemName + "</td>" +
                     "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
-                    "<td>" + "操作" + "</td>" +
+                    "<td onclick=\"openItemInfoPop(\'" + item.itemCode + "\')\">" + "详情" + "</td>" +
                     "</tr>";
                 table.append(itemhtml);
             }
             var _afterdisplay = function (item) {
                 $("#tr" + item.itemCode).fadeIn(500);
             }
-            beautifyDisplay(_display,_afterdisplay,items,"query");
+            beautifyDisplay(_display, _afterdisplay, items, "query");
         }
     })
 }
+
+function openItemInfoPop(itemCode) {
+    $(".pop li").css({"min-height": "3.5em", "line-height": "3.5em"});
+    $.ajax({
+        url: "/query/itemInfo",
+        type: "post",
+        data: {"itemCode": itemCode},
+        success: function (item) {
+            $("[name='itemCode']").val(item.itemCode);
+            $("[name='itemName']").val(item.itemName);
+            $("[name='itemSpec']").val(item.itemSpec);
+            $("[name='itemCount']").val(item.itemCount);
+            $("[name='itemPrice']").val(item.itemPrice);
+            $("[name='itemIntroduce']").val(item.itemIntroduce);
+            $("[name='itemBorrowTimelimit']").val(item.itemBorrowTimelimit);
+            $("[name='itemState']").val(item.itemState);
+            $("[name='itemExamine']").val(item.itemExamine);
+            $("[name='itemRemind']").val(item.itemRemind);
+            $("[name='itemCategory']").val(item.itemCategory);
+            $("[name='companyName']").val(item.companyName);
+            $("[name='storageLocation']").val(item.storageLocation);
+        }
+    });
+    openPop();
+}
+
 var displayarraysId = [];
 var displayarraysIsLoading = [];
 var displayarraysInterValId = [];
@@ -114,7 +148,7 @@ function beautifyDisplay(display, afterdisplay, items, id) {
         Idindex = displayarraysId.length - 1;
     }
 
-    var intervid = displayarraysInterValId[Idindex]
+    var intervid = displayarraysInterValId[Idindex];
     //查看是否正在执行
     if (displayarraysIsLoading[Idindex] == true) {
         //如果正在执行，先关闭定时器
@@ -122,17 +156,17 @@ function beautifyDisplay(display, afterdisplay, items, id) {
     }
     //启动定时器显示数据
     var itemindex = items.length > 0 ? 0 : -1;
-    console.log("数据长度："+items.length)
+    console.log("数据长度：" + items.length);
     //设置正在执行
     displayarraysIsLoading[Idindex] = true;
     //将interval的ID放置到数组中
     var _close = function () {
         if (typeof(displayarraysCurrentIntervalID) != "undefined") {
-            notifyClearInterval(displayarraysCurrentIntervalID)
+            notifyClearInterval(displayarraysCurrentIntervalID);
             displayarraysIsLoading[Idindex] = false;
         }
     };
-  displayarraysCurrentIntervalID =   displayarraysInterValId[Idindex] = setInterval(function () {
+    displayarraysCurrentIntervalID = displayarraysInterValId[Idindex] = setInterval(function () {
         if (itemindex == -1) {
             _close();
             return;
@@ -335,7 +369,17 @@ function openPopDetails(itemForm) {
     openPop();
 }
 
+function openStorageFormInfoPop(storageFormId) {
+    openPop();
+    $.ajax({
+        url:"/storage/StorageFormInfo",
+        type:"post",
+        data:{"storageFormId":storageFormId},
+        success:function (storageForm) {
 
+        }
+    })
+}
 /*function openPopMessage(message) {
  // alert(msgs[0]);
  // var d = "";
@@ -520,7 +564,7 @@ function queryStorageList() {
         success: function (result) {
             $("#result_storage_table").find("tr").remove("tr:gt(0)");
             var _display = function (item) {
-                var itemhtml = "<tr style='display: none' id='tr"+item.storageId+"'>" +
+                var itemhtml = "<tr style='display: none' id='tr" + item.storageId + "'>" +
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.opreationId + "</td>" +
@@ -532,7 +576,7 @@ function queryStorageList() {
                 $("#tr" + item.storageId).fadeIn(500);
             }
             beautifyDisplay(
-                _display,_afterdisplay,result.content,"storage");
+                _display, _afterdisplay, result.content, "storage");
         },
     })
 }
@@ -547,7 +591,7 @@ function queryApplyList() {
         success: function (result) {
             $("#result_apply_table").find("tr").remove("tr:gt(0)");
             var _display = function (item) {
-               item1 = "<tr style='display: none' id='tr"+item.applicationId+"'>" +
+                item1 = "<tr style='display: none' id='tr" + item.applicationId + "'>" +
                     "<td>" + item.applicationId + "</td>" +
                     "<td>" + item.applicationTime + "</td>" +
                     "<td>" + item.examineId + "</td>" +
@@ -558,9 +602,9 @@ function queryApplyList() {
                 $("#result_apply_table").append(item1)
             }
             var _afterdisplay = function (item) {
-                $("#tr"+item.applicationId).fadeIn(500);
+                $("#tr" + item.applicationId).fadeIn(500);
             }
-            beautifyDisplay(_display,_afterdisplay,result.content,"apply")
+            beautifyDisplay(_display, _afterdisplay, result.content, "apply")
         },
     })
 }

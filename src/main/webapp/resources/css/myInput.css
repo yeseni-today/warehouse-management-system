@@ -1,4 +1,4 @@
-.myInput input, select, textarea {
+.myInput input, select, textarea , button{
     width: 10em;
     height: 2.2em;
     padding: 0 1em;
@@ -28,7 +28,7 @@
     background: #eaeded;
 }
 
-.myInput input[type="submit"], input[type="button"],input[type="reset"] {
+.myInput input[type="submit"], input[type="button"],input[type="reset"] ,button{
     width: 8em;
     height: 2.5em;
     border: 0;
@@ -36,7 +36,7 @@
     background: #1abc9c;
 }
 
-.myInput input[type="submit"]:hover, input[type="button"]:hover ,input[type="reset"]:hover{
+.myInput input[type="submit"]:hover, input[type="button"]:hover ,input[type="reset"]:hover, button:hover{
     background: #2fe2bf;
 }
 

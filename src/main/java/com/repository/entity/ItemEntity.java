@@ -25,9 +25,8 @@ public class ItemEntity implements Cloneable {
     private String itemIntroduce;
     private int itemBorrowTimelimit;
     private String itemState;
-    private String itemExamine;
-    private int itemRemind;
-
+    private String itemExamine;//物品审核信息
+    private int itemRemind;    //物品库存提醒
     private CategoryEntity categoryEntity;
     private CompanyEntity companyEntity;
 

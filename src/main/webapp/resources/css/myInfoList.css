@@ -8,17 +8,17 @@
 
 .myInfoList .name {
     float: left;
-    height: 4em;
+    min-height: inherit;
     width: 10em;
-    line-height: 4em;
+    line-height: inherit;
     text-align: right;
 }
 
 .myInfoList .value {
     float: left;
-    min-height: 4em;
+    min-height: inherit;
     width: 12em;
-    line-height: 4em;
+    line-height: inherit;
     margin-left: 3em;
     text-align: left;
 }

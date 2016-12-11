@@ -42,7 +42,9 @@ public interface Constants {
     //query
     String URL_QUERY = "/query";
     String URL_QUERY_QUERYITEM = URL_QUERY + "/queryItem";
+    String URL_QUERY_ITEMINFO = URL_QUERY+"/itemInfo";
     String HTML_QUERY_LIST = "query/list";
+
 
     //storage
     String URL_STORAGE = "/storage";
