@@ -95,7 +95,7 @@ function query() {
 }
 
 function openItemInfoPop(itemCode) {
-    $(".pop li").css({"min-height": "3.5em", "line-height": "3.5em"});
+    $(".pop li").css({"min-height": "3em", "line-height": "3em"});
     $.ajax({
         url: "/query/itemInfo",
         type: "post",
