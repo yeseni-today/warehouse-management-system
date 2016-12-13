@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 @Controller
 public class MessageController extends BaseController {

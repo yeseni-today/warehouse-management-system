@@ -1,6 +1,6 @@
 package com.repository.dao;
 
-import com.repository.Constants;
+import com.repository.common.Constants;
 import com.repository.entity.ItemInOperationEntity;
 
 import org.hibernate.Session;

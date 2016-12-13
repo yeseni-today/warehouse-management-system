@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 @Controller
 @RequestMapping(URL_BORROW)

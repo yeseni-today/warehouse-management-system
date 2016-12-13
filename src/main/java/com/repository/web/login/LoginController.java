@@ -13,7 +13,7 @@ import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 /**
  * Created by Finderlo on 2016/11/5.

@@ -1,7 +1,6 @@
 package com.repository.config.secuity;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
@@ -11,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 
 import javax.sql.DataSource;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 /**
  * Created by Finderlo on 2016/11/8.
  */

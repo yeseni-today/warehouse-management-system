@@ -8,7 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 @Controller
 public class LogController {

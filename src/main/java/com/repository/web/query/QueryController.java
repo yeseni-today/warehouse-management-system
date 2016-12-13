@@ -4,6 +4,7 @@ import com.repository.base.BaseController;
 import com.repository.entity.CategoryEntity;
 import com.repository.entity.ItemEntity;
 
+import com.repository.model.SimpleRes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -19,13 +20,7 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.HTML_QUERY_LIST;
-import static com.repository.Constants.SESSION_CATEGORIES;
-import static com.repository.Constants.SESSION_CATEGORIES_A;
-import static com.repository.Constants.SESSION_COMPANIES;
-import static com.repository.Constants.TILES_PREFIX;
-import static com.repository.Constants.URL_QUERY;
-import static com.repository.Constants.URL_QUERY_QUERYITEM;
+import static com.repository.common.Constants.*;
 
 
 @Controller
@@ -38,6 +33,18 @@ public class QueryController extends BaseController {
         session.setAttribute(SESSION_COMPANIES, companyDao.findAll());
         logger.trace(categories());
         logger.trace(categoriesA());
+    }
+
+    /**
+     * 通过物品id来查
+     * */
+    @RequestMapping(URL_QUERY_ITEMINFO)
+    @ResponseBody
+    public SimpleRes queryItem(@RequestParam("itemCode") String itemCode){
+        if (itemCode==null||itemCode.trim().equals("")){
+            return SimpleRes.error("物品编码为空");
+        }
+        return SimpleRes.success(itemDao.findById(itemCode));
     }
 
 

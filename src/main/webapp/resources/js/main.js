@@ -333,6 +333,10 @@ function closePop() {
     }, 500);
 }
 
+function closeapplyFormTablePop() {
+    closePop();
+    $("[id ^='tr']").css("display","none")
+}
 function openAddCategory() {
     $(".pop-addCategory").css('display', 'block');
     setTimeout(function () {
@@ -568,7 +572,7 @@ function queryStorageList() {
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.opreationId + "</td>" +
-                    "<td>" + "操作" + "</td>" +
+                    "<td onclick=\"openStorageFormInfoPop(\'"+item.storageId+"\')\">" + "操作" + "</td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
             }
@@ -581,7 +585,7 @@ function queryStorageList() {
     })
 }
 
-//查询对应条件的入库单
+//查询对应条件的申请单
 function queryApplyList() {
     da = $('#applyQueryForm').serialize();
     $.ajax({
@@ -609,34 +613,52 @@ function queryApplyList() {
     })
 }
 
+function getObjextInfo(object) {
+    var s = "";
+    for(var i in object){
+        s+="["+i+":"+object[i]+"];"
+    }
+    return s
+}
+
 //审核
-function getApplyFormByID(ApplyFormID) {
+function getApplyFormByID(application_id) {
     var html = "";
 
     $.ajax({
-        url: "",
-        type: "post",
-        date: {"ApplyFormID": ApplyFormID},
+        url: "/apply/applyinfo.json?application_id="+application_id,
+        type: "get",
+        // date: {"application_id": application_id},
         success: function (result) {
             if (result.message == "success") {
-                $('#applyFromID').val(ApplyFormID);
+                openPop()
+                $('#applyFromID').val(result.content.applicationId);
                 $('#usersId').val(result.content.usersId);
                 $('#applyTime').val(result.content.applicationTime);
 
 
-                var ApplyForm = result.content;
-                for (item in ApplyForm) {
-                    html += "<tr><td>" + item.itemCode + "</td>" +
+                var _display = function (item) {
+                    // alert(getObjextInfo(item))
+                    var html = "<tr style='display:none;' id='tr1"+item.itemCode+"'><td>" + item.itemCode + "</td>" +
+                    // var html = "<tr id='tr'"+item.itemCode+"><td>" + item.itemCode + "</td>" +
                         "<td>" + item.counts + "</td>" +
                         "<td>" + item.applicationType + "</td>" +
                         "<td>" + item.applicationText + "</td>" +
-                        "</td>"
+                        "</td>";
+                    $('#applyFormTable').append(html);
                 }
-                $('#applyFormTable').append(html);
-            } else {
 
+                var _afterdisplay = function (item) {
+                    console.log('#tr1'+item.itemCode)
+                    $('#tr1'+item.itemCode).fadeIn(1000);
+                }
+
+                beautifyDisplay(_display,_afterdisplay,result.content.items,"申请单列表")
+            } else {
+                alert("获取失败，失败信息："+result.message)
             }
         }
 
     })
+
 }

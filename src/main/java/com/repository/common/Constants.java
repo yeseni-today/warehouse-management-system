@@ -1,9 +1,9 @@
-package com.repository;
+package com.repository.common;
 
 /**
  * Created by Finderlo on 11/17/2016.
  */
-public interface Constants {
+public interface Constants extends ApplyContants,ManageContants {
     /**
      * 需要模块引擎前缀
      */
@@ -68,28 +68,6 @@ public interface Constants {
     String HTML_STORAGE_ADD_SETINFO = HTML_STORAGE_ADD_PREFIX + "setinfo";
 
 
-    //apply
-    String URL_APPLY = "/apply";
-    String URL_APPLY_LIST_AJAX = URL_APPLY + "/listajax";
-    String HTML_APPLY_PREFIX = "apply/";
-    String HTML_APPLY_HISTORY = HTML_APPLY_PREFIX + "history";
-
-    String URL_APPLY_AJAX = "/applyajax";
-    //APPLY ADD
-    String URL_APPLY_ADD = URL_APPLY + "/add";
-    String URL_APPLY_ADD_ADDITEM = URL_APPLY_ADD + "/additem";
-    String URL_APPLY_ADD_ADDITEMS = URL_APPLY_ADD + "/additems";
-    String URL_APPLY_ADD_QUERY_ITEM = URL_APPLY_ADD + "/queryItem";
-    String URL_APPLY_ADD_SUBMIT = URL_APPLY_ADD + "/submit";
-
-    String URL_APPLY_ADD_AJAX = URL_APPLY + "/addajax";
-    String URL_APPLY_CLEARFORM_AJAX = URL_APPLY_ADD + "/clearformajax";
-    String URL_APPLY_ADD_DELETE_AJAX = URL_APPLY_ADD + "/deleteajax";
-    String URL_APPLY_ADD_ADDITEMAJAX = URL_APPLY_ADD + "/additemajax";
-
-    String HTML_APPLY_ADD_PREFIX = HTML_APPLY_PREFIX + "add/";
-    String HTML_APPLY_ADD_APPLYFORM = HTML_APPLY_ADD_PREFIX + "apply_form";
-    String HTML_APPLY_ADD_ADDITEM = HTML_APPLY_ADD_PREFIX + "additem";
 
 
     //borrow
@@ -127,9 +105,7 @@ public interface Constants {
     String HTML_LOG_HISTORY = HTML_LOG_PREFIX + "history";
     String HTML_LOG_LOG = HTML_LOG_PREFIX + "log";
 
-    //manage
-    String URL_MANAGE_EXAMEINE = "/manage/examine";
-    String HTML_MANAGE_EXAMINE = "/manage/examine";
+
 
     //error
     String URL_ERROR_GENERAL = "/generalError";

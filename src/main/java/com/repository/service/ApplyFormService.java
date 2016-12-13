@@ -1,5 +1,6 @@
 package com.repository.service;
 
+import com.repository.common.ApplyContants;
 import com.repository.dao.CategoryDao;
 import com.repository.dao.CompanyDao;
 import com.repository.dao.ItemDao;
@@ -126,8 +127,8 @@ public class ApplyFormService {
 
     public static final String NO_STATES = "审核失败";
     public static final String ING_STATES = "正在审核";
-    public static final String DEFAULT_STATES = "未审核";
-    public static final String SUCCESS_STATES = "审核通过";
+    public static final String DEFAULT_STATES = ApplyContants.APPLY_NEED_EXAMINE;
+    public static final String SUCCESS_STATES = ApplyContants.APPLY_NONEED_EXAMINE;
 
     public ItemApplicationOperationEntity toApplyOpreation(ApplyForm applyForm) {
         ItemApplicationOperationEntity operationEntity = new ItemApplicationOperationEntity();

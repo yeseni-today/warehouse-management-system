@@ -15,7 +15,7 @@ import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 
 /**

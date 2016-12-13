@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 import java.util.stream.Collectors;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 /**
  * Created by Finderlo on 2016/12/7.

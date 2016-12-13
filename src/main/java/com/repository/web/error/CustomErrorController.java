@@ -13,7 +13,7 @@ import java.text.MessageFormat;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static com.repository.Constants.*;
+import static com.repository.common.Constants.*;
 
 @Controller
 class CustomErrorController implements ErrorController {

@@ -23,23 +23,23 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpSession;
 
-import static com.repository.Constants.HTML_STORAGE_ADD_ADDITEM;
-import static com.repository.Constants.HTML_STORAGE_ADD_GETINFO;
-import static com.repository.Constants.HTML_STORAGE_ADD_SETINFO;
-import static com.repository.Constants.HTML_STORAGE_ADD_STORAGE_FORM;
-import static com.repository.Constants.REDIRECT;
-import static com.repository.Constants.SESSION_STORAGE_FORM;
-import static com.repository.Constants.TILES_PREFIX;
-import static com.repository.Constants.URL_STORAGE;
-import static com.repository.Constants.URL_STORAGE_ADD;
-import static com.repository.Constants.URL_STORAGE_ADD_ADDITEM;
-import static com.repository.Constants.URL_STORAGE_ADD_ADDITEM_AJAX;
-import static com.repository.Constants.URL_STORAGE_ADD_AJAX;
-import static com.repository.Constants.URL_STORAGE_ADD_DELETEALL_AJAX;
-import static com.repository.Constants.URL_STORAGE_ADD_DELETEITEM_AJAX;
-import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
-import static com.repository.Constants.URL_STORAGE_ADD_SET_ITEM_INFO_AJAX;
-import static com.repository.Constants.URL_STORAGE_ADD_SUBMIT;
+import static com.repository.common.Constants.HTML_STORAGE_ADD_ADDITEM;
+import static com.repository.common.Constants.HTML_STORAGE_ADD_GETINFO;
+import static com.repository.common.Constants.HTML_STORAGE_ADD_SETINFO;
+import static com.repository.common.Constants.HTML_STORAGE_ADD_STORAGE_FORM;
+import static com.repository.common.Constants.REDIRECT;
+import static com.repository.common.Constants.SESSION_STORAGE_FORM;
+import static com.repository.common.Constants.TILES_PREFIX;
+import static com.repository.common.Constants.URL_STORAGE;
+import static com.repository.common.Constants.URL_STORAGE_ADD;
+import static com.repository.common.Constants.URL_STORAGE_ADD_ADDITEM;
+import static com.repository.common.Constants.URL_STORAGE_ADD_ADDITEM_AJAX;
+import static com.repository.common.Constants.URL_STORAGE_ADD_AJAX;
+import static com.repository.common.Constants.URL_STORAGE_ADD_DELETEALL_AJAX;
+import static com.repository.common.Constants.URL_STORAGE_ADD_DELETEITEM_AJAX;
+import static com.repository.common.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
+import static com.repository.common.Constants.URL_STORAGE_ADD_SET_ITEM_INFO_AJAX;
+import static com.repository.common.Constants.URL_STORAGE_ADD_SUBMIT;
 
 /**
  * Created by Finderlo on 2016/11/9.
