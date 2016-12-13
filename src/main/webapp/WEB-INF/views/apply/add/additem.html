@@ -15,7 +15,7 @@
     <div class="content-nav">
         <div class="titleNav">
             <div class="title_nav title_nav_previous">
-                <a href="apply_form.html">新建申请单</a>
+                <a href="#" onclick="returnTo('apply/addajax')">新建申请单</a>
             </div>
             <div class="title_nav title_nav_Now">
                 <a>添加物品</a>
@@ -26,7 +26,7 @@
     <div class="content-query myInput">
         <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
         <!--/*@thymesVar id="do" type=""*/-->
-        <form action="#" th:action="@{/apply/add/queryItem}" method="get">
+        <form action="#" id="queryAddinput">
             <div class="content-query-left">
                 <label>
                     物品条码：
@@ -51,15 +51,16 @@
                     </select>
                 </label>
             </div>
-            <div class="content-query-right">
-                <input type="submit" value="查询"/>
+            <div class="content-query-right icon-search">
+                <input type="button" id="queryAdd" value="查询" onclick="applyQueryAdd()"/>
             </div>
         </form>
     </div>
 
     <div class="content-result myTable">
         <!--<form action="apply_form.html" method="post" th:action="@{/apply/add}">-->
-            <table>
+            <table id="add_result_table">
+                <thead>
                 <tr>
                     <th>条码</th>
                     <th>名称</th>
@@ -67,11 +68,11 @@
                     <th>数量</th>
                     <th>选择</th>
                 </tr>
-                <tr th:if="${items == null || items.empty}">
-                    <td colspan="5">No messages</td>
-                </tr>
-                <tr th:each="item : ${items} ">
-                    <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
+                </thead>
+                <tbody>
+                </tbody>
+                <!--<tr th:each="item : ${items} ">
+                    &lt;!&ndash;/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/&ndash;&gt;
                     <td th:text="${item.itemCode}"></td>
                     <td th:text="${item.itemName}"></td>
                     <td th:text="${item.categoryEntity.getCategoryName()}"></td>
@@ -80,8 +81,7 @@
                         th:onclick="'javascript:openPopAdd(\''+${item.itemCode}+'\',\''+${item.itemName}+'\')'">
                         <div class="icon-plus"></div>
                     </td>
-                </tr>
-
+                </tr>-->
                 <div class="pop-bg">
                     <div class="pop myInfoList myInput">
                         <div class="pop-close">
@@ -97,8 +97,7 @@
                                             物品条形码：
                                         </div>
                                         <div class="value">
-                                            <input type="text" name="itemCode"
-                                                   readonly="readonly"/>
+                                            <input type="text" name="itemCode" readonly="readonly"/>
                                         </div>
                                     </label>
                                 </li>
@@ -108,8 +107,7 @@
                                             物品名称：
                                         </div>
                                         <div class="value">
-                                            <input type="text" name="itemName"
-                                                   readonly="readonly"/>
+                                            <input type="text" name="itemName" readonly="readonly"/>
                                         </div>
                                     </label>
                                 </li>
@@ -119,7 +117,7 @@
                                             申请数量：
                                         </div>
                                         <div class="value">
-                                            <input type="number" name="itemCount"/>
+                                            <input type="number" name="itemCount" min="0" required="required"/>
                                         </div>
                                     </label>
                                 </li>
@@ -159,14 +157,14 @@
                 </div>
             </table>
 
-            <div class="content-result-operation">
-                <div class="myDivBt">
-                    <a href="apply_form.html" onclick="alert_info('系统正忙，请稍后重试')">添加</a>
-                </div>
-                <div class="myDivBt">
-                    <a href="apply_form.html">取消</a>
-                </div>
-            </div>
+            <!--<div class="content-result-operation">-->
+                <!--<div class="myDivBt">-->
+                    <!--<a href="apply_form.html" onclick="alert_info('系统正忙，请稍后重试')">添加</a>-->
+                <!--</div>-->
+                <!--<div class="myDivBt">-->
+                    <!--<a href="apply_form.html">取消</a>-->
+                <!--</div>-->
+            <!--</div>-->
         <!--</form>-->
     </div>
 </div>

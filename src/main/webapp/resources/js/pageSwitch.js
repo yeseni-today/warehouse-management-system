@@ -18,6 +18,10 @@ function jumpTo(url) {
     jumpToWithAnim(url, 'move-to-left');
 }
 
+function returnTo(url) {
+    jumpToWithAnim(url, 'move-to-right');
+}
+
 
 //
 function jumpToWithAnim(url, animation) {

@@ -28,16 +28,15 @@
     <!--</div>-->
 
     <div class="content-function">
+        <button id="slide_panel_bt" class="icon-search" ></button>
         <div class="myDivBt">
             <a href="#" onclick="jumpTo('apply/addajax')">新建申请</a>
         </div>
     </div>
 
-    <div class="content-query myInput">
-        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
-        <!--/*@thymesVar id="do" type=""*/-->
-        <form action="#" id="applyQueryForm" th:action="@{/query/queryItem}" method="get">
-            <div class="content-query-left">
+    <div class="content-query myInput slide-panel">
+        <form action="#" id="storageQueryForm">
+            <div class="content-query-left" id="applyQuery">
                 <label>
                     申请单Id：
                     <input type="text" name="applicationId"/>
@@ -52,11 +51,12 @@
                 </label>
                 <label>
                     最近多少天：
-                    <input type="number" name="day"/>
+                    <input type="number" name="day" min="0"/>
                 </label>
             </div>
-            <div class="content-query-right icon-search">
-                <input type="button" onclick="queryApplyList()" value="查询"/>
+            <div class="content-query-right">
+                <input type="button" onclick="queryStorageList()" value="查询"/>
+                <!--<button class="icon-after-search" onclick="queryStorageList()">查询</button>-->
             </div>
         </form>
     </div>

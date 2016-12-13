@@ -8,6 +8,7 @@ $(document).ready(function () {
         query();
     });
 });
+
 $(document).ready(function () {
     $("#slide_panel_bt").click(function () {
         if ($(".slide-panel").css("display") == "none") {
@@ -74,8 +75,8 @@ function query() {
         url: "/query/queryItem",    //向springboot请求数据的url
         data: values,
         success: function (items) {
-            var table = $("#result_table");
-            table.find("tr").remove("tr:gt(0)");
+            var table = $("#result_table").find("tbody");
+            table.find("tr").remove();
             var _display = function (item) {
                 var itemhtml = "<tr style='display: none' id='tr" + item.itemCode + "'>" +
                     "<td>" + item.itemCode + "</td>" +
@@ -83,6 +84,34 @@ function query() {
                     "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
                     "<td onclick=\"openItemInfoPop(\'" + item.itemCode + "\')\">" + "详情" + "</td>" +
+                    "</tr>";
+                table.append(itemhtml);
+            };
+            var _afterdisplay = function (item) {
+                $("#tr" + item.itemCode).fadeIn(500);
+            };
+            beautifyDisplay(_display, _afterdisplay, items, "query");
+        }
+    })
+}
+
+function applyQueryAdd() {
+    var values = $("#queryAddinput").serialize();
+    $.ajax({
+        type: "get",
+        url: "/query/queryItem",    //向springboot请求数据的url
+        data: values,
+        success: function (items) {
+            var table = $("#add_result_table").find("tbody");
+            table.find("tr").remove();
+            var _display = function (item) {
+                var itemhtml = "<tr style='display: none' id='tr" + item.itemCode + "'>" +
+                    "<td>" + item.itemCode + "</td>" +
+                    "<td>" + item.itemName + "</td>" +
+                    "<td>" + item.categoryEntity.categoryName + "</td>" +
+                    "<td>" + item.itemCount + "</td>" +
+                    "<td class='myTable-operation' onclick=\"openPopAdd(\'" + item.itemCode + "\',\'"+item.itemName+"\')\">" +
+                    "<div class='icon-plus'></div>" + "</td>" +
                     "</tr>";
                 table.append(itemhtml);
             }
@@ -100,7 +129,8 @@ function openItemInfoPop(itemCode) {
         url: "/query/itemInfo",
         type: "post",
         data: {"itemCode": itemCode},
-        success: function (item) {
+        success: function (result) {
+            var item= result.content;
             $("[name='itemCode']").val(item.itemCode);
             $("[name='itemName']").val(item.itemName);
             $("[name='itemSpec']").val(item.itemSpec);
@@ -111,9 +141,12 @@ function openItemInfoPop(itemCode) {
             $("[name='itemState']").val(item.itemState);
             $("[name='itemExamine']").val(item.itemExamine);
             $("[name='itemRemind']").val(item.itemRemind);
-            $("[name='itemCategory']").val(item.itemCategory);
-            $("[name='companyName']").val(item.companyName);
+            $("[name='itemCategory']").val(item.categoryEntity.categoryName);
+            $("[name='companyName']").val(item.companyEntity.companyName);
             $("[name='storageLocation']").val(item.storageLocation);
+        },
+        error:function () {
+            alert("失败");
         }
     });
     openPop();
