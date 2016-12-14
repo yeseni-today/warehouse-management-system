@@ -486,8 +486,12 @@ function addItem() {
         type: "post",
         data: da,
         success: function (result) {
-            closePop();
-            alert("添加成功");
+            if(result.message=="success"){
+                closePop();
+                alert("添加成功");
+            }else {
+                alert("添加失败");
+            }
         },
         error: function () {
             alert("添加失败，请重试");
@@ -499,6 +503,7 @@ function applySubmitForm() {
         url: "/apply/add/submit",
         type: "post",
         success: function (result) {
+            alert(result.message);
             if (result.message == "success") {
                 alert("提交成功");
             } else {

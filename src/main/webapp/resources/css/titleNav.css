@@ -39,3 +39,7 @@
     background: url("../picture/previous.png");
     background-size: 100%;
 }
+
+.title_nav_previous:hover{
+    background-color: #17a88b;
+}

@@ -102,7 +102,7 @@ public class AddapplyController extends BaseController {
     }
 
     /**
-     * 向入库单增加物品，ajax
+     * 向申请单增加物品，ajax
      *
      * @param applyItemForm .
      */
@@ -120,9 +120,10 @@ public class AddapplyController extends BaseController {
         }
         if (!flag){
             applyForm.getItems().add(applyItemForm);
+            return SimpleRes.success();
         }
         logger.info("getaddItemAjax: " + applyItemForm);
-        return new SimpleRes();
+        return SimpleRes.error();
     }
 
     /**
@@ -159,7 +160,7 @@ public class AddapplyController extends BaseController {
     public SimpleRes submit(Principal principal, HttpSession session) {
         try {
             service.save(principal, getApplyForm(session));
-            session.setAttribute(SESSION_STORAGE_FORM, null);
+            session.removeAttribute(SESSION_STORAGE_FORM);
             return SimpleRes.success();
         } catch (Exception e) {
             e.printStackTrace();
