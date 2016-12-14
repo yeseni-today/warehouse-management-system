@@ -22,108 +22,12 @@
             <li><a href="#">入库日志</a></li>
             <li><a href="#">出库日志</a></li>
             <li><a href="#">申请日志</a></li>
-            <li><a href="#">借用日志</a></li>
+            <!--<li><a href="#">借用日志</a></li>-->
             <li><a href="#">物品维护日志</a></li>
         </ul>
     </div>
 
     <div id="log" class="content-right">
-        <div class="pop-bg">
-            <div class="pop pop-details myInfoList myInput">
-                <div class="pop-close">
-                    <div class="close_button" onclick="closePop()">
-                        <div class="close_button-icon"></div>
-                    </div>
-                </div>
-                <form action="" method="get">
-                    <ul>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志ID：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logID" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志类型：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logType" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    操作人员ID：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="operationID" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志日期：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logData" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志等级：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logLevel" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    对应主表：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logTable" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志内容：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logInfo" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    日志备注：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="logAnnotation" readonly="readonly"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="button" onclick="closePop()" value="删除"/>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </div>
         <div class="message" th:if="${logs == null}">
             <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             没有日志
@@ -134,6 +38,102 @@
             <span class="message-date" th:text="${#calendars.format(slog.getLogDate())}">data</span>
             <div class="message-content" th:text="${slog.getLogInfo()}">content</div>
             <div class="message-operation" onclick="openPop()">详情</div>
+        </div>
+    </div>
+    <div class="pop-bg">
+        <div class="pop pop-details myInfoList myInput">
+            <div class="pop-close">
+                <div class="close_button" onclick="closePop()">
+                    <div class="close_button-icon"></div>
+                </div>
+            </div>
+            <form action="" method="get">
+                <ul>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志ID：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logID" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志类型：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logType" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                操作人员ID：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="operationID" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志日期：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logData" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志等级：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logLevel" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                对应主表：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logTable" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志内容：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logInfo" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                日志备注：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="logAnnotation" readonly="readonly"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <input type="button" onclick="closePop()" value="删除"/>
+                    </li>
+                </ul>
+            </form>
         </div>
     </div>
 </div>
