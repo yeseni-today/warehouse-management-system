@@ -1,24 +1,14 @@
 package com.repository.service;
 
 import com.repository.dao.LogDao;
-import com.repository.entity.ItemApplicationEntity;
-import com.repository.entity.ItemApplicationOperationEntity;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.ItemInOperationEntity;
-import com.repository.entity.ItemInStorageEntity;
-import com.repository.entity.ItemOutOperationEntity;
-import com.repository.entity.ItemOutStorageEntity;
-import com.repository.entity.LogEntity;
-import com.repository.entity.MessageEntity;
-
+import com.repository.entity.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/11/27.
@@ -73,7 +63,7 @@ public class LogSerivce {
                         .type(SAVE_TYPE)
                         .level(SAVE_ITEM_LEVEL)
                         .opreationID(opreation_id)
-                        .info(entity.toString())
+                        .info(entity.getApplyId())
                         .build()
         );
     }
