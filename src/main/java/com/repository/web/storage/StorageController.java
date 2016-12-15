@@ -4,8 +4,10 @@ import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
 import com.repository.dao.DictionaryDao;
+import com.repository.dao.ItemInStorageDao;
 import com.repository.entity.ItemInOperationEntity;
 
+import com.repository.entity.ItemInStorageEntity;
 import com.repository.model.SimpleRes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.sql.Date;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -37,6 +40,9 @@ public class StorageController extends BaseController {
     @Autowired
     DictionaryDao dictionaryDao;
 
+    @Autowired
+    ItemInStorageDao itemInStorageDao;
+
     /**
      * 入库单历史
      *
@@ -57,6 +63,41 @@ public class StorageController extends BaseController {
         logger.info("storage: listsize:" + result.size());
         model.addAttribute("history", result);
         return TILES_PREFIX + HTML_STORAGE_HISTORY;
+    }
+
+    @RequestMapping(URL_STORAGE_QUERY_INFO)
+    @ResponseBody
+    public SimpleRes query(@RequestParam("storage_id") String storage_id) {
+        if (storage_id == null || storage_id.trim().equals(""))
+            return SimpleRes.error();
+        return SimpleRes.success(
+                new Storage(
+                        inOperationDao.findById(storage_id),
+                        itemInStorageDao.query("storageId", storage_id, false)));
+    }
+
+    static class Storage extends ItemInOperationEntity {
+        private String storageId;
+        private Date storageTime;
+        private String operationId;
+        List<ItemInStorageEntity> items;
+
+        public Storage(ItemInOperationEntity operationEntity, List<ItemInStorageEntity> items) {
+            this.operationId = operationEntity.getOperationId();
+            this.items = items;
+            this.storageId = operationEntity.getStorageId();
+            this.storageTime = operationEntity.getStorageTime();
+        }
+
+        @Override
+        public String getStorageId() {
+            return storageId;
+        }
+
+        @Override
+        public void setStorageId(String storageId) {
+            this.storageId = storageId;
+        }
     }
 
     /**

@@ -411,9 +411,9 @@ function openStorageFormInfoPop(storageFormId) {
     var table=$("#applyFormTable").find("tbody");
 
     $.ajax({
-        url:"/storage/StorageFormInfo",
+        url:"/storage/StorageFormInfo.json",
         type:"post",
-        data:{"storageFormId":storageFormId},
+        data:{"storage_id":storageFormId},
         success:function (result) {
             var storageForm=result.content;
             table.find("tr").remove();

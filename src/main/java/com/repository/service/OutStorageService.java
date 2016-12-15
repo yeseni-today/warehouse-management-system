@@ -1,5 +1,6 @@
 package com.repository.service;
 
+import com.repository.common.ApplyContants;
 import com.repository.dao.*;
 import com.repository.entity.*;
 import com.repository.util.Util;
@@ -51,6 +52,8 @@ public class OutStorageService {
     public void outStorage(Principal principal, String apply_id) {
         ItemApplicationOperationEntity operationEntity = applicationOperationDao.findById(apply_id);
         List<ItemApplicationEntity> items = applicationDao.findByApplyId(apply_id);
+        operationEntity.setStates(ApplyContants.APPLY_NONEED_EXAMINE);
+        applicationOperationDao.update(operationEntity);
         saveStorage(principal, operationEntity, items);
     }
 
