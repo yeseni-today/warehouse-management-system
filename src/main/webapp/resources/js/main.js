@@ -110,7 +110,7 @@ function applyQueryAdd() {
                     "<td>" + item.itemName + "</td>" +
                     "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
-                    "<td class='myTable-operation' onclick=\"openPopAdd(\'" + item.itemCode + "\',\'"+item.itemName+"\')\">" +
+                    "<td class='myTable-operation' onclick=\"openPopAdd(\'" + item.itemCode + "\',\'" + item.itemName + "\')\">" +
                     "<div class='icon-plus'></div>" + "</td>" +
                     "</tr>";
                 table.append(itemhtml);
@@ -130,7 +130,7 @@ function openItemInfoPop(itemCode) {
         type: "post",
         data: {"itemCode": itemCode},
         success: function (result) {
-            var item= result.content;
+            var item = result.content;
             $("[name='itemCode']").val(item.itemCode);
             $("[name='itemName']").val(item.itemName);
             $("[name='itemSpec']").val(item.itemSpec);
@@ -145,7 +145,7 @@ function openItemInfoPop(itemCode) {
             $("[name='companyName']").val(item.companyEntity.companyName);
             $("[name='storageLocation']").val(item.storageLocation);
         },
-        error:function () {
+        error: function () {
             alert("失败");
         }
     });
@@ -368,7 +368,7 @@ function closePop() {
 
 function closeapplyFormTablePop() {
     closePop();
-    $("[id ^='tr']").css("display","none")
+    $("[id ^='tr']").css("display", "none")
 }
 function openAddCategory() {
     $(".pop-addCategory").css('display', 'block');
@@ -407,26 +407,50 @@ function openPopDetails(itemForm) {
 }
 
 function openStorageFormInfoPop(storageFormId) {
+    var $table = $("#storage_table").find("tbody");
+//init
+    $('#storage_id').text("  ");
+    $('#operation_id').text("  ");
+    $('#storage_time').text("  ");
+    $table.find("tr").remove();
     openPop();
-    var table=$("#applyFormTable").find("tbody");
 
     $.ajax({
-        url:"/storage/StorageFormInfo.json",
-        type:"post",
-        data:{"storage_id":storageFormId},
-        success:function (result) {
-            var storageForm=result.content;
-            table.find("tr").remove();
-            var html="";
-            for(var item in storageForm ){
-                html += "<tr><td>"+item.itemCode+"</td>" +
-                    "<td>"+item.itemCount+"</td>" +
-                    "<td>"+item+"</td>" +
-                    "<td>"+item+"</td>" +
-                    "</tr>";
+        url: "/storage/StorageFormInfo.json",
+        type: "post",
+        data: {"storage_id": storageFormId},
+        success: function (result) {
+            if (result.message == "success") {
+                var storageForm = result.content;
+
+                alert(storageForm.items.length);
+
+                $('#storage_id').text(storageForm.storageId);
+                $('#operation_id').text(storageForm.operationId);
+                $('#storage_time').text(storageForm.storageTime);
+
+                var items = storageForm.items;
+
+                var html = "";
+                // for (var item in items) {
+                for (var i=0;i< items.length;i++) {
+                    html += "<tr>" +
+                        "<td>" + items[i].itemCode + "</td>" +
+                        "<td>" + items[i].counts + "</td>" +
+                        "<td>" + items[i].price + "</td>" +
+                        "<td>" + items[i].billCode + "</td>" +
+                        "<td>" + items[i].itemSlot + "</td>" +
+                        "<td>" + items[i].itemBatch + "</td>" +
+                        "<td>" + items[i].itemIndate + "</td>" +
+                        "<td>" + items[i].allowCount + "</td>" +
+                        "</tr>";
+                }
+                $table.append(html);
+            } else {
+                alert("失败");
             }
         },
-        error:function () {
+        error: function () {
             alert("ajax请求发送失败");
         }
     })
@@ -500,10 +524,10 @@ function addItem() {
         type: "post",
         data: da,
         success: function (result) {
-            if(result.message=="success"){
+            if (result.message == "success") {
                 closePop();
                 alert("添加成功");
-            }else {
+            } else {
                 alert("添加失败");
             }
         },
@@ -623,7 +647,7 @@ function queryStorageList() {
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.opreationId + "</td>" +
-                    "<td onclick=\"openStorageFormInfoPop(\'"+item.storageId+"\')\">" + "操作" + "</td>" +
+                    "<td onclick=\"openStorageFormInfoPop(\'" + item.storageId + "\')\">" + "操作" + "</td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
             };
@@ -665,8 +689,8 @@ function queryApplyList() {
 
 function getObjextInfo(object) {
     var s = "";
-    for(var i in object){
-        s+="["+i+":"+object[i]+"];"
+    for (var i in object) {
+        s += "[" + i + ":" + object[i] + "];"
     }
     return s;
 }
@@ -683,7 +707,7 @@ function getApplyFormByID(application_id) {
     table.find("tr").remove();
 
     $.ajax({
-        url: "/apply/applyinfo.json?application_id="+application_id,
+        url: "/apply/applyinfo.json?application_id=" + application_id,
         type: "get",
         // date: {"application_id": application_id},
         success: function (result) {
@@ -693,18 +717,18 @@ function getApplyFormByID(application_id) {
                 $('#usersId').text(result.content.usersId);
                 $('#applyTime').text(result.content.applicationTime);
 
-                buttons[0].onclick=function () {
-                    examineApply(true,application_id);  //通过
+                buttons[0].onclick = function () {
+                    examineApply(true, application_id);  //通过
                 };
                 // buttons[0].click=function () {
                 //     examineApply(true,application_id);  //通过
                 // };
-                buttons[1].onclick=function (){
-                    examineApply(false,application_id);  //不通过
+                buttons[1].onclick = function () {
+                    examineApply(false, application_id);  //不通过
                 };
 
                 var _display = function (item) {
-                    var html = "<tr style='display:none;' id='tr1"+item.itemCode+"'>" +
+                    var html = "<tr style='display:none;' id='tr1" + item.itemCode + "'>" +
                         "<td>" + item.itemCode + "</td>" +
                         "<td>" + item.counts + "</td>" +
                         "<td>" + item.applicationType + "</td>" +
@@ -714,13 +738,13 @@ function getApplyFormByID(application_id) {
                 };
 
                 var _afterdisplay = function (item) {
-                    console.log('#tr1'+item.itemCode);
-                    $('#tr1'+item.itemCode).fadeIn(1000);
+                    console.log('#tr1' + item.itemCode);
+                    $('#tr1' + item.itemCode).fadeIn(1000);
                 };
 
-                beautifyDisplay(_display,_afterdisplay,result.content.items,"申请单列表");
+                beautifyDisplay(_display, _afterdisplay, result.content.items, "申请单列表");
             } else {
-                alert("获取失败，失败信息："+result.message)
+                alert("获取失败，失败信息：" + result.message)
             }
         }
 
@@ -728,21 +752,21 @@ function getApplyFormByID(application_id) {
 
 }
 
-function examineApply(states,apply_id) {
+function examineApply(states, apply_id) {
     $.ajax({
-        url:"/manage/passexamine",
+        url: "/manage/passexamine",
         type: "post",
-        data: {"states":states, "apply_id":apply_id},
-        success:function (result) {
-            if(result.message=="success"){
+        data: {"states": states, "apply_id": apply_id},
+        success: function (result) {
+            if (result.message == "success") {
                 alert("成功");
                 closePop();
-            }else {
-            //    todo
+            } else {
+                //    todo
                 alert("系统错误");
             }
         },
-        error:function () {
+        error: function () {
             alert("发送失败");
         }
     })

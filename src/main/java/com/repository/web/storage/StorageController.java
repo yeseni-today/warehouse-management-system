@@ -1,5 +1,6 @@
 package com.repository.web.storage;
 
+import com.google.gson.Gson;
 import com.repository.base.BaseController;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
@@ -70,33 +71,63 @@ public class StorageController extends BaseController {
     public SimpleRes query(@RequestParam("storage_id") String storage_id) {
         if (storage_id == null || storage_id.trim().equals(""))
             return SimpleRes.error();
-        return SimpleRes.success(
-                new Storage(
-                        inOperationDao.findById(storage_id),
-                        itemInStorageDao.query("storageId", storage_id, false)));
+        List<ItemInStorageEntity> items =   itemInStorageDao.query("storageId", storage_id, false);
+
+        System.out.println("items length:"+items.size());
+        Storage storage =  new Storage(
+                inOperationDao.findById(storage_id),items);
+        System.out.println("藏毒："+storage.items.size());
+        return SimpleRes.success(storage);
     }
 
-    static class Storage extends ItemInOperationEntity {
-        private String storageId;
-        private Date storageTime;
-        private String operationId;
-        List<ItemInStorageEntity> items;
+   public static class Storage  {
+       public String storageId;
+       public Date storageTime;
+       public String operationId;
+       public   List<ItemInStorageEntity> items;
 
-        public Storage(ItemInOperationEntity operationEntity, List<ItemInStorageEntity> items) {
+       public List<ItemInStorageEntity> getItems() {
+           return items;
+       }
+
+       public void setItems(List<ItemInStorageEntity> items) {
+           this.items = items;
+       }
+
+       public Storage(ItemInOperationEntity operationEntity, List<ItemInStorageEntity> items) {
             this.operationId = operationEntity.getOperationId();
             this.items = items;
             this.storageId = operationEntity.getStorageId();
             this.storageTime = operationEntity.getStorageTime();
         }
 
-        @Override
         public String getStorageId() {
             return storageId;
         }
 
-        @Override
         public void setStorageId(String storageId) {
             this.storageId = storageId;
+        }
+
+        public Date getStorageTime() {
+            return storageTime;
+        }
+
+        public void setStorageTime(Date storageTime) {
+            this.storageTime = storageTime;
+        }
+
+        public String getOperationId() {
+            return operationId;
+        }
+
+        public void setOperationId(String operationId) {
+            this.operationId = operationId;
+        }
+
+        @Override
+        public String toString() {
+            return new Gson().toJson(this);
         }
     }
 

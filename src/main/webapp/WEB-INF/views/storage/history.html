@@ -72,31 +72,33 @@
     </div>
 
     <div class="pop-bg">
-        <div class="pop myInfoList myInput" style="width: 65em">
+        <div class="pop myInfoList myInput" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
             <div class="pop-close">
                 <div class="close_button" onclick="closePop()">
                     <div class="close_button-icon"></div>
                 </div>
             </div>
             <section>
-                入库单编号:"<span id="applyFromID"></span>
-                入库人ID:<span id="usersId"></span>
-                入库日期:<span id="applyTime"></span>
+                入库单编号:"<span id="storage_id"></span>
+                入库人ID:<span id="operation_id"></span>
+                入库日期:<span id="storage_time"></span>
             </section>
             <div class="myTable">
-                <table id="applyFormTable">
-                    <thead>
+                <table>
                     <tr>
-                        <td>物品条形码</td>
-                        <td>入库数量</td>
-                        <td>物品单价</td>
-                        <td>发票编号</td>
-                        <td>物品库位</td>
-                        <td>物品批次信息</td>
-                        <td>有效期限</td>
-                        <td>可用数量</td>
+                        <th>物品条形码</th>
+                        <th>入库数量</th>
+                        <th>物品单价</th>
+                        <th>发票编号</th>
+                        <th>物品库位</th>
+                        <th>物品批次信息</th>
+                        <th>有效期限</th>
+                        <th>可用数量</th>
                     </tr>
-                    </thead>
+                </table>
+            </div>
+            <div class="myTable" style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+                <table id="storage_table">
                     <tbody>
                     <tr>
                         <td>1</td>
