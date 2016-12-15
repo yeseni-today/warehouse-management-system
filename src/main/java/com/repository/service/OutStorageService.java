@@ -7,6 +7,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.security.Principal;
@@ -18,6 +19,8 @@ import java.util.List;
  * Created by Finderlo on 2016/12/1.
  */
 @Component
+@Repository
+@Transactional
 public class OutStorageService {
 
     @Autowired
@@ -35,14 +38,27 @@ public class OutStorageService {
     CompanyDao companyDao;
     @Autowired
     CategoryDao categoryDao;
-    @Autowired
-    OutStorageService outStorageService;
 
+    @Autowired
+    ItemApplicationDao applicationDao;
+
+    @Autowired
+    ItemApplicationOperationDao applicationOperationDao;
     @Autowired
     ItemInStorageDao inStorageDao;
 
     @Transactional
-    public void saveAutoStoage(Principal principal,ItemApplicationOperationEntity operationEntities, List<ItemApplicationEntity> items) {
+    public void outStorage(Principal principal, String apply_id) {
+        ItemApplicationOperationEntity operationEntity = applicationOperationDao.findById(apply_id);
+        List<ItemApplicationEntity> items = applicationDao.findByApplyId(apply_id);
+        saveStorage(principal, operationEntity, items);
+    }
+
+    /**
+     * 出库一个出库单
+     */
+    @Transactional
+    public void saveStorage(Principal principal, ItemApplicationOperationEntity operationEntities, List<ItemApplicationEntity> items) {
         ItemOutOperationEntity outOperationEntity = toOutOprea(operationEntities);
         Session session = sessionFactory.getCurrentSession();
         //保存出库操作表
@@ -52,7 +68,7 @@ public class OutStorageService {
         session.update(applicationIdEntity);
         session.save(outOperationEntity);
 
-        logSerivce.saveOutOpera(principal.getName(),outOperationEntity);
+        logSerivce.saveOutOpera(principal.getName(), outOperationEntity);
 
         //保存出库表
         List<ItemOutStorageEntity> outStorageEntities = toOutStorage(items, outOperationEntity.getOutId());
@@ -65,11 +81,18 @@ public class OutStorageService {
             changeCount(out.getItemCode(), out.getCounts());
             session.update(itemEntity);
 
-            logSerivce.saveOutStorage(principal.getName(),out);
+            logSerivce.saveOutStorage(principal.getName(), out);
         });
 
+        System.out.println("执行了日志和消息");
+
+        messageService.send(new MessageService.SendBuilder(principal.getName()).title("出库完成").receId(principal.getName()).content("请到仓库1，取出物品")
+                .type("出库").send());
         //修改item表的数量
     }
+
+    @Autowired
+    MessageService messageService;
 
     @Autowired
     SessionFactory sessionFactory;
@@ -77,7 +100,7 @@ public class OutStorageService {
     @Transactional
     private List<ItemInStorageEntity> getList(String itemCode) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createSQLQuery("select * from Item_in_storage where allow_count>0 and item_code=" + itemCode + " order by item_indate").addEntity(ItemInStorageEntity.class).list();
+        return session.createSQLQuery("select * from item_in_storage where allow_count>0 and item_code=" + itemCode + " order by item_indate").addEntity(ItemInStorageEntity.class).list();
     }
 
     @Transactional

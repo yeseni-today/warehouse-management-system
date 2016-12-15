@@ -9,12 +9,12 @@ public interface ApplyContants {
     String APPLY_NONEED_EXAMINE = "pass";
 
 
-            //apply
-            String URL_APPLY = "/apply";
+    //apply
+    String URL_APPLY = "/apply";
     String URL_APPLY_LIST_AJAX = URL_APPLY + "/listajax";
     String HTML_APPLY_PREFIX = "apply/";
     String HTML_APPLY_HISTORY = HTML_APPLY_PREFIX + "history";
-    String URL_APPLY_INFO_JSON = URL_APPLY+"/applyinfo.json";
+    String URL_APPLY_INFO_JSON = URL_APPLY + "/applyinfo.json";
     String URL_APPLY_AJAX = "/applyajax";
     //APPLY ADD
     String URL_APPLY_ADD = URL_APPLY + "/add";

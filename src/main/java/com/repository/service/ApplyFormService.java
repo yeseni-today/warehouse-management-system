@@ -79,14 +79,16 @@ public class ApplyFormService {
             if (operationEntities.getStates().equals(DEFAULT_STATES)) {
                 //todo 发送消息给管理员
                 //messageService.send();
-                new MessageService.SendBuilder(principal.getName())
-                        .content("审核")
-                        .type("审核")
-                        .receId("admin")
-                        .title("需要审核")
-                        .send();
+                messageService.send(
+                        new MessageService.SendBuilder(principal.getName())
+                                .content("审核")
+                                .type("审核")
+                                .receId("admin")
+                                .title("需要审核")
+                                .send()
+                );
             } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
-                outStorageService.saveAutoStoage(principal,operationEntities, items);
+                outStorageService.saveStorage(principal,operationEntities, items);
             }
 
             //日志记录

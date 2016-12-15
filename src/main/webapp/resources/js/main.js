@@ -503,7 +503,6 @@ function applySubmitForm() {
         url: "/apply/add/submit",
         type: "post",
         success: function (result) {
-            alert(result.message);
             if (result.message == "success") {
                 alert("提交成功");
             } else {
@@ -662,6 +661,13 @@ function getObjextInfo(object) {
 //审核
 function getApplyFormByID(application_id) {
     var html = "";
+    var table = $("#applyForm").find("tbody");
+    var operation = $("#applyForm").find("tfoot").find("a");
+    //init
+    $('#applyFromID').text("  ");
+    $('#usersId').text("  ");
+    $('#applyTime').text("  ");
+    table.find("tr").remove();
 
     $.ajax({
         url: "/apply/applyinfo.json?application_id="+application_id,
@@ -669,29 +675,30 @@ function getApplyFormByID(application_id) {
         // date: {"application_id": application_id},
         success: function (result) {
             if (result.message == "success") {
-                openPop()
-                $('#applyFromID').val(result.content.applicationId);
-                $('#usersId').val(result.content.usersId);
-                $('#applyTime').val(result.content.applicationTime);
+                openPop();
+                $('#applyFromID').text(result.content.applicationId);
+                $('#usersId').text(result.content.usersId);
+                $('#applyTime').text(result.content.applicationTime);
 
+                operation[0].onclick=examineApply(true,application_id);
+                operation[1].onclick=examineApply(false,application_id);
 
                 var _display = function (item) {
-                    // alert(getObjextInfo(item))
-                    var html = "<tr style='display:none;' id='tr1"+item.itemCode+"'><td>" + item.itemCode + "</td>" +
-                    // var html = "<tr id='tr'"+item.itemCode+"><td>" + item.itemCode + "</td>" +
+                    var html = "<tr style='display:none;' id='tr1"+item.itemCode+"'>" +
+                        "<td>" + item.itemCode + "</td>" +
                         "<td>" + item.counts + "</td>" +
                         "<td>" + item.applicationType + "</td>" +
                         "<td>" + item.applicationText + "</td>" +
                         "</td>";
-                    $('#applyFormTable').append(html);
-                }
+                    table.append(html);
+                };
 
                 var _afterdisplay = function (item) {
-                    console.log('#tr1'+item.itemCode)
+                    console.log('#tr1'+item.itemCode);
                     $('#tr1'+item.itemCode).fadeIn(1000);
-                }
+                };
 
-                beautifyDisplay(_display,_afterdisplay,result.content.items,"申请单列表")
+                beautifyDisplay(_display,_afterdisplay,result.content.items,"申请单列表");
             } else {
                 alert("获取失败，失败信息："+result.message)
             }
@@ -699,4 +706,19 @@ function getApplyFormByID(application_id) {
 
     })
 
+}
+
+function examineApply(states,apply_id) {
+    $.ajax({
+        url:"/manage/passexamine",
+        type:"post",
+        data: apply_id,
+        success:function (result) {
+            if(result.message=="success"){
+
+            }else {
+            //    todo
+            }
+        }
+    })
 }

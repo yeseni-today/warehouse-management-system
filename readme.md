@@ -34,3 +34,4 @@
    bug fix
 * v-0.60.9 finderlo
    修改显示有特效
+* v-0.61.0 finderlo

@@ -13,4 +13,7 @@ import java.util.List;
 @Repository
 public class ItemApplicationDao extends AbstractDao<ItemApplicationEntity> {
 
+    public List<ItemApplicationEntity> findByApplyId(String apply_id) {
+        return query("applicationId",apply_id,false);
+    }
 }

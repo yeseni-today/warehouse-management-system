@@ -8,6 +8,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 import java.sql.Timestamp;
@@ -18,6 +19,8 @@ import java.util.List;
  * Created by Finderlo on 2016/11/30.
  */
 @Component
+@Repository
+@Transactional
 public class MessageService {
 
     @Autowired
@@ -32,6 +35,15 @@ public class MessageService {
     public boolean send(MessageForm messageForm) {
         try {
             messageDao.save(toMessage(messageForm));
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean send(MessageEntity messageForm) {
+        try {
+            messageDao.save(messageForm);
         } catch (Exception e) {
             return false;
         }
@@ -61,54 +73,6 @@ public class MessageService {
         return result;
     }
 
-    public static class SendBuilder {
-        private MessageEntity.State state = MessageEntity.State.UNREAD;
-        private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
-        private String content = "默认消息内容";
-        private String type = "默认消息类型";
-        private String receId = "0000";
-        private String title = "默认消息标题";
-        private String sendId;
-
-        public SendBuilder(String sendId) {
-            this.sendId = sendId;
-        }
-
-        public SendBuilder content(String content) {
-            this.content = content;
-            return this;
-        }
-
-        public SendBuilder type(String type) {
-            this.type = type;
-            return this;
-        }
-
-        public SendBuilder receId(String receId) {
-            this.receId = receId;
-            return this;
-        }
-
-        public SendBuilder title(String title) {
-            this.title = title;
-            return this;
-        }
-
-        @Autowired
-        MessageDao messageDao;
-
-        public void send() {
-            MessageEntity message = new MessageEntity();
-            message.setMessageDate(timestamp);
-            message.setMessageState(state);
-            message.setMessageTitle(title);
-            message.setMessageType(type);
-            message.setMessageContent(content);
-            message.setMessageReceiveId(receId);
-            message.setMessageSendId(sendId);
-            messageDao.save(message);
-        }
-    }
 
     public void read(String msgId) {
         MessageEntity msg = messageDao.findById(msgId);
@@ -144,5 +108,52 @@ public class MessageService {
         return umessage;
     }
 
+    public static class SendBuilder {
+
+        private MessageEntity.State state = MessageEntity.State.UNREAD;
+        private Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+        private String content = "默认消息内容";
+        private String type = "默认消息类型";
+        private String receId = "0000";
+        private String title = "默认消息标题";
+        private String sendId;
+
+        public SendBuilder(String sendId) {
+            this.sendId = sendId;
+        }
+
+        public SendBuilder content(String content) {
+            this.content = content;
+            return this;
+        }
+
+        public SendBuilder type(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public SendBuilder receId(String receId) {
+            this.receId = receId;
+            return this;
+        }
+
+        public SendBuilder title(String title) {
+            this.title = title;
+            return this;
+        }
+
+
+        public MessageEntity send() {
+            MessageEntity message = new MessageEntity();
+            message.setMessageDate(timestamp);
+            message.setMessageState(state);
+            message.setMessageTitle(title);
+            message.setMessageType(type);
+            message.setMessageContent(content);
+            message.setMessageReceiveId(receId);
+            message.setMessageSendId(sendId);
+          return message;
+        }
+    }
 
 }

@@ -109,6 +109,9 @@ public class AddapplyController extends BaseController {
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
     public SimpleRes getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
+        if (applyItemForm == null){
+            return SimpleRes.error();
+        }
         ApplyForm applyForm = getApplyForm(session);
         boolean flag = false;
         for (ApplyItemForm e : applyForm.getItems()) {

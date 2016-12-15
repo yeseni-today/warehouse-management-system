@@ -15,7 +15,7 @@ import javax.sql.DataSource;
 
 @Configuration
 @PropertySource(value = "classpath:/finderlo_jdbc.properties")
-@Profile({"default"})
+@Profile({"default","finderlo"})
 @EnableTransactionManagement
 public class MysqlDataSourceConfig {
 

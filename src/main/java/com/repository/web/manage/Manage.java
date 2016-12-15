@@ -5,6 +5,7 @@ import com.repository.dao.ItemApplicationOperationDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.model.SimpleRes;
+import com.repository.service.OutStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.security.Principal;
 import java.sql.Date;
 import java.util.List;
 
@@ -29,35 +31,64 @@ public class Manage {
 
     @Autowired
     ItemApplicationDao applicationDao;
+
     /**
      * 管理需要审核的申请网页 返回view
+     *
      * @return view
      */
     @RequestMapping(URL_MANAGE_EXAMEINE)
     public String manage(Model model) {
-        List datas = applicationOperationDao.query("states",APPLY_NEED_EXAMINE,true);
-        System.out.println("申请单数量："+datas.size());
-        model.addAttribute("history",datas);
+        List datas = applicationOperationDao.query("states", APPLY_NEED_EXAMINE, true);
+        System.out.println("申请单数量：" + datas.size());
+        model.addAttribute("history", datas);
         return TILES_PREFIX + HTML_MANAGE_EXAMINE;
     }
+
     /**
      * 获取申请单的详情
+     *
      * @retuen simres.conent=ApplyCompound
      */
-    @RequestMapping(value = URL_APPLY_INFO_JSON,method = RequestMethod.GET)
+    @RequestMapping(value = URL_APPLY_INFO_JSON, method = RequestMethod.GET)
     @ResponseBody
-    public SimpleRes getApplyInfo(@RequestParam(value = "application_id",required = false) String application_id){
-        if (application_id==null || application_id.trim().equals("")){
+    public SimpleRes getApplyInfo(@RequestParam(value = "application_id", required = false) String application_id) {
+        if (application_id == null || application_id.trim().equals("")) {
             return SimpleRes.error("ID不能为空");
         }
         return SimpleRes.success(
                 new ApplyCompound(
                         applicationOperationDao.findById(application_id),
-                        applicationDao.query("applicationId",application_id,false))
+                        applicationDao.query("applicationId", application_id, false))
         );
     }
 
-    private static class ApplyCompound{
+    @Autowired
+    OutStorageService outStorageService;
+
+    /**
+     * 审核申请单，传入参数：states:true、false；apply_id:
+     * true 为通过审核申请单，false 为审核不通过
+     * apply_id 为审核单的id
+     */
+    @RequestMapping(value = URL_MANAGE_PASSEXAMINE, method = RequestMethod.POST)
+    public SimpleRes passExamine(
+            Principal principal,
+            @RequestParam("states") boolean states,
+            @RequestParam("apply_id") String apply_id) {
+        //通过：创建出库单，然后修改申请单状态，修改物品表，修改入库管理表，发送成功消息（给用户），记录日志
+        if (states) {
+            try {
+                outStorageService.outStorage(principal, apply_id);
+            } catch (Exception e) {
+                return SimpleRes.error();
+            }
+        }
+
+        return SimpleRes.success();
+    }
+
+    private static class ApplyCompound {
         private String applicationId;
         private String usersId;
         private String examineId;
@@ -65,7 +96,8 @@ public class Manage {
         private Date statesTime;
         private Date applicationTime;
         private List<ItemApplicationEntity> items;
-        public ApplyCompound(ItemApplicationOperationEntity applicationOperation,List<ItemApplicationEntity> itemApplicationEntities){
+
+        public ApplyCompound(ItemApplicationOperationEntity applicationOperation, List<ItemApplicationEntity> itemApplicationEntities) {
             this.applicationId = applicationOperation.getApplicationId();
             this.usersId = applicationOperation.getUsersId();
             this.examineId = applicationOperation.getExamineId();
