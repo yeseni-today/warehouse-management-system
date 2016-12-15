@@ -76,18 +76,24 @@ public class MessageService {
 
     public void read(String msgId) {
         MessageEntity msg = messageDao.findById(msgId);
+        if (msg == null){
+            return;
+        }
         msg.setMessageState(MessageEntity.State.READ);
         messageDao.update(msg);
     }
 
     public void delete(String msgId) {
         MessageEntity msg = messageDao.findById(msgId);
+        if (msg == null){
+            return;
+        }
         msg.setMessageState(MessageEntity.State.DELETE);
         messageDao.update(msg);
     }
 
-    public List<MessageEntity> findMessage(String receiveId) {
-        return messageDao.query(new String[]{"messageReceiveId"}, new String[]{receiveId}, false);
+    public List<MessageEntity> findUnreadMessage(String receiveId) {
+        return messageDao.findByState(receiveId, MessageEntity.State.UNREAD);
     }
 
 
