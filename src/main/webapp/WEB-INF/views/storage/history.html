@@ -22,7 +22,7 @@
     </div>
 
     <div class="content-function">
-        <button id="slide_panel_bt" class="icon-search" ></button>
+        <button id="slide_panel_bt" class="icon-search"></button>
         <div class="myDivBt">
             <!--<a href="add/storage_form.html" th:href="@{/storage/add}">新建入库</a>-->
             <a id="btn1" href="#" onclick="jumpTo('/storage/addajax')">新建入库</a>
@@ -30,7 +30,7 @@
     </div>
 
     <div class="content-query myInput slide-panel">
-          <form action="#" id="storageQueryForm" th:action="@{/query/queryItem}" method="get">
+        <form action="#" id="storageQueryForm" th:action="@{/query/queryItem}" method="get">
             <div class="content-query-left">
                 <label>
                     操作人：
@@ -70,7 +70,7 @@
             </tr>
         </table>
     </div>
-    
+
     <div class="pop-bg">
         <div class="pop myInfoList myInput" style="width: 50em">
             <div class="pop-close">
@@ -85,12 +85,19 @@
             </section>
             <div>
                 <table id="applyFormTable" style="width: 50em">
+                    <thead>
                     <tr>
                         <td>物品条形码</td>
-                        <td>申请数量</td>
-                        <td>申请类型</td>
-                        <td>申请备注</td>
+                        <td>入库数量</td>
+                        <td>物品单价</td>
+                        <td>发票编号</td>
+                        <td>物品库位</td>
+                        <td>物品批次信息</td>
+                        <td>有效期限</td>
+                        <td>当前批次可取用数量</td>
                     </tr>
+                    </thead>
+                    <tbody>
                     <tr>
                         <td>1</td>
                         <td></td>
@@ -109,6 +116,7 @@
                         <td>1</td>
                         <td></td>
                     </tr>
+                    </tbody>
                     <tr>
                         <td></td>
                         <td class="myTable-operation" onclick="">通过</td>

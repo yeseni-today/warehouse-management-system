@@ -28,9 +28,9 @@
                         <a href="#" th:href="@{/apply}">申请</a>
                         <!--onclick="jumpTo('applyajax')"-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
-                        <a href="#" th:href="@{/borrow}">借用</a>
-                    </li>
+                    <!--<li th:classappend="${page == 'tasks' ? 'active' : ''}">-->
+                        <!--<a href="#" th:href="@{/borrow}">借用</a>-->
+                    <!--</li>-->
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/message}">消息</a>
                         <span class="arrow"></span>
@@ -56,6 +56,7 @@
                         <span class="arrow"></span>
                         <dl>
                             <dd><a href="#" th:href="@{/manage/examine}">审核</a></dd>
+                            <dd><a href="#" th:href="@{/manage/outStorage}">出库</a></dd>
                             <dd><a href="#">有效期管理</a></dd>
                             <dd><a href="#">库存管理</a></dd>
                             <dd><a href="#">统计信息</a></dd>

@@ -408,12 +408,23 @@ function openPopDetails(itemForm) {
 
 function openStorageFormInfoPop(storageFormId) {
     openPop();
+    var table=$("#applyFormTable").find("tbody");
+
     $.ajax({
         url:"/storage/StorageFormInfo",
         type:"post",
         data:{"storageFormId":storageFormId},
-        success:function (storageForm) {
-
+        success:function (result) {
+            var storageForm=result.content;
+            table.find("tr").remove();
+            var html="";
+            for(var item in storageForm ){
+                html += "<tr><td>"+item.itemCode+"</td>" +
+                    "<td>"+item.itemCount+"</td>" +
+                    "<td>"+item+"</td>" +
+                    "<td>"+item+"</td>" +
+                    "</tr>";
+            }
         }
     })
 }
@@ -612,12 +623,11 @@ function queryStorageList() {
                     "<td onclick=\"openStorageFormInfoPop(\'"+item.storageId+"\')\">" + "操作" + "</td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
-            }
+            };
             var _afterdisplay = function (item) {
                 $("#tr" + item.storageId).fadeIn(500);
-            }
-            beautifyDisplay(
-                _display, _afterdisplay, result.content, "storage");
+            };
+            beautifyDisplay(_display, _afterdisplay, result.content, "storage");
         },
     })
 }
@@ -655,7 +665,7 @@ function getObjextInfo(object) {
     for(var i in object){
         s+="["+i+":"+object[i]+"];"
     }
-    return s
+    return s;
 }
 
 //审核

@@ -7,6 +7,8 @@ public interface ManageContants {
 
     //manage
     String URL_MANAGE_EXAMEINE = "/manage/examine";
+    String URL_MANAGE_OUTSTORAGE = "/manage/outStorage";
+
     String URL_MANAGE_GETEXAMLNE = "/manage/getlist";
     /**
      * 审核申请单，传入参数：states:true、false；apply_id:
@@ -15,4 +17,5 @@ public interface ManageContants {
      * */
     String URL_MANAGE_PASSEXAMINE="/manage/passexamine";
     String HTML_MANAGE_EXAMINE = "/manage/examine";
+    String HTML_MANAGE_OUTSTORAGE = "/manage/outStorage";
 }
