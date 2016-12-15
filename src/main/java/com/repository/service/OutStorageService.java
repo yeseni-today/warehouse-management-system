@@ -1,31 +1,18 @@
 package com.repository.service;
 
-import com.repository.dao.CategoryDao;
-import com.repository.dao.CompanyDao;
-import com.repository.dao.ItemDao;
-import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.ItemInStorageDao;
-import com.repository.dao.DictionaryDao;
-import com.repository.entity.ItemApplicationEntity;
-import com.repository.entity.ItemApplicationOperationEntity;
-import com.repository.entity.ItemEntity;
-import com.repository.entity.ItemInStorageEntity;
-import com.repository.entity.ItemOutOperationEntity;
-import com.repository.entity.ItemOutStorageEntity;
-import com.repository.entity.DictionaryEntity;
+import com.repository.dao.*;
+import com.repository.entity.*;
 import com.repository.util.Util;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/12/1.
@@ -108,7 +95,7 @@ public class OutStorageService {
         outStorageEntity.setApplyId(operationEntities.getApplicationId());
         outStorageEntity.setOperationId("10000");
         outStorageEntity.setOutAddress("测试");
-        outStorageEntity.setOutStates("测试：出库正在完成");
+        outStorageEntity.setOutStates("正在完成");
         outStorageEntity.setOutTime(new Date(System.currentTimeMillis()));
         outStorageEntity.setOutId(dictionaryDao.getOutStorageId());
         return outStorageEntity;

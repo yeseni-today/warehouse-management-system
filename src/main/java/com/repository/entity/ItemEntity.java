@@ -16,7 +16,7 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "item")
-public class ItemEntity implements Cloneable {
+public class    ItemEntity implements Cloneable {
     private String itemCode;
     private String itemName;
 

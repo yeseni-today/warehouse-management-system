@@ -151,7 +151,7 @@ public class StorageFormService extends BaseObject {
                 CompanyEntity companyEntity = companyDao.findById(itemForm.getItemCompanyID());
                 CategoryEntity catogoryEntity = categoryDao.findById(itemForm.getItemCategoryID());
                 itemEntity.setItemCode(itemForm.getItemCode());
-                itemEntity.setItemCount(itemForm.getItemCount());
+                itemEntity.setItemCount(1);  //一物一码count=1
 
                 itemEntity.setItemSpec(itemForm.getItemSpec());
                 itemEntity.setItemIntroduce(itemForm.getItemIntroduce());
