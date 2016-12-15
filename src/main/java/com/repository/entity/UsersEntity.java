@@ -13,14 +13,26 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "item_users")
 public class UsersEntity {
-    @Size(max = 5,message = "用户标识符为5位")
+    @Size(max = 5, message = "用户标识符为5位")
     private String usersId;
-    @Size(max = 15,message = "密码应在10-15位之间")
+    @Size(max = 15, message = "密码应在10-15位之间")
     private String usersPassword;
     private String usersName;
     private String usersIdentity;
     private String usersPhone;
     private String usersSex;
+
+    @Basic
+    @Column(name = "url")
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    private String url;
 
     @Id
     @Column(name = "users_ID")

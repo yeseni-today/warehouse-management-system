@@ -67,7 +67,7 @@ public class MessageController extends BaseController {
     @ResponseBody
     public SimpleRes findmsg(Principal principal) {
         SimpleRes simpleRes = new SimpleRes();
-        simpleRes.setContent(messageService.findMessage(principal.getName()));
+        simpleRes.setContent(messageService.findUnreadMessage(principal.getName()));
         return simpleRes;
     }
 

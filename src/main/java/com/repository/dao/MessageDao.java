@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 @Component
 @Repository
@@ -26,6 +27,16 @@ public class MessageDao extends AbstractDao<MessageEntity> {
         MessageDao messageDao = new MessageDao();
 
         messageDao.save(messageEntity);
+    }
+
+    public List<MessageEntity> findByState(String recvID, MessageEntity.State state) {
+        return sessionFactory.getCurrentSession()
+                .createQuery("from MessageEntity e " +
+                        "where e.messageReceiveId=:recvid " +
+                        "and e.messageState=:state")
+                .setParameter("recvid", recvID)
+                .setParameter("state", state)
+                .list();
     }
 
 
