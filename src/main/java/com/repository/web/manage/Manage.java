@@ -40,6 +40,12 @@ public class Manage {
         model.addAttribute("history",datas);
         return TILES_PREFIX + HTML_MANAGE_EXAMINE;
     }
+    /*todo
+    * 出库*/
+    @RequestMapping(URL_MANAGE_OUTSTORAGE)
+    public String manageOutStorage(Model model) {
+        return TILES_PREFIX + HTML_MANAGE_OUTSTORAGE;
+    }
     /**
      * 获取申请单的详情
      * @retuen simres.conent=ApplyCompound
