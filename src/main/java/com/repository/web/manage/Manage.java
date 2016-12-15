@@ -76,6 +76,7 @@ public class Manage {
      * apply_id 为审核单的id
      */
     @RequestMapping(value = URL_MANAGE_PASSEXAMINE, method = RequestMethod.POST)
+    @ResponseBody
     public SimpleRes passExamine(
             Principal principal,
             @RequestParam("states") boolean states,

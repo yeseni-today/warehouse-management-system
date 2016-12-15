@@ -425,6 +425,9 @@ function openStorageFormInfoPop(storageFormId) {
                     "<td>"+item+"</td>" +
                     "</tr>";
             }
+        },
+        error:function () {
+            alert("ajax请求发送失败");
         }
     })
 }
@@ -671,8 +674,8 @@ function getObjextInfo(object) {
 //审核
 function getApplyFormByID(application_id) {
     var html = "";
-    var table = $("#applyForm").find("tbody");
-    var operation = $("#applyForm").find("tfoot").find("a");
+    var table = $("#applyFormTable").find("tbody");
+    var buttons = $("#applyFormTable button");
     //init
     $('#applyFromID').text("  ");
     $('#usersId').text("  ");
@@ -690,8 +693,15 @@ function getApplyFormByID(application_id) {
                 $('#usersId').text(result.content.usersId);
                 $('#applyTime').text(result.content.applicationTime);
 
-                operation[0].onclick=examineApply(true,application_id);
-                operation[1].onclick=examineApply(false,application_id);
+                buttons[0].onclick=function () {
+                    examineApply(true,application_id);  //通过
+                };
+                // buttons[0].click=function () {
+                //     examineApply(true,application_id);  //通过
+                // };
+                buttons[1].onclick=function (){
+                    examineApply(false,application_id);  //不通过
+                };
 
                 var _display = function (item) {
                     var html = "<tr style='display:none;' id='tr1"+item.itemCode+"'>" +
@@ -721,14 +731,19 @@ function getApplyFormByID(application_id) {
 function examineApply(states,apply_id) {
     $.ajax({
         url:"/manage/passexamine",
-        type:"post",
-        data: apply_id,
+        type: "post",
+        data: {"states":states, "apply_id":apply_id},
         success:function (result) {
             if(result.message=="success"){
-
+                alert("成功");
+                closePop();
             }else {
             //    todo
+                alert("系统错误");
             }
+        },
+        error:function () {
+            alert("发送失败");
         }
     })
 }
