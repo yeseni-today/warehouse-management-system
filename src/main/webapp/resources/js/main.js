@@ -2,6 +2,25 @@ window.onload = function () {
     document.body.style.fontSize = screen.width * 0.01 + "px";
     document.body.style.display = "block";
 };
+//返回顶部
+$(document).ready(function () {
+    $("#back_top").hide();
+
+    $("#back_top").click(function () {
+        $("#currentPage").animate({scrollTop:0},300);
+    });
+
+    $("#currentPage").scroll(function () {
+        setTimeout(function () {
+            console.log("scoll:"+$("#currentPage").scrollTop()+"px");
+        },100);
+        if($("#currentPage").scrollTop()>100){
+            $("#back_top").fadeIn(500);
+        }else {
+            $("#back_top").fadeOut(500);
+        }
+    });
+});
 
 $(document).ready(function () {
     $("#query").click(function () {
@@ -283,7 +302,7 @@ function displayMsg(msgs) {
                 "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
                 "<div class='message-content' >" + message.messageContent + "</div>" +
                 "<div class='message-operation'>" +
-                "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
+                // "<a href='#' onclick=\"msg_read(\'" + message.messageId + "\')\">设为已读</a>&nbsp;&nbsp;" +
                 "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
                 "</div>" +
                 "</div>";
@@ -422,8 +441,6 @@ function openStorageFormInfoPop(storageFormId) {
         success: function (result) {
             if (result.message == "success") {
                 var storageForm = result.content;
-
-                alert(storageForm.items.length);
 
                 $('#storage_id').text(storageForm.storageId);
                 $('#operation_id').text(storageForm.operationId);
@@ -596,13 +613,14 @@ function msg_send() {
  * 这里直接调用删除信息ajax
  * */
 function msg_hide(messageID) {
+    var $messageBox=$("#"+messageID);
     $.ajax({
         url: "/message/delete",
         data: {"messageID": messageID},
         success: function (result) {
             if (result.message == "success") {
-                //设为已读调用
-                alert("不再显示执行成功")
+                //设为不再显示调用
+                $("#"+messageID).slideUp(500);
             } else {
                 alert("不再显示执行失败，错误信息为：" + result.message)
             }

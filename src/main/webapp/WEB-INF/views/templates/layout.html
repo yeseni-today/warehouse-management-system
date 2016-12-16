@@ -30,7 +30,7 @@
     </div>
 </div>
 
-<div style="overflow-y: auto" id="currentPage" class="current">
+<div id="currentPage" class="current" style="overflow-y: scroll;height: 100%">
     <div tiles:replace="content"></div>
 </div>
 
@@ -40,6 +40,8 @@
     <div th:replace="templates/footer :: footer">
     </div>
 </div>
+
+<div id="back_top"></div>
 
 </body>
 </html>
