@@ -33,10 +33,11 @@
     </div>
 
     <div class="content-result myTable">
-        <table>
-            <caption>
-                申请单编号：<p th:text="${session.apply_form.applicationId}"></p>
-            </caption>
+        <caption>
+            申请单编号：<p th:text="${session.apply_form.applicationId}"></p>
+        </caption>
+        <table id="apply_for_submit">
+            <thead>
             <tr>
                 <th>物品条形码</th>
                 <th>物品名称</th>
@@ -44,9 +45,11 @@
                 <th>备注</th>
                 <th>删除</th>
             </tr>
+            </thead>
             <!--/*@thymesVar id="apply_form" type="com.repository.web.apply.add.AddapplyController.ApplyForm"*/-->
+            <tbody>
             <tr th:if="${session.apply_form == null || session.apply_form.items.isEmpty()}">
-                <td colspan="4">申请单中没有物品，请添加</td>
+                <td colspan="5">申请单中没有物品，请添加</td>
             </tr>
             <tr th:each="item : ${session.apply_form.getItems()}"
                 th:class="${item.getItemCode()}">
@@ -54,14 +57,15 @@
                 <td th:text="${item.getItemName()}"></td>
                 <td th:text="${item.getItemCount()}"></td>
                 <td th:text="${item.getOthers()}"></td>
-                <td class="myTable-operation" th:onclick="'applyDelet(\''+${item.getItemCode()}+'\')'" onclick="applyDelet()">
-                    <div class="icon-cross"></div>
+                <td class="myTable-operation icon-cross"
+                    th:onclick="'applyDelet(\''+${item.getItemCode()}+'\')'">
                 </td>
             </tr>
+            </tbody>
         </table>
         <div class="content-result-operation">
             <div class="myDivBt">
-                <a onclick="applySubmitForm()">提交</a>
+                <a onclick="applyToSubmit()">提交</a>
             </div>
             <div class="myDivBt">
                 <a type="button" onclick="clearApplyForm()">清空</a>
