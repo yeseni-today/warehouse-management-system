@@ -50,9 +50,14 @@ public class ApplyController extends BaseController {
      */
     @RequestMapping(URL_APPLY_LIST_AJAX)
     @ResponseBody
-    public SimpleRes applyday(@RequestParam(name = "day") int day) {
+    public SimpleRes applyday(@RequestParam(name = "day") int day,
+                              @RequestParam(name = "examineId") String examineId,
+                              @RequestParam(name = "states") String states,
+                              @RequestParam(name = "applicationId") String applicationId) {
         // TODO: 2016/12/9 参数比较多，只写了最近实践的参数
         List<ItemApplicationOperationEntity> entities = applicationOperationDao.findByDayBefore(day);
+        entities.addAll(applicationOperationDao.query(new String[]{"examineId","states","applicationId"}
+        ,new String[]{examineId,states,applicationId}));
         reverse(entities);
         return SimpleRes.success(entities);
     }

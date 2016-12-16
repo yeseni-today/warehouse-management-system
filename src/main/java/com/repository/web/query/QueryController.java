@@ -1,10 +1,14 @@
 package com.repository.web.query;
 
+import com.google.gson.Gson;
 import com.repository.base.BaseController;
+import com.repository.dao.ItemInStorageDao;
 import com.repository.entity.CategoryEntity;
 import com.repository.entity.ItemEntity;
 
+import com.repository.entity.ItemInStorageEntity;
 import com.repository.model.SimpleRes;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -15,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -35,16 +40,38 @@ public class QueryController extends BaseController {
         logger.trace(categoriesA());
     }
 
+    @Autowired
+    private ItemInStorageDao itemInStorageDao;
+
     /**
      * 通过物品id来查
-     * */
+     */
     @RequestMapping(URL_QUERY_ITEMINFO)
     @ResponseBody
-    public SimpleRes queryItem(@RequestParam("itemCode") String itemCode){
-        if (itemCode==null||itemCode.trim().equals("")){
+    public SimpleRes queryItem(@RequestParam("itemCode") String itemCode) {
+        if (itemCode == null || itemCode.trim().equals("")) {
             return SimpleRes.error("物品编码为空");
         }
-        return SimpleRes.success(itemDao.findById(itemCode));
+        class Item {
+            ItemEntity itemEntity;
+            String slot;
+
+            @Override
+            public String toString() {
+                return new Gson().toJson(this);
+            }
+        }
+
+        Item item = new Item();
+        item.itemEntity = itemDao.findById(itemCode);
+
+        List<ItemInStorageEntity> storages = itemInStorageDao.query("itemCode", itemCode, false);
+        storages.sort(Comparator.comparingLong(e -> e.getItemIndate().getTime()));
+        if (storages.size() > 0) {
+            item.slot = storages.get(0).getItemSlot();
+        } else item.slot = "没有库位信息";
+
+        return SimpleRes.success(item.toString());
     }
 
 
@@ -88,10 +115,6 @@ public class QueryController extends BaseController {
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));
         model.addAttribute("items", result);
-        logger.info("itemCode:" + itemCode);
-        logger.info("itemName:" + itemName);
-        logger.info("itemCategoryId:" + itemCategoryId);
-        logger.info(result.size());
         if (result == null) {
             result = new ArrayList<>();
         }

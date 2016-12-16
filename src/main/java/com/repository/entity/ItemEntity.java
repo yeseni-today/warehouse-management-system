@@ -47,8 +47,6 @@ public class    ItemEntity implements Cloneable {
         return new Gson().toJson(this);
     }
 
-    //    @Transient
-//    private boolean isInSchool;
     @Id
     @Column(name = "item_code")
     public String getItemCode() {
