@@ -424,6 +424,7 @@ function openAddCompany() {
     }, 1);
 }
 function openPopAdd(code, name) {
+    document.getElementById("info_of_apply_item").reset();
     document.getElementsByName("itemCode")[1].value = code;
     document.getElementsByName("itemName")[1].value = name;
     openPop();
@@ -554,7 +555,7 @@ function deleteAll() {
 //apply
 
 function addItem() {
-    var da = $('#applyForm').serialize();
+    var da = $('#info_of_apply_item').serialize();
     $.ajax({
         url: "/apply/add/additem",
         type: "post",
@@ -572,19 +573,22 @@ function addItem() {
         }
     });
 }
-function applySubmitForm() {
+
+//申请 提交
+function applyToSubmit() {
     $.ajax({
         url: "/apply/add/submit",
         type: "post",
         success: function (result) {
             if (result.message == "success") {
                 alert("提交成功");
+                location="/apply";
             } else {
                 alert("提交失败");
             }
         },
         error: function () {
-            alert("提交失败");
+            alert("ajax请求发送失败");
         }
     })
 }

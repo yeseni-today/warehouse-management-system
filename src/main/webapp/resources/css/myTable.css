@@ -8,14 +8,12 @@
     text-align: left;
 }
 
-
 .myTable tr {
     height: 2.7em;
 }
 
 .myTable tr:nth-child(2n) {
     background: rgb(249, 249, 249);
-    /*background-color: rgb(26, 188, 156);*/
 }
 
 .myTable tr:nth-child(2n+1) {
@@ -40,8 +38,4 @@
 .myTable-operation:hover {
     background: #16A085;
     font-size: 1.5em;
-}
-
-.myTable-operation div[class^='icon'] {
-    transition: font-size 0.3s;
 }

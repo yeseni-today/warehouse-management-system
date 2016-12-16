@@ -58,7 +58,6 @@
     </div>
 
     <div class="content-result myTable">
-        <!--<form action="apply_form.html" method="post" th:action="@{/apply/add}">-->
         <table id="add_result_table">
             <thead>
             <tr>
@@ -72,17 +71,6 @@
             <tbody>
 
             </tbody>
-            <!--<tr th:each="item : ${items} ">
-                &lt;!&ndash;/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/&ndash;&gt;
-                <td th:text="${item.itemCode}"></td>
-                <td th:text="${item.itemName}"></td>
-                <td th:text="${item.categoryEntity.getCategoryName()}"></td>
-                <td th:text="${item.itemCount}"></td>
-                <td class="myTable-operation"
-                    th:onclick="'javascript:openPopAdd(\''+${item.itemCode}+'\',\''+${item.itemName}+'\')'">
-                    <div class="icon-plus"></div>
-                </td>
-            </tr>-->
         </table>
 
         <div class="pop-bg">
@@ -92,7 +80,7 @@
                         <div class="close_button-icon"></div>
                     </div>
                 </div>
-                <form id="applyForm" method="post">
+                <form id="info_of_apply_item" method="post">
                     <ul>
                         <li>
                             <label>
@@ -158,15 +146,6 @@
                 </form>
             </div>
         </div>
-        <!--<div class="content-result-operation">-->
-        <!--<div class="myDivBt">-->
-        <!--<a href="apply_form.html" onclick="alert_info('系统正忙，请稍后重试')">添加</a>-->
-        <!--</div>-->
-        <!--<div class="myDivBt">-->
-        <!--<a href="apply_form.html">取消</a>-->
-        <!--</div>-->
-        <!--</div>-->
-        <!--</form>-->
     </div>
 </div>
 
