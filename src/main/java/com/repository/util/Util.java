@@ -28,6 +28,7 @@ public class Util {
     **/
     public static List<ItemInStorageEntity> changecount(List<ItemInStorageEntity> list, int count) {
         for (ItemInStorageEntity itembean : list) {
+
             int temp = itembean.getAllowCount();  //temp表示该批次允许提取数量
             if (count == 0) break;
             else if (temp >= count) {   //该批次剩余数量大于需求

@@ -70,9 +70,7 @@ public class OutStorageService {
         applicationIdEntity.setIndex(applicationIdEntity.getIndex() + 1);
         session.update(applicationIdEntity);
         session.save(outOperationEntity);
-
         logSerivce.saveOutOpera(principal.getName(), outOperationEntity);
-
         //保存出库表
         List<ItemOutStorageEntity> outStorageEntities = toOutStorage(items, outOperationEntity.getOutId());
         outStorageEntities.forEach(out -> {
@@ -103,15 +101,17 @@ public class OutStorageService {
     @Transactional
     private List<ItemInStorageEntity> getList(String itemCode) {
         Session session = sessionFactory.getCurrentSession();
-        return session.createSQLQuery("select * from item_in_storage where allow_count>0 and item_code=" + itemCode + " order by item_indate").addEntity(ItemInStorageEntity.class).list();
+        return session.createSQLQuery("select * from item_in_storage where allow_count>0 and item_code='" + itemCode+"'" + " order by item_indate").addEntity(ItemInStorageEntity.class).list();
     }
 
     @Transactional
     public void changeCount(String itemCode, int counts) {
         Session session = sessionFactory.getCurrentSession();
+
         List<ItemInStorageEntity> list = Util.changecount(getList(itemCode), counts);
         list.forEach(e -> {
             session.update(e);
+
         });
     }
 
