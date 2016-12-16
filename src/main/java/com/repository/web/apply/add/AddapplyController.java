@@ -163,7 +163,8 @@ public class AddapplyController extends BaseController {
     public SimpleRes submit(Principal principal, HttpSession session) {
         try {
             service.save(principal, getApplyForm(session));
-            session.removeAttribute(SESSION_STORAGE_FORM);
+            session.removeAttribute(SESSION_APPLY_FORM);
+            session.setAttribute(SESSION_APPLY_FORM,null);
             return SimpleRes.success();
         } catch (Exception e) {
             e.printStackTrace();

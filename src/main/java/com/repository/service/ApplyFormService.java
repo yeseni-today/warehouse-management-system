@@ -1,15 +1,11 @@
 package com.repository.service;
 
 import com.repository.common.ApplyContants;
-import com.repository.dao.CategoryDao;
-import com.repository.dao.CompanyDao;
-import com.repository.dao.ItemDao;
-import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.ItemInStorageDao;
-import com.repository.dao.DictionaryDao;
+import com.repository.dao.*;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.entity.DictionaryEntity;
+import com.repository.entity.ItemEntity;
 import com.repository.util.Util;
 import com.repository.web.apply.add.ApplyForm;
 import com.repository.web.apply.add.ApplyItemForm;
@@ -24,6 +20,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.transaction.SystemException;
 import javax.transaction.Transactional;
 
 /**
@@ -33,25 +30,17 @@ import javax.transaction.Transactional;
 public class ApplyFormService {
 
     @Autowired
-    ItemDao itemDao;
+    private ItemDao itemDao;
     @Autowired
-    ItemInOperationDao operationDao;
+    private DictionaryDao dictionaryDao;
     @Autowired
-    ItemInStorageDao storageDao;
+    private SessionFactory sessionFactory;
     @Autowired
-    DictionaryDao dictionaryDao;
+    private LogSerivce logSerivce;
     @Autowired
-    SessionFactory sessionFactory;
+    private OutStorageService outStorageService;
     @Autowired
-    LogSerivce logSerivce;
-    @Autowired
-    CompanyDao companyDao;
-    @Autowired
-    CategoryDao categoryDao;
-    @Autowired
-    OutStorageService outStorageService;
-    @Autowired
-    MessageService messageService;
+    private ItemApplicationOperationDao applicationOperationDao;
 
     @Transactional
     public boolean save(Principal principal, ApplyForm applyForm) {
@@ -74,27 +63,16 @@ public class ApplyFormService {
             items.forEach(entity -> {
                 session.save(entity);
                 //log
-                logSerivce.saveApply(principal.getName(),entity);
+                logSerivce.saveApply(principal.getName(), entity);
             });
             if (operationEntities.getStates().equals(DEFAULT_STATES)) {
-                //todo 发送消息给管理员
-                //messageService.send();
-                messageService.send(
-                        new MessageService.SendBuilder(principal.getName())
-                                .content("审核")
-                                .type("审核")
-                                .receId("admin")
-                                .title("需要审核")
-                                .send()
-                );
+                // 通知审核，减少item的数目
+                outStorageService.saveNeedStorage(principal, operationEntities, items);
             } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
-                outStorageService.saveStorage(principal,operationEntities, items);
+                outStorageService.saveStorage(principal, operationEntities, items);
             }
-
             //日志记录
-            logSerivce.saveApplyOpreation(principal.getName(),operationEntities);
-
-
+            logSerivce.saveApplyOpreation(principal.getName(), operationEntities);
         } catch (Exception e) {
             e.printStackTrace();
             return false;
@@ -152,6 +130,12 @@ public class ApplyFormService {
         return operationEntity;
     }
 
+    /**
+     * 根据传入的参数，来判断审核单是否需要审核
+     *
+     * @param applyForm
+     * @return true=need or false=no-need
+     */
     public boolean needExamine(ApplyForm applyForm) {
         for (ApplyItemForm item : applyForm.getItems()) {
             if (itemDao.findById(item.getItemCode()).getItemExamine().trim().equals("手动")) {
@@ -161,6 +145,12 @@ public class ApplyFormService {
         return false;
     }
 
+    /**
+     * 根据传入的参数，来判断审核单是否需要审核
+     *
+     * @param entities
+     * @return need or no-need
+     */
     public boolean needExamine(List<ItemApplicationEntity> entities) {
         for (ItemApplicationEntity item : entities) {
             if (itemDao.findById(item.getItemCode()).getItemExamine().trim().equals("手动")) {
@@ -171,4 +161,33 @@ public class ApplyFormService {
     }
 
 
+    @Autowired
+    private ItemApplicationDao applicationDao;
+
+    /**
+     * 申请单的审核
+     *
+     * @param apply_id  申请单id
+     * @param pass      true 通过审核，false，不通过审核
+     * @param principal
+     * @throws Exception 说明审核失败，出现了异常
+     */
+    @Transactional
+    public void examine(Principal principal, String apply_id, boolean pass) throws Exception {
+        if (pass) {
+            outStorageService.outStorage(principal, apply_id);
+        } else {
+            ItemApplicationOperationEntity opera = applicationOperationDao.findById(apply_id);
+            opera.setStates(ApplyContants.APPLY_FAIL_EXAMINE);
+            opera.setStatesTime(new Date(System.currentTimeMillis()));
+            opera.setExamineId(principal.getName());
+            sessionFactory.getCurrentSession().update(opera);
+            List<ItemApplicationEntity> applicationEntities = applicationDao.findByApplyId(apply_id);
+            applicationEntities.forEach(e -> {
+                ItemEntity item = itemDao.findById(e.getItemCode());
+                item.setItemCount(item.getItemCount()+e.getCounts());
+                sessionFactory.getCurrentSession().update(item);
+            });
+        }
+    }
 }

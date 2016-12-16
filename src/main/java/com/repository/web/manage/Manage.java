@@ -5,6 +5,7 @@ import com.repository.dao.ItemApplicationOperationDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.model.SimpleRes;
+import com.repository.service.ApplyFormService;
 import com.repository.service.OutStorageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -70,6 +71,8 @@ public class Manage {
     @Autowired
     OutStorageService outStorageService;
 
+    @Autowired
+    private ApplyFormService applyFormService;
     /**
      * 审核申请单，传入参数：states:true、false；apply_id:
      * true 为通过审核申请单，false 为审核不通过
@@ -81,14 +84,12 @@ public class Manage {
             Principal principal,
             @RequestParam("states") boolean states,
             @RequestParam("apply_id") String apply_id) {
-        //通过：创建出库单，然后修改申请单状态，修改物品表，修改入库管理表，发送成功消息（给用户），记录日志
-        if (states) {
+        //通过：修改申请单状态，创建出库单，修改物品表，修改入库管理表，发送成功消息（给用户），记录日志
             try {
-                outStorageService.outStorage(principal, apply_id);
+                applyFormService.examine(principal, apply_id,states);
             } catch (Exception e) {
                 return SimpleRes.error();
             }
-        }
 
         return SimpleRes.success();
     }

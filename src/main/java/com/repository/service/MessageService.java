@@ -149,7 +149,7 @@ public class MessageService {
         }
 
 
-        public MessageEntity send() {
+        public MessageEntity build() {
             MessageEntity message = new MessageEntity();
             message.setMessageDate(timestamp);
             message.setMessageState(state);

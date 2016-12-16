@@ -7,6 +7,7 @@ public interface ApplyContants {
 
     String APPLY_NEED_EXAMINE = "need";
     String APPLY_NONEED_EXAMINE = "pass";
+    String APPLY_FAIL_EXAMINE = "fail";
 
 
     //apply

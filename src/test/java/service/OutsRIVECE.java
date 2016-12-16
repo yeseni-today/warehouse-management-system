@@ -26,6 +26,6 @@ public class OutsRIVECE {
 
     @Test
     public void test(){
-        service.changeCount(itemcode,5);
+        service.changeBatchCount(itemcode,5);
     }
 }
