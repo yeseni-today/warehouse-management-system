@@ -101,6 +101,8 @@
 .current, .next {
     position: absolute;
     width: 100%;
+    height: 100%;
+    overflow-y: scroll;
     background: rgb(245, 245, 245);
 }
 

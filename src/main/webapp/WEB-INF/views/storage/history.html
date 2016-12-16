@@ -30,7 +30,7 @@
     </div>
 
     <div class="content-query myInput slide-panel">
-        <form action="#" id="storageQueryForm" th:action="@{/query/queryItem}" method="get">
+        <form id="storageQueryForm">
             <div class="content-query-left">
                 <label>
                     操作人：
@@ -42,8 +42,7 @@
                 </label>
             </div>
             <div class="content-query-right">
-                <input type="button" onclick="queryStorageList()" value="查询"/>
-                <!--<button class="icon-after-search" onclick="queryStorageList()">查询</button>-->
+                <input type="button" onclick="queryStorageList()" value="查询1"/>
             </div>
         </form>
     </div>
@@ -64,26 +63,28 @@
             <tr th:each="itemInOperation : ${history} ">
                 <!--/*@thymesVar id="itemInOperation" type="com.repository.entity.ItemInOperationEntity"*/-->
                 <td th:text="${itemInOperation.storageId}"></td>
-                <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd')}"></td>
+                <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd ahh:mm:ss')}"></td>
+                <!--<td th:text="${#dates(itemInOperation.storageTime).toLocaleString()}"></td>-->
                 <td th:text="${itemInOperation.operationId}"></td>
-                <td th:onclick="'openStorageFormInfoPop(\''+${itemInOperation.storageId}+'\')'">详情</td>
+                <td class="myTable-operation icon-search"
+                        th:onclick="'openPop_storageInfo(\''+${itemInOperation.storageId}+'\')'"></td>
             </tr>
         </table>
     </div>
 
     <div class="pop-bg">
-        <div class="pop myInfoList myInput" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
+        <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
             <div class="pop-close">
                 <div class="close_button" onclick="closePop()">
                     <div class="close_button-icon"></div>
                 </div>
             </div>
             <section>
-                入库单编号:"<span id="storage_id"></span>
-                入库人ID:<span id="operation_id"></span>
-                入库日期:<span id="storage_time"></span>
+                <label>入库单编号:"<span id="storage_id"></span></label>
+                <label>入库人ID:<span id="operation_id"></span></label>
+                <label>入库日期:<span id="storage_time"></span></label>
             </section>
-            <div class="myTable">
+            <div>
                 <table>
                     <tr>
                         <th>物品条形码</th>
@@ -97,16 +98,9 @@
                     </tr>
                 </table>
             </div>
-            <div class="myTable" style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+            <div style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
                 <table id="storage_table">
-                    <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td></td>
-                        <td></td>
-                        <td>1</td>
-                    </tr>
-                    </tbody>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>

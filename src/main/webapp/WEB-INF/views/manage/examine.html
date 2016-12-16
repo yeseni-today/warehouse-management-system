@@ -28,7 +28,8 @@
                 <tr th:if="${history==null||history.isEmpty()}">
                     <td colspan="4">没有申请单信息</td>
                 </tr>
-                <tr th:each="itemApplicationOperation:${history}">
+                <tr th:each="itemApplicationOperation:${history}"
+                    th:id="${itemApplicationOperation.applicationId}">
                     <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
                     <td th:text="${itemApplicationOperation.applicationId}"></td>
                     <td th:text="${itemApplicationOperation.usersId}"></td>
@@ -39,49 +40,54 @@
                     </td>
                 </tr>
             </table>
-            <div class="pop-bg">
-                <div class="pop myInfoList myInput" style="width: 50em">
-                    <div class="pop-close">
-                        <div class="close_button" onclick="closeapplyFormTablePop()">
-                            <div class="close_button-icon"></div>
-                        </div>
-                    </div>
-                    <section>
-                        申请单编号:"<span id="applyFromID"></span>
-                        申请人ID:<span id="usersId"></span>
-                        申请日期:<span id="applyTime"></span>
-                    </section>
-                    <div>
-                        <table id="applyFormTable" style="width: 50em">
-                            <thead>
-                            <tr>
-                                <td>物品条形码</td>
-                                <td>申请数量</td>
-                                <td>申请类型</td>
-                                <td>申请备注</td>
-                            </tr>
-                            </thead>
-                            <tbody>
 
-                            </tbody>
-                            <tfoot>
-                            <tr>
-                                <td></td>
-                                <td>
-                                    <button>通过</button>
-                                </td>
-                                <td>
-                                    <button>不通过</button>
-                                </td>
-                                <td></td>
-                            </tr>
-                            </tfoot>
-                        </table>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
+    <div class="pop-bg">
+        <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
+            <div class="pop-close">
+                <div class="close_button" onclick="closeapplyFormTablePop()">
+                    <div class="close_button-icon"></div>
+                </div>
+            </div>
+            <section>
+                申请单编号:"<span id="applyFromID"></span>
+                申请人ID:<span id="usersId"></span>
+                申请日期:<span id="applyTime"></span>
+            </section>
+            <div>
+                <table>
+                    <tr>
+                        <th>物品条形码</th>
+                        <th>物品名称</th>
+                        <th>申请数量</th>
+                        <th>申请类型</th>
+                        <th>申请备注</th>
+                    </tr>
+                </table>
+            </div>
+            <div style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+                <table id="applyFormTable">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button>通过</button>
+                        </td>
+                        <td></td>
+                        <td>
+                            <button>不通过</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>

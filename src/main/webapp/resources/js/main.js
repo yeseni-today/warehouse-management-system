@@ -1,45 +1,53 @@
+//字体大小初始化
 window.onload = function () {
     document.body.style.fontSize = screen.width * 0.01 + "px";
+    //防止刷新时 调整大小出现闪动
     document.body.style.display = "block";
 };
+
 //返回顶部
 $(document).ready(function () {
-    $("#back_top").hide();
+    var $backTop = $("#back_top");
+    $backTop.hide();
 
-    $("#back_top").click(function () {
-        $("#currentPage").animate({scrollTop:0},300);
+    $backTop.click(function () {
+        $("#currentPage").animate({scrollTop: 0}, 300);
     });
 
-    $("#currentPage").scroll(function () {
+    $("#currentPage,#nextPage").scroll(function () {
         setTimeout(function () {
-            console.log("scoll:"+$("#currentPage").scrollTop()+"px");
-        },100);
-        if($("#currentPage").scrollTop()>100){
+        }, 100);
+        if ($("#currentPage").scrollTop() > 100 || $("#nextPage").scrollTop > 100) {
             $("#back_top").fadeIn(500);
-        }else {
+        } else {
             $("#back_top").fadeOut(500);
         }
     });
 });
 
+//查询按钮事件绑定
 $(document).ready(function () {
     $("#query").click(function () {
         query();
     });
 });
 
+//绑定事件 展开查询功能条
 $(document).ready(function () {
     $("#slide_panel_bt").click(function () {
-        if ($(".slide-panel").css("display") == "none") {
-            $(".slide-panel").slideDown("slow");
+        var $slide=$(".slide-panel");
+        if ($slide.css("display") == "none") {
+            $slide.slideDown("slow");
         } else {
-            $(".slide-panel").slideUp("slow");
+            $slide.slideUp("slow");
         }
     });
 });
 
+//加载消息
 $(document).ready(msg_findmsg());
 
+//入库 选择分类 input隐藏
 function setVisible(bool) {
     var code = document.getElementById("bar_code");
     if (bool) {
@@ -49,11 +57,7 @@ function setVisible(bool) {
     }
 }
 
-function alert_info(info) {
-    alert(info);
-}
-
-
+//入库 添加分类
 function addCategory() {
     var a = $('#form_addCategory').serialize();
     $.ajax({
@@ -61,16 +65,19 @@ function addCategory() {
         type: "post",
         data: a,
         success: function (result) {
-            closePop();
-            alert("添加分类成功");
-
+            if (result.message == "success") {
+                closePop();
+                alert("添加分类成功");
+            } else {
+                alert("添加分类失败");
+            }
         },
         error: function () {
-            alert("添加分类失败，请重试");
+            alert("ajax请求发送失败");
         }
     })
 }
-
+//入库 添加公司
 function addCompany() {
     var a = $('#form_addCompany').serialize();
     $.ajax({
@@ -78,24 +85,31 @@ function addCompany() {
         type: "post",
         data: a,
         success: function (result) {
-            closePop();
-            alert("添加厂家信息成功");
+            if (result.message == "success") {
+                closePop();
+                alert("添加厂家信息成功");
+            } else {
+                alert("添加厂家信息失败");
+            }
         },
         error: function () {
-            alert("添加厂家信息失败，请重试");
+            alert("ajax请求发送失败");
         }
     })
 }
 
+//查询物品
 function query() {
     var values = $("#queryinput").serialize();
+    var table = $("#result_table").find("tbody");
     $.ajax({
+        url: "/query/queryItem",
         type: "get",
-        url: "/query/queryItem",    //向springboot请求数据的url
         data: values,
         success: function (items) {
-            var table = $("#result_table").find("tbody");
             table.find("tr").remove();
+
+            //加载特效
             var _display = function (item) {
                 var itemhtml = "<tr style='display: none' id='tr" + item.itemCode + "'>" +
                     "<td>" + item.itemCode + "</td>" +
@@ -110,10 +124,13 @@ function query() {
                 $("#tr" + item.itemCode).fadeIn(500);
             };
             beautifyDisplay(_display, _afterdisplay, items, "query");
+        },
+        error:function () {
+            alert("ajax请求发送失败");
         }
     })
 }
-
+//todo 注释
 function applyQueryAdd() {
     var values = $("#queryAddinput").serialize();
     $.ajax({
@@ -310,6 +327,7 @@ function displayMsg(msgs) {
         }
     })
 }
+
 function getDate(ms) {
     var d = new Date(ms);
     return d.toLocaleString();
@@ -330,6 +348,7 @@ function msg_delete() {
     });
     closePop();
 }
+
 function findLogs() {//todo
     showLoading();
     $.ajax({
@@ -425,7 +444,7 @@ function openPopDetails(itemForm) {
     openPop();
 }
 
-function openStorageFormInfoPop(storageFormId) {
+function openPop_storageInfo(storageFormId) {
     var $table = $("#storage_table").find("tbody");
 //init
     $('#storage_id').text("  ");
@@ -450,7 +469,7 @@ function openStorageFormInfoPop(storageFormId) {
 
                 var html = "";
                 // for (var item in items) {
-                for (var i=0;i< items.length;i++) {
+                for (var i = 0; i < items.length; i++) {
                     html += "<tr>" +
                         "<td>" + items[i].itemCode + "</td>" +
                         "<td>" + items[i].counts + "</td>" +
@@ -613,14 +632,14 @@ function msg_send() {
  * 这里直接调用删除信息ajax
  * */
 function msg_hide(messageID) {
-    var $messageBox=$("#"+messageID);
+    var $messageBox = $("#" + messageID);
     $.ajax({
         url: "/message/delete",
         data: {"messageID": messageID},
         success: function (result) {
             if (result.message == "success") {
                 //设为不再显示调用
-                $("#"+messageID).slideUp(500);
+                $("#" + messageID).slideUp(500);
             } else {
                 alert("不再显示执行失败，错误信息为：" + result.message)
             }
@@ -651,6 +670,7 @@ function msg_read(messageID) {
         },
     })
 }
+
 //查询对应条件的入库单
 function queryStorageList() {
     da = $('#storageQueryForm').serialize();
@@ -665,7 +685,7 @@ function queryStorageList() {
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.opreationId + "</td>" +
-                    "<td onclick=\"openStorageFormInfoPop(\'" + item.storageId + "\')\">" + "操作" + "</td>" +
+                    "<td onclick=\"openPop_storageInfo(\'" + item.storageId + "\')\">" + "操作" + "</td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
             };
@@ -710,14 +730,61 @@ function getObjextInfo(object) {
     for (var i in object) {
         s += "[" + i + ":" + object[i] + "];"
     }
+    // JSON.stringify();
     return s;
+}
+
+//申请 详情
+function openPop_applyInfo(applyID) {
+    var $table = $("#apply_table").find("tbody");
+    var $applyID=$('#apply_id');
+    var $operationID=$('#operation_id');
+    var $applyTime=$('#apply_time');
+    //init
+    $applyID.text("  ");
+    $operationID.text("  ");
+    $applyTime.text("  ");
+    $table.find("tr").remove();
+
+    $.ajax({
+        url: "/apply/applyinfo.json?application_id=" + applyID,
+        type: "get",
+
+        success: function (result) {
+            var applyJSON = result.content;
+            if (result.message == "success") {
+                openPop();
+                $('#apply_id').text(applyJSON.applicationId);
+                $('#operation_id').text(applyJSON.usersId);
+                $('#apply_time').text(applyJSON.applicationTime);
+
+                var items = applyJSON.items;
+                var html = "";
+                for (var i = 0; i < items.length; i++) {
+                    html += "<tr>" +
+                        "<td>" + items[i].itemCode + "</td>" +
+                        "<td>" + items[i].itemName + "</td>" +
+                        "<td>" + items[i].counts + "</td>" +
+                        "<td>" + items[i].applicationType + "</td>" +
+                        "<td>" + items[i].applicationText + "</td>" +
+                        "</tr>";
+                }
+                $table.append(html);
+            } else {
+                alert("失败");
+            }
+        },
+        error: function () {
+            alert("ajax请求发送失败");
+        }
+    })
 }
 
 //审核
 function getApplyFormByID(application_id) {
     var html = "";
     var table = $("#applyFormTable").find("tbody");
-    var buttons = $("#applyFormTable button");
+    var buttons = $("button");
     //init
     $('#applyFromID').text("  ");
     $('#usersId').text("  ");
@@ -727,47 +794,58 @@ function getApplyFormByID(application_id) {
     $.ajax({
         url: "/apply/applyinfo.json?application_id=" + application_id,
         type: "get",
-        // date: {"application_id": application_id},
         success: function (result) {
+            var applyFromJSON = result.content;
             if (result.message == "success") {
                 openPop();
-                $('#applyFromID').text(result.content.applicationId);
-                $('#usersId').text(result.content.usersId);
-                $('#applyTime').text(result.content.applicationTime);
+                $('#applyFromID').text(applyFromJSON.applicationId);
+                $('#usersId').text(applyFromJSON.usersId);
+                $('#applyTime').text(applyFromJSON.applicationTime);
 
                 buttons[0].onclick = function () {
                     examineApply(true, application_id);  //通过
                 };
-                // buttons[0].click=function () {
-                //     examineApply(true,application_id);  //通过
-                // };
+
                 buttons[1].onclick = function () {
                     examineApply(false, application_id);  //不通过
                 };
 
-                var _display = function (item) {
-                    var html = "<tr style='display:none;' id='tr1" + item.itemCode + "'>" +
-                        "<td>" + item.itemCode + "</td>" +
-                        "<td>" + item.counts + "</td>" +
-                        "<td>" + item.applicationType + "</td>" +
-                        "<td>" + item.applicationText + "</td>" +
-                        "</td>";
-                    table.append(html);
-                };
+                var html = "";
+                var items = applyFromJSON.items;
+                // alert(JSON.stringify(items[0]));
+                for (var i = 0; i < items.length; i++) {
+                    html += "<tr>" +
+                        "<td>" + items[i].itemCode + "</td>" +
+                        "<td>" + items[i].itemName + "</td>" +
+                        "<td>" + items[i].counts + "</td>" +
+                        "<td>" + items[i].applicationType + "</td>" +
+                        "<td>" + items[i].applicationText + "</td>" +
+                        "</tr>";
+                }
+                table.append(html);
 
-                var _afterdisplay = function (item) {
-                    console.log('#tr1' + item.itemCode);
-                    $('#tr1' + item.itemCode).fadeIn(1000);
-                };
+                /*var _display = function (item) {
+                 var html = "<tr style='display:none;' id='tr1" + item.itemCode + "'>" +
+                 "<td>" + item.itemCode + "</td>" +
+                 "<td>" + item.counts + "</td>" +
+                 "<td>" + item.applicationType + "</td>" +
+                 "<td>" + item.applicationText + "</td>" +
+                 "</td>";
+                 table.append(html);
+                 };
 
-                beautifyDisplay(_display, _afterdisplay, result.content.items, "申请单列表");
+                 var _afterdisplay = function (item) {
+                 console.log('#tr1' + item.itemCode);
+                 $('#tr1' + item.itemCode).fadeIn(1000);
+                 };
+
+                 beautifyDisplay(_display, _afterdisplay, applyFromJSON.items, "申请单列表");*/
             } else {
                 alert("获取失败，失败信息：" + result.message)
             }
         }
 
     })
-
 }
 
 function examineApply(states, apply_id) {
@@ -779,13 +857,13 @@ function examineApply(states, apply_id) {
             if (result.message == "success") {
                 alert("成功");
                 closePop();
+                $("#" + apply_id).fadeOut(500);
             } else {
-                //    todo
                 alert("系统错误");
             }
         },
         error: function () {
-            alert("发送失败");
+            alert("ajax请求发送失败");
         }
     })
 }
