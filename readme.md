@@ -37,3 +37,5 @@
 * v-0.61.0 finderlo
 * v-0.61.1 Stvl
    增回到顶部按钮
+* v-0.61.2 lx
+   fix a sql bug ''
