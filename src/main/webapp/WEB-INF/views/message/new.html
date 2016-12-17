@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div class="content-right">
-        <form id="newmessage" class="newMessage myInfoList myInput">
+        <form id="new_message" class="newMessage myInfoList myInput">
             <ul>
                 <li></li>
                 <li>
@@ -34,7 +34,7 @@
                             收信人：
                         </div>
                         <div class="value">
-                            <input type="text" name="receive_ID" style="width: 20em"/>
+                            <input type="text" name="receive_ID" required="required" style="width: 20em"/>
                         </div>
                     </label>
                 </li>
@@ -44,7 +44,7 @@
                             标题：
                         </div>
                         <div class="value">
-                            <input type="text" name="messageTitle" style="width: 20em"/>
+                            <input type="text" name="messageTitle" required="required" style="width: 20em"/>
                         </div>
                     </label>
                 </li>
@@ -54,7 +54,7 @@
                             内容：
                         </div>
                         <div class="value">
-                            <textarea name="messageContent"></textarea>
+                            <textarea name="messageContent" required="required"></textarea>
                         </div>
                     </label>
                 </li>

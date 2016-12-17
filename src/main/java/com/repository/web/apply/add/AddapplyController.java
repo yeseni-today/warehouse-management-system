@@ -119,6 +119,7 @@ public class AddapplyController extends BaseController {
                 e.setItemCount(e.getItemCount() + applyItemForm.getItemCount());
                 e.setOthers(applyItemForm.getOthers());
                 flag = true;
+                return SimpleRes.success();
             }
         }
         if (!flag){

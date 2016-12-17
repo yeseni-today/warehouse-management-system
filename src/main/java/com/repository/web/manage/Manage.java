@@ -2,6 +2,7 @@ package com.repository.web.manage;
 
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
+import com.repository.dao.ItemOutOperationDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.model.SimpleRes;
@@ -32,8 +33,10 @@ public class Manage {
 
     @Autowired
     ItemApplicationDao applicationDao;
+
     /**
      * 管理需要审核的申请网页 返回view
+     *
      * @return view
      */
     @RequestMapping(URL_MANAGE_EXAMEINE)
@@ -43,10 +46,15 @@ public class Manage {
         model.addAttribute("history", datas);
         return TILES_PREFIX + HTML_MANAGE_EXAMINE;
     }
+
+    @Autowired
+    ItemOutOperationDao itemOutOperationDao;
+
     /*todo
     * 出库*/
     @RequestMapping(URL_MANAGE_OUTSTORAGE)
     public String manageOutStorage(Model model) {
+        model.addAttribute("history", itemOutOperationDao.findAll());
         return TILES_PREFIX + HTML_MANAGE_OUTSTORAGE;
     }
 
@@ -73,6 +81,7 @@ public class Manage {
 
     @Autowired
     private ApplyFormService applyFormService;
+
     /**
      * 审核申请单，传入参数：states:true、false；apply_id:
      * true 为通过审核申请单，false 为审核不通过
@@ -85,11 +94,11 @@ public class Manage {
             @RequestParam("states") boolean states,
             @RequestParam("apply_id") String apply_id) {
         //通过：修改申请单状态，创建出库单，修改物品表，修改入库管理表，发送成功消息（给用户），记录日志
-            try {
-                applyFormService.examine(principal, apply_id,states);
-            } catch (Exception e) {
-                return SimpleRes.error();
-            }
+        try {
+            applyFormService.examine(principal, apply_id, states);
+        } catch (Exception e) {
+            return SimpleRes.error();
+        }
 
         return SimpleRes.success();
     }

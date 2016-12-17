@@ -19,19 +19,21 @@
         </div>
         <ul class="listNav">
             <!--<li><a href="#">新建</a></li>-->
-            <li><a href="#" onclick="msg_findmsg()">通知</a></li>
-            <li><a href="#" onclick="msg_findWarnMsg()">提醒</a></li>
-            <li><a href="#">其他</a></li>
+            <li><a href="#inform" onclick="msg_findInform()">通知</a></li>
+            <li><a href="#remind" onclick="msg_findRemind()">提醒</a></li>
+            <li><a href="#other" onclick="msg_findOther()">其他</a></li>
         </ul>
     </div>
     <div id="message" class="content-right">
-        <div class="message-type">通知</div>
+        <div class="message-type">所有消息</div>
+
+
         <div class="message" id="">
-            <span class="message-title"><strong>title</strong></span>
-            <span class="message-date">data</span>
-            <div class="message-content">content</div>
+            <span class="message-title"><strong></strong></span>
+            <span class="message-date"></span>
+            <div class="message-content">没有消息</div>
             <div class="message-operation">
-                <span onclick="msg_hide('messageID')">不再显示</span>
+                <span onclick="msg_hide('messageID')"></span>
             </div>
         </div>
     </div>

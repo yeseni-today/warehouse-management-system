@@ -6,7 +6,6 @@
     <title>审核</title>
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
-
     <script src="../../../resources/js/jquery-3.1.1.js"></script>
     <script src="../../../resources/js/main.js"></script>
 </head>
@@ -26,7 +25,7 @@
                     <th>详情</th>
                 </tr>
                 <tr th:if="${history==null||history.isEmpty()}">
-                    <td colspan="4">没有申请单信息</td>
+                    <td colspan="4">没有未审核的申请单</td>
                 </tr>
                 <tr th:each="itemApplicationOperation:${history}"
                     th:id="${itemApplicationOperation.applicationId}">

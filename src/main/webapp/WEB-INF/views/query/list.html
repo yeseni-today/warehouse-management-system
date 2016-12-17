@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:tiles="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">查询物品</title>
 
     <link href="../../../resources/css/all.css" rel="stylesheet" type="text/css"/>
     <script src="../../../resources/js/main.js"></script>
-
 </head>
 
 <body>
@@ -24,13 +22,10 @@
 
 
     <div class="content-query myInput">
-        <!--/*@thymesVar id="queryItem" type="com.repository.web.query.QueryController"*/-->
-        <!--/*@thymesVar id="do" type=""*/-->
-        <form action="#" id="queryinput" th:action="@{/query/queryItem}" method="get">
+        <form id="query_input_info">
             <div class="content-query-left">
                 <label>
                     物品条码：
-
                     <input type="text" name="itemCode"/>
                 </label>
                 <label>
@@ -52,15 +47,14 @@
                     </select>
                 </label>
             </div>
-            <div class="content-query-right icon-search">
-                <input type="button" id="query" value="查询"/>
+            <div class="content-query-right">
+                <input type="button" value="查询" onclick="queryItem('icon-search')"/>
             </div>
         </form>
     </div>
 
     <div class="content-result myTable">
-        <table id="result_table">
-            <!--<tr id="first">-->
+        <table id="query_item_result">
             <thead>
             <tr>
                 <th>条码</th>
@@ -71,20 +65,10 @@
             </tr>
             </thead>
             <tbody>
-
-            </tbody>
-            <!--<tr th:if="${items == null || items.empty}">
-                <td colspan="5">No messages</td>
+            <tr>
+                <td colspan="5">请输入查询信息</td>
             </tr>
-            &lt;!&ndash;<tr id="result_tr" th:each="item : ${items} ">&ndash;&gt;
-            <tr  th:each="item : ${items} ">
-                &lt;!&ndash;/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/&ndash;&gt;
-                <td th:text="${item.itemCode}"></td>
-                <td th:text="${item.itemName}"></td>
-                <td th:text="${item.categoryEntity.categoryName()}"></td>
-                <td th:text="${item.itemCount}"></td>
-                <td></td>
-            </tr>-->
+            </tbody>
         </table>
     </div>
 
@@ -223,7 +207,7 @@
                                 物品库位：
                             </div>
                             <div class="value">
-                                <input type="text" name="storageLocation" readonly="readonly"/>
+                                <input type="text" name="itemSlot" readonly="readonly"/>
                             </div>
                         </label>
                     </li>

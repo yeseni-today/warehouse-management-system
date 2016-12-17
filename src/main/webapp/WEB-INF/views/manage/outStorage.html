@@ -20,54 +20,67 @@
         <div class="content-result myTable">
             <table>
                 <tr>
-                    <th>申请单编号</th>
-                    <th>申请人ID</th>
-                    <th>申请日期</th>
+                    <th>出库单编号</th>
+                    <th>领取人ID</th>
+                    <th>领取地址</th>
                     <th>详情</th>
                 </tr>
-                <tr th:if="${history==null||history.isEmpty()}">
+                <tr th:if="${history==null||history.isEmpty()}"
+                    th:id="${ItemOutOperation.outId}">
                     <td colspan="4">没有申请单信息</td>
                 </tr>
-                <tr th:each="itemApplicationOperation:${history}">
-                    <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
-                    <td th:text="${itemApplicationOperation.applicationId}"></td>
-                    <td th:text="${itemApplicationOperation.usersId}"></td>
-                    <td th:text="${itemApplicationOperation.applicationTime}"></td>
+                <tr th:each="ItemOutOperation:${history}">
+                    <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemOutOperationEntity"*/-->
+                    <td th:text="${ItemOutOperation.outId}"></td>
+                    <td th:text="${ItemOutOperation.usersId}"></td>
+                    <td th:text="${ItemOutOperation.outAddress}"></td>
                     <td class="myTable-operation" onclick="openPop()"
-                        th:onclick="'getApplyFormByID(\''+${itemApplicationOperation.applicationId}+'\')'">
+                        th:onclick="'getOutOperationFormByID(\''+${ItemOutOperation.outId}+'\')'">
                         <div class="icon-search"></div>
                     </td>
                 </tr>
             </table>
-            <div class="pop-bg">
-                <div class="pop myInfoList myInput" style="width: 50em">
-                    <div class="pop-close">
-                        <div class="close_button" onclick="closeapplyFormTablePop()">
-                            <div class="close_button-icon"></div>
-                        </div>
-                    </div>
-                    <section>
-                        申请单编号:"<span id="applyFromID"></span>
-                        申请人ID:<span id="usersId"></span>
-                        申请日期:<span id="applyTime"></span>
-                    </section>
-                    <div>
-                        <table id="applyFormTable" style="width: 50em">
-                            <tr>
-                                <td>物品条形码</td>
-                                <td>申请数量</td>
-                                <td>申请类型</td>
-                                <td>申请备注</td>
-                            </tr>
-
-                        </table>
-                            <a class="myTable-operation" onclick="">通过</a>
-                            <a class="myTable-operation">不通过</a>
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
+    <div class="pop-bg">
+        <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
+            <div class="pop-close">
+                <div class="close_button" onclick="closeapplyFormTablePop()">
+                    <div class="close_button-icon"></div>
+                </div>
+            </div>
+            <section>
+                出库单编号:"<span id="out_id"></span>
+                领取人ID:<span id="users_id"></span>
+                领取地址:<span id="out_address"></span>
+            </section>
+            <section>
+                <table>
+                    <tr>
+                        <th>物品条形码</th>
+                        <th>出库数量</th>
+                        <th>详情</th>
+                    </tr>
+                </table>
+            </section>
+            <section style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+                <table id="out_table">
+                    <tbody></tbody>
+                </table>
+            </section>
+            <section>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button>通过</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </section>
+        </div>
+    </div>
 </div>
 
 </body>

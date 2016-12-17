@@ -5,7 +5,6 @@ import com.repository.base.BaseController;
 import com.repository.dao.ItemInStorageDao;
 import com.repository.entity.CategoryEntity;
 import com.repository.entity.ItemEntity;
-
 import com.repository.entity.ItemInStorageEntity;
 import com.repository.model.SimpleRes;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,13 +16,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import javax.servlet.http.HttpSession;
 
 import static com.repository.common.Constants.*;
 
@@ -52,15 +50,7 @@ public class QueryController extends BaseController {
         if (itemCode == null || itemCode.trim().equals("")) {
             return SimpleRes.error("物品编码为空");
         }
-        class Item {
-            ItemEntity itemEntity;
-            String slot;
 
-            @Override
-            public String toString() {
-                return new Gson().toJson(this);
-            }
-        }
 
         Item item = new Item();
         item.itemEntity = itemDao.findById(itemCode);
@@ -70,8 +60,18 @@ public class QueryController extends BaseController {
         if (storages.size() > 0) {
             item.slot = storages.get(0).getItemSlot();
         } else item.slot = "没有库位信息";
+        System.out.println(item.toString());
+        return SimpleRes.success(item);
+    }
 
-        return SimpleRes.success(item.toString());
+    static class Item {
+        public ItemEntity itemEntity;
+        public String slot;
+
+        @Override
+        public String toString() {
+            return new Gson().toJson(this);
+        }
     }
 
 

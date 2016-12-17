@@ -18,16 +18,17 @@
             <span>日志</span>
         </div>
         <ul class="listNav">
-            <li><a href="#">系统日志</a></li>
-            <li><a href="#">入库日志</a></li>
-            <li><a href="#">出库日志</a></li>
-            <li><a href="#">申请日志</a></li>
-            <!--<li><a href="#">借用日志</a></li>-->
-            <li><a href="#">物品维护日志</a></li>
+            <li><a href="#" onclick="log_find('system')">系统日志</a></li>
+            <li><a href="#" onclick="log_find('inStorage')">入库日志</a></li>
+            <li><a href="#" onclick="log_find('outStorage')">出库日志</a></li>
+            <li><a href="#" onclick="log_find('apply')">申请日志</a></li>
+            <li><a href="#" onclick="log_find('itemMaintain')">物品维护日志</a></li>
         </ul>
     </div>
 
     <div id="log" class="content-right">
+        <div class="message-type">所有日志</div>
+
         <div class="message" th:if="${logs == null}">
             <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             没有日志

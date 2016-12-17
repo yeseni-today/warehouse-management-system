@@ -12,6 +12,8 @@
     height: 2.7em;
 }
 
+
+
 .myTable tr:nth-child(2n) {
     background: rgb(249, 249, 249);
 }
@@ -39,3 +41,4 @@
     background: #16A085;
     font-size: 1.5em;
 }
+
