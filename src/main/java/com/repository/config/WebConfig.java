@@ -1,7 +1,7 @@
 package com.repository.config;
 
 import com.repository.Application;
-
+import nz.net.ultraq.thymeleaf.LayoutDialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +22,6 @@ import org.thymeleaf.templateresolver.TemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
 
 import java.util.Properties;
-
-import nz.net.ultraq.thymeleaf.LayoutDialect;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml

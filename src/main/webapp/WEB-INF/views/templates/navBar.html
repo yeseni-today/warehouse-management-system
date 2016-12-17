@@ -39,7 +39,7 @@
                             <!--<dd><a href="#" th:href="@{/message}">我的消息</a></dd>-->
                         <!--</dl>-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authorize="hasRole('ROLE_USER')">
                         <a href="#" th:href="@{/log}">日志</a>
                         <!--<span class="arrow"></span>
                         <dl>
@@ -50,7 +50,7 @@
                             <dd><a href="#">物品维护日志</a></dd>
                         </dl>-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}">
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authentication="ROLE_ADMIN">
                         <a href="#">管理</a>
                         <span class="arrow"></span>
                         <dl>

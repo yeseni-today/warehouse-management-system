@@ -73,6 +73,7 @@ dependencies {
     compile ('org.thymeleaf.extras:thymeleaf-extras-tiles2-spring4:2.1.1.RELEASE')
     compile ('org.apache.tiles:tiles-core:2.2.2')
     compile ('org.apache.tiles:tiles-template:2.2.2')
+    compile ('thymeleaf-extras-springsecurity4')
     compile ('jstl:jstl:1.2')
 //    compile group: 'org.jetbrains', name: 'annotations', version:'RELEASE'
     compile ('com.google.code.findbugs:jsr305:2.0.1')

@@ -19,7 +19,7 @@ import java.util.Map;
  * Created by finderlo on 16-12-17.
  */
 @Transactional
-public class AbstractReadDao<T> extends BaseObject implements ReadDao<T> {
+public abstract class AbstractReadDao<T> extends BaseObject  {
 
     @Autowired
     protected SessionFactory sessionFactory;
