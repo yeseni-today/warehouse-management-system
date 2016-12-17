@@ -4,9 +4,6 @@ import com.repository.base.BaseObject;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.EnableAsync;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.lang.reflect.Field;
@@ -21,10 +18,8 @@ import java.util.Map;
 /**
  * Created by finderlo on 16-12-17.
  */
-@EnableAsync
-@Repository
-@Transactional(propagation = Propagation.REQUIRED)
-public class AbstractReadDao<T> extends BaseObject {
+@Transactional
+public class AbstractReadDao<T> extends BaseObject implements ReadDao<T> {
 
     @Autowired
     protected SessionFactory sessionFactory;
