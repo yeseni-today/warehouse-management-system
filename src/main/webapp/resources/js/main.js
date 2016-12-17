@@ -1058,6 +1058,7 @@ function queryItemInDate() {
         }
     })
 }
+
 function showItemInDate(items) {
     var html = "";
     var $table = $("#query_item_result").find("tbody");
