@@ -1,14 +1,15 @@
 package com.repository.dao;
 
 import com.repository.entity.UsersEntity;
-
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
-import javax.transaction.Transactional;
-
 @Component
 @Repository
+@EnableAsync
+@EnableCaching
 public class UsersDao extends AbstractDao<UsersEntity> {
 
 

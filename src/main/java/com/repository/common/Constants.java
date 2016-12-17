@@ -97,7 +97,7 @@ public interface Constants extends ApplyContants,ManageContants {
 
     String URL_LOG_SYSTEM_AJAX = URL_LOG + "/system";
     String URL_LOG_INSTORAGE_AJAX = URL_LOG + "/instorage";
-    String URL_LOG_OUTSTORAGE_AJAX = URL_LOG + "/outsturage";
+    String URL_LOG_OUTSTORAGE_AJAX = URL_LOG + "/outstorage";
     String URL_LOG_APPLY_AJAX = URL_LOG + "/apply";
     String URL_LOG_BORROW_AJAX = URL_LOG + "/borrow";
     String URL_LOG_MAINTAIN_AJAX = URL_LOG + "/maintain";

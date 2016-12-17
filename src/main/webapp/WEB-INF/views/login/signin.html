@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:tiles="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">登陆</title>
@@ -12,58 +11,25 @@
 
 <body>
 <div tiles:fragment="content">
-
-    <script id="fs" type="x-shader/x-fragment">
-    uniform sampler2D map;
-    uniform vec3 fogColor;
-    uniform float fogNear;
-    uniform float fogFar;
-    varying vec2 vUv;
-
-    void main() {
-        float depth = gl_FragCoord.z / gl_FragCoord.w;
-        float fogFactor = smoothstep( fogNear, fogFar, depth );
-
-        gl_FragColor = texture2D( map, vUv );
-        gl_FragColor.w *= pow( gl_FragCoord.z, 20.0 );
-        gl_FragColor = mix( gl_FragColor, vec4( fogColor, gl_FragColor.w ), fogFactor );
-    }
-
-    </script>
-    <script id="vs" type="x-shader/x-vertex">
-	varying vec2 vUv;
-	void main() {
-		vUv = uv;
-		gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0 );
-	}
-
-    </script>
-    <script src="../../../resources/js/clouds/Detector.js"></script>
-    <script src="../../../resources/js/clouds/three.min.js"></script>
-    <script src="../../../resources/js/clouds/animate.js"></script>
+    <!--云团效果-->
+    <script src="../../../resources/js/clouds/all.js"></script>
 
     <div class="login-title">
         欢迎，这里是仓库管理系统
     </div>
 
-    <!--<div class="login myInput">-->
     <form class="login myInput" action='../query/list.html' method="post">
-            <div class="name">
-                <input type='text' name='username' placeholder="请输入账号"/>
-                <div class="icon-after-user"></div>
-            </div>
-            <div class="password">
-                <input type='password' name='password' placeholder="请输入密码"/>
-                <div class="icon-after-lock"></div>
-            </div>
-            <!--<input class="button" type="button" value="统一登陆"-->
-            <!--style="background-image: linear-gradient(#91dd70, #55ae2e);"/>-->
+        <div class="name">
+            <input type='text' name='username' placeholder="请输入账号"/>
+            <div class="icon-after-user"></div>
+        </div>
+        <div class="password">
+            <input type='password' name='password' placeholder="请输入密码"/>
+            <div class="icon-after-lock"></div>
+        </div>
         <input id="loginButton" type="button" name="submit" value="登陆"/>
-            <!--<tr><td><input type="checkbox" name="remember-me"/></td><td>Remember me on this computer.</td></tr>-->
-        </form>
-    <!--</div>-->
+    </form>
 </div>
-
 
 </body>
 </html>

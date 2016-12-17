@@ -2,6 +2,7 @@ package com.repository.web.manage;
 
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
+import com.repository.dao.ItemOutOperationDao;
 import com.repository.dao.view.ItemInDateDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
@@ -41,6 +42,9 @@ public class ManageController {
     OutStorageService _outStorageService;
 
     @Autowired
+    ItemOutOperationDao _itemOutOpreationDao;
+
+    @Autowired
     private ApplyFormService _applyFormService;
 
     /**
@@ -70,6 +74,7 @@ public class ManageController {
     * 出库*/
     @RequestMapping(URL_MANAGE_OUTSTORAGE)
     public String manageOutStorage(Model model) {
+        model.addAttribute("history",_itemOutOpreationDao.findAll());
         return TILES_PREFIX + HTML_MANAGE_OUTSTORAGE;
     }
 

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:tiles="http://www.thymeleaf.org">
-
 <head>
     <meta charset="UTF-8"/>
     <title tiles:replace="title">登陆模板</title>
@@ -17,8 +16,7 @@
 
 <body>
 
-<div class="background"></div>
-
+<!--加载图标-->
 <div id="load" class="load">
     <img id="loadGif" src="../../../resources/picture/loading.gif"/>
 </div>
@@ -28,7 +26,7 @@
     </div>
 </div>
 
-<div tiles:replace="content"></div>
+<div class="content" tiles:replace="content"></div>
 
 <div id="footer">
     <div th:replace="templates/footer :: footer">

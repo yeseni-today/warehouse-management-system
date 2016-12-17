@@ -905,7 +905,7 @@ function getOutOperationFormByID(outID) {
 
     $.ajax({
         url: "/getOutOperationInfo?out_id=" + outID,
-        type: "post",
+        type: "get",
         success: function (result) {
             var outStorageFromJSON = result.content;
             if (result.message == "success") {
@@ -962,23 +962,23 @@ function log_find(type) {
     switch (type) {
         case "system":
             typeStr = "系统日志";
-            url = "";
+            url = "/log/system";
             break;
         case "outStorage":
             typeStr = "出库日志";
-            url = "";
+            url = "/log/outstorage";
             break;
         case "inStorage":
             typeStr = "入库日志";
-            url = "";
+            url = "/log/instorage";
             break;
         case "apply":
             typeStr = "申请日志";
-            url = "";
+            url = "/log/apply";
             break;
         case "itemMaintain":
             typeStr = "物品维护日志";
-            url = "";
+            url = "/log/maintain";
             break;
     }
     document.getElementsByClassName("message-type")[0].innerHTML = typeStr;
@@ -987,11 +987,12 @@ function log_find(type) {
     showLogs(logs);
 }
 
-function log_findBy(url) {
+function log_findBy(url,_function) {
     var logs;
     $.ajax({
         url: url,
         type: "post",
+        async: false,
         success: function (result) {
             if (result.message == "success") {
                 logs = result.content;
@@ -1014,14 +1015,15 @@ function showLogs(logs) {
     if (logs.length == 0) {
         html = "<div class='message'>没有日志 </div>"
     }
-    for (var i = 0; i < logs.length; i++) {
+    for (var i=0;i<logs.length;i++) {
         html += "<div class='message' id=''>" +
-            "<span class='message-title'><strong></strong></span>" +
-            "<span class='message-date'>   </span>" +
-            "<div class='message-content'>  </div>" +
-            "<div class='message-operation'>" +
-                    "<span onclick='msg_hide('messageID')'></span>" +
-            "</div>" +
+            "<span class='message-title'><strong>"+logs[i].logId+"</strong></span>" +
+            "<span class='message-date'>"+getDate(logs[i].logDate)+"</span>" +
+            "<span class='message-date'>"+logs[i].logLevel+"</span>" +
+            "<div class='message-content'>"+logs[i].logInfo+"</div>" +
+            // "<div class='message-operation'>" +
+            //         "<span onclick='msg_hide('messageID')'></span>" +
+            // "</div>" +
             "</div>";
     }
     $log.append(html);
