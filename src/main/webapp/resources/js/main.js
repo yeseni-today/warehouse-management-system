@@ -322,8 +322,8 @@ function msgFindBy(url, type) {
         type: type,
         success: function (result) {
             // if (result.message == "success") {
-                var umessageList = result.content;
-                displayMsg(umessageList);
+            var umessageList = result.content;
+            displayMsg(umessageList);
             // } else {
             //     alert("查询信息出错");
             // }
@@ -342,7 +342,7 @@ function displayMsg(msgs) {
             msgs.push(message);
             messageBox = "<div class='message' id='" + message.messageId + "'>" +
                 "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
-                "<span class='message-date'>" + getDate(message.messageDate) + "</span>" +
+                "<span class='message-date'>" + getDateAndTime(message.messageDate) + "</span>" +
                 "<div class='message-content' >" + message.messageContent + "</div>" +
                 "<div class='message-operation'>" +
                 "<a href='#' onclick=\"msg_hide(\'" + message.messageId + "\')\">不再显示</a>" +
@@ -353,9 +353,17 @@ function displayMsg(msgs) {
     })
 }
 
-function getDate(ms) {
+
+function getDateAndTime(ms) {
     var d = new Date(ms);
     return d.toLocaleString();
+}
+function getDate(ms) {
+    var d = new Date(ms);
+    var year = d.getFullYear();
+    var month = d.getMonth();
+    var date = d.getDate();
+    return year + "-" + month + "-" + date;
 }
 
 function msg_delete() {
@@ -704,11 +712,12 @@ function queryStorageList() {
         type: "get",
         success: function (result) {
             $("#result_storage_table").find("tr").remove("tr:gt(0)");
+            console.log(result.content[0]);
             var _display = function (item) {
                 var itemhtml = "<tr style='display: none' id='tr" + item.storageId + "'>" +
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
-                    "<td>" + item.opreationId + "</td>" +
+                    "<td>" + item.operationId + "</td>" +
                     "<td onclick=\"openPop_storageInfo(\'" + item.storageId + "\')\">" + "操作" + "</td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
@@ -787,7 +796,7 @@ function openPop_applyInfo(applyID) {
                 for (var i = 0; i < items.length; i++) {
                     html += "<tr>" +
                         "<td>" + items[i].itemCode + "</td>" +
-                        "<td>" + items[i].itemName + "</td>" +
+                        // "<td>" + items[i].itemName + "</td>" +
                         "<td>" + items[i].counts + "</td>" +
                         "<td>" + items[i].applicationType + "</td>" +
                         "<td>" + items[i].applicationText + "</td>" +
@@ -987,7 +996,7 @@ function log_find(type) {
     showLogs(logs);
 }
 
-function log_findBy(url,_function) {
+function log_findBy(url, _function) {
     var logs;
     $.ajax({
         url: url,
@@ -1010,21 +1019,58 @@ function log_findBy(url,_function) {
 //todo
 function showLogs(logs) {
     var html = "";
-    var $log=$("#log");
+    var $log = $("#log");
     $log.find(".message").remove();
     if (logs.length == 0) {
         html = "<div class='message'>没有日志 </div>"
     }
-    for (var i=0;i<logs.length;i++) {
+    for (var i = 0; i < logs.length; i++) {
         html += "<div class='message' id=''>" +
-            "<span class='message-title'><strong>"+logs[i].logId+"</strong></span>" +
-            "<span class='message-date'>"+getDate(logs[i].logDate)+"</span>" +
-            "<span class='message-date'>"+logs[i].logLevel+"</span>" +
-            "<div class='message-content'>"+logs[i].logInfo+"</div>" +
+            "<span class='message-title'><strong>" + logs[i].logId + "</strong></span>" +
+            "<span class='message-date'>" + getDateAndTime(logs[i].logDate) + "</span>" +
+            "<span class='message-date'>" + logs[i].logLevel + "</span>" +
+            "<div class='message-content'>" + logs[i].logInfo + "</div>" +
             // "<div class='message-operation'>" +
             //         "<span onclick='msg_hide('messageID')'></span>" +
             // "</div>" +
             "</div>";
     }
     $log.append(html);
+}
+
+
+//todo url findlo
+function queryItemInDate() {
+    $.ajax({
+        url: "/manage/queryItemInDateById.json",
+        type: "type",
+        data: $("#query_input_info").serialize(),
+        success: function (result) {
+            if (result.message == "success") {
+                var items = result.content;
+                showItemInDate(items);
+            } else {
+                alert("查询失败");
+            }
+        },
+        error: function () {
+            alert("ajax发送失败");
+        }
+    })
+}
+function showItemInDate(items) {
+    var html = "";
+    var $table = $("#query_item_result").find("tbody");
+    $table.find("tr").remove();
+    for (var i = 0; i < items.length; i++) {
+        html += "<tr>" +
+            "<td >" + item.itemCode + "</td>" +
+            "<td>" + item.itemName + "</td>" +
+            "<td>" + item.itemBatch + "</td>" +
+            "<td>" + item.itemIndate + "</td>" +
+            "<td>" + item.itemSlot + "</td>" +
+            "<td>" + item.allowCount + "</td>" +
+            "</tr>";
+    }
+    $table.append(html);
 }

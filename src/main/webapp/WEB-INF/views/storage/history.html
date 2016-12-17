@@ -52,7 +52,7 @@
         <table id="result_storage_table">
             <tr>
                 <th>入库单编号</th>
-                <th>入库时间</th>
+                <th>入库日期</th>
                 <th>操作人员ID</th>
                 <th>详情</th>
             </tr>
@@ -63,7 +63,8 @@
             <tr th:each="itemInOperation : ${history} ">
                 <!--/*@thymesVar id="itemInOperation" type="com.repository.entity.ItemInOperationEntity"*/-->
                 <td th:text="${itemInOperation.storageId}"></td>
-                <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd ahh:mm:ss')}"></td>
+                <td th:text="${#dates.format(itemInOperation.storageTime,'yyyy-MM-dd')}"></td>
+                <!--yyyy-MM-dd ahh:mm:ss-->
                 <!--<td th:text="${#dates(itemInOperation.storageTime).toLocaleString()}"></td>-->
                 <td th:text="${itemInOperation.operationId}"></td>
                 <td class="myTable-operation icon-search"
@@ -79,10 +80,10 @@
                     <div class="close_button-icon"></div>
                 </div>
             </div>
-            <section>
-                <label>入库单编号:"<span id="storage_id"></span></label>
+            <section style="text-align: center">
+                <label style="float: left">入库单编号:"<span id="storage_id"></span></label>
                 <label>入库人ID:<span id="operation_id"></span></label>
-                <label>入库日期:<span id="storage_time"></span></label>
+                <label style="float: right">入库日期:<span id="storage_time"></span></label>
             </section>
             <div>
                 <table>

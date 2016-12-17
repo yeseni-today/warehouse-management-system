@@ -28,7 +28,7 @@ public class ItemInDateDao extends AbstractReadDao<ItemIndate>  {
                 .createQuery("from "+bindClassName()+" e where e.itemIndate > :date")
                 .setParameter("date", flag)
                 .list();
-
+        System.out.println(result);
         return sort(result);
     }
 

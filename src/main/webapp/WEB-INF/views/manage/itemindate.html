@@ -32,23 +32,9 @@
                     物品名称：
                     <input type="text" name="itemName"/>
                 </label>
-                <label>
-                    物品类别：
-                    <select name="itemCategoryId">
-                        <!--/*@thymesVar id="category" type="com.repository.entity.CategoryEntity"*/-->
-                        <option value=""></option>
-                        <option th:if="${session.categories == null || session.categories.empty}">
-                            没有找到分类，请刷新重试
-                        </option>
-                        <option th:each="category : ${session.categories}"
-                                th:value="${category.categoryId}"
-                                th:text="${category.categoryName}">
-                        </option>
-                    </select>
-                </label>
             </div>
             <div class="content-query-right">
-                <input type="button" value="查询" onclick="queryItem('icon-search')"/>
+                <input type="button" value="查询" onclick="queryItemInDate()"/>
             </div>
         </form>
     </div>
@@ -59,14 +45,24 @@
             <tr>
                 <th>条码</th>
                 <th>名称</th>
-                <th>类别</th>
+                <th>批次</th>
+                <th>有效期</th>
+                <th>库位</th>
                 <th>数量</th>
-                <th>操作</th>
             </tr>
             </thead>
             <tbody>
+            <!--<tr th:if="${itemindates==null}"></tr>-->
+            <tr th:each="item:${itemindates}">
+                <td th:text="${item.itemCode}"></td>
+                <td th:text="${item.itemName}"></td>
+                <td th:text="${item.itemBatch}"></td>
+                <td th:text="${item.itemIndate}"></td>
+                <td th:text="${item.itemSlot}"></td>
+                <td th:text="${item.allowCount}"></td>
+            </tr>
             <tr>
-                <td colspan="5">请输入查询信息</td>
+                <td colspan="6">请输入查询信息</td>
             </tr>
             </tbody>
         </table>

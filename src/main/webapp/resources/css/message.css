@@ -46,19 +46,17 @@ ul.listNav {
     top: -2em;
 }
 
-
-
 .message {
     position: relative;
     box-sizing: border-box;
     width: 100%;
-    height: 8em;
+    min-height: 8em;
     margin: 1em auto;
     padding: 1em 1em;
     background: #ffffff;
 }
 
-.message-type{
+.message-type {
     font-size: 1.5em;
     box-sizing: border-box;
     width: 100%;
@@ -72,7 +70,8 @@ ul.listNav {
     font-size: 1.2em;
     margin: 1em;
 }
-.message-date{
+
+.message-date {
     color: #8e8e8e;
 }
 
@@ -80,6 +79,10 @@ ul.listNav {
     box-sizing: border-box;
     padding: 1em;
     width: 40em;
+    /**/
+    white-space: normal;
+    word-break: break-all;
+    overflow: hidden;
 }
 
 .message-operation {
