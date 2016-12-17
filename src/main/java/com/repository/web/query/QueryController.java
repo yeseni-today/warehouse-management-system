@@ -55,7 +55,7 @@ public class QueryController extends BaseController {
         Item item = new Item();
         item.itemEntity = itemDao.findById(itemCode);
 
-        List<ItemInStorageEntity> storages = itemInStorageDao.query("itemCode", itemCode, false);
+        List<ItemInStorageEntity> storages = itemInStorageDao.findBy("itemCode", itemCode, false);
         storages.sort(Comparator.comparingLong(e -> e.getItemIndate().getTime()));
         if (storages.size() > 0) {
             item.slot = storages.get(0).getItemSlot();
@@ -76,13 +76,13 @@ public class QueryController extends BaseController {
 
 
     /**
-     * query
+     * findBy
      *
      * @return tiles html view
      */
     @RequestMapping(URL_QUERY)
     public String queryTo() {
-        logger.info("query");
+        logger.info("findBy");
         System.out.println(TILES_PREFIX + HTML_QUERY_LIST);
         return TILES_PREFIX + HTML_QUERY_LIST;
     }
@@ -111,7 +111,7 @@ public class QueryController extends BaseController {
             ModelMap model,
             Principal principal) {
         model.clear();
-        List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
+        List<ItemEntity> result = itemDao.findBy(new String[]{"itemCode", "itemName"}
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));
         model.addAttribute("items", result);

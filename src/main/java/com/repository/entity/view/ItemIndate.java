@@ -1,18 +1,16 @@
-package com.repository.model;
+package com.repository.entity.view;
 
 import com.google.gson.Gson;
 
 import java.sql.Date;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by Finderlo on 2016/11/30.
  */
 @Entity
+@Table(name = "vcyk_itemindate")
 public class ItemIndate {
 
 

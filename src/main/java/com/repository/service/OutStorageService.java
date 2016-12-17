@@ -95,7 +95,7 @@ public class OutStorageService {
         outStorageEntities.forEach(out -> {
             //先保存库出单
             session.save(out);
-            changeItemCount(out.getItemCode(), out.getCounts());
+//            changeItemCount(out.getItemCode(), out.getCounts());
             changeBatchCount(out.getItemCode(),out.getCounts());
             logSerivce.saveOutStorage(principal.getName(), out);
         });

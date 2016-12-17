@@ -2,7 +2,7 @@ package com.repository.service;
 
 import com.repository.dao.MessageDao;
 import com.repository.entity.MessageEntity;
-import com.repository.model.ItemIndate;
+import com.repository.entity.view.ItemIndate;
 import com.repository.web.message.MessageForm;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;

@@ -22,7 +22,7 @@ import static com.repository.common.Constants.*;
 public class LoginController extends BaseController {
 
     /**
-     * @return query html view
+     * @return findBy html view
      */
     @RequestMapping(URL_INDEX)
     public String greeting() {
