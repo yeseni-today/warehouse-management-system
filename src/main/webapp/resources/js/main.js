@@ -321,12 +321,12 @@ function msgFindBy(url, type) {
         url: url,
         type: type,
         success: function (result) {
-            if (result.message == "success") {
+            // if (result.message == "success") {
                 var umessageList = result.content;
                 displayMsg(umessageList);
-            } else {
-                alert("查询信息出错");
-            }
+            // } else {
+            //     alert("查询信息出错");
+            // }
         },
         error: function () {
             alert("ajax请求发送失败");
