@@ -28,7 +28,7 @@ public class LogSerivce {
     //loginfo
     //log annotation
 
-    public static final String QUERY_TYPE = "query";
+    public static final String QUERY_TYPE = "findBy";
     public static final String QUERY_ITEM_INFO = "物品查询：";
     public static final String QUERY_ITEM_LEVEL = "info";
 
@@ -53,7 +53,7 @@ public class LogSerivce {
     }
 
     public  List<LogEntity> findByType(String type){
-        return logDao.query(new String[]{"logType"},new String[]{type},false);
+        return logDao.findBy(new String[]{"logType"},new String[]{type},false);
     }
 
     public void saveOutOpera(String opreation_id, ItemOutOperationEntity entity) {
@@ -190,15 +190,15 @@ public class LogSerivce {
     }
 
     public List<LogEntity> findApply() {
-        return logDao.query("logTable", TABLE_APPLY);
+        return logDao.findBy("logTable", TABLE_APPLY);
     }
 
     public List<LogEntity> findOutstorage() {
-        return logDao.query("logTable",TABLE_OUTSTORAGE);
+        return logDao.findBy("logTable",TABLE_OUTSTORAGE);
     }
 
     public List<LogEntity> findInstorage() {
-        return logDao.query("logTable",TABLE_INSTORAGE);
+        return logDao.findBy("logTable",TABLE_INSTORAGE);
     }
 
     /**

@@ -71,7 +71,7 @@ public class StorageController extends BaseController {
     public SimpleRes query(@RequestParam("storage_id") String storage_id) {
         if (storage_id == null || storage_id.trim().equals(""))
             return SimpleRes.error();
-        List<ItemInStorageEntity> items =   itemInStorageDao.query("storageId", storage_id, false);
+        List<ItemInStorageEntity> items =   itemInStorageDao.findBy("storageId", storage_id, false);
 
         System.out.println("items length:"+items.size());
         Storage storage =  new Storage(

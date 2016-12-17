@@ -2,6 +2,7 @@ package com.repository.web.manage;
 
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
+import com.repository.dao.view.ItemInDateDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
 import com.repository.model.SimpleRes;
@@ -25,24 +26,46 @@ import static com.repository.common.Constants.*;
  * Created by Finderlo on 2016/12/8.
  */
 @Controller
-public class Manage {
+public class ManageController {
 
     @Autowired
-    ItemApplicationOperationDao applicationOperationDao;
+    ItemApplicationOperationDao _applicationOperationDao;
 
     @Autowired
-    ItemApplicationDao applicationDao;
+    ItemApplicationDao _applicationDao;
+
+    @Autowired
+    ItemInDateDao _itemInDateDao;
+
+    @Autowired
+    OutStorageService _outStorageService;
+
+    @Autowired
+    private ApplyFormService _applyFormService;
+
+    /**
+     * 有效期管理界面
+     * @return html view
+     */
+    @RequestMapping(URL_MANAGE_ITEMINDATE)
+    public String itemindate(Model model) {
+        model.addAttribute("itemindates", _itemInDateDao.findByDayBefore(30));
+        return TILES_PREFIX + HTML_MANAHE_ITEMINDATE;
+    }
+
     /**
      * 管理需要审核的申请网页 返回view
+     *
      * @return view
      */
     @RequestMapping(URL_MANAGE_EXAMEINE)
     public String manage(Model model) {
-        List datas = applicationOperationDao.query("states", APPLY_NEED_EXAMINE, true);
+        List datas = _applicationOperationDao.findBy("states", APPLY_NEED_EXAMINE, true);
         System.out.println("申请单数量：" + datas.size());
         model.addAttribute("history", datas);
         return TILES_PREFIX + HTML_MANAGE_EXAMINE;
     }
+
     /*todo
     * 出库*/
     @RequestMapping(URL_MANAGE_OUTSTORAGE)
@@ -63,16 +86,13 @@ public class Manage {
         }
         return SimpleRes.success(
                 new ApplyCompound(
-                        applicationOperationDao.findById(application_id),
-                        applicationDao.query("applicationId", application_id, false))
+                        _applicationOperationDao.findById(application_id),
+                        _applicationDao.findBy("applicationId", application_id, false))
         );
     }
 
-    @Autowired
-    OutStorageService outStorageService;
 
-    @Autowired
-    private ApplyFormService applyFormService;
+
     /**
      * 审核申请单，传入参数：states:true、false；apply_id:
      * true 为通过审核申请单，false 为审核不通过
@@ -85,11 +105,11 @@ public class Manage {
             @RequestParam("states") boolean states,
             @RequestParam("apply_id") String apply_id) {
         //通过：修改申请单状态，创建出库单，修改物品表，修改入库管理表，发送成功消息（给用户），记录日志
-            try {
-                applyFormService.examine(principal, apply_id,states);
-            } catch (Exception e) {
-                return SimpleRes.error();
-            }
+        try {
+            _applyFormService.examine(principal, apply_id, states);
+        } catch (Exception e) {
+            return SimpleRes.error();
+        }
 
         return SimpleRes.success();
     }

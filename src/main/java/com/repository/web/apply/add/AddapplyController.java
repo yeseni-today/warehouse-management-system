@@ -141,7 +141,7 @@ public class AddapplyController extends BaseController {
                             @RequestParam(name = "itemName", required = false, defaultValue = "") String itemName,
                             @RequestParam(name = "itemCategoryId", required = false, defaultValue = "") String itemCategoryId,
                             Model model) {
-        List<ItemEntity> result = itemDao.query(new String[]{"itemCode", "itemName"}
+        List<ItemEntity> result = itemDao.findBy(new String[]{"itemCode", "itemName"}
                 , new String[]{itemCode, itemName});
         result.addAll(itemDao.queryByCategoryId(itemCategoryId));
         model.addAttribute("items", result);
