@@ -891,27 +891,33 @@ function examineApply(states, apply_id) {
 function getOutOperationByID(outID) {
     var html = "";
     var $table = $("#out_table").find("tbody");
-    var button = $("button");
+    var button = document.getElementsByTagName("button")[0];
     // 清空弹出框
-    $('#out_id').text("  ");
-    $('#users_id').text("  ");
-    $('#out_address').text("  ");
+    var $out_id=$('#out_id');
+    var $users_id=$('#users_id');
+    var $out_address=$('#out_address');
+    $out_id.text("  ");
+    $users_id.text("  ");
+    $out_address.text("  ");
     $table.find("tr").remove();
 
     $.ajax({
         url: "/manage/outopreationinfo.json?out_id=" + outID,
         type: "get",
         success: function (result) {
-            var outStorageFromJSON = result.content;
-            alert(JSON.stringify(outStorageFromJSON));
             if (result.message == "success") {
+                var outStorageOperationJSON = result.content.operation;
+                var items = result.content.outStorages;
+
+                $out_id.text(outStorageOperationJSON.outId);
+                $users_id.text(outStorageOperationJSON.usersId);
+                $out_address.text(outStorageOperationJSON.outAddress);
+
                 openPop();
-                button.onclick = function () {
-                    outStorage(outID);  //确定出库
+                button.onclick= function () {
+                    outStorage(outStorageOperationJSON.outId);  //确定出库
                 };
 
-                var items = outStorageFromJSON.items;
-                // alert(JSON.stringify(items[0]));
                 for (var i = 0; i < items.length; i++) {
                     html += "<tr>" +
                         "<td>" + items[i].itemCode + "</td>" +
@@ -919,7 +925,7 @@ function getOutOperationByID(outID) {
                         "<td>" + items[i].counts + "</td>" +
                         "</tr>";
                 }
-                table.append(html);
+                $table.append(html);
             } else {
                 alert("系统错误");
             }
@@ -931,6 +937,7 @@ function getOutOperationByID(outID) {
 }
 
 function outStorage(outID) {
+    alert(outID);
     $.ajax({
         url: "/mamage/confirmOut",
         type: "post",
