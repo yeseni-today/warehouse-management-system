@@ -30,13 +30,13 @@
                         <!--onclick="jumpTo('applyajax')"-->
                     </li>
                     <!--<li th:classappend="${page == 'tasks' ? 'active' : ''}">-->
-                        <!--<a href="#" th:href="@{/borrow}">借用</a>-->
+                    <!--<a href="#" th:href="@{/borrow}">借用</a>-->
                     <!--</li>-->
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
                         <a href="#" th:href="@{/message}">消息</a>
                         <!--<span class="arrow"></span>-->
                         <!--<dl>-->
-                            <!--<dd><a href="#" th:href="@{/message}">我的消息</a></dd>-->
+                        <!--<dd><a href="#" th:href="@{/message}">我的消息</a></dd>-->
                         <!--</dl>-->
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authorize="hasRole('ROLE_USER')">
@@ -67,12 +67,13 @@
         </div>
         <div class="navBar-user">
             <ul class="nav">
-                <!--<li th:if="${#authorization.expression('!isAuthenticated()')}"><a href="/login" th:href="@{/login}">Sign in</a></li>-->
-                <!--<li th:if="${#authorization.expression('isAuthenticated()')}"><a href="/logout" th:href="@{/logout}">Logout</a></li>-->
-                <li class="icon-user"><!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
-                    <a href="#" th:if="${session.user!= null}" th:text="${session.user.usersName}">小明</a>
+                <!--/*@thymesVar id="user" type="com.repository.entity.UsersEntity"*/-->
+                <li class="icon-user" th:if="${session.user!= null}">
+                    <a href="#" th:text="${session.user.usersName}">XXX</a>
                 </li>
-                <li class="icon-exit"><a href="/logout" th:href="@{/logout}">Logout</a></li>
+                <li class="icon-exit">
+                    <a href="/logout" th:href="@{/logout}">Logout</a>
+                </li>
             </ul>
         </div>
     </div>

@@ -34,7 +34,7 @@
                     <td th:text="${ItemOutOperation.outId}"></td>
                     <td th:text="${ItemOutOperation.usersId}"></td>
                     <td th:text="${ItemOutOperation.outAddress}"></td>
-                    <td class="myTable-operation"
+                    <td class="myTable-operation" onclick="openPop()"
                         th:onclick="'getOutOperationByID(\''+${ItemOutOperation.outId}+'\')'">
                         <div class="icon-search"></div>
                     </td>
@@ -43,27 +43,27 @@
         </div>
     </section>
     <div class="pop-bg">
-        <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
+        <div class="pop myTable" style="top: 5em;width: 45em;padding: 5em;height: 30em;">
             <div class="pop-close">
                 <div class="close_button" onclick="closePop()">
                     <div class="close_button-icon"></div>
                 </div>
             </div>
-            <section>
-                出库单编号:"<span id="out_id"></span>
-                领取人ID:<span id="users_id"></span>
-                领取地址:<span id="out_address"></span>
+            <section style="text-align: center">
+                <label style="float: left">出库单编号:"<span id="out_id"></span></label>
+                <label>领取人ID:<span id="users_id"></span></label>
+                <label style="float: right">领取地址:<span id="out_address"></span></label>
             </section>
             <section>
                 <table>
                     <tr>
                         <th>物品条形码</th>
                         <th>出库数量</th>
-                        <th>详情</th>
+                        <!--<th>详情</th>-->
                     </tr>
                 </table>
             </section>
-            <section style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+            <section style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 46em">
                 <table id="out_table">
                     <tbody></tbody>
                 </table>

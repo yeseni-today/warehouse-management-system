@@ -1,6 +1,6 @@
 .myTable table {
     table-layout: fixed;
-    width: 65em;
+    width: 100%;
     border-collapse: collapse;
 }
 .myTable tbody{
