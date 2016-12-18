@@ -80,7 +80,7 @@
                             </select>
                         </div>
                     </label>
-                    <div class="icon-after-plus" onclick="openAddCategory()"></div>
+                    <div class="icon-after-plus" onclick="openPopById('pop_addCategory')"></div>
                 </li>
                 <li>
                     <label>
@@ -161,7 +161,7 @@
                             </select>
                         </div>
                     </label>
-                    <div class="icon-after-plus" onclick="openAddCompany()"></div>
+                    <div class="icon-after-plus" onclick="openPopById('pop_addCompany')"></div>
                 </li>
                 <li>
                     <label>
@@ -191,10 +191,50 @@
                 </li>
             </ul>
         </form>
-        <div class="pop-bg pop-addCompany">
+
+        <div id="pop_addCategory" class="pop-bg">
             <div class="pop myInfoList myInput">
                 <div class="pop-close">
-                    <div class="close_button" onclick="closePop()">
+                    <div class="close_button" onclick="closePopById('pop_addCategory')">
+                        <div class="close_button-icon"></div>
+                    </div>
+                </div>
+                <form id="form_addCategory" method="post">
+                    <ul>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    类别：
+                                </div>
+                                <div class="value">
+                                    <input type="radio" name="itemCategory" value="A类" checked="checked"/>A类&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="radio" name="itemCategory" value="非A类"/>非A类
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <div class="name">
+                                    分类名称：
+                                </div>
+                                <div class="value">
+                                    <input type="text" name="categoryName"/>
+                                </div>
+                            </label>
+                        </li>
+                        <li>
+                            <input type="button" onclick="closePop()" value="取消"/>
+                            <input type="button" onclick="addCategory()" value="增加分类"/>
+                        </li>
+                    </ul>
+                </form>
+            </div>
+        </div>
+
+        <div id="pop_addCompany" class="pop-bg">
+            <div class="pop myInfoList myInput">
+                <div class="pop-close">
+                    <div class="close_button" onclick="closePopById('pop_addCompany')">
                         <div class="close_button-icon"></div>
                     </div>
                 </div>
@@ -238,44 +278,7 @@
                 </form>
             </div>
         </div>
-        <div class="pop-bg pop-addCategory">
-            <div class="pop myInfoList myInput">
-                <div class="pop-close">
-                    <div class="close_button" onclick="closePop()">
-                        <div class="close_button-icon"></div>
-                    </div>
-                </div>
-                <form id="form_addCategory" method="post">
-                    <ul>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    类别：
-                                </div>
-                                <div class="value">
-                                    <input type="radio" name="itemCategory" value="A类" checked="checked"/>A类&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <input type="radio" name="itemCategory" value="非A类"/>非A类
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <div class="name">
-                                    分类名称：
-                                </div>
-                                <div class="value">
-                                    <input type="text" name="categoryName"/>
-                                </div>
-                            </label>
-                        </li>
-                        <li>
-                            <input type="button" onclick="closePop()" value="取消"/>
-                            <input type="button" onclick="addCategory()" value="增加分类"/>
-                        </li>
-                    </ul>
-                </form>
-            </div>
-        </div>
+
     </div>
 </div>
 

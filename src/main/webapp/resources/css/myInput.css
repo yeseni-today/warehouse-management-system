@@ -60,5 +60,12 @@
     border-color: #1abc9c;
 }
 
+.myInput-danger{
+    /*background: #cf5045;*/
+}
+
+.myInput-danger:hover{
+    background: #cf5045;
+}
 
 

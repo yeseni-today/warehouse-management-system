@@ -3,6 +3,10 @@
     width: 65em;
     border-collapse: collapse;
 }
+.myTable tbody{
+    min-height: 10em;
+}
+
 
 .myTable caption {
     text-align: left;
@@ -40,6 +44,14 @@
 
 .myTable-operation:hover {
     background: #16A085;
+    font-size: 1.5em;
+}
+.myTable-operation-danger {
+    transition: background linear 0.3s;
+}
+
+.myTable-operation-danger:hover {
+    background: #e74c3c;
     font-size: 1.5em;
 }
 

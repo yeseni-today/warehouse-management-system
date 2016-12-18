@@ -55,16 +55,16 @@
 
     <div class="content-result myTable">
 
-        <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+        <!--<span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>-->
 
         <table id="query_item_result">
             <thead>
             <tr>
-                <th>条码</th>
-                <th>名称</th>
-                <th>类别</th>
-                <th>数量</th>
-                <th>操作</th>
+                <th onclick="sortTable('query_item_result',0)">条码</th>
+                <th onclick="sortTable('query_item_result',1)">名称</th>
+                <th onclick="sortTable('query_item_result',2)">类别</th>
+                <th onclick="sortTable('query_item_result',3)">数量</th>
+                <th onclick="sortTable('query_item_result',4)">操作</th>
             </tr>
             </thead>
             <tbody>

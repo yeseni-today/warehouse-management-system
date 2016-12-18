@@ -1,45 +1,23 @@
 package com.repository.web.storage.add;
 
 import com.repository.base.BaseController;
+import com.repository.dao.DictionaryDao;
 import com.repository.dao.ItemDao;
 import com.repository.dao.ItemInOperationDao;
-import com.repository.dao.DictionaryDao;
 import com.repository.entity.ItemEntity;
 import com.repository.model.SimpleRes;
 import com.repository.service.StorageFormService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import javax.servlet.http.HttpSession;
-
-import static com.repository.common.Constants.HTML_STORAGE_ADD_ADDITEM;
-import static com.repository.common.Constants.HTML_STORAGE_ADD_GETINFO;
-import static com.repository.common.Constants.HTML_STORAGE_ADD_SETINFO;
-import static com.repository.common.Constants.HTML_STORAGE_ADD_STORAGE_FORM;
-import static com.repository.common.Constants.REDIRECT;
-import static com.repository.common.Constants.SESSION_STORAGE_FORM;
-import static com.repository.common.Constants.TILES_PREFIX;
-import static com.repository.common.Constants.URL_STORAGE;
-import static com.repository.common.Constants.URL_STORAGE_ADD;
-import static com.repository.common.Constants.URL_STORAGE_ADD_ADDITEM;
-import static com.repository.common.Constants.URL_STORAGE_ADD_ADDITEM_AJAX;
-import static com.repository.common.Constants.URL_STORAGE_ADD_AJAX;
-import static com.repository.common.Constants.URL_STORAGE_ADD_DELETEALL_AJAX;
-import static com.repository.common.Constants.URL_STORAGE_ADD_DELETEITEM_AJAX;
-import static com.repository.common.Constants.URL_STORAGE_ADD_SET_ITEM_INFO;
-import static com.repository.common.Constants.URL_STORAGE_ADD_SET_ITEM_INFO_AJAX;
-import static com.repository.common.Constants.URL_STORAGE_ADD_SUBMIT;
+import static com.repository.common.Constants.*;
 
 /**
  * Created by Finderlo on 2016/11/9.
@@ -175,8 +153,10 @@ public class StorageFormContoller extends BaseController {
         try {
             service.save(principal, storageForm);
             session.setAttribute(SESSION_STORAGE_FORM, null);
+            System.out.println("1");
             return REDIRECT + URL_STORAGE;
         } catch (Exception e) {
+            System.out.println("2");
             e.printStackTrace();
             return REDIRECT + URL_STORAGE_ADD;
         }
