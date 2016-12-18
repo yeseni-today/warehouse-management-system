@@ -12,10 +12,13 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.handler.SimpleMappingExceptionResolver;
+import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.extras.tiles2.dialect.TilesDialect;
 import org.thymeleaf.extras.tiles2.spring4.web.configurer.ThymeleafTilesConfigurer;
 import org.thymeleaf.extras.tiles2.spring4.web.view.ThymeleafTilesView;
+//import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
+import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
@@ -25,7 +28,7 @@ import java.util.Properties;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml
- * Created by SXY on 2016/1/19.
+ * Created by finderlo on 2016/1/19.
  */
 // @EnableWebMvc 用来导入mvc框架的自动化配置，使用前提是该类有@Configuration存在
 /*@ComponentScan 扫描控制器组件，使用方式有两种:
@@ -104,6 +107,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
         springTemplateEngine.addTemplateResolver(urlTemplateResolver());
         springTemplateEngine.addDialect(new TilesDialect());
         springTemplateEngine.addDialect(new LayoutDialect());
+//        springTemplateEngine.addDialect(new SpringSecurityDialect());
+        springTemplateEngine.addDialect(new SpringSecurityDialect());
         return springTemplateEngine;
     }
 
