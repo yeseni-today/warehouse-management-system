@@ -1,11 +1,16 @@
 package com.repository.web.manage;
 
+import com.google.gson.Gson;
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
 import com.repository.dao.ItemOutOperationDao;
+import com.repository.dao.ItemOutStorageDao;
 import com.repository.dao.view.ItemInDateDao;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
+import com.repository.entity.ItemOutOperationEntity;
+import com.repository.entity.ItemOutStorageEntity;
+import com.repository.entity.view.ItemIndate;
 import com.repository.model.SimpleRes;
 import com.repository.service.ApplyFormService;
 import com.repository.service.OutStorageService;
@@ -19,6 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.security.Principal;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.repository.common.Constants.*;
@@ -43,12 +49,37 @@ public class ManageController {
 
     @Autowired
     ItemOutOperationDao _itemOutOpreationDao;
+    @Autowired
+    ItemOutStorageDao _itemOutStorageDao;
 
     @Autowired
     private ApplyFormService _applyFormService;
 
+    /*
+    * 通过出库单id来查询出库单信息
+    * @parm out_id
+    * */
+    @RequestMapping(URL_MANAGE_OUTSTORAGE_OUTSTOAGE_INFO)
+    public SimpleRes outstuage(@RequestParam(name = "out_id") String out_id) {
+        OutStorageCom com = new OutStorageCom();
+        com.operation = _itemOutOpreationDao.findById(out_id);
+        com.outStorages = _itemOutStorageDao.findBy("outId", out_id, false);
+        return SimpleRes.success(com.toString());
+    }
+
+    private static class OutStorageCom {
+        public ItemOutOperationEntity operation;
+        public List<ItemOutStorageEntity> outStorages = new ArrayList<>();
+
+        @Override
+        public String toString() {
+            return new Gson().toJson(this);
+        }
+    }
+
     /**
      * 有效期管理界面
+     *
      * @return html view
      */
     @RequestMapping(URL_MANAGE_ITEMINDATE)
@@ -58,9 +89,9 @@ public class ManageController {
     }
 
     /**
-     * 管理需要审核的申请网页 返回view
-     *
      * @return view
+     * @see com.repository.common.ManageContants#URL_MANAGE_EXAMEINE
+     * 管理需要审核的申请网页 返回view
      */
     @RequestMapping(URL_MANAGE_EXAMEINE)
     public String manage(Model model) {
@@ -70,12 +101,32 @@ public class ManageController {
         return TILES_PREFIX + HTML_MANAGE_EXAMINE;
     }
 
-    /*todo
-    * 出库*/
+    /**
+     * @see com.repository.common.ManageContants#URL_MANAGE_OUTSTORAGE
+     * show 返回HTML view<br/>
+     * 返回值中带有<span>history<span/>属性
+     */
     @RequestMapping(URL_MANAGE_OUTSTORAGE)
     public String manageOutStorage(Model model) {
-        model.addAttribute("history",_itemOutOpreationDao.findAll());
+        model.addAttribute("history", _itemOutOpreationDao.findAll());
         return TILES_PREFIX + HTML_MANAGE_OUTSTORAGE;
+    }
+
+    /**
+     * @see com.repository.common.ManageContants#URL_MANAGE_ITEMINDATE_QUERYINFO
+     * 查询物品有效期
+     * @parm itemName
+     * @parm itemCode
+     * @return SimpRes
+     */
+    @RequestMapping(URL_MANAGE_ITEMINDATE_QUERYINFO)
+    @ResponseBody
+    public SimpleRes quera(@RequestParam(name = "itemCode") String itemCode,
+                           @RequestParam(name = "itemName") String itemName) {
+        List<ItemIndate> result = new ArrayList<>();
+        result.addAll(_itemInDateDao.findByItemCode(itemCode));
+        result.addAll(_itemInDateDao.findByItemName(itemName));
+        return SimpleRes.success(result);
     }
 
     /**
@@ -95,7 +146,6 @@ public class ManageController {
                         _applicationDao.findBy("applicationId", application_id, false))
         );
     }
-
 
 
     /**

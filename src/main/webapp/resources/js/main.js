@@ -900,7 +900,7 @@ function getOutOperationByID(outID) {
     $table.find("tr").remove();
 
     $.ajax({
-        url: "/getOutOperationInfo?out_id=" + outID,
+        url: "/manage/outopreationinfo.json?out_id=" + outID,
         type: "get",
         success: function (result) {
             var outStorageFromJSON = result.content;
