@@ -33,9 +33,8 @@
                     <td th:text="${itemApplicationOperation.applicationId}"></td>
                     <td th:text="${itemApplicationOperation.usersId}"></td>
                     <td th:text="${itemApplicationOperation.applicationTime}"></td>
-                    <td class="myTable-operation" onclick="openPop()"
-                        th:onclick="'getApplyFormByID(\''+${itemApplicationOperation.applicationId}+'\')'">
-                        <div class="icon-search"></div>
+                    <td class="myTable-operation icon-search"
+                        th:onclick="'getNeedExamineByID(\''+${itemApplicationOperation.applicationId}+'\')'">
                     </td>
                 </tr>
             </table>
@@ -45,20 +44,20 @@
     <div class="pop-bg">
         <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
             <div class="pop-close">
-                <div class="close_button" onclick="closeapplyFormTablePop()">
+                <div class="close_button" onclick="closePop()">
                     <div class="close_button-icon"></div>
                 </div>
             </div>
-            <section>
-                申请单编号:"<span id="applyFromID"></span>
-                申请人ID:<span id="usersId"></span>
-                申请日期:<span id="applyTime"></span>
+
+            <section style="text-align: center">
+                <label style="float: left">申请单编号:"<span id="applyFromID"></span></label>
+                <label>申请人ID:<span id="usersId"></span></label>
+                <label style="float: right">申请日期:<span id="applyTime"></span></label>
             </section>
             <div>
                 <table>
                     <tr>
                         <th>物品条形码</th>
-                        <th>物品名称</th>
                         <th>申请数量</th>
                         <th>申请类型</th>
                         <th>申请备注</th>

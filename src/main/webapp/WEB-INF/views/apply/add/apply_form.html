@@ -57,20 +57,27 @@
                 <td th:text="${item.getItemName()}"></td>
                 <td th:text="${item.getItemCount()}"></td>
                 <td th:text="${item.getOthers()}"></td>
-                <td class="myTable-operation icon-cross"
+                <td class="myTable-operation-danger icon-cross"
                     th:onclick="'applyDelet(\''+${item.getItemCode()}+'\')'">
                 </td>
             </tr>
             </tbody>
+            <tfoot>
+            <tr>
+                <td colspan="2"><button class="myInput-danger" onclick="apply_clear()">清空</button></td>
+                <td ></td>
+                <td colspan="2"><button onclick="applyToSubmit()">提交</button></td>
+            </tr>
+            </tfoot>
         </table>
-        <div class="content-result-operation">
-            <div class="myDivBt">
-                <a onclick="applyToSubmit()">提交</a>
-            </div>
-            <div class="myDivBt">
-                <a type="button" onclick="clearApplyForm()">清空</a>
-            </div>
-        </div>
+        <!--<div class="content-result-operation">-->
+            <!--<div class="myDivBt">-->
+                <!--<a onclick="applyToSubmit()">提交</a>-->
+            <!--</div>-->
+            <!--<div class="myDivBt">-->
+                <!--<a type="button" onclick="apply_clear()">清空</a>-->
+            <!--</div>-->
+        <!--</div>-->
     </div>
 </div>
 </body>

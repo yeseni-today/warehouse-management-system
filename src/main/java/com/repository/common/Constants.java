@@ -41,7 +41,7 @@ public interface Constants extends ApplyContants,ManageContants {
 
     //query
     String URL_QUERY = "/query";
-    String URL_QUERY_QUERYITEM = URL_QUERY + "/queryItem";
+    String URL_QUERY_QUERYITEM = URL_QUERY + "/searchItem";
     String URL_QUERY_ITEMINFO = URL_QUERY+"/itemInfo";
     String HTML_QUERY_LIST = "query/list";
 

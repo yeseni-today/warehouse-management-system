@@ -13,35 +13,35 @@
 <body>
 <div class="content" tiles:fragment="content">
     <div class="content-left">
-        <div class="listNav-title">
+        <div class="listNav-title icon-bookmark">
             <!--<img src="../../../resources/picture/message.png"/>-->
             <span>日志</span>
         </div>
         <ul class="listNav">
-            <li><a href="#" onclick="log_find('system')">系统日志</a></li>
-            <li><a href="#" onclick="log_find('inStorage')">入库日志</a></li>
-            <li><a href="#" onclick="log_find('outStorage')">出库日志</a></li>
-            <li><a href="#" onclick="log_find('apply')">申请日志</a></li>
-            <li><a href="#" onclick="log_find('itemMaintain')">物品维护日志</a></li>
+            <li><a href="#system" onclick="log_find('system')">系统日志</a></li>
+            <li><a href="#inStorage" onclick="log_find('inStorage')">入库日志</a></li>
+            <li><a href="#outStorage" onclick="log_find('outStorage')">出库日志</a></li>
+            <li><a href="#apply" onclick="log_find('apply')">申请日志</a></li>
+            <li><a href="#itemMaintain" onclick="log_find('itemMaintain')">物品维护日志</a></li>
         </ul>
     </div>
 
     <div id="log" class="content-right">
-        <div class="message-type">所有日志</div>
+        <div class="message-type effect3">系统日志</div>
 
-        <div class="message" th:if="${logs == null}">
+        <div class="message effect1" th:if="${logs == null}">
             <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             没有日志
         </div>
-        <div class="message" th:if="${logs != null}" th:each="slog:${logs}">
+        <div class="message effect1" th:if="${logs != null}" th:each="slog:${logs}">
             <!--/*@thymesVar id="slog" type="com.repository.entity.LogEntity"*/-->
             <span class="message-title" th:text="${slog}">name</span>
             <span class="message-date" th:text="${#calendars.format(slog.getLogDate())}">data</span>
             <div class="message-content" th:text="${slog.getLogInfo()}">content</div>
-            <div class="message-operation" onclick="openPop()">详情</div>
+            <!--<div class="message-operation" onclick="openPop()">详情</div>-->
         </div>
     </div>
-    <div class="pop-bg">
+<!--    <div class="pop-bg">
         <div class="pop pop-details myInfoList myInput">
             <div class="pop-close">
                 <div class="close_button" onclick="closePop()">
@@ -136,7 +136,7 @@
                 </ul>
             </form>
         </div>
-    </div>
+    </div>-->
 </div>
 </body>
 </html>

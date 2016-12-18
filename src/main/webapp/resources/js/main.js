@@ -38,7 +38,7 @@ $(document).ready(function () {
 });
 
 //加载消息
-$(document).ready(msg_findAll());
+$(document).ready(msg_findTypeOf('inform'));
 
 //入库 选择分类 input隐藏
 function setVisible(bool) {
@@ -91,9 +91,9 @@ function addCompany() {
     })
 }
 
-//查询物品   operation="icon-plus"  加号  "icon-search" 放大镜
+//搜索物品   operation="icon-plus"  加号  "icon-search" 放大镜
 //          用到的地方   查询   申请单添加加
-function queryItem(operation) {
+function searchItem(operation) {
     var values = $("#query_input_info").serialize();
     var $table = $("#query_item_result").find("tbody");
     $.ajax({
@@ -125,7 +125,6 @@ function queryItem(operation) {
         }
     })
 }
-
 //选择弹出框
 function openPop_select(itemCode, itemName, operation) {
     if (operation == "icon-plus") {
@@ -134,7 +133,6 @@ function openPop_select(itemCode, itemName, operation) {
         openPop_itemInfo(itemCode);//查询 详情弹出框
     }
 }
-
 //申请 添加物品弹出框
 function openPop_add(code, name) {
     document.getElementById("info_of_apply_item").reset();
@@ -142,7 +140,6 @@ function openPop_add(code, name) {
     document.getElementsByName("itemName")[1].value = name;
     openPop();
 }
-
 //查询 详情弹出框
 function openPop_itemInfo(itemCode) {
     $(".pop li").css({"min-height": "3em", "line-height": "3em"});  //todo 弹出窗口样式
@@ -246,7 +243,6 @@ function beautifyDisplay(display, afterdisplay, items, id) {
         }
     }, 100);
 }
-
 /**
  * 通知关闭定时器
  * @param a 定时器的ID
@@ -255,75 +251,42 @@ function notifyClearInterval(a) {
     clearInterval(a);
 }
 
-
-//todo 调整
-function msg_send() {
-    showLoading();
-    $.ajax({
-        url: "/message/sendajax",
-        type: "post",
-        data: $('#new_essage').serialize(),
-        success: function (result) {
-            if (result.status == 200) {
-                //发送成功
-                alert("发送成功");
-            } else {
-                alert("发送失败");
-            }
-        },
-        error: function () {
-            alert("ajax请求发送失败");
-        }
-
-    });
-    hideLoading();
+//消息 查找   todo 消息url
+function msg_findTypeOf(type) {
+    var url = "";
+    var typeStr = "";
+    switch (type) {
+        case "all":
+            url = "";
+            typeStr = "所有消息";
+            break;
+        case "inform":
+            url = "/message/findmessagebyid";
+            typeStr = "通知";
+            break;
+        case "other":
+            url = "";
+            typeStr = "其他";
+            break;
+        case "remind":
+            url="";
+            // url = "/message/warnmsg";
+            typeStr = "提醒";
+            break;
+    }
+    // document.getElementsByClassName("message-type")[0].innerHTML = typeStr;
+    $(".message-type").text(typeStr);
+    msg_findBy(url, "get");
 }
-
-var msgs = new Array();
-
-
-//todo 消息
-function msg_findAll() {
-    var url = "/message/findmessagebyid";
-    var type = "get";
-    // document.getElementsByClassName("message-type")[0].innerHTML = "所有消息";
-    msgFindBy(url, type);
-}
-
-
-function msg_findInform() {
-    var url = "/message/findmessagebyid";
-    var type = "get";
-    document.getElementsByClassName("message-type").innerHTML = "通知";
-    $("#message .message").remove();
-    // msgFindBy(url, type);
-}
-
-function msg_findRemind() {
-    var url = "/message/warnmsg";//todo
-    var type = "get";
-    document.getElementsByClassName("message-type").innerHTML = "提醒";
-    $("#message .message").remove();
-    msgFindBy(url, type);
-}
-
-function msg_findOther() {
-    var url = "/message/warnmsg";
-    var type = "get";
-    document.getElementsByClassName("message-type").innerHTML = "其他";
-    $("#message .message").remove();
-    // msgFindBy(url, type);
-}
-
-function msgFindBy(url, type) {
-    showLoading();
+//消息 获得
+function msg_findBy(url, type) {
     $.ajax({
         url: url,
         type: type,
         success: function (result) {
             // if (result.message == "success") {
             var umessageList = result.content;
-            displayMsg(umessageList);
+            msg_display(umessageList);
             // } else {
             //     alert("查询信息出错");
             // }
@@ -332,15 +295,20 @@ function msgFindBy(url, type) {
             alert("ajax请求发送失败");
         }
     });
-    hideLoading();
 }
-
-function displayMsg(msgs) {
+//消息 显示
+function msg_display(msgs) {
     var contentRight = $("#message");
+    contentRight.find(".message").remove();
+
+    if (  typeof(msgs) == 'undefined'||msgs.length==0) {
+        var html = "<div class='message'>没有消息</div>";
+        contentRight.append(html);
+    }
+    //todo foreach
     $.each(msgs, function (i, message) {
         if (message.messageState != 2) {
-            msgs.push(message);
-            messageBox = "<div class='message' id='" + message.messageId + "'>" +
+            var messageBox = "<div class='message' id='" + message.messageId + "'>" +
                 "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
                 "<span class='message-date'>" + getDateAndTime(message.messageDate) + "</span>" +
                 "<div class='message-content' >" + message.messageContent + "</div>" +
@@ -354,111 +322,118 @@ function displayMsg(msgs) {
 }
 
 
-function getDateAndTime(ms) {
-    var d = new Date(ms);
-    return d.toLocaleString();
-}
-function getDate(ms) {
-    var d = new Date(ms);
-    var year = d.getFullYear();
-    var month = d.getMonth();
-    var date = d.getDate();
-    return year + "-" + month + "-" + date;
-}
+//todo delete
+/*
+ function msg_delete() {
+ var messageID = $("[name='messageID']").val();
+ $.ajax({
+ url: "/message/delete?messageID=" + messageID,
+ type: "get",
+ success: function (result) {
+ if (result.message = "success") {
+ }
+ }
+ });
+ closePop();
+ }
+ function findLogs() {//todo
+ $.ajax({
+ url: "/log/findLogs",
+ type: "get",
+ success: function (result) {
+ var messages = result.content;
+ $(".content-right .message").remove();
+ var contentRight = $("#message");
+ $.each(messages, function (i, message) {
+ messageBox = "<div class='message'>" +
+ "<span class='message-title' >" + message.messageId + "</span>" +
+ "<span class='message-date'>" + message.messageDate + "</span>" +
+ "<div class='message-content' >" + message.messageContent + "</div>" +
+ "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
+ "</div>";
+ contentRight.append(messageBox);
+ })
+ }
+ });
+ }
+ */
 
-function msg_delete() {
-    var messageID = $("[name='messageID']").val();
-    $.ajax({
-        url: "/message/delete?messageID=" + messageID,
-        type: "get",
-        success: function (result) {
-            if (result.message = "success") {
-                //todo
-                msg_findmsg();
-                alert("success");
-            }
-        }
-    });
-    closePop();
-}
-
-function findLogs() {//todo
-    showLoading();
-    $.ajax({
-        url: "/log/findLogs",
-        type: "get",
-        success: function (result) {
-            //result.content 是一个umessage的list列表
-            var messages = result.content;
-            $(".content-right .message").remove();
-            var contentRight = $("#message");
-            $.each(messages, function (i, message) {
-                msgs.push(message);
-                messageBox = "<div class='message'>" +
-                    "<span class='message-title' >" + message.messageId + "</span>" +
-                    "<span class='message-date'>" + message.messageDate + "</span>" +
-                    "<div class='message-content' >" + message.messageContent + "</div>" +
-                    "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
-                    "</div>";
-                contentRight.append(messageBox);
-            })
-        }
-    });
-    hideLoading();
-}
-
-function clearApplyForm() {
+//申请 清空
+function apply_clear() {
     $.ajax({
         url: "/apply/add/clearformajax",
         type: "post",
-        data: {},
-        success: function () {
+        success: function () {//todo result
+            $("#apply_for_submit").find("tbody").find("tr").remove();
             alert("清空成功");
         },
         error: function () {
-            alert("清空失败，请重试");
+            alert("ajax请求发送失败");
         }
     })
 }
-//弹出框
+
+
+//弹出框  todo
 function openPop() {
-    $(".pop-bg").css('display', 'block');
+    var $pop = $(".pop-bg");
+    $pop.css('display', 'block');
     setTimeout(function () {
-        $(".pop-bg").css('background', 'rgba(181, 181, 181, 0.5)');
-        $(".pop").css('transform', 'scale(1,1)');
+        $pop.css('background', 'rgba(181, 181, 181, 0.5)');
+        $pop.find(".pop").css('transform', 'scale(1,1)');
     }, 1);
 }
-
 function closePop() {
-    $(".pop-bg").css('background', 'rgba(181, 181, 181, 0)');
-    $(".pop").css('transform', 'scale(0,0)');
+    var $pop = $(".pop-bg");
+    $pop.css('background', 'rgba(181, 181, 181, 0)');
+    $pop.find(".pop").css('transform', 'scale(0,0)');
     setTimeout(function () {
-        $(".pop-bg").css('display', 'none');
+        $pop.css('display', 'none');
     }, 500);
 }
 
-function closeapplyFormTablePop() {
-    closePop();
-    $("[id ^='tr']").css("display", "none")
-}
-function openAddCategory() {
-    $(".pop-addCategory").css('display', 'block');
+//弹出框 id
+function openPopById(id) {
+    var $pop = $("#" + id);
+    $pop.css('display', 'block');
     setTimeout(function () {
-        $(".pop-addCategory").css('background', 'rgba(181, 181, 181, 0.5)');
-        $(".pop-addCategory .pop").css('transform', 'scale(1,1)');
+        $pop.css('background', 'rgba(181, 181, 181, 0.5)');
+        $pop.find(".pop").css('transform', 'scale(1,1)');
     }, 1);
 }
-
-function openAddCompany() {
-    $(".pop-addCompany").css('display', 'block');
+function closePopById(id) {
+    var $pop = $("#" + id);
+    $pop.css('background', 'rgba(181, 181, 181, 0)');
+    $pop.find(".pop").css('transform', 'scale(0,0)');
     setTimeout(function () {
-        $(".pop-addCompany").css('background', 'rgba(181, 181, 181, 0.5)');
-        $(".pop-addCompany .pop").css('transform', 'scale(1,1)');
-    }, 1);
+        $pop.css('display', 'none');
+    }, 500);
 }
 
-function openPopDetails(itemForm) {
-    var item = $.parseJSON(itemForm);
+
+// todo delete
+/*function openAddCategory() {
+ $(".pop-addCategory").css('display', 'block');
+ setTimeout(function () {
+ $(".pop-addCategory").css('background', 'rgba(181, 181, 181, 0.5)');
+ $(".pop-addCategory .pop").css('transform', 'scale(1,1)');
+ }, 1);
+ }
+ function openAddCompany() {
+ $(".pop-addCompany").css('display', 'block');
+ setTimeout(function () {
+ $(".pop-addCompany").css('background', 'rgba(181, 181, 181, 0.5)');
+ $(".pop-addCompany .pop").css('transform', 'scale(1,1)');
+ }, 1);
+ }
+ function closeapplyFormTablePop() {
+ closePop();
+ $("[id ^='tr']").css("display", "none");// todo ??
+ }*/
+
+//入库 物品详情
+function openPop_storageItemDetails(itemForm) {
+    var item = JSON.parse(itemForm);
 
     $("[name='itemName']").val(item.itemName);
     $("[name='itemCategory']").val(item.itemCategoryID);
@@ -467,12 +442,12 @@ function openPopDetails(itemForm) {
     $("[name='itemSpec']").val(item.itemSpec);
     $("[name='itemCompany']").val(item.itemCompanyID);
     $("[name='billCode']").val(item.billCode);
-    $("[name='storageLocation']").val(item.storageLocation);
-    console.log(item.storageLocation);
+    $("[name='itemSlot']").val(item.itemSlot);
 
     openPop();
 }
 
+// todo zhenli
 function openPop_storageInfo(storageFormId) {
     var $table = $("#storage_table").find("tbody");
 //init
@@ -520,6 +495,8 @@ function openPop_storageInfo(storageFormId) {
         }
     })
 }
+
+
 /*function openPopMessage(message) {
  // alert(msgs[0]);
  // var d = "";
@@ -542,7 +519,7 @@ function openPop_storageInfo(storageFormId) {
  }*/
 
 
-//加载界面
+//加载图标
 function showLoading() {
     $("#load").css("display", "block");
 }
@@ -552,29 +529,31 @@ function hideLoading() {
 }
 
 function deleteStroageItem(itemCode) {
-    showLoading();
     $.ajax({
         url: "/storage/add/deleteItem",
-        data: {"itemCode": itemCode},
         type: "get",
-        success: function () {
-            setTimeout(function () {
-                hideLoading();
-                $("tr#" + itemCode).remove();
-            }, 1000);
+        data: {"itemCode": itemCode},
+        success: function (result) {
+            alert("删除成功");
+            $("tr#" + itemCode).fadeOut(500);
+        },
+        error: function () {
+            alert("ajax请求发送失败");
         }
     });
 }
-
+//入库 清空
 function deleteAll() {
     showLoading();
     $.ajax({
         url: "/storage/add/deleteAll",
         success: function (result) {
-            setTimeout(function () {
-                hideLoading();
-            }, 500);
-            $('#storagetable tr:gt(0)').remove();
+            hideLoading();
+            alert("清空成功");
+            $("#new_storage_table").find("tbody").find("td").remove();
+        },
+        error: function () {
+            alert("ajax请求发送失败");
         }
     })
 }
@@ -622,7 +601,6 @@ function applyToSubmit() {
 }
 
 function applyDelet(itemCode) {//todo
-    alert(itemCode);
     $.ajax({
         url: "apply/add/deleteajax",
         type: "post",
@@ -631,13 +609,12 @@ function applyDelet(itemCode) {//todo
             if (result.message == "success") {
                 $("." + itemCode).remove();
                 alert("删除成功");
-
             } else {
                 alert("删除失败");
             }
         },
         error: function () {
-            alert("删除失败!");
+            alert("ajax请求发送失败");
         }
     })
 }
@@ -650,36 +627,44 @@ function msg_send() {
         type: "post",
         data: newmessage,
         success: function (result) {
+            alert(result);
             if (result.message == "success") {
                 alert("发送成功");
+            } else {
+                alert("发送失败");
             }
         },
         error: function () {
-            alert("发送失败，请检查网络");
+            alert("ajax请求发送失败");
         }
     })
 }
+
 /**
  * todo 不再显示一条信息
  * 这里直接调用删除信息ajax
  * */
+
+//todo test
 function msg_hide(messageID) {
     var $messageBox = $("#" + messageID);
-    $.ajax({
-        url: "/message/delete",
-        data: {"messageID": messageID},
-        success: function (result) {
-            if (result.message == "success") {
-                //设为不再显示调用
-                $("#" + messageID).slideUp(500);
-            } else {
-                alert("不再显示执行失败，错误信息为：" + result.message)
-            }
-        },
-        error: function () {
-            alert("你的网络有问题，请稍后重试")
-        },
-    })
+    $messageBox.slideUp(5000);
+
+    // $.ajax({
+    //     url: "/message/delete",
+    //     data: {"messageID": messageID},
+    //     success: function (result) {
+    //         if (result.message == "success") {
+    //             //设为不再显示
+    //             $("#" + messageID).slideUp(500);
+    //         } else {
+    //             alert("不再显示执行失败，错误信息为：" + result.message)
+    //         }
+    //     },
+    //     error: function () {
+    //         alert("你的网络有问题，请稍后重试");
+    //     },
+    // })
 }
 /**
  * 已读一条消息
@@ -758,6 +743,8 @@ function queryApplyList() {
     })
 }
 
+
+//
 function getObjextInfo(object) {
     var s = "";
     for (var i in object) {
@@ -814,7 +801,7 @@ function openPop_applyInfo(applyID) {
 }
 
 //审核
-function getApplyFormByID(application_id) {
+function getNeedExamineByID(application_id) {
     var html = "";
     var table = $("#applyFormTable").find("tbody");
     var buttons = $("button");
@@ -849,7 +836,7 @@ function getApplyFormByID(application_id) {
                 for (var i = 0; i < items.length; i++) {
                     html += "<tr>" +
                         "<td>" + items[i].itemCode + "</td>" +
-                        "<td>" + items[i].itemName + "</td>" +
+                        // "<td>" + items[i].itemName + "</td>" +
                         "<td>" + items[i].counts + "</td>" +
                         "<td>" + items[i].applicationType + "</td>" +
                         "<td>" + items[i].applicationText + "</td>" +
@@ -902,7 +889,7 @@ function examineApply(states, apply_id) {
 }
 
 //出库 查询
-function getOutOperationFormByID(outID) {
+function getOutOperationByID(outID) {
     var html = "";
     var $table = $("#out_table").find("tbody");
     var button = $("button");
@@ -993,18 +980,17 @@ function log_find(type) {
     document.getElementsByClassName("message-type")[0].innerHTML = typeStr;
 
     var logs = log_findBy(url);
-    showLogs(logs);
 }
 
-function log_findBy(url, _function) {
+function log_findBy(url) {
     var logs;
     $.ajax({
         url: url,
         type: "post",
-        async: false,
         success: function (result) {
             if (result.message == "success") {
                 logs = result.content;
+                showLogs(logs);
             } else {
                 alert("查询出错");
             }
@@ -1013,7 +999,6 @@ function log_findBy(url, _function) {
             alert("ajax请求发送失败");
         }
     });
-    return logs;
 }
 
 //todo
@@ -1025,14 +1010,12 @@ function showLogs(logs) {
         html = "<div class='message'>没有日志 </div>"
     }
     for (var i = 0; i < logs.length; i++) {
-        html += "<div class='message' id=''>" +
+        html += "<div class='message effect1' id=''>" +
             "<span class='message-title'><strong>" + logs[i].logId + "</strong></span>" +
             "<span class='message-date'>" + getDateAndTime(logs[i].logDate) + "</span>" +
             "<span class='message-date'>" + logs[i].logLevel + "</span>" +
             "<div class='message-content'>" + logs[i].logInfo + "</div>" +
-            // "<div class='message-operation'>" +
-            //         "<span onclick='msg_hide('messageID')'></span>" +
-            // "</div>" +
+            // "<div class='message-operation' onclick='openPop()'>详情</div>" +
             "</div>";
     }
     $log.append(html);
@@ -1077,37 +1060,66 @@ function showItemInDate(items) {
 }
 
 
-
-
 //table 排序
-function sortTable(table,idx){
-    var otable=document.getElementById(table),
-        otody=otable.tBodies[0],
-        otr=otody.rows,
-        tarr=[];
-    for (var i = 0; i <otr.length; i++) {
-        tarr[i]=otr[i];
+function sortTable(table, idx) {
+    var otable = document.getElementById(table),
+        otody = otable.tBodies[0],
+        otr = otody.rows,
+        tarr = [];
+    for (var i = 0; i < otr.length; i++) {
+        tarr[i] = otr[i];
     }
     // console.log(tarr);
-    if(otody.sortCol==idx){
+    if (otody.sortCol == idx) {
         tarr.reverse();
-    }else{
-        tarr.sort(function(tr1,tr2){
+    } else {
+        tarr.sort(function (tr1, tr2) {
             var value1 = tr1.cells[idx].innerHTML;
             var value2 = tr2.cells[idx].innerHTML;
-            if(!isNaN(value1)&&!isNaN(value2)){
-                return value1-value2;
-            }else{
+            if (!isNaN(value1) && !isNaN(value2)) {
+                return value1 - value2;
+            } else {
                 return value1.localeCompare(value2);
             }
         })
     }
     var fragment = document.createDocumentFragment();
-    for (var i = 0; i <tarr.length; i++) {
+    for (var i = 0; i < tarr.length; i++) {
         fragment.appendChild(tarr[i]);
     }
     otody.appendChild(fragment);
-    otody.sortCol=idx;
+    otody.sortCol = idx;
 }
 
-//table
+//入库 提交
+function storage_submit() {
+    $.ajax({
+        url: "/storage/add/submit",
+        type: "get",
+        success: function (result) {
+            // if (result.message == "success") {
+            alert("提交成功");
+            // }
+            // else {
+            //     alert("提交失败");
+            // }
+        },
+        error: function () {
+            alert("ajax请求发送失败");
+        }
+    })
+}
+
+
+//毫秒转换
+function getDateAndTime(ms) {
+    var d = new Date(ms);
+    return d.toLocaleString();
+}
+function getDate(ms) {
+    var d = new Date(ms);
+    var year = d.getFullYear();
+    var month = d.getMonth();
+    var date = d.getDate();
+    return year + "-" + month + "-" + date;
+}

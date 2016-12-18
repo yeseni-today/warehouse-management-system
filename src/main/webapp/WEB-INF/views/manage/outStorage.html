@@ -34,8 +34,8 @@
                     <td th:text="${ItemOutOperation.outId}"></td>
                     <td th:text="${ItemOutOperation.usersId}"></td>
                     <td th:text="${ItemOutOperation.outAddress}"></td>
-                    <td class="myTable-operation" onclick="openPop()"
-                        th:onclick="'getOutOperationFormByID(\''+${ItemOutOperation.outId}+'\')'">
+                    <td class="myTable-operation"
+                        th:onclick="'getOutOperationByID(\''+${ItemOutOperation.outId}+'\')'">
                         <div class="icon-search"></div>
                     </td>
                 </tr>
@@ -45,7 +45,7 @@
     <div class="pop-bg">
         <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
             <div class="pop-close">
-                <div class="close_button" onclick="closeapplyFormTablePop()">
+                <div class="close_button" onclick="closePop()">
                     <div class="close_button-icon"></div>
                 </div>
             </div>
