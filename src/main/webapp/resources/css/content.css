@@ -40,17 +40,21 @@
 }
 
 .content-left {
-    position: fixed;
+    position: absolute;
     top: 0;
     width: 13em;
     height: 100%;
-    padding-top: 5em;
-    background: rgb(255, 255, 255);
+    background: rgb(250, 250, 250);
 }
 
 .content-right {
-    float: right;
+    position: relative;
+    top:0;
+    left: 13em;
     width: 50em;
+    min-height: 36em;
+    padding: 2em 1em;
+    background: white;
 }
 
 .slide-panel{

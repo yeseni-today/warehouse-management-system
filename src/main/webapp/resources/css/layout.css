@@ -85,10 +85,9 @@
 
 /*页面内容*/
 .content {
-    padding: 5em;
     width: 65em;
     min-height: 45em;
-    margin: auto;
+    margin: 5em auto;
 }
 
 .content::after{
@@ -102,7 +101,7 @@
     width: 100%;
     height: 100%;
     overflow-y: scroll;
-    background: rgb(245, 245, 245);
+    background: rgb(240, 240, 240);
 }
 
 .current {

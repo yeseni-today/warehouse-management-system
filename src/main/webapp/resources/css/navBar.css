@@ -1,24 +1,50 @@
+/*继承行高*/
+[class^='navBar'] {
+    height: inherit;
+    line-height: inherit;
+}
+
+/*初始值*/
+/*todo*/
 .navBar {
-    height: 50px;
+    height: 4em;
+    line-height: 4em;
     background: #212121;
 }
 
-.navBar a {
+/*初始颜色 与 过渡时间*/
+.navBar li, .navBar a {
     color: #d4d4d4;
-    text-decoration: none;
-    padding: 15px;
-    line-height: 50px;
-    transition: color 0.2s ease-in;
+    transition: color 0.3s ease-in;
 }
-.navBar-title:hover a{
-    color: #19ac7f;
-}
-.navBar li:hover>a{
+
+/*悬浮颜色*/
+.navBar li:hover, li:hover > a {
     color: #19ac7f;
 }
 
-.navBar li:hover {
-    color: #19ac7f;
+.navBar li:hover .arrow {
+    border-top-color: #19ac7f;
+    transform: rotate(180deg);
+}
+
+.navBar a {
+    line-height: inherit;
+    padding: 1.2em;
+    text-decoration: none;
+}
+
+.navBar-title a {
+    font-size: 1.5em;
+}
+
+.navBar-content a {
+    font-size: 1em;
+}
+
+.navBar-user a {
+    padding-left: 0.5em;
+    padding-right: 1.5em;
 }
 
 @media (max-width: 767px) {
@@ -46,33 +72,12 @@
 }
 
 .navBar-container {
-    height: 50px;
-    padding: 0 15px;
+    padding: 0 1em;
     margin: auto;
 }
 
 .navBar-title {
     float: left;
-}
-
-.navBar-title > a {
-    font-size: 18px;
-}
-
-.nav {
-    list-style: none;
-}
-
-.nav > li {
-    position: relative;
-    display: block;
-    float: left;
-    color: #d4d4d4;
-    transition: color 0.3s;
-}
-
-.nav > li > a {
-    font-size: 14px;
 }
 
 .navBar-content {
@@ -82,43 +87,49 @@
 .navBar-user {
     float: right;
 }
-.navBar-user a{
-    padding-left: 0.5em;
-    padding-right: 1.5em;
+
+.nav {
+    list-style: none;
 }
 
+.nav > li {
+    position: relative;
+    display: inline-block;
+}
 
+/*倒三角*/
 .arrow {
-    display: block;
     position: absolute;
     right: 0;
-    top: 21px;
-    border: 6px solid rgba(0, 0, 0, 0);
-    border-top: 10px solid #7d7d7d;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+
+    /*设置形状*/
     width: 0;
     height: 0;
-    transform-origin: 6px 4px;
+    border: 0.5em solid rgba(0, 0, 0, 0);
+    border-top: 0.87em solid #7d7d7d;
+    transform-origin: 0.5em 0.3em;
+
     transition: all 0.5s;
 }
 
-.nav li:hover .arrow {
-    border-top: 10px solid #19ac7f;
-    transform: rotate(180deg);
-}
-
-.nav dl {
+/*下拉列表*/
+.navBar li > dl {
     position: absolute;
-    top: 50px;
-    left: -30px;
-    right: -30px;
-    max-height: 0;
-    padding: 0 5px;
+    top: 4em;
+    left: -2em;
+    right: -2em;
+    padding: 0 0.5em;
     border-radius: 6px;
     box-shadow: 2px 2px 3px #000000;
     background: #212121;
     /*overflow: auto;*/
     overflow: hidden;
     transition: all 0.5s;
+
+    max-height: 0;
 }
 
 .nav li:hover dl {
@@ -138,14 +149,15 @@
     /*background: #717171;*/
 }
 
-.nav dd>a{
+.nav dd > a {
     font-size: 13px;
     line-height: 35px;
     padding: 0 10px;
     color: #ececec;
-    transition: all 0.3s ;
+    transition: all 0.3s;
 }
-.nav dd:hover>a{
+
+.nav dd:hover > a {
     color: #19ac7f;
     padding-left: 15px;
 }

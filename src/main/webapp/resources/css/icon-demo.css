@@ -2,7 +2,14 @@
     font-family: 'Icons';
     src: url('../fonts/icon/flat-ui-icons-regular.ttf');
 }
-
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../fonts/icon/fontawesome-webfont.ttf');
+}
+.icon-paper-plane:before{
+    font-family: 'Glyphicons Halflings',serif;
+    content: "\f1d8";
+}
 /*@font-face {*/
 /*font-family: 'Icons';*/
 /*src: url('../fonts/icon/flat-ui-icons-regular.eot');                                    !* IE9 Compat Modes *!*/

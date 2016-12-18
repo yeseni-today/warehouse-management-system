@@ -3,9 +3,10 @@
     width: 100%;
     border-collapse: collapse;
 }
-.myTable tbody{
-    min-height: 10em;
-}
+
+/*.myTable tbody{*/
+    /*min-height: 10em;*/
+/*}*/
 
 
 .myTable caption {

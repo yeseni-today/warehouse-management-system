@@ -97,12 +97,11 @@ function searchItem(operation) {
     var values = $("#query_input_info").serialize();
     var $table = $("#query_item_result").find("tbody");
     $.ajax({
-        url: "/query/queryItem",
+        url: "/query/searchItem",
         type: "get",
         data: values,
         success: function (items) {
             $table.find("tr").remove();
-
             //加载特效
             var _display = function (item) {
                 var itemhtml = "<tr style='display: none' id='tr" + item.itemCode + "'>" +
@@ -302,7 +301,7 @@ function msg_display(msgs) {
     contentRight.find(".message").remove();
 
     if (  typeof(msgs) == 'undefined'||msgs.length==0) {
-        var html = "<div class='message'>没有消息</div>";
+        var html = "<div class='message no-message'>没有消息</div>";
         contentRight.append(html);
     }
     //todo foreach
@@ -1007,10 +1006,10 @@ function showLogs(logs) {
     var $log = $("#log");
     $log.find(".message").remove();
     if (logs.length == 0) {
-        html = "<div class='message'>没有日志 </div>"
+        html = "<div class='message no-message'>没有日志</div>"
     }
     for (var i = 0; i < logs.length; i++) {
-        html += "<div class='message effect1' id=''>" +
+        html += "<div class='message' id=''>" +
             "<span class='message-title'><strong>" + logs[i].logId + "</strong></span>" +
             "<span class='message-date'>" + getDateAndTime(logs[i].logDate) + "</span>" +
             "<span class='message-date'>" + logs[i].logLevel + "</span>" +
