@@ -24,6 +24,21 @@ public class SecUsersDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
         UsersEntity user;
+
+        if (userName.trim().equals("user")){
+            user = new UsersEntity();
+            user.setUsersName(userName);
+            user.setUsersPassword("user");
+            user.setUsersIdentity(UsersEntity.ROLE.ROLE_USER);
+            return new SecUserDetails(user);
+        }else if (userName.trim().equals("admin")){
+            user = new UsersEntity();
+            user.setUsersName(userName);
+            user.setUsersPassword("admin");
+            user.setUsersIdentity(UsersEntity.ROLE.ROLE_ADMIN);
+            return new SecUserDetails(user);
+        }
+
         try {
             user = usersDao.findById(userName);
         } catch (Exception e) {

@@ -55,7 +55,7 @@
 
     <div class="content-result myTable">
 
-        <!--<span sec:authentication="principal.username"> [[${#httpServletRequest.remoteUser}]]</span>-->
+        <span sec:authentication="principal.authorities"> [[${#httpServletRequest.remoteUser}]]</span>
 
         <table id="query_item_result">
             <thead>

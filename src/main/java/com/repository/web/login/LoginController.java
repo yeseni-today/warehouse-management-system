@@ -53,7 +53,7 @@ public class LoginController extends BaseController {
         responseBody.setMessage("success");
         responseBody.setContent(URL_QUERY);
         UsersEntity usersEntity = usersDao.findById(principal.getName());
-        logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
+//        logger.info("signinSuccess: " + "登陆成功，用户Id:'" + principal.getName() + "';用户名称:'" + usersEntity.getUsersName() + "'");
         session.setAttribute(SESSION_USER, usersEntity);
         return responseBody;
     }

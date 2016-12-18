@@ -31,6 +31,9 @@ public class SecAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
         String password = (String) authentication.getCredentials();
+
+
+
         logger.info("authenticate: " + username + ":" + password);
         SecUserDetails user = (SecUserDetails) userService.loadUserByUsername(username);
         if (user == null) {

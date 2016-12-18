@@ -36,16 +36,29 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
+
                 .antMatchers(URL_SIGNIN_FAIL).permitAll()
                 .antMatchers(URL_SIGNIN).permitAll()
                 .antMatchers("/generalError").permitAll()
+                .antMatchers(URL_STORAGE,URL_STORAGE+"/**").hasRole("ADMIN")
+                .antMatchers(URL_LOG,URL_LOG+"/**").hasRole("ADMIN")
+                .antMatchers(URL_MANAGE,URL_MANAGE+"/**").hasRole("ADMIN")
                 .antMatchers("/**").authenticated()
                 .and()
                 .httpBasic()
                 .and().csrf().disable();
     }
 
-//    @Override
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        super.configure(auth);
+        auth.inMemoryAuthentication()
+                .withUser("user").password("user").roles("USER")
+                .and()
+                .withUser("admin").password("admin").roles("ADMIN");
+    }
+
+    //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 ////        auth
 ////                .jdbcAuthentication()
