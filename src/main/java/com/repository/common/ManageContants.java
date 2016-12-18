@@ -7,7 +7,16 @@ public interface ManageContants {
 
     //manage
     String URL_MANAGE = "/manage";
+    /**
+     * 管理需要审核的申请网页 返回view
+     *
+     * @return view
+     */
     String URL_MANAGE_EXAMEINE = URL_MANAGE + "/examine";
+    /**
+     * show 返回HTML view<br/>
+     * 返回值中带有<span>history<span/>属性
+     * */
     String URL_MANAGE_OUTSTORAGE = URL_MANAGE + "/outStorage";
 
     String URL_MANAGE_GETEXAMLNE = URL_MANAGE + "/getlist";
@@ -17,6 +26,15 @@ public interface ManageContants {
      * apply_id 为测试审核单的id
      */
     String URL_MANAGE_PASSEXAMINE = URL_MANAGE + "/passexamine";
+    //out storage
+    String URL_MANAGE_OUTSTORAGE_OUTSTOAGE_INFO ="/manage/outopreationinfo.json";
+    /**
+     * 查询物品有效期
+     * @parm itemName
+     * @parm itemCode
+     * @return SimpRes
+     * */
+    String URL_MANAGE_ITEMINDATE_QUERYINFO = "/manage/queryItemInDateById.json";
     /**
      * 返回有效期管理界面
      */

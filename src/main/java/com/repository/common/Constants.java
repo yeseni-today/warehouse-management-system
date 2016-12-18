@@ -46,12 +46,13 @@ public interface Constants extends ApplyContants,ManageContants {
     String HTML_QUERY_LIST = "query/list";
 
 
-    //storage
+            // in storage
     String URL_STORAGE = "/storage";
     String URL_STORAGE_LIST_AJAX = URL_STORAGE + "/listajax";
     String HTML_STORAGE_PREFIX = "storage/";
     String HTML_STORAGE_HISTORY = HTML_STORAGE_PREFIX + "history";
     String URL_STORAGE_QUERY_INFO = "/storage/StorageFormInfo.json";
+
     //storage-add
     String URL_STORAGE_ADD = URL_STORAGE + "/add";
     String URL_STORAGE_ADD_AJAX = URL_STORAGE + "/addajax";
