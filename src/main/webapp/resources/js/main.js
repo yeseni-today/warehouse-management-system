@@ -648,7 +648,7 @@ function msg_send() {
 //todo test
 function msg_hide(messageID) {
     var $messageBox = $("#" + messageID);
-    $messageBox.slideUp(1000);
+    $messageBox.slideUp(5000);
 
     // $.ajax({
     //     url: "/message/delete",
