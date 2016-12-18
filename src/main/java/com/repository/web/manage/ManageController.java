@@ -60,10 +60,13 @@ public class ManageController {
     * @parm out_id
     * */
     @RequestMapping(URL_MANAGE_OUTSTORAGE_OUTSTOAGE_INFO)
+    @ResponseBody
     public SimpleRes outstuage(@RequestParam(name = "out_id") String out_id) {
         OutStorageCom com = new OutStorageCom();
         com.operation = _itemOutOpreationDao.findById(out_id);
         com.outStorages = _itemOutStorageDao.findBy("outId", out_id, false);
+        System.out.println(com.operation.toString());
+        System.out.println(com.outStorages.size());
         return SimpleRes.success(com.toString());
     }
 
@@ -121,11 +124,13 @@ public class ManageController {
      */
     @RequestMapping(URL_MANAGE_ITEMINDATE_QUERYINFO)
     @ResponseBody
-    public SimpleRes quera(@RequestParam(name = "itemCode") String itemCode,
-                           @RequestParam(name = "itemName") String itemName) {
+    public SimpleRes quera(@RequestParam(value = "itemCode",required = false) String itemCode,
+                           @RequestParam(value = "itemName",required = false) String itemName) {
+        System.out.println(itemCode+"    "+itemName);
         List<ItemIndate> result = new ArrayList<>();
         result.addAll(_itemInDateDao.findByItemCode(itemCode));
         result.addAll(_itemInDateDao.findByItemName(itemName));
+        System.out.println(result.size());
         return SimpleRes.success(result);
     }
 

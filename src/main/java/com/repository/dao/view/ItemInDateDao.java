@@ -18,7 +18,7 @@ import java.util.List;
 public class ItemInDateDao extends AbstractReadDao<ItemIndate>  {
 
     public List<ItemIndate> findByItemCode(String itemCode){
-        return findBy("itemCode",itemCode,false);
+        return findBy("itemCode",itemCode,true);
     }
 
     public List<ItemIndate> findByDayBefore(int day) {
@@ -33,7 +33,7 @@ public class ItemInDateDao extends AbstractReadDao<ItemIndate>  {
     }
 
     public List<ItemIndate> findByItemName(String itemName){
-        return findBy("itemName",itemName,true);
+        return findBy("itemName",itemName,false);
     }
 
     @Override

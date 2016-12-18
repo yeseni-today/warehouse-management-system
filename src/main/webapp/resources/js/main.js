@@ -1025,7 +1025,7 @@ function showLogs(logs) {
 function queryItemInDate() {
     $.ajax({
         url: "/manage/queryItemInDateById.json",
-        type: "type",
+        type: "post",
         data: $("#query_input_info").serialize(),
         success: function (result) {
             if (result.message == "success") {
@@ -1047,12 +1047,12 @@ function showItemInDate(items) {
     $table.find("tr").remove();
     for (var i = 0; i < items.length; i++) {
         html += "<tr>" +
-            "<td >" + item.itemCode + "</td>" +
-            "<td>" + item.itemName + "</td>" +
-            "<td>" + item.itemBatch + "</td>" +
-            "<td>" + item.itemIndate + "</td>" +
-            "<td>" + item.itemSlot + "</td>" +
-            "<td>" + item.allowCount + "</td>" +
+            "<td >" + items[i].itemCode + "</td>" +
+            "<td>" + items[i].itemName + "</td>" +
+            "<td>" + items[i].itemBatch + "</td>" +
+            "<td>" + items[i].itemIndate + "</td>" +
+            "<td>" + items[i].itemSlot + "</td>" +
+            "<td>" + items[i].allowCount + "</td>" +
             "</tr>";
     }
     $table.append(html);
