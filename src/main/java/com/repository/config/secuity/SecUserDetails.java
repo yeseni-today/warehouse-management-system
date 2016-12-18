@@ -35,7 +35,7 @@ public class SecUserDetails implements UserDetails {
 //        }
 //        String authorities = commaBuilder.substring(0,commaBuilder.length()-1);
 //        return AuthorityUtils.commaSeparatedStringToAuthorityList(authorities);
-        return AuthorityUtils.commaSeparatedStringToAuthorityList("ROLE_USER");
+        return AuthorityUtils.commaSeparatedStringToAuthorityList(usersEntity.getUsersIdentity().toString());
     }
 
     @Override

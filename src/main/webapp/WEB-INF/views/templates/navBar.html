@@ -22,7 +22,8 @@
                     <li th:classappend="${page == 'home' ? 'active' : ''}">
                         <a href="#" th:href="@{/query}">查询</a>
                     </li>
-                    <li th:classappend="${page == 'messages' ? 'active' : ''}" sec:authentication="ROLE_ADMIN">
+                    <!---->
+                    <li th:classappend="${page == 'messages' ? 'active' : ''}" sec:authorize="hasRole('ROLE_ADMIN')">
                         <a href="#" th:href="@{/storage}">入库</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
@@ -37,9 +38,10 @@
                         <!--<span class="arrow"></span>-->
                         <!--<dl>-->
                             <!--<dd><a href="#" th:href="@{/message}">我的消息</a></dd>-->
+                        <!--sec:authorize="hasRole('ROLE_USER')"-->
                         <!--</dl>-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authorize="hasRole('ROLE_USER')">
+                    <li  sec:authorize="hasRole('ROLE_ADMIN')">
                         <a href="#" th:href="@{/log}">日志</a>
                         <!--<span class="arrow"></span>
                         <dl>
@@ -48,9 +50,10 @@
                             <dd><a href="#">出库日志</a></dd>
                             <dd><a href="#">申请日志</a></dd>
                             <dd><a href="#">物品维护日志</a></dd>
+                             sec:authorize="ROLE_ADMIN"
                         </dl>-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authentication="ROLE_ADMIN">
+                    <li  sec:authorize="hasRole('ROLE_ADMIN')">
                         <a href="#">管理</a>
                         <span class="arrow"></span>
                         <dl>

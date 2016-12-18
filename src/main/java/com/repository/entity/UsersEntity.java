@@ -18,9 +18,13 @@ public class UsersEntity {
     @Size(max = 15, message = "密码应在10-15位之间")
     private String usersPassword;
     private String usersName;
-    private String usersIdentity;
+    private ROLE usersIdentity;
     private String usersPhone;
     private String usersSex;
+
+    public enum ROLE{
+        ROLE_ADMIN,ROLE_USER
+    }
 
     @Basic
     @Column(name = "url")
@@ -66,11 +70,11 @@ public class UsersEntity {
 
     @Basic
     @Column(name = "users_identity")
-    public String getUsersIdentity() {
+    public ROLE getUsersIdentity() {
         return usersIdentity;
     }
 
-    public void setUsersIdentity(String usersIdentity) {
+    public void setUsersIdentity(ROLE usersIdentity) {
         this.usersIdentity = usersIdentity;
     }
 

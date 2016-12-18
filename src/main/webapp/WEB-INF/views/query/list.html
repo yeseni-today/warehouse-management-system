@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:tiles="http://www.thymeleaf.org">
+      xmlns:tiles="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
     <meta charset="UTF-8"/>
     <title tiles:fragment="title">查询物品</title>
@@ -55,7 +55,7 @@
 
     <div class="content-result myTable">
 
-        <span sec:authentication="principal.authorities">[ROLE_USER, ROLE_ADMIN]</span>
+        <!--<span sec:authentication="principal.username"> [[${#httpServletRequest.remoteUser}]]</span>-->
 
         <table id="query_item_result">
             <thead>

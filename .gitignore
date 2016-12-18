@@ -3,6 +3,7 @@
 !gradle/wrapper/gradle-wrapper.jar
 gradlew
 gradlew.bat
+out/
 
 ### STS
 .apt_generated
