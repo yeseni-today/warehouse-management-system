@@ -903,6 +903,7 @@ function getOutOperationByID(outID) {
         type: "get",
         success: function (result) {
             var outStorageFromJSON = result.content;
+            alert(JSON.stringify(outStorageFromJSON));
             if (result.message == "success") {
                 openPop();
                 button.onclick = function () {

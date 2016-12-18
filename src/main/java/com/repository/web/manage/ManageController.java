@@ -60,11 +60,12 @@ public class ManageController {
     * @parm out_id
     * */
     @RequestMapping(URL_MANAGE_OUTSTORAGE_OUTSTOAGE_INFO)
+    @ResponseBody
     public SimpleRes outstuage(@RequestParam(name = "out_id") String out_id) {
         OutStorageCom com = new OutStorageCom();
         com.operation = _itemOutOpreationDao.findById(out_id);
         com.outStorages = _itemOutStorageDao.findBy("outId", out_id, false);
-        return SimpleRes.success(com.toString());
+        return SimpleRes.success(com);
     }
 
     private static class OutStorageCom {
