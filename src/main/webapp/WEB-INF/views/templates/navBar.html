@@ -22,7 +22,7 @@
                     <li th:classappend="${page == 'home' ? 'active' : ''}">
                         <a href="#" th:href="@{/query}">查询</a>
                     </li>
-                    <li th:classappend="${page == 'messages' ? 'active' : ''}" sec:authentication="ROLE_ADMIN">
+                    <li th:classappend="${page == 'messages' ? 'active' : ''}" sec:authorize="hasRole('ROLE_USER')">
                         <a href="#" th:href="@{/storage}">入库</a>
                     </li>
                     <li th:classappend="${page == 'tasks' ? 'active' : ''}">
@@ -50,7 +50,7 @@
                             <dd><a href="#">物品维护日志</a></dd>
                         </dl>-->
                     </li>
-                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authentication="ROLE_ADMIN">
+                    <li th:classappend="${page == 'tasks' ? 'active' : ''}" sec:authorize="hasRole('ROLE_USER')">
                         <a href="#">管理</a>
                         <span class="arrow"></span>
                         <dl>
