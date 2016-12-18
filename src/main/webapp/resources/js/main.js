@@ -38,7 +38,7 @@ $(document).ready(function () {
 });
 
 //加载消息
-$(document).ready(msg_findTypeOf("inform"));
+$(document).ready(msg_findTypeOf('inform'));
 
 //入库 选择分类 input隐藏
 function setVisible(bool) {
@@ -91,9 +91,9 @@ function addCompany() {
     })
 }
 
-//查询物品   operation="icon-plus"  加号  "icon-search" 放大镜
+//搜索物品   operation="icon-plus"  加号  "icon-search" 放大镜
 //          用到的地方   查询   申请单添加加
-function queryItem(operation) {
+function searchItem(operation) {
     var values = $("#query_input_info").serialize();
     var $table = $("#query_item_result").find("tbody");
     $.ajax({
@@ -125,7 +125,6 @@ function queryItem(operation) {
         }
     })
 }
-
 //选择弹出框
 function openPop_select(itemCode, itemName, operation) {
     if (operation == "icon-plus") {
@@ -134,7 +133,6 @@ function openPop_select(itemCode, itemName, operation) {
         openPop_itemInfo(itemCode);//查询 详情弹出框
     }
 }
-
 //申请 添加物品弹出框
 function openPop_add(code, name) {
     document.getElementById("info_of_apply_item").reset();
@@ -142,7 +140,6 @@ function openPop_add(code, name) {
     document.getElementsByName("itemName")[1].value = name;
     openPop();
 }
-
 //查询 详情弹出框
 function openPop_itemInfo(itemCode) {
     $(".pop li").css({"min-height": "3em", "line-height": "3em"});  //todo 弹出窗口样式
@@ -246,7 +243,6 @@ function beautifyDisplay(display, afterdisplay, items, id) {
         }
     }, 100);
 }
-
 /**
  * 通知关闭定时器
  * @param a 定时器的ID
@@ -268,16 +264,18 @@ function msg_findTypeOf(type) {
             url = "/message/findmessagebyid";
             typeStr = "通知";
             break;
-        case "remind":
-            url = "/message/warnmsg";
-            typeStr = "提醒";
-            break;
         case "other":
             url = "";
             typeStr = "其他";
             break;
+        case "remind":
+            url="";
+            // url = "/message/warnmsg";
+            typeStr = "提醒";
+            break;
     }
-    document.getElementsByClassName("message-type").innerHTML = typeStr;
+    // document.getElementsByClassName("message-type")[0].innerHTML = typeStr;
+    $(".message-type").text(typeStr);
     msg_findBy(url, "get");
 }
 //消息 获得
@@ -302,10 +300,14 @@ function msg_findBy(url, type) {
 function msg_display(msgs) {
     var contentRight = $("#message");
     contentRight.find(".message").remove();
+
+    if (  typeof(msgs) == 'undefined'||msgs.length==0) {
+        var html = "<div class='message'>没有消息</div>";
+        contentRight.append(html);
+    }
     //todo foreach
     $.each(msgs, function (i, message) {
         if (message.messageState != 2) {
-            msgs.push(message);
             var messageBox = "<div class='message' id='" + message.messageId + "'>" +
                 "<span class='message-title' ><strong>" + message.messageTitle + "</strong></span>" +
                 "<span class='message-date'>" + getDateAndTime(message.messageDate) + "</span>" +
@@ -321,38 +323,40 @@ function msg_display(msgs) {
 
 
 //todo delete
-function msg_delete() {
-    var messageID = $("[name='messageID']").val();
-    $.ajax({
-        url: "/message/delete?messageID=" + messageID,
-        type: "get",
-        success: function (result) {
-            if (result.message = "success") {
-            }
-        }
-    });
-    closePop();
-}
-function findLogs() {//todo
-    $.ajax({
-        url: "/log/findLogs",
-        type: "get",
-        success: function (result) {
-            var messages = result.content;
-            $(".content-right .message").remove();
-            var contentRight = $("#message");
-            $.each(messages, function (i, message) {
-                messageBox = "<div class='message'>" +
-                    "<span class='message-title' >" + message.messageId + "</span>" +
-                    "<span class='message-date'>" + message.messageDate + "</span>" +
-                    "<div class='message-content' >" + message.messageContent + "</div>" +
-                    "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
-                    "</div>";
-                contentRight.append(messageBox);
-            })
-        }
-    });
-}
+/*
+ function msg_delete() {
+ var messageID = $("[name='messageID']").val();
+ $.ajax({
+ url: "/message/delete?messageID=" + messageID,
+ type: "get",
+ success: function (result) {
+ if (result.message = "success") {
+ }
+ }
+ });
+ closePop();
+ }
+ function findLogs() {//todo
+ $.ajax({
+ url: "/log/findLogs",
+ type: "get",
+ success: function (result) {
+ var messages = result.content;
+ $(".content-right .message").remove();
+ var contentRight = $("#message");
+ $.each(messages, function (i, message) {
+ messageBox = "<div class='message'>" +
+ "<span class='message-title' >" + message.messageId + "</span>" +
+ "<span class='message-date'>" + message.messageDate + "</span>" +
+ "<div class='message-content' >" + message.messageContent + "</div>" +
+ "<div class='message-operation' onclick=\"openPopMessage('" + i + "')\">详情</div>" +
+ "</div>";
+ contentRight.append(messageBox);
+ })
+ }
+ });
+ }
+ */
 
 //申请 清空
 function apply_clear() {
@@ -372,7 +376,7 @@ function apply_clear() {
 
 //弹出框  todo
 function openPop() {
-    var $pop =$(".pop-bg");
+    var $pop = $(".pop-bg");
     $pop.css('display', 'block');
     setTimeout(function () {
         $pop.css('background', 'rgba(181, 181, 181, 0.5)');
@@ -380,7 +384,7 @@ function openPop() {
     }, 1);
 }
 function closePop() {
-    var $pop =$(".pop-bg");
+    var $pop = $(".pop-bg");
     $pop.css('background', 'rgba(181, 181, 181, 0)');
     $pop.find(".pop").css('transform', 'scale(0,0)');
     setTimeout(function () {
@@ -390,7 +394,7 @@ function closePop() {
 
 //弹出框 id
 function openPopById(id) {
-    var $pop =$("#"+id);
+    var $pop = $("#" + id);
     $pop.css('display', 'block');
     setTimeout(function () {
         $pop.css('background', 'rgba(181, 181, 181, 0.5)');
@@ -398,7 +402,7 @@ function openPopById(id) {
     }, 1);
 }
 function closePopById(id) {
-    var $pop =$("#"+id);
+    var $pop = $("#" + id);
     $pop.css('background', 'rgba(181, 181, 181, 0)');
     $pop.find(".pop").css('transform', 'scale(0,0)');
     setTimeout(function () {
@@ -406,28 +410,29 @@ function closePopById(id) {
     }, 500);
 }
 
-function openAddCategory() {
-    $(".pop-addCategory").css('display', 'block');
-    setTimeout(function () {
-        $(".pop-addCategory").css('background', 'rgba(181, 181, 181, 0.5)');
-        $(".pop-addCategory .pop").css('transform', 'scale(1,1)');
-    }, 1);
-}
 
-function openAddCompany() {
-    $(".pop-addCompany").css('display', 'block');
-    setTimeout(function () {
-        $(".pop-addCompany").css('background', 'rgba(181, 181, 181, 0.5)');
-        $(".pop-addCompany .pop").css('transform', 'scale(1,1)');
-    }, 1);
-}
+// todo delete
+/*function openAddCategory() {
+ $(".pop-addCategory").css('display', 'block');
+ setTimeout(function () {
+ $(".pop-addCategory").css('background', 'rgba(181, 181, 181, 0.5)');
+ $(".pop-addCategory .pop").css('transform', 'scale(1,1)');
+ }, 1);
+ }
+ function openAddCompany() {
+ $(".pop-addCompany").css('display', 'block');
+ setTimeout(function () {
+ $(".pop-addCompany").css('background', 'rgba(181, 181, 181, 0.5)');
+ $(".pop-addCompany .pop").css('transform', 'scale(1,1)');
+ }, 1);
+ }
+ function closeapplyFormTablePop() {
+ closePop();
+ $("[id ^='tr']").css("display", "none");// todo ??
+ }*/
 
-function closeapplyFormTablePop() {
-    closePop();
-    $("[id ^='tr']").css("display", "none")
-}
-
-function openPopDetails(itemForm) {
+//入库 物品详情
+function openPop_storageItemDetails(itemForm) {
     var item = JSON.parse(itemForm);
 
     $("[name='itemName']").val(item.itemName);
@@ -437,12 +442,12 @@ function openPopDetails(itemForm) {
     $("[name='itemSpec']").val(item.itemSpec);
     $("[name='itemCompany']").val(item.itemCompanyID);
     $("[name='billCode']").val(item.billCode);
-    $("[name='storageLocation']").val(item.storageLocation);
-    console.log(item.storageLocation);
+    $("[name='itemSlot']").val(item.itemSlot);
 
     openPop();
 }
 
+// todo zhenli
 function openPop_storageInfo(storageFormId) {
     var $table = $("#storage_table").find("tbody");
 //init
@@ -490,6 +495,8 @@ function openPop_storageInfo(storageFormId) {
         }
     })
 }
+
+
 /*function openPopMessage(message) {
  // alert(msgs[0]);
  // var d = "";
@@ -637,23 +644,27 @@ function msg_send() {
  * todo 不再显示一条信息
  * 这里直接调用删除信息ajax
  * */
+
+//todo test
 function msg_hide(messageID) {
     var $messageBox = $("#" + messageID);
-    $.ajax({
-        url: "/message/delete",
-        data: {"messageID": messageID},
-        success: function (result) {
-            if (result.message == "success") {
-                //设为不再显示调用
-                $("#" + messageID).slideUp(500);
-            } else {
-                alert("不再显示执行失败，错误信息为：" + result.message)
-            }
-        },
-        error: function () {
-            alert("你的网络有问题，请稍后重试")
-        },
-    })
+    $messageBox.slideUp(1000);
+
+    // $.ajax({
+    //     url: "/message/delete",
+    //     data: {"messageID": messageID},
+    //     success: function (result) {
+    //         if (result.message == "success") {
+    //             //设为不再显示
+    //             $("#" + messageID).slideUp(500);
+    //         } else {
+    //             alert("不再显示执行失败，错误信息为：" + result.message)
+    //         }
+    //     },
+    //     error: function () {
+    //         alert("你的网络有问题，请稍后重试");
+    //     },
+    // })
 }
 /**
  * 已读一条消息
@@ -732,6 +743,8 @@ function queryApplyList() {
     })
 }
 
+
+//
 function getObjextInfo(object) {
     var s = "";
     for (var i in object) {
@@ -788,7 +801,7 @@ function openPop_applyInfo(applyID) {
 }
 
 //审核
-function getApplyFormByID(application_id) {
+function getNeedExamineByID(application_id) {
     var html = "";
     var table = $("#applyFormTable").find("tbody");
     var buttons = $("button");
@@ -876,7 +889,7 @@ function examineApply(states, apply_id) {
 }
 
 //出库 查询
-function getOutOperationFormByID(outID) {
+function getOutOperationByID(outID) {
     var html = "";
     var $table = $("#out_table").find("tbody");
     var button = $("button");
@@ -967,18 +980,17 @@ function log_find(type) {
     document.getElementsByClassName("message-type")[0].innerHTML = typeStr;
 
     var logs = log_findBy(url);
-    showLogs(logs);
 }
 
-function log_findBy(url, _function) {
+function log_findBy(url) {
     var logs;
     $.ajax({
         url: url,
         type: "post",
-        async: false,
         success: function (result) {
             if (result.message == "success") {
                 logs = result.content;
+                showLogs(logs);
             } else {
                 alert("查询出错");
             }
@@ -987,7 +999,6 @@ function log_findBy(url, _function) {
             alert("ajax请求发送失败");
         }
     });
-    return logs;
 }
 
 //todo
@@ -999,14 +1010,12 @@ function showLogs(logs) {
         html = "<div class='message'>没有日志 </div>"
     }
     for (var i = 0; i < logs.length; i++) {
-        html += "<div class='message' id=''>" +
+        html += "<div class='message effect1' id=''>" +
             "<span class='message-title'><strong>" + logs[i].logId + "</strong></span>" +
             "<span class='message-date'>" + getDateAndTime(logs[i].logDate) + "</span>" +
             "<span class='message-date'>" + logs[i].logLevel + "</span>" +
             "<div class='message-content'>" + logs[i].logInfo + "</div>" +
-            // "<div class='message-operation'>" +
-            //         "<span onclick='msg_hide('messageID')'></span>" +
-            // "</div>" +
+            // "<div class='message-operation' onclick='openPop()'>详情</div>" +
             "</div>";
     }
     $log.append(html);

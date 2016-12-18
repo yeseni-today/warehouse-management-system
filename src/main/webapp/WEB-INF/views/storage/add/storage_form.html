@@ -54,7 +54,7 @@
                 <td th:text="${itemForm.itemPrice}"></td>
                 <td th:text="${itemForm.billCode}"></td>
                 <td class="myTable-operation icon-search"
-                    th:onclick="'javascript:openPopDetails(\''+${itemForm}+'\')'">
+                    th:onclick="'javascript:openPop_storageItemDetails(\''+${itemForm}+'\')'">
                 </td>
                 <td class="myTable-operation-danger icon-cross"
                     th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\',1)'">
@@ -183,7 +183,7 @@
                                 入库库位：
                             </div>
                             <div class="value">
-                                <input type="text" name="storageLocation" readonly="readonly"/>
+                                <input type="text" name="itemSlot" readonly="readonly"/>
                             </div>
                         </label>
                     </li>

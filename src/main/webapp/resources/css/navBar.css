@@ -82,6 +82,10 @@
 .navBar-user {
     float: right;
 }
+.navBar-user a{
+    padding-left: 0.5em;
+    padding-right: 1.5em;
+}
 
 
 .arrow {
