@@ -138,28 +138,18 @@
 }
 
 .navBar dd {
-    position: relative;
-    width: 100%;
-
     height: 2.5em;
     line-height: 2.5em;
-
-    /*border-radius: 4px;*/
-    /*transition: background 0.5s ease-in;*/
-}
-
-.navBar dd:hover {
-    /*background: #717171;*/
 }
 
 .navBar dd > a {
-    font-size: 0.9em;
     line-height: inherit;
-    padding: 0 1em;
+    font-size: 0.9em;
+    padding-left: 1em;
     transition: all 0.3s;
 }
 
 .navBar dd:hover > a {
     color: #19ac7f;
-    padding-left: 15px;
+    padding-left: 1.5em;
 }
