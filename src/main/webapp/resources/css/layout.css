@@ -87,7 +87,7 @@
 .content {
     width: 65em;
     min-height: 45em;
-    margin: 5em auto;
+    margin: 8em auto;
 }
 
 .content::after{

@@ -4,7 +4,7 @@
 }
 
 .titleNav a {
-    float: left;
+    /*float: left;*/
     font-size: 1.25em;
     padding: 0 0.5em;
     color: #ececec;
@@ -23,10 +23,14 @@
 }
 
 .titleNav .title_nav_previous {
+    text-align: center;
+    min-width: 6em;
     border-right: 0.1em solid #a8a8a8;
 }
 
 .titleNav .title_nav_Now {
+    text-align: center;
+    min-width: 6em;
     border-radius: 0 0.5em 0.5em 0;
 }
 

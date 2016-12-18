@@ -1104,12 +1104,8 @@ function storage_submit() {
         url: "/storage/add/submit",
         type: "get",
         success: function (result) {
-            // if (result.message == "success") {
             alert("提交成功");
-            // }
-            // else {
-            //     alert("提交失败");
-            // }
+            location="/storage";
         },
         error: function () {
             alert("ajax请求发送失败");

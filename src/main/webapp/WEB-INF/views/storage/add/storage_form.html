@@ -15,7 +15,7 @@
 <div class="content" th:fragment="content" tiles:fragment="content">
     <div class="content-nav">
         <div class="titleNav">
-            <div class="title_nav title_nav_Now">s
+            <div class="title_nav title_nav_Now">
                 <a>新建入库单</a>
             </div>
         </div>
@@ -42,10 +42,11 @@
                 <th>删除</th>
             </tr>
             </thead>
-            <!--<tr th:if="${session.storageForm.itemForms.isEmpty()}">-->
-            <!--<td colspan="5">入库单中没有物品，请添加</td>-->
-            <!--</tr>-->
+
             <tbody>
+            <tr th:if="${session.storageForm.itemForms.isEmpty()}">
+                <td colspan="6ssssssss">入库单中没有物品，请添加</td>
+            </tr>
             <tr th:if="${session.storageForm != null}"
                 th:each="itemForm:${session.storageForm.itemForms}"
                 th:id="${itemForm.itemCode}">
@@ -68,10 +69,10 @@
                 </td>
                 <td colspan="3">
                     <!--todo-->
-                    <!--<button onclick="storage_submit()">提交</button>-->
-                    <div class="myDivBt">
-                        <a href="../history.html" th:href="@{/storage/add/submit}">提交</a>
-                    </div>
+                    <button onclick="storage_submit()">提交</button>
+                    <!--<div class="myDivBt">-->
+                        <!--<a href="../history.html" th:href="@{/storage/add/submit}">提交</a>-->
+                    <!--</div>-->
                 </td>
             </tr>
             </tfoot>
