@@ -33,7 +33,7 @@ public class ItemInDateDao extends AbstractReadDao<ItemIndate>  {
     }
 
     public List<ItemIndate> findByItemName(String itemName){
-        return findBy("itemName",itemName,false);
+        return findBy("itemName",itemName,true);
     }
 
     @Override
