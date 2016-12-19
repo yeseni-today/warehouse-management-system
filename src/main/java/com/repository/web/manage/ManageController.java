@@ -116,17 +116,17 @@ public class ManageController {
     }
 
     /**
-     * @see com.repository.common.ManageContants#URL_MANAGE_ITEMINDATE_QUERYINFO
-     * 查询物品有效期
+     * @return SimpRes
      * @parm itemName
      * @parm itemCode
-     * @return SimpRes
+     * @see com.repository.common.ManageContants#URL_MANAGE_ITEMINDATE_QUERYINFO
+     * 查询物品有效期
      */
     @RequestMapping(URL_MANAGE_ITEMINDATE_QUERYINFO)
     @ResponseBody
-    public SimpleRes quera(@RequestParam(value = "itemCode",required = false) String itemCode,
-                           @RequestParam(value = "itemName",required = false) String itemName) {
-        System.out.println(itemCode+"    "+itemName);
+    public SimpleRes quera(@RequestParam(value = "itemCode", required = false) String itemCode,
+                           @RequestParam(value = "itemName", required = false) String itemName) {
+        System.out.println(itemCode + "    " + itemName);
         List<ItemIndate> result = new ArrayList<>();
         result.addAll(_itemInDateDao.findByItemCode(itemCode));
         result.addAll(_itemInDateDao.findByItemName(itemName));
@@ -150,6 +150,12 @@ public class ManageController {
                         _applicationOperationDao.findById(application_id),
                         _applicationDao.findBy("applicationId", application_id, false))
         );
+    }
+
+    @RequestMapping(value = URL_MANAGE_OUTSTORAGE_COMFORM, method = RequestMethod.POST)
+    @ResponseBody
+    public SimpleRes comform(@RequestParam(name = "out_id") String out_id) {
+        return _outStorageService.outState(out_id, true) ? SimpleRes.success() : SimpleRes.error();
     }
 
 

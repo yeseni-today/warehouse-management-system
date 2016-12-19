@@ -1,6 +1,7 @@
 package com.repository.service;
 
 import com.repository.common.ApplyContants;
+import com.repository.common.Constants;
 import com.repository.dao.*;
 import com.repository.entity.*;
 import com.repository.util.Util;
@@ -45,13 +46,36 @@ public class OutStorageService {
 
     @Autowired
     ItemApplicationOperationDao applicationOperationDao;
+
+    @Autowired
+    ItemOutOperationDao _outOperationDao;
     @Autowired
     ItemInStorageDao inStorageDao;
 
+    public boolean outState(String out_id, boolean isSuccess) {
+        ItemOutOperationEntity outOperationEntity = _outOperationDao.findById(out_id);
+
+        if (outOperationEntity == null){
+            return false;
+        }
+
+        if (isSuccess){
+            outOperationEntity.setOutStates(Constants.OUTSTOAGR_SUCCESS_STATUS);
+        }else {
+            outOperationEntity.setOutStates(Constants.OUTSTOAGR_FAIL_STATUS);
+        }
+        _outOperationDao.update(outOperationEntity);
+        return true;
+    }
+
+    /**
+     * 出库一个申请单
+     * */
     @Transactional
     public void outStorage(Principal principal, String apply_id) {
         ItemApplicationOperationEntity operationEntity = applicationOperationDao.findById(apply_id);
         List<ItemApplicationEntity> items = applicationDao.findByApplyId(apply_id);
+        operationEntity.setExamineId(principal.getName());
         operationEntity.setStates(ApplyContants.APPLY_NONEED_EXAMINE);
         operationEntity.setStatesTime(new Date(System.currentTimeMillis()));
         applicationOperationDao.update(operationEntity);
@@ -147,8 +171,8 @@ public class OutStorageService {
         outStorageEntity.setUsersId(operationEntities.getUsersId());
         outStorageEntity.setApplyId(operationEntities.getApplicationId());
         outStorageEntity.setOperationId("10000");
-        outStorageEntity.setOutAddress("测试");
-        outStorageEntity.setOutStates("正在完成");
+        outStorageEntity.setOutAddress(Constants.OUTSTOAGR_DEFAULT_ADDRESS);
+        outStorageEntity.setOutStates(Constants.OUTSTOAGR_DEFAULT_STATUS);
         outStorageEntity.setOutTime(new Date(System.currentTimeMillis()));
         outStorageEntity.setOutId(dictionaryDao.getOutStorageId());
         return outStorageEntity;
@@ -165,6 +189,8 @@ public class OutStorageService {
         }
         return result;
     }
+
+
 
 
     //出库操作表（出库单编号，对应申请(借取)单编号，出库日期，领取人ID，领取地点，出库状态，操作人员ID）

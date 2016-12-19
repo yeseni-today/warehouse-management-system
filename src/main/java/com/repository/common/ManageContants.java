@@ -28,6 +28,8 @@ public interface ManageContants {
     String URL_MANAGE_PASSEXAMINE = URL_MANAGE + "/passexamine";
     //out storage
     String URL_MANAGE_OUTSTORAGE_OUTSTOAGE_INFO ="/manage/outopreationinfo.json";
+
+    String URL_MANAGE_OUTSTORAGE_COMFORM = "/manage/confirmOut";
     /**
      * 查询物品有效期
      * @parm itemName

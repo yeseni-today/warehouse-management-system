@@ -29,6 +29,12 @@ import javax.transaction.Transactional;
 @Component
 public class ApplyFormService {
 
+    public static final String NO_STATES = "审核失败";
+    public static final String ING_STATES = "正在审核";
+    public static final String DEFAULT_STATES = ApplyContants.APPLY_NEED_EXAMINE;
+    public static final String SUCCESS_STATES = ApplyContants.APPLY_NONEED_EXAMINE;
+
+
     @Autowired
     private ItemDao itemDao;
     @Autowired
@@ -50,7 +56,7 @@ public class ApplyFormService {
 
         Session session = sessionFactory.getCurrentSession();
         try {
-            //保存入库操作表
+            //保存申请操作表
             ItemApplicationOperationEntity operationEntities = toApplyOpreation(applyForm);
             DictionaryEntity applicationIdEntity = dictionaryDao.findById("application_ID");
             operationEntities.setApplicationId((String.valueOf(Util.handleCode(applicationIdEntity))));
@@ -58,7 +64,7 @@ public class ApplyFormService {
 
             session.save(operationEntities);
             session.update(applicationIdEntity);
-            //保存入库表
+            //保存申请表
             List<ItemApplicationEntity> items = toApplyItem(applyForm, operationEntities.getApplicationId());
             items.forEach(entity -> {
                 session.save(entity);
@@ -81,7 +87,9 @@ public class ApplyFormService {
         return true;
     }
 
-
+    /**
+     * 校对 数量是否正确
+     */
     public boolean check(ApplyForm applyForm) {
         for (ApplyItemForm item : applyForm.getItems()) {
             if (itemDao.findById(item.getItemCode()).getItemCount() < item.getItemCount()) {
@@ -105,10 +113,6 @@ public class ApplyFormService {
         return result;
     }
 
-    public static final String NO_STATES = "审核失败";
-    public static final String ING_STATES = "正在审核";
-    public static final String DEFAULT_STATES = ApplyContants.APPLY_NEED_EXAMINE;
-    public static final String SUCCESS_STATES = ApplyContants.APPLY_NONEED_EXAMINE;
 
     public ItemApplicationOperationEntity toApplyOpreation(ApplyForm applyForm) {
         ItemApplicationOperationEntity operationEntity = new ItemApplicationOperationEntity();
@@ -185,7 +189,7 @@ public class ApplyFormService {
             List<ItemApplicationEntity> applicationEntities = applicationDao.findByApplyId(apply_id);
             applicationEntities.forEach(e -> {
                 ItemEntity item = itemDao.findById(e.getItemCode());
-                item.setItemCount(item.getItemCount()+e.getCounts());
+                item.setItemCount(item.getItemCount() + e.getCounts());
                 sessionFactory.getCurrentSession().update(item);
             });
         }

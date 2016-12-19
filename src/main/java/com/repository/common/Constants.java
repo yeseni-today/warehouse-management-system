@@ -4,6 +4,12 @@ package com.repository.common;
  * Created by Finderlo on 11/17/2016.
  */
 public interface Constants extends ApplyContants,ManageContants {
+
+
+    String OUTSTOAGR_DEFAULT_STATUS = "out_ing";
+    String OUTSTOAGR_FAIL_STATUS = "out_fail";
+    String OUTSTOAGR_SUCCESS_STATUS = "out_ss";
+    String OUTSTOAGR_DEFAULT_ADDRESS = "一号仓库";
     /**
      * 需要模块引擎前缀
      */

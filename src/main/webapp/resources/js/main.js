@@ -939,7 +939,7 @@ function getOutOperationByID(outID) {
 function outStorage(outID) {
     alert(outID);
     $.ajax({
-        url: "/mamage/confirmOut",
+        url: "/manage/confirmOut",
         type: "post",
         data: {"out_id": outID},
         success: function (result) {
