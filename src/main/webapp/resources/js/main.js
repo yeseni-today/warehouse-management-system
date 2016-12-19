@@ -906,9 +906,9 @@ function getOutOperationByID(outID) {
         type: "get",
         success: function (result) {
             if (result.message == "success") {
-                var outStorageOperationJSON = result.content.operation;
-                var items = result.content.outStorages;
-
+                var outStorageOperationJSON = JSON.parse(result.content).operation;
+                var items = JSON.parse(result.content).outStorages;
+                console.log(outStorageOperationJSON);
                 $out_id.text(outStorageOperationJSON.outId);
                 $users_id.text(outStorageOperationJSON.usersId);
                 $out_address.text(outStorageOperationJSON.outAddress);
