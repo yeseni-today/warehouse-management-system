@@ -380,7 +380,7 @@ function openPop() {
     setTimeout(function () {
         $pop.css('background', 'rgba(181, 181, 181, 0.5)');
         $pop.find(".pop").css('transform', 'scale(1,1)');
-    }, 1);
+    }, 50);
 }
 function closePop() {
     var $pop = $(".pop-bg");
@@ -398,7 +398,7 @@ function openPopById(id) {
     setTimeout(function () {
         $pop.css('background', 'rgba(181, 181, 181, 0.5)');
         $pop.find(".pop").css('transform', 'scale(1,1)');
-    }, 1);
+    }, 50);
 }
 function closePopById(id) {
     var $pop = $("#" + id);
@@ -937,7 +937,6 @@ function getOutOperationByID(outID) {
 }
 
 function outStorage(outID) {
-    alert(outID);
     $.ajax({
         url: "/manage/confirmOut",
         type: "post",
@@ -949,6 +948,7 @@ function outStorage(outID) {
                 $("#" + outID).fadeOut(500);
             } else {
                 alert("系统错误");
+
             }
         },
         error: function () {
@@ -1029,7 +1029,6 @@ function showLogs(logs) {
 }
 
 
-//todo url findlo
 function queryItemInDate() {
     $.ajax({
         url: "/manage/queryItemInDateById.json",
