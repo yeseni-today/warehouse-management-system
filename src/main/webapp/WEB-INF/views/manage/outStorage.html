@@ -28,8 +28,7 @@
                 <tr th:if="${history==null||history.isEmpty()}">
                     <td colspan="4">没有申请单信息</td>
                 </tr>
-                <tr th:each="ItemOutOperation:${history}"
-                    th:id="${ItemOutOperation.outId}">
+                <tr th:each="ItemOutOperation:${history}" th:id="${ItemOutOperation.outId}">
                     <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemOutOperationEntity"*/-->
                     <td th:text="${ItemOutOperation.outId}"></td>
                     <td th:text="${ItemOutOperation.usersId}"></td>

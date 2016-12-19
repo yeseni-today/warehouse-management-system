@@ -190,7 +190,10 @@ public class OutStorageService {
         return result;
     }
 
-
+    public void saveAutoStorage(Principal principal, ItemApplicationOperationEntity operationEntities, List<ItemApplicationEntity> items) {
+        items.forEach(e -> changeItemCount(e.getItemCode(),e.getCounts()));
+        saveStorage(principal, operationEntities, items);
+    }
 
 
     //出库操作表（出库单编号，对应申请(借取)单编号，出库日期，领取人ID，领取地点，出库状态，操作人员ID）
