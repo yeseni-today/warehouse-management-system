@@ -125,10 +125,11 @@ public class OutStorageService {
         });
         messageService.send(
                 new MessageService.SendBuilder(principal.getName())
-                        .title("出库完成")
-                        .receId(principal.getName())
+                        .title("出库信息")
+                        .receId(outOperationEntity.getUsersId())
                         .content("请到仓库1，取出物品")
                         .type("出库").build());
+        System.out.println(outOperationEntity.getUsersId());
     }
 
     @Autowired

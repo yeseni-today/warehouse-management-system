@@ -1126,7 +1126,7 @@ function getDateAndTime(ms) {
 function getDate(ms) {
     var d = new Date(ms);
     var year = d.getFullYear();
-    var month = d.getMonth();
+    var month = d.getMonth()+1;
     var date = d.getDate();
     return year + "-" + month + "-" + date;
 }
