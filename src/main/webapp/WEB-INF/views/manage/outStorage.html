@@ -25,8 +25,7 @@
                     <th>领取地址</th>
                     <th>详情</th>
                 </tr>
-                <tr th:if="${history==null||history.isEmpty()}"
-                    th:id="${ItemOutOperation.outId}">
+                <tr th:if="${history==null||history.isEmpty()}">
                     <td colspan="4">没有申请单信息</td>
                 </tr>
                 <tr th:each="ItemOutOperation:${history}">

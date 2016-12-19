@@ -1,6 +1,7 @@
 package com.repository.web.manage;
 
 import com.google.gson.Gson;
+import com.repository.common.Constants;
 import com.repository.dao.ItemApplicationDao;
 import com.repository.dao.ItemApplicationOperationDao;
 import com.repository.dao.ItemOutOperationDao;
@@ -111,7 +112,7 @@ public class ManageController {
      */
     @RequestMapping(URL_MANAGE_OUTSTORAGE)
     public String manageOutStorage(Model model) {
-        model.addAttribute("history", _itemOutOpreationDao.findAll());
+        model.addAttribute("history", _itemOutOpreationDao.findByState(Constants.OUTSTOAGR_DEFAULT_STATUS));
         return TILES_PREFIX + HTML_MANAGE_OUTSTORAGE;
     }
 
