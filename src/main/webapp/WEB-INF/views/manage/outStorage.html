@@ -23,7 +23,7 @@
                     <th>出库单编号</th>
                     <th>领取人ID</th>
                     <th>领取地址</th>
-                    <th>详情</th>
+                    <th>操作</th>
                 </tr>
                 <tr th:if="${history==null||history.isEmpty()}">
                     <td colspan="4">没有申请单信息</td>
@@ -33,9 +33,8 @@
                     <td th:text="${ItemOutOperation.outId}"></td>
                     <td th:text="${ItemOutOperation.usersId}"></td>
                     <td th:text="${ItemOutOperation.outAddress}"></td>
-                    <td class="myTable-operation" onclick="openPop()"
+                    <td class="myTable-operation icon-list-bulleted" onclick="openPop()"
                         th:onclick="'getOutOperationByID(\''+${ItemOutOperation.outId}+'\')'">
-                        <div class="icon-search"></div>
                     </td>
                 </tr>
             </table>

@@ -67,7 +67,7 @@
                 <!--yyyy-MM-dd ahh:mm:ss-->
                 <!--<td th:text="${#dates(itemInOperation.storageTime).toLocaleString()}"></td>-->
                 <td th:text="${itemInOperation.operationId}"></td>
-                <td class="myTable-operation icon-search"
+                <td class="myTable-operation-info icon-info-circle"
                         th:onclick="'openPop_storageInfo(\''+${itemInOperation.storageId}+'\')'"></td>
             </tr>
         </table>

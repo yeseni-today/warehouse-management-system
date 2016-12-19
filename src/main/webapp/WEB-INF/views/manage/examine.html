@@ -22,7 +22,7 @@
                     <th>申请单编号</th>
                     <th>申请人ID</th>
                     <th>申请日期</th>
-                    <th>详情</th>
+                    <th>操作</th>
                 </tr>
                 <tr th:if="${history==null||history.isEmpty()}">
                     <td colspan="4">没有未审核的申请单</td>
@@ -33,7 +33,7 @@
                     <td th:text="${itemApplicationOperation.applicationId}"></td>
                     <td th:text="${itemApplicationOperation.usersId}"></td>
                     <td th:text="${itemApplicationOperation.applicationTime}"></td>
-                    <td class="myTable-operation icon-search"
+                    <td class="myTable-operation icon-list-bulleted"
                         th:onclick="'getNeedExamineByID(\''+${itemApplicationOperation.applicationId}+'\')'">
                     </td>
                 </tr>

@@ -54,10 +54,10 @@
                 <td th:text="${itemForm.itemCount}"></td>
                 <td th:text="${itemForm.itemPrice}"></td>
                 <td th:text="${itemForm.billCode}"></td>
-                <td class="myTable-operation icon-search"
+                <td class="myTable-operation-info icon-info-circle"
                     th:onclick="'javascript:openPop_storageItemDetails(\''+${itemForm}+'\')'">
                 </td>
-                <td class="myTable-operation-danger icon-cross"
+                <td class="myTable-operation-warning icon-cross"
                     th:onclick="'javascript:deleteStroageItem(\''+${itemForm.itemCode}+'\',1)'">
                 </td>
             </tr>

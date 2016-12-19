@@ -96,6 +96,11 @@ function addCompany() {
 function searchItem(operation) {
     var values = $("#query_input_info").serialize();
     var $table = $("#query_item_result").find("tbody");
+    var tablecolor='myTable-operation-info';
+
+    if(operation=="icon-plus"){
+        tablecolor="myTable-operation";
+    }
     $.ajax({
         url: "/query/searchItem",
         type: "get",
@@ -109,7 +114,7 @@ function searchItem(operation) {
                     "<td>" + item.itemName + "</td>" +
                     "<td>" + item.categoryEntity.categoryName + "</td>" +
                     "<td>" + item.itemCount + "</td>" +
-                    "<td class='myTable-operation " + operation + "' " +
+                    "<td class='"+tablecolor+" " + operation + "' " +
                     "onclick=\"openPop_select(\'" + item.itemCode + "\',\'" + item.itemName + "\',\'" + operation + "\')\"></td>" +
                     "</tr>";
                 $table.append(itemhtml);
@@ -268,7 +273,7 @@ function msg_findTypeOf(type) {
             typeStr = "其他";
             break;
         case "remind":
-            url="";
+            url = "";
             // url = "/message/warnmsg";
             typeStr = "提醒";
             break;
@@ -300,7 +305,7 @@ function msg_display(msgs) {
     var contentRight = $("#message");
     contentRight.find(".message").remove();
 
-    if (  typeof(msgs) == 'undefined'||msgs.length==0) {
+    if (typeof(msgs) == 'undefined' || msgs.length == 0) {
         var html = "<div class='message no-message'>没有消息</div>";
         contentRight.append(html);
     }
@@ -653,7 +658,7 @@ function msg_hide(messageID) {
         success: function (result) {
             if (result.message == "success") {
                 //设为不再显示
-                $messageBox.css("min-height","auto");
+                $messageBox.css("min-height", "auto");
                 $messageBox.slideUp(500);
                 $("#" + messageID).slideUp(500);
             } else {
@@ -702,7 +707,8 @@ function queryStorageList() {
                     "<td>" + item.storageId + "</td>" +
                     "<td>" + getDate(item.storageTime) + "</td>" +
                     "<td>" + item.operationId + "</td>" +
-                    "<td onclick=\"openPop_storageInfo(\'" + item.storageId + "\')\">" + "操作" + "</td>" +
+                    "<td class='myTable-operation-info icon-info-circle'" +
+                    "onclick=\"openPop_storageInfo(\'" + item.storageId + "\')\"></td>" +
                     "</tr>";
                 $("#result_storage_table").append(itemhtml)
             };
@@ -730,7 +736,7 @@ function queryApplyList() {
                     "<td>" + item.examineId + "</td>" +
                     "<td>" + item.states + "</td>" +
                     "<td>" + item.statesTime + "</td>" +
-                    "<td>" + "操作" + "</td>" +
+                    "<td class='myTable-operation-info icon-info-circle'></td>" +
                     "</tr>";
                 $("#result_apply_table").append(item1)
             }
@@ -893,9 +899,9 @@ function getOutOperationByID(outID) {
     var $table = $("#out_table").find("tbody");
     var button = document.getElementsByTagName("button")[0];
     // 清空弹出框
-    var $out_id=$('#out_id');
-    var $users_id=$('#users_id');
-    var $out_address=$('#out_address');
+    var $out_id = $('#out_id');
+    var $users_id = $('#users_id');
+    var $out_address = $('#out_address');
     $out_id.text("  ");
     $users_id.text("  ");
     $out_address.text("  ");
@@ -913,7 +919,7 @@ function getOutOperationByID(outID) {
                 $out_address.text(outStorageOperationJSON.outAddress);
 
                 openPop();
-                button.onclick= function () {
+                button.onclick = function () {
                     outStorage(outStorageOperationJSON.outId);  //确定出库
                 };
 
@@ -1103,7 +1109,7 @@ function storage_submit() {
         type: "get",
         success: function (result) {
             alert("提交成功");
-            location="/storage";
+            location = "/storage";
         },
         error: function () {
             alert("ajax请求发送失败");

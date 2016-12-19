@@ -28,7 +28,7 @@
     <!--</div>-->
 
     <div class="content-function">
-        <button id="slide_panel_bt" class="icon-search" ></button>
+        <button id="slide_panel_bt" class="icon-search"></button>
         <div class="myDivBt">
             <a href="#new" onclick="jumpTo('apply/addajax')">新建申请</a>
         </div>
@@ -82,7 +82,7 @@
                 <td th:text="${itemApplicationOperation.examineId}"></td>
                 <td th:text="${itemApplicationOperation.states}"></td>
                 <td th:text="${itemApplicationOperation.statesTime}"></td>
-                <td class="myTable-operation icon-search"
+                <td class="myTable-operation-info icon-info-circle"
                     th:onclick="'openPop_applyInfo(\''+${itemApplicationOperation.applicationId}+'\')'"></td>
             </tr>
         </table>
