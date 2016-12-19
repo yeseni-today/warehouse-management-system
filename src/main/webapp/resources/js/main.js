@@ -908,7 +908,6 @@ function getOutOperationByID(outID) {
             if (result.message == "success") {
                 var outStorageOperationJSON = JSON.parse(result.content).operation;
                 var items = JSON.parse(result.content).outStorages;
-                console.log(outStorageOperationJSON);
                 $out_id.text(outStorageOperationJSON.outId);
                 $users_id.text(outStorageOperationJSON.usersId);
                 $out_address.text(outStorageOperationJSON.outAddress);
@@ -937,7 +936,6 @@ function getOutOperationByID(outID) {
 }
 
 function outStorage(outID) {
-    alert(outID);
     $.ajax({
         url: "/manage/confirmOut",
         type: "post",

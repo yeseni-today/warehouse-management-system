@@ -1,27 +1,27 @@
 package com.repository.service;
 
 import com.repository.common.ApplyContants;
-import com.repository.dao.*;
+import com.repository.dao.DictionaryDao;
+import com.repository.dao.ItemApplicationDao;
+import com.repository.dao.ItemApplicationOperationDao;
+import com.repository.dao.ItemDao;
+import com.repository.entity.DictionaryEntity;
 import com.repository.entity.ItemApplicationEntity;
 import com.repository.entity.ItemApplicationOperationEntity;
-import com.repository.entity.DictionaryEntity;
 import com.repository.entity.ItemEntity;
 import com.repository.util.Util;
 import com.repository.web.apply.add.ApplyForm;
 import com.repository.web.apply.add.ApplyItemForm;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.transaction.SystemException;
-import javax.transaction.Transactional;
 
 /**
  * Created by Finderlo on 2016/12/1.
@@ -55,7 +55,6 @@ public class ApplyFormService {
         }
 
         Session session = sessionFactory.getCurrentSession();
-        try {
             //保存申请操作表
             ItemApplicationOperationEntity operationEntities = toApplyOpreation(applyForm);
             DictionaryEntity applicationIdEntity = dictionaryDao.findById("application_ID");
@@ -75,15 +74,10 @@ public class ApplyFormService {
                 // 通知审核，减少item的数目
                 outStorageService.saveNeedStorage(principal, operationEntities, items);
             } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
-                outStorageService.saveStorage(principal, operationEntities, items);
+                outStorageService.saveAutoStorage(principal, operationEntities, items);
             }
             //日志记录
             logSerivce.saveApplyOpreation(principal.getName(), operationEntities);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-
         return true;
     }
 
