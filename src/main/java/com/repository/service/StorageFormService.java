@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.security.Principal;
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,7 +136,7 @@ public class StorageFormService extends BaseObject {
                 ItemInStorageEntity storageEntity = new ItemInStorageEntity();
                 storageEntity.setStorageId(storageForm.getInStorageId());
                 storageEntity.setPrice(itemForm.getItemPrice());
-                storageEntity.setItemIndate(new java.sql.Date(System.currentTimeMillis()));
+                storageEntity.setItemIndate((Date) itemForm.getItemEffectiveDate());
                 storageEntity.setItemCode(itemForm.getItemCode());
                 storageEntity.setBillCode(itemForm.getBillCode());
                 storageEntity.setCounts(itemForm.getItemCount());
@@ -183,7 +184,7 @@ public class StorageFormService extends BaseObject {
                 ItemInStorageEntity inStorageEntity = new ItemInStorageEntity();
                 inStorageEntity.setStorageId(storageForm.getInStorageId());
                 inStorageEntity.setPrice(itemForm.getItemPrice());
-                inStorageEntity.setItemIndate(new java.sql.Date(System.currentTimeMillis()));
+                inStorageEntity.setItemIndate(itemForm.getItemEffectiveDate());
                 inStorageEntity.setItemCode(itemForm.getItemCode());
                 inStorageEntity.setAllowCount(itemForm.getItemCount());
                 inStorageEntity.setBillCode(itemForm.getBillCode());

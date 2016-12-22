@@ -26,6 +26,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.security.Principal;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static com.repository.common.Constants.*;
@@ -88,7 +89,9 @@ public class ManageController {
      */
     @RequestMapping(URL_MANAGE_ITEMINDATE)
     public String itemindate(Model model) {
-        model.addAttribute("itemindates", _itemInDateDao.findByDayBefore(30));
+        List<ItemIndate> result =  _itemInDateDao.findByDayBefore(30);
+        model.addAttribute("itemindates",result);
+        reverse(result);
         return TILES_PREFIX + HTML_MANAHE_ITEMINDATE;
     }
 
@@ -131,9 +134,18 @@ public class ManageController {
         List<ItemIndate> result = new ArrayList<>();
         result.addAll(_itemInDateDao.findByItemCode(itemCode));
         result.addAll(_itemInDateDao.findByItemName(itemName));
+        reverse(result);
         System.out.println(result.size());
         return SimpleRes.success(result);
     }
+
+    public void reverse(List<ItemIndate> list) {
+        //先排序
+        list.sort(Comparator.comparingLong(e -> e.getItemIndate().getTime()));
+        //降序排列
+//        Collections.reverse(list);
+    }
+
 
     /**
      * 获取申请单的详情

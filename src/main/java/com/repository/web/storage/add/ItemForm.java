@@ -2,6 +2,9 @@ package com.repository.web.storage.add;
 
 import com.google.gson.Gson;
 
+import java.util.Calendar;
+import java.sql.Date;
+
 /**
  * Created by Finderlo on 2016/11/9.
  */
@@ -29,6 +32,28 @@ public class ItemForm {
     private String itemCategoryName;//物品分类name);
     private String itemOrignCount;//物品分类name);
     private String itemCompanyName;//物品companyname);
+
+    public Date getItemEffectiveDate() {
+        int year = Integer.valueOf(itemEffectiveDate.split("-")[0]);
+        int month = Integer.valueOf(itemEffectiveDate.split("-")[1]);
+        int day = Integer.valueOf(itemEffectiveDate.split("-")[2]);
+        return new Date(new Calendar.Builder().setDate(year,month,day).build().getTime().getTime());
+//        return itemEffectiveDate;
+    }
+
+    public void setItemEffectiveDate(String itemEffectiveDate) {
+        this.itemEffectiveDate =itemEffectiveDate;
+    }
+
+//    public void setItemEffectiveDate(Date itemEffectiveDate) {
+//        Calendar calendar = new Calendar.Builder().setInstant(itemEffectiveDate).build();
+//        StringBuilder time = new StringBuilder();
+//        time.append(calendar.getWeekYear()).append("-").append(calendar.getTime().getMonth())
+//                .append("-").append(calendar.getTime().getDay());
+//        this.itemEffectiveDate = time.toString();
+//    }
+
+    private String itemEffectiveDate;
 
 
     public String getItemCode() {
