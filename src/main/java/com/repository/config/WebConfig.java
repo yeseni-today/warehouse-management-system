@@ -16,15 +16,15 @@ import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.extras.tiles2.dialect.TilesDialect;
 import org.thymeleaf.extras.tiles2.spring4.web.configurer.ThymeleafTilesConfigurer;
 import org.thymeleaf.extras.tiles2.spring4.web.view.ThymeleafTilesView;
-//import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 import org.thymeleaf.spring4.SpringTemplateEngine;
-import org.thymeleaf.spring4.dialect.SpringStandardDialect;
 import org.thymeleaf.spring4.view.ThymeleafViewResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 import org.thymeleaf.templateresolver.TemplateResolver;
 import org.thymeleaf.templateresolver.UrlTemplateResolver;
 
 import java.util.Properties;
+
+//import org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect;
 
 /**
  * 该配置类 类似于mvc配置文件:spring_mvc.xml
