@@ -30,7 +30,19 @@ jar {
         attributes 'Main-Class':'com.repository.Application'
     }
 	baseName = 'wms'
-	version =  '0.1.0'
+	version =  '1.0.0'
+}
+
+sourceSets {
+	main{
+		java{
+			srcDir 'src/main/java'
+		}	
+		resources {
+			srcDir 'src/main/resources'
+			srcDir 'src/main/webapp'
+		}
+	}
 }
 
 tasks.withType(JavaCompile) {
@@ -72,3 +84,24 @@ dependencies {
     testCompile('org.springframework.boot:spring-boot-starter-test:1.4.0.RELEASE')
  
 }
+
+//依赖编译，然后打包JAR
+task taskJar(type:Jar, dependsOn: compileJava) {
+    from 'build/classes'
+    destinationDir = file('build/libs')
+}
+
+//清除上次的编译过的文件
+task clearPj(type:Delete){
+    delete 'build','target'
+}
+
+
+//把JAR复制到目标目录
+task release(type: Copy,dependsOn: [clearPj,taskJar]) {
+    from('build/libs') {
+        include '*.jar'
+    }
+    into ('target')
+}
+

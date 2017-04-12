@@ -1,6 +1,18 @@
-## WMS
+# WMS-GROUP
 
-### version
+It is a Warehouse Management System（WMS）based on Java .
+
+In this project,we use spring,hibernate as backstage and use Html5,jQuery and Ajax as web Front-end.
+
+It supports Microsoft SQL server and MySQL.
+
+![](http://i1.piimg.com/567571/bfef94ac6d69a9b7.png)
+
+![](http://i1.piimg.com/567571/59e9b5225cc04d61.png)
+
+![](http://i1.piimg.com/567571/a3bd15c66a25a03f.png)
+
+# version
 * v-0.56.0 finderlo
    查询、入库完成，申请正在完成
 * v-0.57.0 finderlo
@@ -23,14 +35,14 @@
    message
 * v-0.60.3 lx
    fix sqlserver package bug +1
-* v-0.60.4 StvL 
+* v-0.60.4 StvL
    消息页面调整   添加增加厂家，分类功能
 * v-0.60.5 StvL 新增管理页面
-* v-0.60.6 finderlo 
+* v-0.60.6 finderlo
    增加clean.py 用于删除奇怪的文件
-* v-0.60.8 finderlo 
+* v-0.60.8 finderlo
    修复message问题，增加入库和申请单查询，bug fix
-* v-0.60.9 finderlo 
+* v-0.60.9 finderlo
    bug fix
 * v-0.60.9 finderlo
    修改显示有特效

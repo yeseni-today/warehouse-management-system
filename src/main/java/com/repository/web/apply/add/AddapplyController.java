@@ -109,7 +109,7 @@ public class AddapplyController extends BaseController {
     @RequestMapping(value = URL_APPLY_ADD_ADDITEM, method = RequestMethod.POST)
     @ResponseBody
     public SimpleRes getaddItemAjax(ApplyItemForm applyItemForm, HttpSession session) {
-        if (applyItemForm == null){
+        if (applyItemForm == null) {
             return SimpleRes.error();
         }
         ApplyForm applyForm = getApplyForm(session);
@@ -122,7 +122,7 @@ public class AddapplyController extends BaseController {
                 return SimpleRes.success();
             }
         }
-        if (!flag){
+        if (!flag) {
             applyForm.getItems().add(applyItemForm);
             return SimpleRes.success();
         }
@@ -163,11 +163,11 @@ public class AddapplyController extends BaseController {
     @ResponseBody
     public SimpleRes submit(Principal principal, HttpSession session) {
         try {
-            if (service.save(principal, getApplyForm(session))){
+            if (service.save(principal, getApplyForm(session))) {
                 session.removeAttribute(SESSION_APPLY_FORM);
-                session.setAttribute(SESSION_APPLY_FORM,null);
+                session.setAttribute(SESSION_APPLY_FORM, null);
                 return SimpleRes.success();
-            }else {
+            } else {
                 return SimpleRes.error();
             }
 

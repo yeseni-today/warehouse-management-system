@@ -55,29 +55,29 @@ public class ApplyFormService {
         }
 
         Session session = sessionFactory.getCurrentSession();
-            //保存申请操作表
-            ItemApplicationOperationEntity operationEntities = toApplyOpreation(applyForm);
-            DictionaryEntity applicationIdEntity = dictionaryDao.findById("application_ID");
-            operationEntities.setApplicationId((String.valueOf(Util.handleCode(applicationIdEntity))));
-            applicationIdEntity.setIndex(applicationIdEntity.getIndex() + 1);
+        //保存申请操作表
+        ItemApplicationOperationEntity operationEntities = toApplyOpreation(applyForm);
+        DictionaryEntity applicationIdEntity = dictionaryDao.findById("application_ID");
+        operationEntities.setApplicationId((String.valueOf(Util.handleCode(applicationIdEntity))));
+        applicationIdEntity.setIndex(applicationIdEntity.getIndex() + 1);
 
-            session.save(operationEntities);
-            session.update(applicationIdEntity);
-            //保存申请表
-            List<ItemApplicationEntity> items = toApplyItem(applyForm, operationEntities.getApplicationId());
-            items.forEach(entity -> {
-                session.save(entity);
-                //log
-                logSerivce.saveApply(principal.getName(), entity);
-            });
-            if (operationEntities.getStates().equals(DEFAULT_STATES)) {
-                // 通知审核，减少item的数目
-                outStorageService.saveNeedStorage(principal, operationEntities, items);
-            } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
-                outStorageService.saveAutoStorage(principal, operationEntities, items);
-            }
-            //日志记录
-            logSerivce.saveApplyOpreation(principal.getName(), operationEntities);
+        session.save(operationEntities);
+        session.update(applicationIdEntity);
+        //保存申请表
+        List<ItemApplicationEntity> items = toApplyItem(applyForm, operationEntities.getApplicationId());
+        items.forEach(entity -> {
+            session.save(entity);
+            //log
+            logSerivce.saveApply(principal.getName(), entity);
+        });
+        if (operationEntities.getStates().equals(DEFAULT_STATES)) {
+            // 通知审核，减少item的数目
+            outStorageService.saveNeedStorage(principal, operationEntities, items);
+        } else if (operationEntities.getStates().equals(SUCCESS_STATES)) {
+            outStorageService.saveAutoStorage(principal, operationEntities, items);
+        }
+        //日志记录
+        logSerivce.saveApplyOpreation(principal.getName(), operationEntities);
         return true;
     }
 

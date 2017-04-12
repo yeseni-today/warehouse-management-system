@@ -76,7 +76,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
     @Bean
     public ThymeleafTilesConfigurer tilesConfigurer() {
         ThymeleafTilesConfigurer configurer = new ThymeleafTilesConfigurer();
-        configurer.setDefinitions("/WEB-INF/tiles.xml");
+        configurer.setDefinitions("WEB-INF/tiles.xml");
         return configurer;
     }
 

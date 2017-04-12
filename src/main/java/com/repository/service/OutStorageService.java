@@ -55,13 +55,13 @@ public class OutStorageService {
     public boolean outState(String out_id, boolean isSuccess) {
         ItemOutOperationEntity outOperationEntity = _outOperationDao.findById(out_id);
 
-        if (outOperationEntity == null){
+        if (outOperationEntity == null) {
             return false;
         }
 
-        if (isSuccess){
+        if (isSuccess) {
             outOperationEntity.setOutStates(Constants.OUTSTOAGR_SUCCESS_STATUS);
-        }else {
+        } else {
             outOperationEntity.setOutStates(Constants.OUTSTOAGR_FAIL_STATUS);
         }
         _outOperationDao.update(outOperationEntity);
@@ -70,7 +70,7 @@ public class OutStorageService {
 
     /**
      * 出库一个申请单
-     * */
+     */
     @Transactional
     public void outStorage(Principal principal, String apply_id) {
         ItemApplicationOperationEntity operationEntity = applicationOperationDao.findById(apply_id);
@@ -83,8 +83,8 @@ public class OutStorageService {
     }
 
     /**
-    * 保持一个需要审核的申请单，需要先修改物品信息
-    * */
+     * 保持一个需要审核的申请单，需要先修改物品信息
+     */
     @Transactional
     public void saveNeedStorage(Principal principal, ItemApplicationOperationEntity operationEntities, List<ItemApplicationEntity> items) {
         // 发送消息给管理员
@@ -97,7 +97,7 @@ public class OutStorageService {
                         .build()
         );
         //修改物品信息
-        items.forEach(e -> changeItemCount(e.getItemCode(),e.getCounts()));
+        items.forEach(e -> changeItemCount(e.getItemCode(), e.getCounts()));
     }
 
     /**
@@ -120,7 +120,7 @@ public class OutStorageService {
             //先保存库出单
             session.save(out);
 //            changeItemCount(out.getItemCode(), out.getCounts());
-            changeBatchCount(out.getItemCode(),out.getCounts());
+            changeBatchCount(out.getItemCode(), out.getCounts());
             logSerivce.saveOutStorage(principal.getName(), out);
         });
         messageService.send(
@@ -191,7 +191,7 @@ public class OutStorageService {
     }
 
     public void saveAutoStorage(Principal principal, ItemApplicationOperationEntity operationEntities, List<ItemApplicationEntity> items) {
-        items.forEach(e -> changeItemCount(e.getItemCode(),e.getCounts()));
+        items.forEach(e -> changeItemCount(e.getItemCode(), e.getCounts()));
         saveStorage(principal, operationEntities, items);
     }
 

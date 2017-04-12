@@ -18,7 +18,7 @@ import static com.repository.common.Constants.*;
  * Created by Finderlo on 2016/12/7.
  */
 @Controller
-public class Add {
+public class  Add {
 
     @Autowired
     CategoryDao categoryDao;
@@ -67,7 +67,7 @@ public class Add {
             @RequestParam(name = "companyAddress") String companyAddress,
             @RequestParam(name = "companyPhone") String comanyPhone,
             HttpSession session) {
-        boolean isSuccess = companyDao.addCompany(companyName,companyAddress,comanyPhone);
+        boolean isSuccess = companyDao.addCompany(companyName, companyAddress, comanyPhone);
         if (isSuccess) {
             session.setAttribute(SESSION_COMPANIES, companyDao.findAll());
         }

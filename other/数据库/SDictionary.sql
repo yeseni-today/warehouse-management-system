@@ -1,31 +1,33 @@
 CREATE TABLE SDictionary
-(field char(30) primary key,   --◊÷∂ŒªÚ’ﬂœÓƒø±‡∫≈
- _table char(50) not null,     --∂‘”¶±Ì
- _index char(10) not null,     --µ±«∞ø…”√µƒ÷∏’Î
- _indexlength int not null     --÷∏’Î‘ –Ì≥§∂»
+(
+  field        CHAR(30) PRIMARY KEY, --Â≠óÊÆµÊàñËÄÖÈ°πÁõÆÁºñÂè∑
+  _table       CHAR(50) NOT NULL, --ÂØπÂ∫îË°®
+  _index       CHAR(10) NOT NULL, --ÂΩìÂâçÂèØÁî®ÁöÑÊåáÈíà
+  _indexlength INT      NOT NULL     --ÊåáÈíàÂÖÅËÆ∏ÈïøÂ∫¶
+
 )
-insert into SDictionary values('020','Item',1,5)
-insert into SDictionary values('021','Item',1,5)
-insert into SDictionary values('022','Item',1,5)
-insert into SDictionary values('023','Item',1,5)
-insert into SDictionary values('024','Item',1,5)
-insert into SDictionary values('025','Item',1,5)
-insert into SDictionary values('026','Item',1,5)
-insert into SDictionary values('027','Item',1,5)
-insert into SDictionary values('028','Item',1,5)
-insert into SDictionary values('029','Item',1,5)
-insert into SDictionary values('040','Item',1,5)
-insert into SDictionary values('041','Item',1,5)
-insert into SDictionary values('042','Item',1,5)
-insert into SDictionary values('043','Item',1,5)
-insert into SDictionary values('044','Item',1,5)
-insert into SDictionary values('045','Item',1,5)
-insert into SDictionary values('046','Item',1,5)
-insert into SDictionary values('047','Item',1,5)
-insert into SDictionary values('048','Item',1,5)
-insert into SDictionary values('049','Item',1,5)
-insert into SDictionary values('company_ID','Item_company',1,4)
-insert into SDictionary values('storage_ID','Item_ in_storage',100,3)
-insert into SDictionary values('borrow_ID','Item_borrow',100,3)
-insert into SDictionary values('application_ID','Item_application',100,3)
-insert into SDictionary values('out_ID','Item_out_storage',100,3)
+INSERT INTO SDictionary VALUES ('020', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('021', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('022', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('023', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('024', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('025', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('026', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('027', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('028', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('029', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('040', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('041', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('042', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('043', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('044', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('045', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('046', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('047', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('048', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('049', 'Item', 1, 5)
+INSERT INTO SDictionary VALUES ('company_ID', 'Item_company', 1, 4)
+INSERT INTO SDictionary VALUES ('storage_ID', 'Item_ in_storage', 100, 3)
+INSERT INTO SDictionary VALUES ('borrow_ID', 'Item_borrow', 100, 3)
+INSERT INTO SDictionary VALUES ('application_ID', 'Item_application', 100, 3)
+INSERT INTO SDictionary VALUES ('out_ID', 'Item_out_storage', 100, 3)
