@@ -18,6 +18,13 @@ out/
 *.iws
 *.iml
 *.ipr
+lib
+.DS_STORE
+*/.DS_STORE
+*/*/.DS_STORE
+*/*/*/.DS_STORE
+*/*/*/*/.DS_STORE
+*/*/*/*/*/.DS_STORE
 
 ### NetBeans ###
 nbproject/private/
