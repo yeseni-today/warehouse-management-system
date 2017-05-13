@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:fragment="title">添加</title>
+
+    <link href="../../../static/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../static/js/main.js"></script>
+</head>
+
+<body>
+
+<div class="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_previous">
+                <a href="borrow_form.html">新建借用单</a>
+            </div>
+            <div class="title_nav title_nav_Now">
+                <a>添加物品</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-query myInput">
+        <!--/*@thymesVar id="searchItem" type="com.repository.web.query.QueryController"*/-->
+        <!--/*@thymesVar id="do" type=""*/-->
+        <form action="#" th:action="@{/queryItem}" method="get">
+            <div class="content-query-left">
+                <label>
+                    物品条码：
+                    <input type="text" name="itemCode"/>
+                </label>
+                <label>
+                    物品名称：
+                    <input type="text" name="itemName"/>
+                </label>
+                <label>
+                    物品类别：
+                    <select name="itemCategoryId">
+                        <!--/*@thymesVar id="category" type="com.repository.entity.CategoryEntity"*/-->
+                        <option th:if="${session.categories == null || session.categories.empty}">
+                            没有找到分类，请刷新重试
+                        </option>
+                        <option th:each="category : ${session.categories}"
+                                th:value="${category.categoryId}"
+                                th:text="${category.categoryName}">
+                        </option>
+                    </select>
+                </label>
+            </div>
+            <div class="content-query-right">
+                <input type="submit" value="查询"/>
+            </div>
+        </form>
+    </div>
+
+    <div class="content-result myTable">
+        <form action="borrow_form.html" method="post" th:action="@{/apply/add}">
+            <table>
+                <tr>
+                    <th>条码</th>
+                    <th>名称</th>
+                    <th>类别</th>
+                    <th>数量</th>
+                    <th>选择</th>
+                </tr>
+                <tr th:if="${items == null || items.empty}">
+                    <td colspan="5">No messages</td>
+                </tr>
+                <tr th:each="item : ${items} ">
+                    <!--/*@thymesVar id="item" type="com.repository.entity.ItemEntity"*/-->
+                    <td th:text="${item.itemCode}"></td>
+                    <td th:text="${item.itemName}"></td>
+                    <td th:text="${item.categoryEntity.getCategoryName()}"></td>
+                    <td th:text="${item.itemCount}"></td>
+                    <td><input type="checkbox" name="itemCodes" th:value="${item.itemCode}"/></td>
+                </tr>
+            </table>
+            <div class="content-result-operation">
+                <div class="myDivBt">
+                    <a href="apply_form.html" onclick="alert_info('系统正忙，请稍后重试')">添加</a>
+                </div>
+                <div class="myDivBt">
+                    <a href="apply_form.html">取消</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

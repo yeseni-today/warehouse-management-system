@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>管理</title>
+
+    <link href="../../static/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../static/js/jquery-3.1.1.js"></script>
+    <script src="../../static/js/main.js"></script>
+</head>
+<body>
+
+<div class="content" tiles:fragment="content">
+    <header>
+        <h2>审核</h2>
+    </header>
+    <section>
+        <div class="content-result myTable">
+            <table>
+                <tr>
+                    <th>申请单编号</th>
+                    <th>申请人ID</th>
+                    <th>申请日期</th>
+                    <th>操作</th>
+                </tr>
+                <tr th:if="${history==null||history.isEmpty()}">
+                    <td colspan="4">没有未审核的申请单</td>
+                </tr>
+                <tr th:each="itemApplicationOperation:${history}"
+                    th:id="${itemApplicationOperation.applicationId}">
+                    <!--/*@thymesVar id="itemApplicationOperation" type="com.repository.entity.ItemApplicationOperationEntity"*/-->
+                    <td th:text="${itemApplicationOperation.applicationId}"></td>
+                    <td th:text="${itemApplicationOperation.usersId}"></td>
+                    <td th:text="${itemApplicationOperation.applicationTime}"></td>
+                    <td class="myTable-operation icon-list-bulleted"
+                        th:onclick="'getNeedExamineByID(\''+${itemApplicationOperation.applicationId}+'\')'">
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </section>
+    <div class="pop-bg">
+        <div class="pop myTable" style="top: 5em;width: 65em;padding: 5em;height: 30em;">
+            <div class="pop-close">
+                <div class="close_button" onclick="closePop()">
+                    <div class="close_button-icon"></div>
+                </div>
+            </div>
+
+            <section style="text-align: center">
+                <label style="float: left">申请单编号:"<span id="applyFromID"></span></label>
+                <label>申请人ID:<span id="usersId"></span></label>
+                <label style="float: right">申请日期:<span id="applyTime"></span></label>
+            </section>
+            <div>
+                <table>
+                    <tr>
+                        <th>物品条形码</th>
+                        <th>申请数量</th>
+                        <th>申请类型</th>
+                        <th>申请备注</th>
+                    </tr>
+                </table>
+            </div>
+            <div style="height: 27em;overflow-x:hidden;overflow-y: scroll;width: 66em">
+                <table id="applyFormTable">
+                    <tbody></tbody>
+                </table>
+            </div>
+            <div>
+                <table>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <button>通过</button>
+                        </td>
+                        <td></td>
+                        <td>
+                            <button>不通过</button>
+                        </td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

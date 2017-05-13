@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title>新建消息</title>
+
+    <link href="../../static/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../static/js/main.js"></script>
+</head>
+<body>
+<div class="content" tiles:fragment="content">
+    <div style="width: 100%;position: relative">
+        <div class="content-left">
+            <div class="listNav-title icon-paper-plane">
+                <!--<img src="../../../resources/picture/message.png"/>-->
+                <span>消息</span>
+            </div>
+            <ul class="listNav">
+                <li class="icon-new"><a href="#">新建</a></li>
+                <!--<li><a>通知</a></li>-->
+                <!--<li><a>提醒</a></li>-->
+                <!--<li><a>审核</a></li>-->
+                <!--<li><a>其他</a></li>-->
+            </ul>
+        </div>
+        <div class="content-right">
+            <form id="new_message" class="newMessage myInfoList myInput">
+                <ul>
+                    <li></li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                收信人：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="receive_ID" required="required" style="width: 20em"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <label>
+                            <div class="name">
+                                标题：
+                            </div>
+                            <div class="value">
+                                <input type="text" name="messageTitle" required="required" style="width: 20em"/>
+                            </div>
+                        </label>
+                    </li>
+                    <li style="height: 11em">
+                        <label>
+                            <div class="name">
+                                内容：
+                            </div>
+                            <div class="value">
+                                <textarea name="messageContent" required="required"></textarea>
+                            </div>
+                        </label>
+                    </li>
+                    <li>
+                        <div class="name"></div>
+                        <div class="value" style="position: relative">
+                            <input type="button" onclick="msg_send()" value="发送" style="position: absolute;left: 14em"/>
+                        </div>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

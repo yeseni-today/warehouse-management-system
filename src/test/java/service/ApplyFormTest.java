@@ -13,7 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -23,8 +23,8 @@ import javax.transaction.Transactional;
 /**
  * Created by Finderlo on 2016/12/1.
  */
+@SpringBootTest(classes = Application.class)
 @RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = Application.class)
 @WebAppConfiguration
 public class ApplyFormTest {
 
@@ -40,16 +40,17 @@ public class ApplyFormTest {
     ItemApplicationDao applicationDao;
     @Autowired
     ItemApplicationOperationDao applicationOperationDao;
+
     @Before
-    public void before(){
-        applyForm = new ApplyForm(dictionaryDao.getApplicationId(),"6666");
+    public void before() {
+        applyForm = new ApplyForm(dictionaryDao.getApplicationId(), "6666");
 
         ApplyItemForm itemForm = new ApplyItemForm();
         itemForm.setItemCode("0000000000009");
         itemForm.setApplyType("type");
         itemForm.setItemCount(1);
         itemForm.setOthers("备注");
-        
+
         applyForm.getItems().add(itemForm);
 
 //        ApplyItemForm item2 = new ApplyItemForm();
@@ -65,12 +66,12 @@ public class ApplyFormTest {
     @Test
     @Transactional
     @Rollback
-    public void save(){
+    public void save() {
 //        Assert.assertTrue(applyFormService.save(applyForm));
     }
 
     @After
-    public void delete(){
+    public void delete() {
 //        applicationDao.delete();
     }
 }

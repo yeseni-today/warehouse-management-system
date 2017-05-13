@@ -3,6 +3,8 @@ package com.repository.web.apply.add;
 import com.google.gson.Gson;
 import com.repository.entity.ItemEntity;
 
+import java.util.Collections;
+
 /**
  * Created by Finderlo on 2016/11/26.
  */
@@ -16,6 +18,7 @@ public class ApplyItemForm {
 
     public ApplyItemForm() {
     }
+
 
     public ApplyItemForm(ItemEntity itemEntity) {
         this.itemCode = itemEntity.getItemCode();

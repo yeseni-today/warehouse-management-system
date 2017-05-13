@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:tiles="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8"/>
+    <title tiles:fragment="title">添加物品</title>
+
+    <link href="../../../static/css/all.css" rel="stylesheet" type="text/css"/>
+    <script src="../../../static/js/main.js"></script>
+</head>
+
+<body>
+
+<div class="content" th:fragment="content" tiles:fragment="content">
+    <div class="content-nav">
+        <div class="titleNav">
+            <div class="title_nav title_nav_previous">
+                <a>新建入库单</a>
+            </div>
+            <div class="title_nav title_nav_Now">
+                <a>添加物品</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-info myInfoList">
+        <form action="setinfo.html" th:action="@{/storage/add/set_item_info}">
+            <ul>
+                <li>
+                    <div class="name">类型：</div>
+                    <div class="value">
+                        <label>
+                            <input type="radio" name="isInschool" value="1" checked="checked"
+                                   onclick="setVisible(false)"/>
+                            校内编码
+                        </label>
+                        <label>
+                            <input type="radio" name="isInschool" value="0"
+                                   onclick="setVisible(true)"/>
+                            自带编码
+                        </label>
+                    </div>
+                </li>
+                <li id="bar_code">
+                    <label>
+                        <div class="name">条形码：</div>
+                        <div class="value myInput">
+                            <label>
+                                <input type="text" name="itemCode"/>
+                            </label>
+                        </div>
+                    </label>
+                </li>
+                <li>
+                    <div class="myInput">
+                        <input type="submit" value="下一步"/>
+                    </div>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

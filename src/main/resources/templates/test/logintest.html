@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <link href="../../static/css/icon-demo.css" type="text/css" rel="stylesheet">
+    <style type="text/css">
+        body{
+            margin: 0;
+            background: #ececec;
+        }
+        .top_bg{
+            height: 150px;
+        }
+        .content{
+            background: white;
+            height: 400px;
+        }
+        .lin{
+            height: 26px;
+            border-bottom: gray solid 4px ;
+        }
+        .loginImg{
+            width: 120px;
+            margin: auto;
+        }
+        .formDiv{
+            margin: auto;
+            width: 500px;
+            height:370px;
+        }
+        .blank{
+            height: 30px;
+        }
+        .formList{
+            height: 40px;
+        }
+        .inputTxt{
+            position: relative;
+            left: 70px;
+            width: 300px;
+            height: 18px;
+            padding: 9px;
+            margin: auto;
+        }
+        .inputCode{
+            position: relative;
+            left: 70px;
+            width: 120px;
+            height: 18px;
+            padding: 9px;
+        }
+        .codeImg{
+            position: relative;
+            left: 320px;
+            top: -40px;;
+            width: 120px;
+            height: 40px;
+        }
+        .select1{
+            float: left;
+            width: 250px;
+            height: 40px;
+        }
+        .selectButton{
+            width: 250px;
+            height: 39px;
+            border: 0px;
+            border-bottom: 1px solid gray;
+            font-size: medium;
+            background: #ffffff;
+        }
+        .selectButton2{
+            width: 250px;
+            height: 39px;
+            border: 1px solid gray;
+            border-bottom: 0;
+            font-size: medium;
+            background: #c1c1c1;
+        }
+        .loginBt{
+            font-size: medium;
+            float: left;
+            width: 200px;
+            height: 40px;
+            background: aqua;
+            border-radius: 15px;
+            border: 1px solid gray;
+            margin: 0 25px;
+        }
+
+        .i {
+            background: red;
+            width: 3em;
+            height: 3em;
+        }
+
+    </style>
+    <script>
+        function setColor() {
+            document.getElementById("b1").style.prototype =
+        }
+    </script>
+</head>
+<body>
+<div class="icon-android"></div>
+    <div class="top_container"></div>
+    <div class="top_bg"> <img src="" alt="图片"></div>
+    <div class="content">
+        <div class="lin">
+            <div class="loginImg">
+                <img src="t2.png">
+            </div>
+        </div>
+        <div class="formDiv">
+            <form action=" " >
+                <div class="blank"></div>
+                <div class="formList">
+                    <div class="select1">
+                        <button class="selectButton" id = "b1">普通用户</button>
+                    </div>
+                    <div class="select2">
+                        <button class="selectButton2" id = "b2">管理员</button>
+                    </div>
+                </div>
+                <div class="blank"></div>
+                <div class="formList">
+                    &nbsp学工号:<input class="inputTxt" type="text" name="userId">
+                </div>
+                <div class="blank"></div>
+                <div class="formList">
+                    &nbsp密&nbsp码:<input class="inputTxt" type="password" name="userPw">
+                </div>
+                <div class="blank"></div>
+                <div class="formList">
+                    &nbsp验证码:<input class="inputCode" type="text" name="code">
+                    <div class="codeImg" >图片</div>
+                </div>
+                <div class="blank"></div>
+                <div class="formList">
+                    <div class="select1">
+                        <input type="button" class="loginBt" value="登陆">
+                    </div>
+                    <div class="select1">
+                        <input type="button" class="loginBt" value="清空">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="foot"></div>
+</body>
+</html>

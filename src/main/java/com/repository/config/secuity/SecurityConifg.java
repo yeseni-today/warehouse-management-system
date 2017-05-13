@@ -36,6 +36,10 @@ public class SecurityConifg extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/resources/**").permitAll()
+                .antMatchers("/js/**").permitAll()
+                .antMatchers("/fonts/**").permitAll()
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/picture/**").permitAll()
 
                 .antMatchers(URL_SIGNIN_FAIL).permitAll()
                 .antMatchers(URL_SIGNIN).permitAll()
