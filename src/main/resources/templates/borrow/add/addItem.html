@@ -10,7 +10,7 @@
 </head>
 
 <body>
-
+<div th:replace="fragments/header :: header"></div>
 <div class="content" tiles:fragment="content">
     <div class="content-nav">
         <div class="titleNav">
@@ -89,6 +89,6 @@
         </form>
     </div>
 </div>
-
+<div th:replace="fragments/footer :: footer"></div>
 </body>
 </html>

@@ -22,14 +22,14 @@
 </div>
 
 <div id="header">
-    <div th:replace="templates/navBar :: navBar">
+    <div th:replace="fragments/header :: header">
     </div>
 </div>
 
 <div class="content" tiles:replace="content"></div>
 
 <div id="footer">
-    <div th:replace="templates/footer :: footer">
+    <div th:replace="fragments/footer :: footer">
     </div>
 </div>
 

@@ -42,7 +42,7 @@ public interface ManageContants {
      */
     String URL_MANAGE_ITEMINDATE = URL_MANAGE + "/itemindate";
 
-    String HTML_MANAGE_PREFIX = "/manage/";
+    String HTML_MANAGE_PREFIX = "manage/";
     /**
      * 有效期管理的view视图
      */

@@ -139,8 +139,13 @@ public class StorageController extends BaseController {
      */
     @RequestMapping(URL_STORAGE_LIST_AJAX)
     @ResponseBody
-    public SimpleRes storageDayBefore(@RequestParam(name = "day") int day) {
+    public SimpleRes storageDayBefore(@RequestParam(name = "day") String daystr) {
         // TODO: 2016/12/9 参数比较多，只写了最近实践的参数
+        if (daystr .equals("")){
+            return SimpleRes.success();
+        }
+        int day = Integer.parseInt(daystr);
+
         List<ItemInOperationEntity> entities = inOperationDao.findByDayBefore(day);
         reverse(entities);
         return SimpleRes.success(entities);

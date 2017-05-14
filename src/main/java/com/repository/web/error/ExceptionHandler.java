@@ -23,7 +23,7 @@ class ExceptionHandler extends BaseController {
         ModelAndView modelAndView = new ModelAndView(HTML_ERROR_GENERAL);
         Throwable rootCause = Throwables.getRootCause(exception);
         modelAndView.addObject("errorMessage", rootCause);
-        logger.error(rootCause.toString(), exception);
+        logger.error("发送异常"+rootCause.toString(), exception);
         return modelAndView;
     }
 }

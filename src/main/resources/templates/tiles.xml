@@ -4,27 +4,30 @@
     "http://tiles.apache.org/dtds/tiles-config_2_1.dtd">
 <tiles-definitions>
 
-    <definition name="tiles/login/*" template="login/layout">
+    <definition name="tiles/login/*" template="./login/layout">
         <put-attribute name="title" value="title/login/{1}"/>
         <put-attribute name="content" value="content/login/{1}"/>
     </definition>
-    <definition name="title/*" template="{1} :: title"/>
-    <definition name="content/*" template="{1}/:: content"/>
 
-
-    <definition name="tiles/*/*" template="./templates/layout">
+    <definition name="tiles/*/*" template="./fragments/layout">
         <put-attribute name="title" value="title/{1}/{2}"/>
         <put-attribute name="content" value="content/{1}/{2}"/>
     </definition>
-    <definition name="title/*/*" template="{1}/{2} :: title"/>
-    <definition name="content/*/*" template="{1}/{2} :: content"/>
 
-    <definition name="tiles/*/*/*" template="/templates/layout">
+    <definition name="tiles/*/*/*" template="./fragments/layout">
         <put-attribute name="title" value="title/{1}/{2}/{3}"/>
         <put-attribute name="content" value="content/{1}/{2}/{3}"/>
     </definition>
-    <definition name="title/*/*/*" template="{1}/{2}/{3} :: title"/>
-    <definition name="content/*/*/*" template="{1}/{2}/{3} :: content"/>
+
+
+    <definition name="title/*" template="./{1} :: title"/>
+    <definition name="content/*" template="./{1} :: content"/>
+
+    <definition name="title/*/*" template="./{1}/{2} :: title"/>
+    <definition name="content/*/*" template="./{1}/{2} :: content"/>
+
+    <definition name="title/*/*/*" template="./{1}/{2}/{3} :: title"/>
+    <definition name="content/*/*/*" template="./m{1}/{2}/{3} :: content"/>
 
 
 </tiles-definitions>
