@@ -27,7 +27,7 @@
     <definition name="content/*/*" template="./{1}/{2} :: content"/>
 
     <definition name="title/*/*/*" template="./{1}/{2}/{3} :: title"/>
-    <definition name="content/*/*/*" template="./m{1}/{2}/{3} :: content"/>
+    <definition name="content/*/*/*" template="./{1}/{2}/{3} :: content"/>
 
 
 </tiles-definitions>
