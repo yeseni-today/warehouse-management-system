@@ -2,9 +2,9 @@
 
 It is a Warehouse Management System（WMS）based on Java .
 
-In this project,we use spring,hibernate as backstage and use Html5,jQuery and Ajax as web Front-end.
+In this project, we use spring, hibernate as backstage and use Html5, jQuery and Ajax as web Front-end. 
 
-It supports Microsoft SQL server and MySQL.
+It supports Microsoft SQL Server and MySQL.
 
 
 ![](http://i1.piimg.com/567571/bfef94ac6d69a9b7.png)
