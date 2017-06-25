@@ -15,6 +15,13 @@ It supports Microsoft SQL server and MySQL.
 
 
 
+# Team
+* [Stevenljl](https://github.com/Stevenljl)
+* [lingxian1](https://github.com/lingxian1)
+* [Aollio](https://github.com/Aollio)
+
+
+
 # Version
 
 - v-0.56.0 finderlo
